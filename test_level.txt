@@ -1,0 +1,11 @@
+!SIZE!,6
+a,True,images/floor.png,[]
+b,False,images/wall.png,[]
+D,True,images/floor.png,[Drone]
+!MAP!
+b,a,b,b,b,b
+b,a,a,a,a,b
+a,a,a,b,a,a
+b,b,a,b,a,a
+a,a,a,b,a,a
+D,b,b,a,a,a

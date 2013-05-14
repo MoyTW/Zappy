@@ -10,7 +10,6 @@ class LoaderLevel(object):
 
     def __init__(self):
         self.entity_index = LoaderEntityIndex()
-        self.infos = dict()
         self.levels = dict()
 
     def get_level_info(self, level_number):
@@ -24,7 +23,7 @@ class LoaderLevel(object):
         pass
 
     # Normally levels are loaded by number - the file name should be the number.
-    def load_level(self, level_number):
+    def _load_level(self, level_number):
         pass
 
     # Usage of this function is discouraged.

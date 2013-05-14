@@ -3,7 +3,7 @@ __author__ = 'Travis Moy'
 
 class Level:
     # Cells is a nxm grid of Cell objects.
-    def __init__(self, width, height, cells):
+    def __init__(self, width, height, info, cells=None):
         pass
 
     def get_cell_at(self, x, y):

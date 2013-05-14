@@ -19,3 +19,8 @@ class LevelInfo:
 
     def get_height(self):
         return self._height
+
+    def __eq__(self, other):
+        if other is None:
+            return False
+        return self.__dict__ == other.__dict__

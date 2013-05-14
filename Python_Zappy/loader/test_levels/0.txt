@@ -9,9 +9,9 @@ b,False,images/wall.png,[]
 D,True,images/floor.png,[Drone]
 
 !MAP!
-b,a,b,b,b
-b,a,a,a,a
-a,a,a,b,a
-b,b,a,b,a
-a,a,a,b,a
-D,b,b,a,a
+b,b,b,b,b
+b,b,b,b,b
+a,a,a,a,a
+a,a,a,a,a
+b,b,b,b,b
+D,a,a,a,a

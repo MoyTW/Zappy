@@ -56,7 +56,7 @@ class TestCell(unittest.TestCase):
         self.default_cell.add_entity(self.teststr)
         self.assertTrue(self.default_cell.contains_entity(self.teststr))
 
-    # Ah, this one's a doozy. We'll come back to it a bit later.
+
     def test_get_all_cell_images(self):
         self.assertFalse(True)
 

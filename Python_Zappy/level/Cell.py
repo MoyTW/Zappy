@@ -15,10 +15,10 @@ class Cell(object):
         self._load_image(image_file)
 
     def get_cell_image(self):
-        pass
+        return self._image
 
     def get_passable(self):
-        pass
+        return self._passable
 
     # Returns a CellImages object.
     def get_all_cell_images(self):
@@ -26,17 +26,20 @@ class Cell(object):
 
     # Don't store the result of this function! It is for looking, not touching!
     def get_all_entities(self):
-        pass
+        return self._contains
 
     def add_entity(self, entity):
-        #self._contains.append(entity)
-        pass
+        self._contains.append(entity)
 
     def remove_entity(self, entity):
-        pass
+        try:
+            self._contains.remove(entity)
+            return True
+        except ValueError:
+            return False
 
     def contains_entity(self, entity):
-        pass
+        return entity in self._contains
 
     def _load_image(self, file):
         try:

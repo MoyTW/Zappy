@@ -8,7 +8,7 @@
     <file path="/__init__.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1368560556814" ignored="false" />
     <file path="/LoaderEntityIndex.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1368140277166" ignored="false" />
     <file path="/Level.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1368559456066" ignored="false" />
-    <file path="/Cell.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1368570161026" ignored="false" />
+    <file path="/Cell.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1368570870901" ignored="false" />
     <file path="/Entity.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1368138459911" ignored="false" />
     <file path="/test_level.txt" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1368139584478" ignored="false" />
     <file path="/testLoaderLevel.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1368561629674" ignored="false" />
@@ -36,10 +36,10 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Cell.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Cell.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/level/Cell.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="12" selection-start="729" selection-end="729" vertical-scroll-proportion="0.0">
+            <state line="33" column="36" selection-start="801" selection-end="801" vertical-scroll-proportion="0.53424656">
               <folding>
                 <element signature="e#27#40#0" expanded="true" />
               </folding>
@@ -47,22 +47,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="testCell.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="testCell.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/level/testCell.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="58" column="64" selection-start="2223" selection-end="2223" vertical-scroll-proportion="0.6712329">
+            <state line="45" column="0" selection-start="1542" selection-end="1542" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="e#27#42#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Entity.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/entity/Entity.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -91,8 +82,8 @@
         <option value="$PROJECT_DIR$/loader/testLoaderLevel.py" />
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/level/CellImages.py" />
-        <option value="$PROJECT_DIR$/level/Cell.py" />
         <option value="$PROJECT_DIR$/level/testCell.py" />
+        <option value="$PROJECT_DIR$/level/Cell.py" />
       </list>
     </option>
   </component>
@@ -615,20 +606,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/level/Cell.py">
+    <entry file="file://$PROJECT_DIR$/level/testCell.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="12" selection-start="729" selection-end="729" vertical-scroll-proportion="0.0">
+        <state line="45" column="0" selection-start="1542" selection-end="1542" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="e#27#40#0" expanded="true" />
+            <element signature="e#27#42#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/level/testCell.py">
+    <entry file="file://$PROJECT_DIR$/level/Cell.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="64" selection-start="2223" selection-end="2223" vertical-scroll-proportion="0.6712329">
+        <state line="33" column="36" selection-start="801" selection-end="801" vertical-scroll-proportion="0.53424656">
           <folding>
-            <element signature="e#27#42#0" expanded="true" />
+            <element signature="e#27#40#0" expanded="true" />
           </folding>
         </state>
       </provider>

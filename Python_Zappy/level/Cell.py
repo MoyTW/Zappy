@@ -28,10 +28,11 @@ class Cell(object):
     def get_all_entities(self):
         pass
 
-    def add_entity(self):
+    def add_entity(self, entity):
+        #self._contains.append(entity)
         pass
 
-    def remove_entity(self):
+    def remove_entity(self, entity):
         pass
 
     def contains_entity(self, entity):

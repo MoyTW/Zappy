@@ -11,6 +11,7 @@ class TestCell(unittest.TestCase):
         pyglet.resource.path = ['@level.Cell', '.']
         pyglet.resource.reindex()
 
+        self.teststr = "This is a test string!"
         self.default_image_path = 'test_images/defaultcell.png'
         self.floor_image_path = 'test_images/floor.png'
         self.default_image = pyglet.resource.image(self.default_image_path)
@@ -36,19 +37,31 @@ class TestCell(unittest.TestCase):
         self.assertEquals(False, impassable.get_passable())
 
     def test_add_entity(self):
-        self.assertFalse(True)
+        self.default_cell.add_entity(self.teststr)
+        self.assertEquals(len(self.default_cell._contains), 1)
+        self.assertTrue(self.teststr in self.default_cell._contains)
 
     def test_remove_entity(self):
-        self.assertFalse(True)
+        self.default_cell.add_entity(self.teststr)
+        self.assertTrue(self.default_cell.remove_entity(self.teststr))
+        self.assertEquals(len(self.default_cell._contains), 0)
+        self.assertTrue(self.teststr not in self.default_cell._contains)
+
+        teststr2 = "Another test string!"
+        self.assertFalse(self.default_cell.remove_entity(teststr2))
+        self.assertEquals(len(self.default_cell._contains), 0)
 
     def test_contains_entity(self):
-        self.assertFalse(True)
+        self.assertFalse(self.default_cell.contains_entity(self.teststr))
+        self.default_cell.add_entity(self.teststr)
+        self.assertTrue(self.default_cell.contains_entity(self.teststr))
 
+    # Ah, this one's a doozy. We'll come back to it a bit later.
     def test_get_all_cell_images(self):
         self.assertFalse(True)
 
     def test_get_all_entities(self):
-        self.assertFalse(True)
+        self.assertEquals(self.default_cell._contains, self.default_cell.get_all_entities())
 
 # Not currently using the code, but it's very nifty. I changed the structure, though, so it's invalid.
 # Still, tossing it seems such a shame! Archived for possible future usage.

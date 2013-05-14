@@ -8,20 +8,22 @@ class Level:
         self._cells = cells
 
     def cells_are_none(self):
-        pass
+        if self._cells is None:
+            return True
+        return False
 
     # Should throw some manner of exception if cells is not None
     def set_cells(self, cells):
         pass
 
     def get_level_info(self):
-        pass
+        return self._info
 
     def get_cell_at(self, x, y):
-        pass
+        return self._cells[x][y]
 
     def place_entity_at(self, entity, x, y):
-        pass
+        self._cells[x][y].add_entity(entity)
 
     def remove_entity_from(self, entity, x, y):
-        pass
+        return self._cells[x][y].remove_entity(entity)

@@ -4,6 +4,7 @@ import warnings
 import level.Level
 import LoaderEntityIndex
 import os
+import LoaderCellDefinition
 
 
 class LoaderLevel(object):
@@ -48,8 +49,44 @@ class LoaderLevel(object):
             return int(pair[1].strip())
 
     # Normally levels are loaded by number - the file name should be the number.
+    # The method for loading the levels is...a little insane. Three steps:
+    # Load cell types
+    # Cycle through the Cell array, setting the types to the appropriate Cells. If Entities are contained, note that.
+    # Populate the Level with the Entities through Level.place_entity().
     def _load_level(self, level_number):
-        pass
+        filepath = os.path.join(self._levels_path, (str(level_number) + ".lvl"))
+        file = open(filepath, 'r')
+        lines = file.readlines()
+
+        # Is there a more elegant way to do this? PROBABLY. Searching for the indicated indices in the lines list.
+        index_begin_definitions = [i for i, x in enumerate(lines) if x.strip() == '!DEFINITIONS!'][0]
+        index_begin_map = [i for i, x in enumerate(lines) if x.strip() == '!MAP!'][0]
+
+        cell_defs_dict = self._build_cell_defs_dict(lines, index_begin_definitions)
+
+    def _build_cell_defs_dict(self, lines, index_begin_definitions):
+        current_index = index_begin_definitions + 1
+        cell_dict = dict()
+
+        # For each Cell Def
+        while lines[current_index] != '\n':
+            entity_strings = None
+
+            line_fragments = lines[current_index].split(',')
+
+            # If you have objects assigned to the cell, create a list for entity_string
+            if line_fragments[3].strip() != '[]':
+                entity_strings = line_fragments[3:len(line_fragments)]
+                for i in range(0, len(entity_strings)):
+                    entity_strings[i] = entity_strings[i].strip().strip('[]')
+
+            # Add the cell def to the dict
+            cell_dict[line_fragments[0]] = LoaderCellDefinition.LoaderCellDefinition(image_location=line_fragments[2],
+                                                                                     passable=line_fragments[1],
+                                                                                     entity_strings=entity_strings)
+            current_index += 1
+
+        return cell_dict
 
     def _find_levels_path(self, levels_folder):
         return os.path.join(os.path.dirname(__file__), "..", levels_folder)

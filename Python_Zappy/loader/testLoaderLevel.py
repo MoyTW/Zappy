@@ -11,8 +11,7 @@ class TestLoaderLevel(unittest.TestCase):
         pyglet.resource.path = ['@', '.']
         pyglet.resource.reindex()
 
-        self.loader = loader.LoaderLevel.LoaderLevel()
-        self.loader.LEVEL_DIR = 'loader/test_levels'
+        self.loader = loader.LoaderLevel.LoaderLevel('loader/test_levels')
 
         self.level_info_0 = level.LevelInfo.LevelInfo('This is a test level!', 0, 5, 6)
         self.level_info_1 = level.LevelInfo.LevelInfo('Four-Square', 1, 2, 2)
@@ -37,6 +36,7 @@ class TestLoaderLevel(unittest.TestCase):
         # Set up level 2
         cells_2 = [[level.Cell.Cell(image_file='images/floor.png', passable=True) for _ in range(2)] for _ in range(8)]
         self.level_2 = level.Level.Level(self.level_info_2, cells_2)
+        self.level_2.place_entity_at(self.loader._entity_index.create_entity_by_name('TestObj'), 0, 1)
         self.level_2.place_entity_at(self.loader._entity_index.create_entity_by_name('TestObj'), 0, 1)
 
     def tearDown(self):

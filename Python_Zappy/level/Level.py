@@ -1,5 +1,7 @@
 __author__ = 'Travis Moy'
 
+import level.levelExceptions
+
 
 class Level:
     # cells is a rectangular grid of Cell objects.
@@ -14,7 +16,10 @@ class Level:
 
     # Should throw some manner of exception if cells is not None
     def set_cells(self, cells):
-        pass
+        if self._cells is None:
+            self._cells = cells
+        else:
+            raise level.levelExceptions.LevelCellsAlreadySetError("This is an error message!")
 
     def get_level_info(self):
         return self._info

@@ -3,6 +3,7 @@ __author__ = 'Travis Moy'
 import unittest
 import level
 import pyglet
+import level.levelExceptions
 
 
 class TestLevel(unittest.TestCase):
@@ -27,9 +28,17 @@ class TestLevel(unittest.TestCase):
         self.assertEquals(self.empty_test_level.cells_are_none(), True)
         self.assertEquals(self.initialized_test_level.cells_are_none(), False)
 
-    # How do we want to handle a situation in which you attempt to set cells which are already set?
+    # If you attempt to set the cells of an already-set Level, a LevelCellsAlreadySetError is raised.
     def test_set_cells(self):
-        self.assertFalse(True)
+        self.empty_test_level.set_cells(self.test_cells)
+        self.assertEquals(self.empty_test_level._cells, self.test_cells)
+
+        try:
+            self.initialized_test_level.set_cells(self.test_cells)
+            self.assertFalse(True, "Level.set_cells() did not throw an exception when attempting to assign cells to an"
+                                   "already initialized Level!")
+        except level.levelExceptions.LevelCellsAlreadySetError as err:
+            pass
 
     def test_get_level_info(self):
         self.assertEquals(self.test_info, self.empty_test_level.get_level_info())

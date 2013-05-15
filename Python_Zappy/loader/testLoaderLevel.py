@@ -3,16 +3,41 @@ __author__ = 'Travis Moy'
 import unittest
 import loader.LoaderLevel
 import level.LevelInfo
+import pyglet
 
 
 class TestLoaderLevel(unittest.TestCase):
     def setUp(self):
+        pyglet.resource.path = ['@', '.']
+        pyglet.resource.reindex()
+
         self.loader = loader.LoaderLevel.LoaderLevel()
         self.loader.LEVEL_DIR = '/test_levels'
 
         self.level_info_0 = level.LevelInfo.LevelInfo('This is a test level!', 0, 5, 6)
         self.level_info_1 = level.LevelInfo.LevelInfo('Four-Square', 1, 2, 2)
         self.level_info_2 = level.LevelInfo.LevelInfo('Rectangle', 2, 8, 2)
+
+    def setUpLevels(self):
+        # Set up level 0
+        cells_0 = [[level.Cell.Cell(image_file='images/floor.png', passable=True) for _ in range(6)] for _ in range(5)]
+        for i in range(5):
+            cells_0[i][5] = level.Cell.Cell(image_file='images/wall.png', passable=False)
+            cells_0[i][4] = level.Cell.Cell(image_file='images/wall.png', passable=False)
+            cells_0[i][1] = level.Cell.Cell(image_file='images/wall.png', passable=False)
+
+        self.level_0 = level.Level.Level(self.level_info_0, cells_0)
+        self.level_0.place_entity_at(self.loader._entity_index.create_entity_by_name('TestObj'), 0, 0)
+
+        # Set up level 1
+        cells_1 = [[level.Cell.Cell(image_file='images/floor.png', passable=True) for _ in range(2)] for _ in range(2)]
+        self.level_1 = level.Level.Level(self.level_info_1, cells_1)
+        self.level_1.place_entity_at(self.loader._entity_index.create_entity_by_name('TestObj'), 0, 1)
+
+        # Set up level 2
+        cells_2 = [[level.Cell.Cell(image_file='images/floor.png', passable=True) for _ in range(2)] for _ in range(8)]
+        self.level_2 = level.Level.Level(self.level_info_2, cells_2)
+        self.level_2.place_entity_at(self.loader._entity_index.create_entity_by_name('TestObj'), 0, 1)
 
     def tearDown(self):
         pass
@@ -34,10 +59,24 @@ class TestLoaderLevel(unittest.TestCase):
         self.assertTrue(self.loader.get_level_info(5) is None)
 
     def test_load_level(self):
-        self.assertTrue(False)
+        self.setUpLevels()
+        try:
+            self.loader._load_level(0)
+            self.assertEquals(self.loader._levels[0], self.level_0)
+            self.loader._load_level(1)
+            self.assertEquals(self.loader._levels[1], self.level_1)
+            self.loader._load_level(2)
+            self.assertEquals(self.loader._levels[2], self.level_2)
+        except KeyError:
+            self.assertFalse(True, "KeyError occurred - loading not properly implemented.")
 
     def test_get_level(self):
-        self.assertTrue(False)
+        self.setUpLevels()
+        self.assertEquals(self.level_0, self.loader.get_level(0))
+        self.assertEquals(self.level_1, self.loader.get_level(1))
+        self.assertEquals(self.level_2, self.loader.get_level(1))
+        self.assertTrue(self.loader.get_level(-3) is None)
+        self.assertTrue(self.loader.get_level(12) is None)
 
 suite = unittest.TestLoader().loadTestsFromTestCase(TestLoaderLevel)
 unittest.TextTestRunner(verbosity=2).run(suite)

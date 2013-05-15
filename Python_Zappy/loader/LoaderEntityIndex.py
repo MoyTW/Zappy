@@ -8,7 +8,10 @@ class LoaderEntityIndex(object):
         pass
 
     def create_entity_by_name(self, name):
-        pass
+        if name == 'TestObj':
+            return 'TestStringEntity'
+        else:
+            pass
 
     def _load_entity_by_name(self, name):
         pass

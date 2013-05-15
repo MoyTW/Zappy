@@ -3,7 +3,6 @@ __author__ = 'Travis Moy'
 import unittest
 import pyglet
 import level.Cell
-from pyglet.window import key
 
 
 class TestCell(unittest.TestCase):
@@ -33,7 +32,7 @@ class TestCell(unittest.TestCase):
 
     def test_get_passable(self):
         self.assertEquals(True, self.default_cell.get_passable())
-        impassable = level.Cell.Cell(passable=False)
+        impassable = level.Cell.Cell(self.default_image_path, passable=False)
         self.assertEquals(False, impassable.get_passable())
 
     def test_add_entity(self):
@@ -56,7 +55,6 @@ class TestCell(unittest.TestCase):
         self.default_cell.add_entity(self.teststr)
         self.assertTrue(self.default_cell.contains_entity(self.teststr))
 
-
     def test_get_all_cell_images(self):
         self.assertFalse(True)
 
@@ -66,6 +64,8 @@ class TestCell(unittest.TestCase):
 # Not currently using the code, but it's very nifty. I changed the structure, though, so it's invalid.
 # Still, tossing it seems such a shame! Archived for possible future usage.
 '''
+from pyglet.window import key
+
     # It's running it twice - once near the beginning, and then once again. I don't know why.
     # I assume I have some fundamental misunderstanding of the unittest framework here...
     # You have to hit 'y' twice for it to register as passed - if you hit 'y' once and another key, it fails.

@@ -3,7 +3,6 @@ __author__ = 'Travis Moy'
 import unittest
 import level
 import pyglet
-import level.levelExceptions
 
 
 class TestLevel(unittest.TestCase):

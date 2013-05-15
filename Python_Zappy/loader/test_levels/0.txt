@@ -6,7 +6,7 @@
 !DEFINITIONS!
 a,True,images/floor.png,[]
 b,False,images/wall.png,[]
-D,True,images/floor.png,[Drone]
+D,True,images/floor.png,[TestObj]
 
 !MAP!
 b,b,b,b,b

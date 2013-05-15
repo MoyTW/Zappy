@@ -19,7 +19,10 @@ class Level:
         if self._cells is None:
             self._cells = cells
         else:
-            raise level.levelExceptions.LevelCellsAlreadySetError("This is an error message!")
+            raise level.levelExceptions.LevelCellsAlreadySetError("Cannot assign cells to level {0} (#{1}) - it "
+                                                                  "already has cells assigned to it!"
+                                                                  .format(self._info.get_name(),
+                                                                          self._info.get_number()))
 
     def get_level_info(self):
         return self._info
@@ -32,3 +35,8 @@ class Level:
 
     def remove_entity_from(self, entity, x, y):
         return self._cells[x][y].remove_entity(entity)
+
+    def __eq__(self, other):
+        if other is None:
+            return False
+        return self.__dict__ == other.__dict__

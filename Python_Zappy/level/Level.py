@@ -1,6 +1,7 @@
 __author__ = 'Travis Moy'
 
 import level.levelExceptions
+import collections
 
 
 class Level:
@@ -40,7 +41,10 @@ class Level:
         return self._info.get_height()
 
     def get_cell_at(self, x, y):
-        return self._cells[x][y]
+        try:
+            return self._cells[x][y]
+        except IndexError:
+            return None
 
     def place_entity_at(self, entity, x, y):
         self._cells[x][y].add_entity(entity)
@@ -49,6 +53,18 @@ class Level:
         return self._cells[x][y].remove_entity(entity)
 
     def __eq__(self, other):
+        print "LEVEL __EQ__ CALLED!"
         if other is None:
             return False
-        return self.__dict__ == other.__dict__
+        elif isinstance(other, Level):
+            info_equality = self.get_level_info() == other.get_level_info()
+            cell_equality = collections.Counter(self._cells) == collections.Counter(other._cells)
+            #cell_equality = cmp(self._cells, other._cells) == 0
+            print "IE: {0} CE: {1}".format(info_equality, cell_equality)
+            return info_equality and cell_equality
+        else:
+            print "OTHER WAS NOT LEVEL AND NOT NONE"
+            return self.__dict__ == other.__dict__
+
+    def __repr__(self):
+        return "({0}, {1}".format(self.get_level_info(), self._cells)

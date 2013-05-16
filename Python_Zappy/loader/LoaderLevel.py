@@ -1,6 +1,7 @@
 __author__ = 'Travis Moy'
 
 import level.Level
+import level.Cell
 import LoaderEntityIndex
 import os
 import LoaderCellDefinition
@@ -95,23 +96,24 @@ class LoaderLevel(object):
     # Assign the dummy list of Nones to the Level object in question.
     # Iterate through the lines, adding cells as instructed by cell_defs_dict.
     # If entities, use Level.place_entity_at(), using self._entity_index to create them.
-    def _build_cell_map_and_assign_to_level(self, cell_defs_dict, lines, index_begin_map, level):
-        cells = [[None for _ in range(0, level.get_height())] for _ in range(0, level.get_width())]
-        level.set_cells(cells)
+    def _build_cell_map_and_assign_to_level(self, cell_defs_dict, lines, index_begin_map, _level):
+        cells = [[None for _ in range(0, _level.get_height())] for _ in range(0, _level.get_width())]
+        _level.set_cells(cells)
 
         for row_index in range(index_begin_map + 1, len(lines)):
             line = lines[row_index].strip()
             cols = line.split(',')
-            for col in range(0, level.get_width()):
-                # ...I have no idea what I was doing with my other project.
+            for col in range(0, _level.get_width()):
                 x = col
-                y = row_index - index_begin_map - 1 # going from the top - wait, why did this work in my other project?
+                y = len(lines) - 1 - row_index
                 cell_def = cell_defs_dict[cols[col]]
-                self._build_cell_from_def_and_add_entities(x, y, cell_def, level)
-                # Ok I should stop and figure out how it worked.
+                self._build_cell_from_def_and_add_entities(x, y, cell_def, _level)
 
-    def _build_cell_from_def_and_add_entities(self, x, y, cell_def, level):
-        pass
+    def _build_cell_from_def_and_add_entities(self, x, y, cell_def, _level):
+        _level._cells[x][y] = level.Cell.Cell(image_file=cell_def.image_location, passable=cell_def.passable)
+        if cell_def.entity_strings is not None:
+            for entity_string in cell_def.entity_strings:
+                _level.place_entity_at(self._entity_index.create_entity_by_name(entity_string), x, y)
 
     # No unit test.
     def _find_levels_path(self, levels_folder):

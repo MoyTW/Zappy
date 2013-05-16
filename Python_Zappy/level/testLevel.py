@@ -43,6 +43,15 @@ class TestLevel(unittest.TestCase):
         self.assertEquals(self.test_info, self.empty_test_level.get_level_info())
 
     def test_get_cell_at(self):
+        height = 5
+        width = 2
+        test_strs = [["{0},{1}".format(w, h) for h in range(height)] for w in range(width)]
+        self.empty_test_level.set_cells(test_strs)
+        self.assertEquals("1,2", self.empty_test_level.get_cell_at(1, 2))
+        self.assertEquals("0,4", self.empty_test_level.get_cell_at(0, 4))
+        self.assertEquals(None, self.empty_test_level.get_cell_at(-3, 12))
+
+    def test_get_passable(self):
         self.initialized_test_level._cells[2][2]._passable = False
         self.assertEquals(self.initialized_test_level.get_cell_at(2, 2).get_passable(), False)
         self.initialized_test_level._cells[3][1]._passable = False

@@ -56,3 +56,6 @@ class Cell(object):
         if other is None:
             return False
         return self.__dict__ == other.__dict__
+
+    def __repr__(self):
+        return "(P: {0} I: {1} C: {2})".format(self._passable, self._image_file, self._contains)

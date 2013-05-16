@@ -1,6 +1,5 @@
 __author__ = 'Travis Moy'
 
-import warnings
 import level.Level
 import LoaderEntityIndex
 import os
@@ -14,6 +13,8 @@ class LoaderLevel(object):
         self._entity_index = LoaderEntityIndex.LoaderEntityIndex()
         self._levels = dict()
 
+        self._load_all_levels_infos()
+
     def get_level_info(self, level_number):
         level = self._levels.get(level_number)
         if level is None:
@@ -26,7 +27,8 @@ class LoaderLevel(object):
         return self._levels.get(level_number)
 
     # For every level in the folder, load the level info (Name, number, how large it is, whatever else I later add).
-    def load_all_levels_infos(self):
+    # Should this be called in the constructor?
+    def _load_all_levels_infos(self):
         level_files = os.listdir(self._levels_path)
         for file in level_files:
             if file.endswith(".lvl"):
@@ -48,12 +50,9 @@ class LoaderLevel(object):
         else:
             return int(pair[1].strip())
 
-    # Normally levels are loaded by number - the file name should be the number.
-    # The method for loading the levels is...a little insane. Three steps:
-    # Load cell types
-    # Cycle through the Cell array, setting the types to the appropriate Cells. If Entities are contained, note that.
-    # Populate the Level with the Entities through Level.place_entity().
     def _load_level(self, level_number):
+        level = self._levels.get(level_number)
+
         filepath = os.path.join(self._levels_path, (str(level_number) + ".lvl"))
         file = open(filepath, 'r')
         lines = file.readlines()
@@ -63,7 +62,9 @@ class LoaderLevel(object):
         index_begin_map = [i for i, x in enumerate(lines) if x.strip() == '!MAP!'][0]
 
         cell_defs_dict = self._build_cell_defs_dict(lines, index_begin_definitions)
+        self._build_cell_map_and_assign_to_level(cell_defs_dict, lines, index_begin_map, level)
 
+    # No unit test (under _load_level).
     def _build_cell_defs_dict(self, lines, index_begin_definitions):
         current_index = index_begin_definitions + 1
         cell_dict = dict()
@@ -88,5 +89,30 @@ class LoaderLevel(object):
 
         return cell_dict
 
+    # No unit test (under _load_level).
+    # Returns a populated two-dimensional list.
+    # First, set up a dummy list of Nones.
+    # Assign the dummy list of Nones to the Level object in question.
+    # Iterate through the lines, adding cells as instructed by cell_defs_dict.
+    # If entities, use Level.place_entity_at(), using self._entity_index to create them.
+    def _build_cell_map_and_assign_to_level(self, cell_defs_dict, lines, index_begin_map, level):
+        cells = [[None for _ in range(0, level.get_height())] for _ in range(0, level.get_width())]
+        level.set_cells(cells)
+
+        for row_index in range(index_begin_map + 1, len(lines)):
+            line = lines[row_index].strip()
+            cols = line.split(',')
+            for col in range(0, level.get_width()):
+                # ...I have no idea what I was doing with my other project.
+                x = col
+                y = row_index - index_begin_map - 1 # going from the top - wait, why did this work in my other project?
+                cell_def = cell_defs_dict[cols[col]]
+                self._build_cell_from_def_and_add_entities(x, y, cell_def, level)
+                # Ok I should stop and figure out how it worked.
+
+    def _build_cell_from_def_and_add_entities(self, x, y, cell_def, level):
+        pass
+
+    # No unit test.
     def _find_levels_path(self, levels_folder):
         return os.path.join(os.path.dirname(__file__), "..", levels_folder)

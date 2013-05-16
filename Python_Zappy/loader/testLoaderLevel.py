@@ -43,7 +43,7 @@ class TestLoaderLevel(unittest.TestCase):
         pass
 
     def test_load_all_levels_infos(self):
-        self.loader.load_all_levels_infos()
+        self.loader._load_all_levels_infos()
 
         self.assertTrue(len(self.loader._levels) == 3, "The loader loaded an incorrect number of levels!")
         self.assertTrue(self.loader._levels.get(0).get_level_info() == self.level_info_0)
@@ -51,7 +51,7 @@ class TestLoaderLevel(unittest.TestCase):
         self.assertTrue(self.loader._levels.get(2).get_level_info() == self.level_info_2)
 
     def test_get_level_info(self):
-        self.loader.load_all_levels_infos()
+        self.loader._load_all_levels_infos()
 
         self.assertTrue(self.loader.get_level_info(1) == self.level_info_1)
         self.assertTrue(self.loader.get_level_info(5) is None)

@@ -27,6 +27,18 @@ class Level:
     def get_level_info(self):
         return self._info
 
+    def get_name(self):
+        return self._info.get_name()
+
+    def get_number(self):
+        return self._info.get_number()
+
+    def get_width(self):
+        return self._info.get_width()
+
+    def get_height(self):
+        return self._info.get_height()
+
     def get_cell_at(self, x, y):
         return self._cells[x][y]
 

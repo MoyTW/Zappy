@@ -1,7 +1,6 @@
 __author__ = 'Travis Moy'
 
 import level.levelExceptions
-import collections
 
 
 class Level:
@@ -53,17 +52,22 @@ class Level:
         return self._cells[x][y].remove_entity(entity)
 
     def __eq__(self, other):
-        print "LEVEL __EQ__ CALLED!"
         if other is None:
             return False
         elif isinstance(other, Level):
-            info_equality = self.get_level_info() == other.get_level_info()
-            cell_equality = collections.Counter(self._cells) == collections.Counter(other._cells)
-            #cell_equality = cmp(self._cells, other._cells) == 0
-            print "IE: {0} CE: {1}".format(info_equality, cell_equality)
-            return info_equality and cell_equality
+            if not self.get_level_info() == other.get_level_info():
+                return False
+
+            cell_equality = True
+
+            # Brute force, mindless comparison.
+            for w in range(0, self.get_width()):
+                for h in range(0, self.get_height()):
+                    if self._cells[w][h] != other._cells[w][h]:
+                        cell_equality = False
+
+            return cell_equality
         else:
-            print "OTHER WAS NOT LEVEL AND NOT NONE"
             return self.__dict__ == other.__dict__
 
     def __repr__(self):

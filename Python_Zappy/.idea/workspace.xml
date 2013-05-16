@@ -7,11 +7,11 @@
     <list default="true" id="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" name="Default" comment="" />
     <ignored path="Python_Zappy.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/LoaderLevel.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1368738364724" ignored="false" />
+    <file path="/LoaderLevel.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1368743766693" ignored="false" />
     <file path="/__init__.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1368648595270" ignored="false" />
     <file path="/LoaderEntityIndex.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1368652328126" ignored="false" />
-    <file path="/Level.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1368739910395" ignored="false" />
-    <file path="/Cell.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1368738149514" ignored="false" />
+    <file path="/Level.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1368743645618" ignored="false" />
+    <file path="/Cell.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1368743304071" ignored="false" />
     <file path="/Entity.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1368138459911" ignored="false" />
     <file path="/test_level.txt" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1368139584478" ignored="false" />
     <file path="/testLoaderLevel.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1368738658389" ignored="false" />
@@ -51,48 +51,31 @@
       <file leaf-file-name="testLoaderLevel.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/loader/testLoaderLevel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="64" column="90" selection-start="2946" selection-end="2946" vertical-scroll-proportion="0.0">
+            <state line="70" column="8" selection-start="3192" selection-end="3192" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LevelInfo.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/level/LevelInfo.py">
+      <file leaf-file-name="2.lvl" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/levels/2.lvl">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="28" selection-start="455" selection-end="455" vertical-scroll-proportion="0.0">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
               <folding />
             </state>
           </provider>
+          <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+            <state />
+          </provider>
         </entry>
       </file>
-      <file leaf-file-name="LoaderLevel.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="LoaderLevel.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/loader/LoaderLevel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="114" column="57" selection-start="5036" selection-end="5036" vertical-scroll-proportion="0.0">
+            <state line="28" column="30" selection-start="781" selection-end="781" vertical-scroll-proportion="0.57191783">
               <folding>
                 <element signature="e#27#45#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Level.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/level/Level.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="44" column="18" selection-start="1314" selection-end="1314" vertical-scroll-proportion="0.12671232">
-              <folding>
-                <element signature="e#27#55#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="testLevel.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/level/testLevel.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="47" column="91" selection-start="1794" selection-end="1794" vertical-scroll-proportion="0.0">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -118,11 +101,11 @@
         <option value="$PROJECT_DIR$/level/LevelInfo.py" />
         <option value="$PROJECT_DIR$/loader/test_levels/2.lvl" />
         <option value="$PROJECT_DIR$/loader/LoaderCellDefinition.py" />
-        <option value="$PROJECT_DIR$/level/Cell.py" />
-        <option value="$PROJECT_DIR$/loader/LoaderLevel.py" />
-        <option value="$PROJECT_DIR$/loader/testLoaderLevel.py" />
-        <option value="$PROJECT_DIR$/level/Level.py" />
         <option value="$PROJECT_DIR$/level/testLevel.py" />
+        <option value="$PROJECT_DIR$/level/Cell.py" />
+        <option value="$PROJECT_DIR$/level/Level.py" />
+        <option value="$PROJECT_DIR$/loader/testLoaderLevel.py" />
+        <option value="$PROJECT_DIR$/loader/LoaderLevel.py" />
       </list>
     </option>
   </component>
@@ -292,7 +275,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
     <property name="recentsLimit" value="5" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/level" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/loader" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
@@ -314,7 +297,7 @@
       <recent name="F:\aP-Personal_Projects\Zappy\Python_Zappy\level" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.All Tests">
+  <component name="RunManager" selected="Python tests.LoaderTests">
     <configuration default="false" name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -466,10 +449,36 @@
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
-    <list size="3">
-      <item index="0" class="java.lang.String" itemvalue="Python tests.All Tests" />
-      <item index="1" class="java.lang.String" itemvalue="Python tests.Level Tests" />
-      <item index="2" class="java.lang.String" itemvalue="Python.main" />
+    <configuration default="false" name="LoaderTests" type="tests" factoryName="Unittests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="C:/Python27/python.exe" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Python_Zappy" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="$PROJECT_DIR$/loader" />
+      <option name="TEST_TYPE" value="TEST_FOLDER" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <list size="4">
+      <item index="0" class="java.lang.String" itemvalue="Python.main" />
+      <item index="1" class="java.lang.String" itemvalue="Python tests.All Tests" />
+      <item index="2" class="java.lang.String" itemvalue="Python tests.Level Tests" />
+      <item index="3" class="java.lang.String" itemvalue="Python tests.LoaderTests" />
     </list>
     <recent_temporary>
       <list size="1">
@@ -517,7 +526,7 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3297062" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3297062" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -590,11 +599,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/level/testCell.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="18" selection-start="151" selection-end="151" vertical-scroll-proportion="0.369863" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/loader/LoaderEntityIndex.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="10" column="84" selection-start="245" selection-end="245" vertical-scroll-proportion="0.41095892">
@@ -617,11 +621,6 @@
         <state line="6" column="13" selection-start="79" selection-end="79" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/levels/2.lvl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/levels/1.lvl">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
@@ -639,25 +638,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/level/Cell.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="0" selection-start="1666" selection-end="1666" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#27#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/loader/test_levels/0.lvl">
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="3" selection-start="174" selection-end="174" vertical-scroll-proportion="0.4520548">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/loader/testLoaderLevel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="90" selection-start="2946" selection-end="2946" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -669,15 +652,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/loader/LoaderLevel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="114" column="57" selection-start="5036" selection-end="5036" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#27#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/level/testLevel.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="47" column="91" selection-start="1794" selection-end="1794" vertical-scroll-proportion="0.0">
@@ -685,11 +659,51 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://C:/Python27/Lib/unittest/case.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="500" column="0" selection-start="17909" selection-end="17909" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/levels/2.lvl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/level/Level.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="18" selection-start="1314" selection-end="1314" vertical-scroll-proportion="0.12671232">
+        <state line="61" column="0" selection-start="1811" selection-end="1811" vertical-scroll-proportion="0.46575344">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/level/Cell.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="71" column="12" selection-start="2080" selection-end="2080" vertical-scroll-proportion="0.7123288">
           <folding>
-            <element signature="e#27#55#0" expanded="true" />
+            <element signature="e#27#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loader/testLoaderLevel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="70" column="8" selection-start="3192" selection-end="3192" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loader/LoaderLevel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="30" selection-start="781" selection-end="781" vertical-scroll-proportion="0.57191783">
+          <folding>
+            <element signature="e#27#45#0" expanded="true" />
           </folding>
         </state>
       </provider>

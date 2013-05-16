@@ -23,8 +23,11 @@ class LoaderLevel(object):
         return level.get_level_info()
 
     def get_level(self, level_number):
-        if self._levels.get(level_number) is None:
-            self._load_level(level_number)
+        try:
+            if self._levels.get(level_number).cells_are_none():
+                self._load_level(level_number)
+        except AttributeError:
+            pass
         return self._levels.get(level_number)
 
     # For every level in the folder, load the level info (Name, number, how large it is, whatever else I later add).
@@ -110,7 +113,8 @@ class LoaderLevel(object):
                 self._build_cell_from_def_and_add_entities(x, y, cell_def, _level)
 
     def _build_cell_from_def_and_add_entities(self, x, y, cell_def, _level):
-        _level._cells[x][y] = level.Cell.Cell(image_file=cell_def.image_location, passable=cell_def.passable)
+        passable = cell_def.passable == 'True'
+        _level._cells[x][y] = level.Cell.Cell(image_file=cell_def.image_location, passable=passable)
         if cell_def.entity_strings is not None:
             for entity_string in cell_def.entity_strings:
                 _level.place_entity_at(self._entity_index.create_entity_by_name(entity_string), x, y)

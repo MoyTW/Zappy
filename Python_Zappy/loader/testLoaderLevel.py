@@ -60,9 +60,6 @@ class TestLoaderLevel(unittest.TestCase):
         self.setUpLevels()
         try:
             self.loader._load_level(0)
-            print self.loader._levels[0]
-            print self.level_0
-            print self.loader._levels[0].get_level_info() == self.level_0.get_level_info()
             self.assertEquals(self.loader._levels[0], self.level_0)
             self.loader._load_level(1)
             self.assertEquals(self.loader._levels[1], self.level_1)
@@ -75,7 +72,7 @@ class TestLoaderLevel(unittest.TestCase):
         self.setUpLevels()
         self.assertEquals(self.level_0, self.loader.get_level(0))
         self.assertEquals(self.level_1, self.loader.get_level(1))
-        self.assertEquals(self.level_2, self.loader.get_level(1))
+        self.assertEquals(self.level_2, self.loader.get_level(2))
         self.assertTrue(self.loader.get_level(-3) is None)
         self.assertTrue(self.loader.get_level(12) is None)
 

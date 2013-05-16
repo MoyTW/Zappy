@@ -5,6 +5,18 @@ import pyglet
 import level.Cell
 
 
+class DummyEntity(object):
+    def __init__(self, image, priority):
+        self._image = image
+        self._priority = priority
+
+    def get_image(self):
+        return self._image
+
+    def get_priority(self):
+        return self._priority
+
+
 class TestCell(unittest.TestCase):
     def setUp(self):
         pyglet.resource.path = ['@level.Cell', '.']
@@ -55,8 +67,29 @@ class TestCell(unittest.TestCase):
         self.default_cell.add_entity(self.teststr)
         self.assertTrue(self.default_cell.contains_entity(self.teststr))
 
-    def test_get_all_cell_images(self):
-        self.assertFalse(True)
+    def test_get_display_images(self):
+        dummy0 = DummyEntity("0", 0)
+        dummy1 = DummyEntity("1", 5)
+        dummy2 = DummyEntity("2", 2)
+        dummy3 = DummyEntity("3", 2)
+
+        self.default_cell.add_entity("This shouldn't trip it up!")
+        self.default_cell.add_entity(dummy0)
+        self.default_cell.add_entity(dummy1)
+        self.default_cell.add_entity(dummy2)
+        self.default_cell.add_entity(dummy3)
+
+        display_map = self.default_cell.get_display_images()
+        if display_map is None:
+            self.assertFalse(True, "self.default_cell.get_display_images() is not returning anything!")
+
+        self.assertEquals(len(display_map), 3)
+        self.assertEquals(len(display_map.keys()), 3)
+        self.assertEquals(display_map[0][0], dummy0._image)
+        self.assertEquals(display_map[5][0], dummy1._image)
+        self.assertEquals(display_map[2][0], dummy2._image)
+        self.assertEquals(display_map[2][1], dummy3._image)
+
 
     def test_get_all_entities(self):
         self.assertEquals(self.default_cell._contains, self.default_cell.get_all_entities())

@@ -21,9 +21,20 @@ class Cell(object):
     def get_passable(self):
         return self._passable
 
-    # Returns a CellImages object.
-    def get_all_cell_images(self):
-        pass
+    # Returns a map. Key is priority, contents are lists of images.
+    def get_display_images(self):
+        display_dict = dict()
+        for entity in self._contains:
+            try:
+                priority = entity.get_priority()
+                image = entity.get_image()
+                if priority in display_dict.keys():
+                    display_dict[priority].append(image)
+                else:
+                    display_dict[priority] = [image]
+            except AttributeError:
+                pass
+        return display_dict
 
     # Don't store the result of this function! It is for looking, not touching!
     def get_all_entities(self):

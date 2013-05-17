@@ -19,11 +19,14 @@ class TestCamera(unittest.TestCase):
                                                     cursor_image_file='test_assets/camera_cursor.png')
 
     def tearDown(self):
-        pass
+        self.default_camera = None
+        self.default_level = None
 
     # This test must be visually verified (I can't think of a good way to test it otherwise!).
     # Press 'y' twice if it is correct. Any other key will cause the test to fail.
     def test_draw(self):
+        self.default_camera.center_on(2, 3)
+
         self.good = False
         width = 640
         height = 480
@@ -72,14 +75,14 @@ class TestCamera(unittest.TestCase):
         # between two x/y values. Rounding may be a problem so I made it a range. To check that the sprites are being
         # loaded with the correct coordinates, compare the sprite.x to min_x and max_x; if it's within, it's correct.
         # Tuple format is (min_x, max_x, min_y, max_y)
-        image_dict[pyglet.resource.image('test_assets/images/u.png')] = (-56, -36, 8, 72)
-        image_dict[pyglet.resource.image('test_assets/images/v.png')] = (8, 28, 8, 72)
-        image_dict[pyglet.resource.image('test_assets/images/w.png')] = (72, 92, 8, 72)
+        image_dict[pyglet.resource.image('test_assets/images/u.png')] = (72, 92, 8, 28)
+        image_dict[pyglet.resource.image('test_assets/images/v.png')] = (8, 28, 8, 28)
+        image_dict[pyglet.resource.image('test_assets/images/w.png')] = (-56, -36, 8, 28)
         image_dict[pyglet.resource.image('test_assets/images/x.png')] = (-56, -36, -56, -36)
         image_dict[pyglet.resource.image('test_assets/images/y.png')] = (8, 28, -56, -36)
         image_dict[pyglet.resource.image('test_assets/images/z.png')] = (72, 92, -56, -36)
 
-        self.assertTrue(cam._center_tile[0] == 0 and cam._center_tile[1] == 5)
+        self.assertTrue(cam._center_tile[0] == 1 and cam._center_tile[1] == 5)
         self.assertEqual(len(cam._sprites), 6)
         for sprite in cam._sprites:
             comp_tuple = image_dict.get(sprite.image)
@@ -90,9 +93,9 @@ class TestCamera(unittest.TestCase):
     # center_on_entity() recalculates which sprites need to be drawn
     def test_center_on_entity(self):
         self.default_camera.center_on_entity('TestStringEntity')
-        self.assertTrue(self.default_camera._center_tile[0] == 2, self.default_camera._center_tile[2] == 1)
+        self.assertTrue(self.default_camera._center_tile[0] == 2, self.default_camera._center_tile[1] == 1)
         self.default_camera.center_on_entity('ShouldNotMoveTheCamera')
-        self.assertTrue(self.default_camera._center_tile[0] == 2, self.default_camera._center_tile[2] == 1)
+        self.assertTrue(self.default_camera._center_tile[0] == 2, self.default_camera._center_tile[1] == 1)
 
     # recalculates which sprites need to be drawn
     def test_step(self):

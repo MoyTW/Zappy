@@ -31,7 +31,7 @@ class TestCell(unittest.TestCase):
         self.default_cell = level.Cell.Cell(self.default_image_path)
 
     def tearDown(self):
-        pass
+        self.default_cell = None
 
     def test_load_image(self):
         self.assertEquals(self.default_image, self.default_cell._image)

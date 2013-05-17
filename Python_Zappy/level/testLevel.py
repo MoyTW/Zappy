@@ -21,7 +21,10 @@ class TestLevel(unittest.TestCase):
         self.initialized_test_level = level.Level.Level(self.test_info, self.test_cells)
 
     def tearDown(self):
-        pass
+        self.test_info = None
+        self.test_cells = None
+        self.empty_test_level = None
+        self.initialized_test_level = None
 
     def test_cells_are_none(self):
         self.assertEquals(self.empty_test_level.cells_are_none(), True)

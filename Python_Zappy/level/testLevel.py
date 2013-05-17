@@ -75,9 +75,10 @@ class TestLevel(unittest.TestCase):
         self.initialized_test_level.place_entity_at(teststr, 3, 2)
 
         try:
-            c_x, c_y = self.initialized_test_level.find_coordinates_of_entity(teststr)
-            self.assertEquals(c_x, 3)
-            self.assertEquals(c_x, 2)
+            coords = self.initialized_test_level.find_coordinates_of_entity(teststr)
+            self.assertEquals(coords[0], 3)
+            self.assertEquals(coords[1], 2)
+            self.assertEquals(None, self.initialized_test_level.find_coordinates_of_entity("Blue!"))
         except TypeError:
             self.assertFalse(True, "Level.find_coordinates_of_entity() not returning an iterable with 2 values.")
 

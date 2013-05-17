@@ -60,7 +60,8 @@ class Cell(object):
             try:
                 warnings.warn("Error loading specified Cell image, attempting to load default Cell image.")
                 self._image = pyglet.resource.image(self.DEFAULT_IMAGE_PATH)
-            except pyglet.resource.ResourceNotFoundException:
+            except pyglet.resource.ResourceNotFoundException as e:
+                print e.message
                 warnings.warn("Error loading default Cell image.")
                 self._image = None
 

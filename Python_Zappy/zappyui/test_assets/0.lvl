@@ -1,0 +1,23 @@
+!NAME!,This is a test level!
+!NUMBER!,0
+!WIDTH!,5
+!HEIGHT!,6
+
+!DEFINITIONS!
+a,True,test_assets/images/floor.png,[]
+b,False,test_assets/images/wall.png,[]
+D,True,test_assets/images/floor.png,[TestObj]
+w,False,test_assets/images/w.png,[]
+v,False,test_assets/images/v.png,[]
+u,False,test_assets/images/u.png,[]
+x,False,test_assets/images/x.png,[]
+y,False,test_assets/images/y.png,[]
+z,False,test_assets/images/z.png,[]
+
+!MAP!
+w,v,u,b,b
+x,y,z,b,b
+a,a,a,a,a
+a,a,a,a,a
+b,b,D,b,b
+a,a,a,a,a

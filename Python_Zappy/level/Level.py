@@ -45,6 +45,12 @@ class Level:
         except IndexError:
             return None
 
+    def get_display_images_at(self, x, y):
+        try:
+            return self._cells[x][y].get_display_images()
+        except IndexError:
+            return None
+
     def place_entity_at(self, entity, x, y):
         self._cells[x][y].add_entity(entity)
 

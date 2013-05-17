@@ -51,6 +51,9 @@ class Level:
     def remove_entity_from(self, entity, x, y):
         return self._cells[x][y].remove_entity(entity)
 
+    def find_coordinates_of_entity(self, entity):
+        pass
+
     def __eq__(self, other):
         if other is None:
             return False

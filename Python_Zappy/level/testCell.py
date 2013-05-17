@@ -67,6 +67,7 @@ class TestCell(unittest.TestCase):
         self.default_cell.add_entity(self.teststr)
         self.assertTrue(self.default_cell.contains_entity(self.teststr))
 
+    # I'm an idiot. The Cell should return its own image as priority -1, as well.
     def test_get_display_images(self):
         dummy0 = DummyEntity("0", 0)
         dummy1 = DummyEntity("1", 5)
@@ -83,12 +84,16 @@ class TestCell(unittest.TestCase):
         if display_map is None:
             self.assertFalse(True, "self.default_cell.get_display_images() is not returning anything!")
 
-        self.assertEquals(len(display_map), 3)
-        self.assertEquals(len(display_map.keys()), 3)
-        self.assertEquals(display_map[0][0], dummy0._image)
-        self.assertEquals(display_map[5][0], dummy1._image)
-        self.assertEquals(display_map[2][0], dummy2._image)
-        self.assertEquals(display_map[2][1], dummy3._image)
+        self.assertEquals(len(display_map), 4)
+        self.assertEquals(len(display_map.keys()), 4)
+        try:
+            self.assertEquals(display_map[-1][0], self.default_cell._image)
+            self.assertEquals(display_map[0][0], dummy0._image)
+            self.assertEquals(display_map[5][0], dummy1._image)
+            self.assertEquals(display_map[2][0], dummy2._image)
+            self.assertEquals(display_map[2][1], dummy3._image)
+        except KeyError:
+            self.assertFalse(True, "It's not fully populating the display_map! There's a missing entry!")
 
 
     def test_get_all_entities(self):

@@ -24,6 +24,7 @@ class Cell(object):
     # Returns a map. Key is priority, contents are lists of images.
     def get_display_images(self):
         display_dict = dict()
+        display_dict[-1] = [self._image]
         for entity in self._contains:
             try:
                 priority = entity.get_priority()

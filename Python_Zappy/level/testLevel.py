@@ -52,7 +52,7 @@ class TestLevel(unittest.TestCase):
         self.assertEquals(None, self.empty_test_level.get_cell_at(-3, 12))
 
     def test_get_display_images_at(self):
-        self.assertEquals(len(self.initialized_test_level.get_display_images_at(1, 2)), 0)
+        self.assertEquals(len(self.initialized_test_level.get_display_images_at(1, 2)), 1)
         self.assertEquals(self.initialized_test_level.get_display_images_at(-5, 12), None)
 
     def test_get_passable(self):

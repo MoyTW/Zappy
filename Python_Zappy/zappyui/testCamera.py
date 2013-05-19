@@ -2,7 +2,6 @@ __author__ = 'Travis Moy'
 
 import unittest
 import pyglet
-from pyglet.window import key
 import loader.LoaderLevel
 import zappyui.Camera
 
@@ -21,46 +20,6 @@ class TestCamera(unittest.TestCase):
     def tearDown(self):
         self.default_camera = None
         self.default_level = None
-
-    # This test must be visually verified (I can't think of a good way to test it otherwise!).
-    # Press 'y' twice if it is correct. Any other key will cause the test to fail.
-    def test_draw(self):
-        self.default_camera.center_on(2, 3)
-
-        self.good = False
-        width = 640
-        height = 480
-
-        self.window = pyglet.window.Window(width=width, height=height)
-
-        labels = list()
-        labels.append(pyglet.text.Label('TEST: Camera.draw()', font_size=30, x=width // 2, y=height - 60,
-                                        anchor_x='center', anchor_y='center'))
-        labels.append(pyglet.text.Label('This screen will appear twice.', font_size=20, x=width // 2, y=height - 120,
-                                        anchor_x='center', anchor_y='center'))
-        labels.append(pyglet.text.Label("Press 'y' if the icon looks good.", font_size=20, x=width // 2, y=120,
-                                        anchor_x='center', anchor_y='center'))
-        labels.append(pyglet.text.Label('Press any other key if it does not.', font_size=20, x=width // 2, y=80,
-                                        anchor_x='center', anchor_y='center'))
-
-        @self.window.event
-        def on_draw():
-            self.default_camera.draw()
-            for label in labels:
-                label.draw()
-
-        @self.window.event
-        def on_key_press(symbol, modifiers):
-            if symbol == key.Y:
-                self.good = True
-            else:
-                self.good = False
-            pyglet.app.exit()
-
-        pyglet.app.run()
-
-        # Check to see if the viewer approves
-        self.assertTrue(self.good)
 
     # center_on() recalculates which sprites need to be drawn
     # This test is probably testing too many things at once...
@@ -116,7 +75,6 @@ class TestCamera(unittest.TestCase):
         cam.resize_view(lower_left, upper_right)
         self.assertEqual(cam._num_cols, 2)
         self.assertEqual(cam._num_rows, 5)
-
 
 suite = unittest.TestLoader().loadTestsFromTestCase(TestCamera)
 unittest.TextTestRunner(verbosity=2).run(suite)

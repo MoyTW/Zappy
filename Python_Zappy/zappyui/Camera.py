@@ -50,6 +50,7 @@ class Camera(object):
             for col in range(0, self._num_cols):
                 cell_row_index = lower_left_index[0] + row
                 cell_col_index = lower_left_index[1] + col
+
                 display_images = self._level.get_display_images_at(cell_row_index, cell_col_index)
                 self._process_display_images_and_add_sprites(display_images, row, col)
 
@@ -57,10 +58,9 @@ class Camera(object):
     # Currently it creates sprites for the first image of each priority.
     # If the priority is not in _batches, it adds it.
     def _process_display_images_and_add_sprites(self, display_images, row, col):
+
         if display_images is None:
             return
-
-        #print "PROCESSING! Lower-left pixel is: {0}".format(self._lower_left_pixel)
 
         display_keys = display_images.keys()
         display_keys.sort()

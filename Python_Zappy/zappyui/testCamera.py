@@ -23,7 +23,7 @@ class TestCamera(unittest.TestCase):
 
     # center_on() recalculates which sprites need to be drawn
     # This test is probably testing too many things at once...
-    def test_center_on(self):
+    def test_center_on_upper_left(self):
         cam = self.default_camera
         # This should give us a 3x3 area to work with - more manageable
         cam.resize_view((0, 0), (100, 100))
@@ -48,6 +48,18 @@ class TestCamera(unittest.TestCase):
             self.assertFalse(comp_tuple is None, "There's a sprite loaded that shouldn't be!")
             self.assertTrue(comp_tuple[0] < sprite.x < comp_tuple[1])
             self.assertTrue(comp_tuple[2] < sprite.y < comp_tuple[3])
+
+    def test_center_on_runs_off_upper_right(self):
+        cam = self.default_camera
+        cam.resize_view((0, 0), (100, 100))
+        cam.center_on(4, 5)
+        self.assertEqual(len(cam._sprites), 4)
+
+    def test_center_on_runs_off_lower_left(self):
+        cam = self.default_camera
+        cam.resize_view((0, 0), (100, 100))
+        cam.center_on(0, 0)
+        self.assertEqual(len(cam._sprites), 4)
 
     # center_on_entity() recalculates which sprites need to be drawn
     def test_center_on_entity(self):

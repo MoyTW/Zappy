@@ -40,22 +40,23 @@ class Level:
         return self._info.get_height()
 
     def get_cell_at(self, x, y):
-        try:
+        if self._check_coordinates(x, y):
             return self._cells[x][y]
-        except IndexError:
-            return None
+        return None
 
     def get_display_images_at(self, x, y):
-        try:
+        if self._check_coordinates(x, y):
             return self._cells[x][y].get_display_images()
-        except IndexError:
-            return None
+        return None
 
     def place_entity_at(self, entity, x, y):
-        self._cells[x][y].add_entity(entity)
+        if self._check_coordinates(x, y):
+            self._cells[x][y].add_entity(entity)
 
     def remove_entity_from(self, entity, x, y):
-        return self._cells[x][y].remove_entity(entity)
+        if self._check_coordinates(x, y):
+            return self._cells[x][y].remove_entity(entity)
+        return False
 
     # Dumb search
     def find_coordinates_of_entity(self, entity):
@@ -65,6 +66,11 @@ class Level:
                 if cell.contains_entity(entity):
                     return x, y
         return None
+
+    def _check_coordinates(self, x, y):
+        if 0 <= x < self.get_width() and 0 <= y < self.get_height():
+                return True
+        return False
 
     def __eq__(self, other):
         if other is None:

@@ -38,7 +38,7 @@
     <file path="/testCamera.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369086142953" ignored="false" />
     <file path="/0.lvl" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1368825381125" ignored="false" />
     <file path="/testCameraGraphical.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369005250247" ignored="false" />
-    <file path="/z_defs.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369085938155" ignored="false" />
+    <file path="/z_defs.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369086314682" ignored="false" />
     <file path="$PROJECT_DIR$/../../7DayRL/Drone/definitions.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369084783378" ignored="false" />
     <file path="/definitions.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369084782446" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -63,7 +63,7 @@
       <file leaf-file-name="Camera.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/zappyui/Camera.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="0" selection-start="26" selection-end="26" vertical-scroll-proportion="0.0">
+            <state line="94" column="0" selection-start="3369" selection-end="3369" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="e#27#49#0" expanded="true" />
               </folding>
@@ -74,7 +74,7 @@
       <file leaf-file-name="z_defs.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/z_defs.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="17" selection-start="730" selection-end="730" vertical-scroll-proportion="0.0">
+            <state line="24" column="23" selection-start="711" selection-end="711" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -83,7 +83,7 @@
       <file leaf-file-name="testCamera.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/zappyui/testCamera.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="92" column="0" selection-start="4097" selection-end="4097" vertical-scroll-proportion="0.91593695">
+            <state line="94" column="55" selection-start="4176" selection-end="4176" vertical-scroll-proportion="0.7530648">
               <folding>
                 <element signature="e#27#42#0" expanded="true" />
               </folding>
@@ -114,8 +114,8 @@
         <option value="$PROJECT_DIR$/level/levelExceptions.py" />
         <option value="$PROJECT_DIR$/level/Level.py" />
         <option value="$PROJECT_DIR$/level/testLevel.py" />
-        <option value="$PROJECT_DIR$/z_defs.py" />
         <option value="$PROJECT_DIR$/zappyui/Camera.py" />
+        <option value="$PROJECT_DIR$/z_defs.py" />
         <option value="$PROJECT_DIR$/zappyui/testCamera.py" />
       </list>
     </option>
@@ -686,7 +686,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/zappyui/Camera.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="26" selection-end="26" vertical-scroll-proportion="0.0">
+        <state line="94" column="0" selection-start="3369" selection-end="3369" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="e#27#49#0" expanded="true" />
           </folding>
@@ -695,14 +695,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/z_defs.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="17" selection-start="730" selection-end="730" vertical-scroll-proportion="0.0">
+        <state line="24" column="23" selection-start="711" selection-end="711" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/zappyui/testCamera.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="92" column="0" selection-start="4097" selection-end="4097" vertical-scroll-proportion="0.91593695">
+        <state line="94" column="55" selection-start="4176" selection-end="4176" vertical-scroll-proportion="0.7530648">
           <folding>
             <element signature="e#27#42#0" expanded="true" />
           </folding>

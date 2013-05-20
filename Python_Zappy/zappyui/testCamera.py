@@ -91,6 +91,9 @@ class TestCamera(unittest.TestCase):
         cam.step(DIR.NW)
         self.assertEqual((1, 1), cam.get_center_tile())
 
+        cam.step(-999)
+        self.assertEqual((1, 1), cam.get_center_tile())
+
     def test_resize_view(self):
         cam = self.default_camera
         lower_left = (0, 0)

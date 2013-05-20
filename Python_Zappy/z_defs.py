@@ -22,6 +22,6 @@ class direction(object):
         elif direction == self.NW:
             return x - 1, y + 1
         else:
-            return None
+            return x, y
 
 DIR = direction()

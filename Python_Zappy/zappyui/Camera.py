@@ -3,10 +3,13 @@ __author__ = 'Travis Moy'
 from z_defs import DIR
 import math
 import pyglet
+import warnings
 
 
 class Camera(object):
     IMAGE_ACROSS = 64
+    DEFAULT_CURSOR_IMAGE = 'images/camera_cursor.png'
+    LOADER = pyglet.resource.Loader(['@assets'])
 
     _sprites = list()
     _batches = dict()
@@ -14,11 +17,14 @@ class Camera(object):
     _sprite_across = 64
 
     def __init__(self, _level=None, lower_left=(0, 0), upper_right=(640, 480), center_tile=(0, 0),
-                 cursor_image_file='images/camera_cursor.png'):
+                 cursor_image_file=DEFAULT_CURSOR_IMAGE):
         self._level = _level
         self._center_tile = center_tile
-        self._cursor_image = pyglet.resource.image(cursor_image_file)
-        self._cursor = pyglet.sprite.Sprite(self._cursor_image)
+
+        # These are set by self._load_cursor(); listed for my ease.
+        self._cursor_image = None
+        self._cursor = None
+        self._load_cursor(cursor_image_file)
 
         # These are set by self.resize_view(); listed for my ease.
         self._lower_left = None
@@ -126,3 +132,15 @@ class Camera(object):
                                   self._sprite_across),
                                  (center_pixel[1] - (float(self._num_cols) / 2.0) *
                                   self._sprite_across))
+
+    # Checks local, assets for target file: if no, tries to load default. If no default, throws.
+    def _load_cursor(self, file):
+        try:
+            self._cursor_image = pyglet.resource.image(file)
+        except pyglet.resource.ResourceNotFoundException:
+            try:
+                self._cursor_image = self.LOADER.image(file)
+            except pyglet.resource.ResourceNotFoundException:
+                warnings.warn("Error loading specified Cursor image, attempting to load default Cursor image.")
+                self._cursor_image = self.LOADER.image(self.DEFAULT_CURSOR_IMAGE)
+        self._cursor = pyglet.sprite.Sprite(self._cursor_image)

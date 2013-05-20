@@ -7,7 +7,7 @@ import zappyui.Camera
 from pyglet.window import key
 
 
-class TestCamera(unittest.TestCase):
+class TestCameraDraw(unittest.TestCase):
 
     def setUp(self):
         pyglet.resource.path = ['@zappyui', '.']

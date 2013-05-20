@@ -7,6 +7,7 @@ import collections
 
 class Cell(object):
     DEFAULT_IMAGE_PATH = 'images/defaults/defaultcell.png'
+    LOADER = pyglet.resource.Loader(['@assets'])
 
     def __init__(self, image_file=DEFAULT_IMAGE_PATH, passable=True):
         self._passable = bool(passable)
@@ -54,17 +55,17 @@ class Cell(object):
     def contains_entity(self, entity):
         return entity in self._contains
 
+    # Searches for file in local, then in assets, then tries to load default.
+    # If for some reason the default is absent, throws an exception.
     def _load_image(self, file):
         try:
             self._image = pyglet.resource.image(file)
         except pyglet.resource.ResourceNotFoundException:
             try:
+                self._image = self.LOADER.image(file)
+            except pyglet.resource.ResourceNotFoundException:
                 warnings.warn("Error loading specified Cell image, attempting to load default Cell image.")
-                self._image = pyglet.resource.image(self.DEFAULT_IMAGE_PATH)
-            except pyglet.resource.ResourceNotFoundException as e:
-                #print e.message
-                warnings.warn("Error loading default Cell image.")
-                self._image = None
+                self._image = self.LOADER.image(self.DEFAULT_IMAGE_PATH)
 
     def __ne__(self, other):
         return not self.__eq__(other)

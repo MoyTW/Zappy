@@ -29,15 +29,18 @@
     <file path="/levelExceptions.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369082467169" ignored="false" />
     <file path="/2.lvl" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1368658081444" ignored="false" />
     <file path="/LoaderCellDefinition.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1368659933017" ignored="false" />
-    <file path="/Camera.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369081609508" ignored="false" />
+    <file path="/Camera.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369086112818" ignored="false" />
     <file path="/UIController.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1368745150607" ignored="false" />
     <file path="/UIScreen.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1368745344094" ignored="false" />
     <file path="/UIScreenLevel.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1368745214800" ignored="false" />
     <file path="/camera.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1368827108062" ignored="false" />
     <file path="$PROJECT_DIR$/../../7DayRL/Drone/droneui/camera.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1368827109193" ignored="false" />
-    <file path="/testCamera.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369004452975" ignored="false" />
+    <file path="/testCamera.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369086142953" ignored="false" />
     <file path="/0.lvl" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1368825381125" ignored="false" />
     <file path="/testCameraGraphical.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369005250247" ignored="false" />
+    <file path="/z_defs.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369085938155" ignored="false" />
+    <file path="$PROJECT_DIR$/../../7DayRL/Drone/definitions.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369084783378" ignored="false" />
+    <file path="/definitions.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369084782446" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,29 +60,33 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Level.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/level/Level.py">
+      <file leaf-file-name="Camera.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/zappyui/Camera.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="77" column="39" selection-start="2909" selection-end="2909" vertical-scroll-proportion="2.880137">
+            <state line="1" column="0" selection-start="26" selection-end="26" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#27#49#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="z_defs.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/z_defs.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="26" column="17" selection-start="730" selection-end="730" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="levelExceptions.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/level/levelExceptions.py">
+      <file leaf-file-name="testCamera.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/zappyui/testCamera.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="48" selection-start="243" selection-end="243" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="testLevel.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/level/testLevel.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="74" column="31" selection-start="3156" selection-end="3156" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="92" column="0" selection-start="4097" selection-end="4097" vertical-scroll-proportion="0.91593695">
+              <folding>
+                <element signature="e#27#42#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -94,7 +101,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/loader/LoaderLevel.py" />
         <option value="$PROJECT_DIR$/zappyui.py" />
         <option value="$PROJECT_DIR$/zappyui/__init__.py" />
         <option value="$PROJECT_DIR$/zappyui/UIController.py" />
@@ -104,12 +110,13 @@
         <option value="$PROJECT_DIR$/level/Cell.py" />
         <option value="$PROJECT_DIR$/level/testCell.py" />
         <option value="$PROJECT_DIR$/loader/testLoaderLevel.py" />
-        <option value="$PROJECT_DIR$/zappyui/testCamera.py" />
         <option value="$PROJECT_DIR$/zappyui/testCameraGraphical.py" />
-        <option value="$PROJECT_DIR$/zappyui/Camera.py" />
         <option value="$PROJECT_DIR$/level/levelExceptions.py" />
         <option value="$PROJECT_DIR$/level/Level.py" />
         <option value="$PROJECT_DIR$/level/testLevel.py" />
+        <option value="$PROJECT_DIR$/z_defs.py" />
+        <option value="$PROJECT_DIR$/zappyui/Camera.py" />
+        <option value="$PROJECT_DIR$/zappyui/testCamera.py" />
       </list>
     </option>
   </component>
@@ -187,46 +194,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="zappyui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test_assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Python_Zappy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Python_Zappy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zappyui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test_assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="images" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Python_Zappy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Python_Zappy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="loader" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -241,57 +208,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="loader" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test_levels" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Python_Zappy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Python_Zappy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="levels" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Python_Zappy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Python_Zappy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="level" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Python_Zappy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Python_Zappy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="level" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test_images" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -359,7 +276,7 @@
       <recent name="F:\aP-Personal_Projects\Zappy\Python_Zappy\zappyui\test_assets\images" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.All Tests">
+  <component name="RunManager" selected="Python tests.UITests">
     <configuration default="false" name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -577,7 +494,7 @@
     </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
-  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false">
+  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="all">
     <option name="USER" value="" />
     <option name="PASSWORD" value="" />
     <option name="mySSHConnectionTimeout" value="30000" />
@@ -587,7 +504,6 @@
     <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
     <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
     <option name="IGNORE_SPACES_IN_MERGE" value="false" />
-    <option name="DETECT_NESTED_COPIES" value="true" />
     <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
     <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
     <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
@@ -609,6 +525,7 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297062" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27121374" sideWeight="0.6702938" order="0" side_tool="false" content_ui="combo" />
@@ -620,7 +537,6 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297062" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -689,11 +605,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/zappyui/test_assets/images/floor.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/zappyui/test_assets/images/v.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -724,15 +635,6 @@
         <state line="16" column="5" selection-start="422" selection-end="422" vertical-scroll-proportion="0.63013697" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/zappyui/Camera.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="82" column="27" selection-start="3040" selection-end="3040" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#27#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/zappyui/UIScreenLevel.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -754,15 +656,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/zappyui/testCamera.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="71" column="24" selection-start="3366" selection-end="3366" vertical-scroll-proportion="0.33274958">
-          <folding>
-            <element signature="e#27#42#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/level/Cell.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="26" column="40" selection-start="662" selection-end="662" vertical-scroll-proportion="0.42556918">
@@ -770,24 +663,49 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/level/Level.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="77" column="39" selection-start="2909" selection-end="2909" vertical-scroll-proportion="3.0547945">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/level/levelExceptions.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="48" selection-start="243" selection-end="243" vertical-scroll-proportion="0.0">
+        <state line="15" column="48" selection-start="243" selection-end="243" vertical-scroll-proportion="0.6164383">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/level/testLevel.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="31" selection-start="3156" selection-end="3156" vertical-scroll-proportion="0.0">
+        <state line="74" column="31" selection-start="3156" selection-end="3156" vertical-scroll-proportion="0.83712786">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/level/Level.py">
+    <entry file="file://$PROJECT_DIR$/zappyui/Camera.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="77" column="39" selection-start="2909" selection-end="2909" vertical-scroll-proportion="2.880137">
+        <state line="1" column="0" selection-start="26" selection-end="26" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#27#49#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/z_defs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="17" selection-start="730" selection-end="730" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zappyui/testCamera.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="92" column="0" selection-start="4097" selection-end="4097" vertical-scroll-proportion="0.91593695">
+          <folding>
+            <element signature="e#27#42#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

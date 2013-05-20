@@ -4,6 +4,7 @@ import unittest
 import pyglet
 import loader.LoaderLevel
 import zappyui.Camera
+from z_defs import DIR
 
 
 class TestCamera(unittest.TestCase):
@@ -70,7 +71,25 @@ class TestCamera(unittest.TestCase):
 
     # recalculates which sprites need to be drawn
     def test_step(self):
-        self.assertFalse(True)
+        cam = self.default_camera
+        cam.center_on(1, 1)
+
+        cam.step(DIR.N)
+        self.assertEqual((1, 2), cam.get_center_tile())
+        cam.step(DIR.NE)
+        self.assertEqual((2, 3), cam.get_center_tile())
+        cam.step(DIR.E)
+        self.assertEqual((3, 3), cam.get_center_tile())
+        cam.step(DIR.SE)
+        self.assertEqual((4, 2), cam.get_center_tile())
+        cam.step(DIR.S)
+        self.assertEqual((4, 1), cam.get_center_tile())
+        cam.step(DIR.SW)
+        self.assertEqual((3, 0), cam.get_center_tile())
+        cam.step(DIR.W)
+        self.assertEqual((2, 0), cam.get_center_tile())
+        cam.step(DIR.NW)
+        self.assertEqual((1, 1), cam.get_center_tile())
 
     def test_resize_view(self):
         cam = self.default_camera

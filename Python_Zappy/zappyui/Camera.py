@@ -1,5 +1,6 @@
 __author__ = 'Travis Moy'
 
+from z_defs import DIR
 import math
 import pyglet
 
@@ -26,6 +27,15 @@ class Camera(object):
         self._num_rows = None
         self._num_cols = None
         self.resize_view(lower_left, upper_right)
+
+    def get_x(self):
+        return self._center_tile[0]
+
+    def get_y(self):
+        return self._center_tile[1]
+
+    def get_center_tile(self):
+        return self._center_tile[0], self._center_tile[1]
 
     # How the heck do you write a test for this one!?
     # Draws in ascending priority (-3 before 6) - this means that higher priority will be cleaner.
@@ -81,7 +91,8 @@ class Camera(object):
             self.center_on(loc[0], loc[1])
 
     def step(self, direction):
-        pass
+        target_coords = DIR.get_coords_in_direction_from(direction, self.get_x(), self.get_y())
+        self.center_on(target_coords[0], target_coords[1])
 
     def resize_view(self, lower_left, upper_right):
         self._sprite_across = self.IMAGE_ACROSS * self._magnification

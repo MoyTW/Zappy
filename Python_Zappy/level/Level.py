@@ -17,6 +17,12 @@ class Level:
     # Should throw some manner of exception if cells is not None
     def set_cells(self, cells):
         if self._cells is None:
+            if len(cells) != self.get_width():
+                raise level.levelExceptions.LevelWidthNotMatchedByCells("len(cells)={0} != self._width={1}"
+                                                                        .format(len(cells), self.get_width()))
+            elif len(cells[0]) != self.get_height():
+                raise level.levelExceptions.LevelHeightNotMatchedByCells("len(cells[0])={0} != self._width={1}"
+                                                                         .format(len(cells), self.get_width()))
             self._cells = cells
         else:
             raise level.levelExceptions.LevelCellsAlreadySetError("Cannot assign cells to level {0} (#{1}) - it "
@@ -42,6 +48,8 @@ class Level:
     def get_cell_at(self, x, y):
         if self._check_coordinates(x, y):
             return self._cells[x][y]
+        print 'self.width={0}, self.height={1}'.format(self.get_width(), self.get_height())
+        print 'get_cell_at({0}, {1}) failed self._check_coordinates({0}, {1})'.format(x, y)
         return None
 
     def get_display_images_at(self, x, y):

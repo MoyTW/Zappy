@@ -11,11 +11,12 @@ class TestLevel(unittest.TestCase):
         pyglet.resource.reindex()
         self.default_image_path = 'test_images/defaultcell.png'
 
-        width = 5
-        height = 3
+        self.width = 5
+        self.height = 3
 
-        self.test_info = level.LevelInfo.LevelInfo("Test Level", 0, width, height)
-        self.test_cells = [[level.Cell.Cell(self.default_image_path) for h in range(height)] for w in range(width)]
+        self.test_info = level.LevelInfo.LevelInfo("Test Level", 0, self.width, self.height)
+        self.test_cells = [[level.Cell.Cell(self.default_image_path) for h in range(self.height)]
+                           for w in range(self.width)]
 
         self.empty_test_level = level.Level.Level(self.test_info)
         self.initialized_test_level = level.Level.Level(self.test_info, self.test_cells)
@@ -31,28 +32,51 @@ class TestLevel(unittest.TestCase):
         self.assertEquals(self.initialized_test_level.cells_are_none(), False)
 
     # If you attempt to set the cells of an already-set Level, a LevelCellsAlreadySetError is raised.
-    def test_set_cells(self):
+    def test_set_cells_to_empty_level(self):
         self.empty_test_level.set_cells(self.test_cells)
         self.assertEquals(self.empty_test_level._cells, self.test_cells)
 
+    def test_set_cells_to_full_level(self):
         try:
             self.initialized_test_level.set_cells(self.test_cells)
             self.assertFalse(True, "Level.set_cells() did not throw an exception when attempting to assign cells to an"
                                    "already initialized Level!")
-        except level.levelExceptions.LevelCellsAlreadySetError as err:
+        except level.levelExceptions.LevelCellsAlreadySetError:
+            pass
+
+    def test_set_cells_width_mismatch_with_cells(self):
+        wrong_width = [["Test" for _ in range(2)] for _ in range(3)]
+
+        try:
+            self.empty_test_level.set_cells(wrong_width)
+            self.assertFalse(True, "Level.set_cells() did not throw an exception when attempting to assign a cell with"
+                                   "an incorrect width!")
+        except level.levelExceptions.LevelWidthNotMatchedByCells:
+            pass
+
+    def test_set_cells_height_mismatch_with_cells(self):
+        wrong_height = [["Test" for _ in range(1)] for _ in range(5)]
+
+        try:
+            self.empty_test_level.set_cells(wrong_height)
+            self.assertFalse(True, "Level.set_cells() did not throw an exception when attempting to assign a cell with"
+                                   "an incorrect height!")
+        except level.levelExceptions.LevelHeightNotMatchedByCells:
             pass
 
     def test_get_level_info(self):
         self.assertEquals(self.test_info, self.empty_test_level.get_level_info())
 
     def test_get_cell_at(self):
-        height = 5
-        width = 2
-        test_strs = [["{0},{1}".format(w, h) for h in range(height)] for w in range(width)]
+        test_strs = [["{0},{1}".format(w, h) for h in range(self.height)] for w in range(self.width)]
         self.empty_test_level.set_cells(test_strs)
         self.assertEquals("1,2", self.empty_test_level.get_cell_at(1, 2))
-        self.assertEquals("0,4", self.empty_test_level.get_cell_at(0, 4))
+        self.assertEquals("0,1", self.empty_test_level.get_cell_at(0, 1))
+        self.assertEquals("4,2", self.empty_test_level.get_cell_at(4, 2))
+        self.assertEquals(None, self.empty_test_level.get_cell_at(4, 3))
         self.assertEquals(None, self.empty_test_level.get_cell_at(-3, 12))
+        self.assertEquals(None, self.empty_test_level.get_cell_at(-1, -1))
+        self.assertEquals(None, self.empty_test_level.get_cell_at(7, 10))
 
     def test_get_display_images_at(self):
         self.assertEquals(len(self.initialized_test_level.get_display_images_at(1, 2)), 1)

@@ -1,5 +1,17 @@
 __author__ = 'Travis Moy'
 
 
-class LevelCellsAlreadySetError(Exception):
+class LevelException(Exception):
+    pass
+
+
+class LevelCellsAlreadySetError(LevelException):
+    pass
+
+
+class LevelHeightNotMatchedByCells(LevelException):
+    pass
+
+
+class LevelWidthNotMatchedByCells(LevelException):
     pass

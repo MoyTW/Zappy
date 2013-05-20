@@ -64,7 +64,7 @@ class Level:
             for y in range(self.get_height()):
                 cell = self.get_cell_at(x, y)
                 if cell.contains_entity(entity):
-                    return x, y
+                    return [x, y]
         return None
 
     def _check_coordinates(self, x, y):

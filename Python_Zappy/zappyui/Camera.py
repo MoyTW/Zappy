@@ -34,18 +34,17 @@ class Camera(object):
         batch_keys.sort()
         for key in batch_keys:
             self._batches.get(key).draw()
+        self._cursor.draw()
 
     def center_on(self, x, y):
         self._center_tile = [x, y]
         lower_left_index = (int(x - math.floor(self._num_rows / 2)),
                             int(y - math.floor(self._num_cols / 2)))
-        # Just to be safe, in case it's changed
+        # Just to be safe, in case magnification has changed
         self._sprite_across = self.IMAGE_ACROSS * self._magnification
 
         self._sprites = list()
 
-#        for row in range(lower_left_index[0], lower_left_index[0] + self._num_rows):
-#            for col in range(lower_left_index[1], lower_left_index[1] + self._num_cols):
         for row in range(0, self._num_rows):
             for col in range(0, self._num_cols):
                 cell_row_index = lower_left_index[0] + row
@@ -58,7 +57,6 @@ class Camera(object):
     # Currently it creates sprites for the first image of each priority.
     # If the priority is not in _batches, it adds it.
     def _process_display_images_and_add_sprites(self, display_images, row, col):
-
         if display_images is None:
             return
 
@@ -78,7 +76,9 @@ class Camera(object):
             self._sprites.append(sprite)
 
     def center_on_entity(self, entity):
-        pass
+        loc = self._level.find_coordinates_of_entity(entity)
+        if loc is not None:
+            self.center_on(loc[0], loc[1])
 
     def step(self, direction):
         pass

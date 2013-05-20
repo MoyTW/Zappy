@@ -48,8 +48,6 @@ class Level:
     def get_cell_at(self, x, y):
         if self._check_coordinates(x, y):
             return self._cells[x][y]
-        print 'self.width={0}, self.height={1}'.format(self.get_width(), self.get_height())
-        print 'get_cell_at({0}, {1}) failed self._check_coordinates({0}, {1})'.format(x, y)
         return None
 
     def get_display_images_at(self, x, y):

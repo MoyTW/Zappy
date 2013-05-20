@@ -1,0 +1,12 @@
+!NAME!,Test for switching levels.
+!NUMBER!,1
+!WIDTH!,3
+!HEIGHT!,3
+
+!DEFINITIONS!
+a,True,test_assets/images/floor.png,[]
+
+!MAP!
+a,a,a
+a,a,a
+a,a,a

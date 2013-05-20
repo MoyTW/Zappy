@@ -7,8 +7,7 @@ width = 1024
 height = 768
 window = pyglet.window.Window(width=width, height=height)
 
-#default_image_path = 'F:\\aP-Personal_Projects\\Zappy\\Python_Zappy\\level\\test_images\\defaultcell.png'
-default_image_path = 'images/defaultcell.png'
+default_image_path = 'images/defaults/defaultcell.png'
 image = pyglet.resource.image(default_image_path)
 
 @window.event

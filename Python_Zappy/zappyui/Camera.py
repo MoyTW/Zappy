@@ -13,7 +13,7 @@ class Camera(object):
     _magnification = 1
     _sprite_across = 64
 
-    def __init__(self, _level, lower_left=(0, 0), upper_right=(640, 480), center_tile=[0, 0],
+    def __init__(self, _level=None, lower_left=(0, 0), upper_right=(640, 480), center_tile=(0, 0),
                  cursor_image_file='images/camera_cursor.png'):
         self._level = _level
         self._center_tile = center_tile
@@ -37,9 +37,17 @@ class Camera(object):
     def get_center_tile(self):
         return self._center_tile[0], self._center_tile[1]
 
+    def set_level(self, _level, center_tile=(0, 0)):
+        self._level = _level
+        self._center_tile = center_tile
+        self.center_on(center_tile[0], center_tile[1])
+
     # How the heck do you write a test for this one!?
     # Draws in ascending priority (-3 before 6) - this means that higher priority will be cleaner.
     def draw(self):
+        if self._level is None:
+            return False
+
         batch_keys = self._batches.keys()
         batch_keys.sort()
         for key in batch_keys:
@@ -47,6 +55,9 @@ class Camera(object):
         self._cursor.draw()
 
     def center_on(self, x, y):
+        if self._level is None:
+            return False
+
         self._center_tile = [x, y]
         lower_left_index = (int(x - math.floor(self._num_rows / 2)),
                             int(y - math.floor(self._num_cols / 2)))
@@ -86,6 +97,9 @@ class Camera(object):
             self._sprites.append(sprite)
 
     def center_on_entity(self, entity):
+        if self._level is None:
+            return False
+
         loc = self._level.find_coordinates_of_entity(entity)
         if loc is not None:
             self.center_on(loc[0], loc[1])

@@ -7,7 +7,7 @@
     <list default="true" id="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" name="Default" comment="" />
     <ignored path="Python_Zappy.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/LoaderLevel.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1368743766693" ignored="false" />
+    <file path="/LoaderLevel.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369170883517" ignored="false" />
     <file path="/__init__.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369092072250" ignored="false" />
     <file path="/LoaderEntityIndex.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1368652328126" ignored="false" />
     <file path="/Level.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369082695021" ignored="false" />
@@ -42,15 +42,25 @@
     <file path="$PROJECT_DIR$/../../7DayRL/Drone/definitions.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369084783378" ignored="false" />
     <file path="/definitions.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369084782446" ignored="false" />
     <file path="/1.lvl" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369087917323" ignored="false" />
-    <file path="/testCameraSetLevel.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369089304426" ignored="false" />
+    <file path="/testCameraSetLevel.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369171397264" ignored="false" />
     <file path="/testUIScreenLevel.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369091003549" ignored="false" />
-    <file path="/testCameraDraw.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369089309662" ignored="false" />
+    <file path="/testCameraDraw.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369171449557" ignored="false" />
     <file path="/UIKeybinds.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369093199445" ignored="false" />
-    <file path="/testKeybinds.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369167714719" ignored="false" />
-    <file path="/Keybinds.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369169217102" ignored="false" />
+    <file path="/testKeybinds.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369170069903" ignored="false" />
+    <file path="/Keybinds.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369170156717" ignored="false" />
     <file path="/Orders.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369167417272" ignored="false" />
     <file path="$PROJECT_DIR$/../scratch_paper/funcs_as_default_params_test.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369168742540" ignored="false" />
     <file path="/funcs_as_default_params_test.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369168646354" ignored="false" />
+    <file path="$PROJECT_DIR$/../scratch_paper/DoubleWindowBug/testCameraDraw.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369171463706" ignored="false" />
+    <file path="$PROJECT_DIR$/../scratch_paper/DoubleWindowBug/testCameraSetLevel.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369171506782" ignored="false" />
+    <file path="$PROJECT_DIR$/../scratch_paper/DoubleWindowBug/loader.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369170458222" ignored="false" />
+    <file path="$PROJECT_DIR$/../scratch_paper/DoubleWindowBug/loader/__init__.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369170496573" ignored="false" />
+    <file path="$PROJECT_DIR$/../scratch_paper/DoubleWindowBug/__init__.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369170503421" ignored="false" />
+    <file path="$PROJECT_DIR$/../scratch_paper/DoubleWindowBug/loader/LoaderLevel.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369170883517" ignored="false" />
+    <file path="$PROJECT_DIR$/../scratch_paper/DoubleWindowBug/Camera.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369170533213" ignored="false" />
+    <file path="$PROJECT_DIR$/../scratch_paper/DoubleWindowBug/level/__init__.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369170545429" ignored="false" />
+    <file path="$APPLICATION_HOME_DIR$/helpers/pycharm/tcunittest.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369171270255" ignored="false" />
+    <file path="$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369171270255" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,11 +80,44 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Keybinds.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Keybinds.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/zappyui/Keybinds.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="8" selection-start="834" selection-end="834" vertical-scroll-proportion="0.62237763">
+            <state line="18" column="68" selection-start="910" selection-end="910" vertical-scroll-proportion="0.0">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Camera.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/zappyui/Camera.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="138" column="25" selection-start="5133" selection-end="5133" vertical-scroll-proportion="5.79021">
+              <folding>
+                <element signature="e#27#49#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="testCamera.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/zappyui/testCamera.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="96" column="31" selection-start="4209" selection-end="4209" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#27#42#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LoaderLevel.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/loader/LoaderLevel.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="22" selection-start="178" selection-end="178" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#27#45#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -82,7 +125,7 @@
       <file leaf-file-name="testKeybinds.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/zappyui/testKeybinds.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="0" selection-start="173" selection-end="173" vertical-scroll-proportion="0.0">
+            <state line="5" column="23" selection-start="196" selection-end="196" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -98,7 +141,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/zappyui/test_assets/1.lvl" />
         <option value="$PROJECT_DIR$/zappyui/testCameraGraphical.py" />
         <option value="$PROJECT_DIR$/zappyui/testCameraSetLevel.py" />
         <option value="$PROJECT_DIR$/zappyui/testCameraDraw.py" />
@@ -112,6 +154,7 @@
         <option value="$PROJECT_DIR$/level/Cell.py" />
         <option value="$PROJECT_DIR$/zappyui/UIKeybinds.py" />
         <option value="$PROJECT_DIR$/zappyui/Orders.py" />
+        <option value="$PROJECT_DIR$/zappyui/ZAPPY_Keybinds.py" />
         <option value="$PROJECT_DIR$/zappyui/testKeybinds.py" />
         <option value="$PROJECT_DIR$/zappyui/Keybinds.py" />
       </list>
@@ -674,7 +717,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="2" />
+      <option name="time" value="3" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -688,13 +731,6 @@
         <state line="7" column="13" selection-start="82" selection-end="82" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/loader/LoaderLevel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="12" selection-start="639" selection-end="639" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/level/Level.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -704,22 +740,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="24" selection-start="24" selection-end="24" vertical-scroll-proportion="0.0" />
+        <state line="0" column="24" selection-start="24" selection-end="24" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/level/Cell.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="15" column="0" selection-start="383" selection-end="383" vertical-scroll-proportion="-2.1643836">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/zappyui/Camera.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="138" column="25" selection-start="5133" selection-end="5133" vertical-scroll-proportion="5.6712327">
-          <folding>
-            <element signature="e#27#49#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -763,26 +792,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/zappyui/testCamera.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="96" column="31" selection-start="4209" selection-end="4209" vertical-scroll-proportion="0.9179487">
-          <folding>
-            <element signature="e#27#42#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/zappyui/testKeybinds.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="173" selection-end="173" vertical-scroll-proportion="0.0">
+        <state line="5" column="23" selection-start="196" selection-end="196" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/zappyui/Keybinds.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="8" selection-start="834" selection-end="834" vertical-scroll-proportion="0.62237763">
+        <state line="18" column="68" selection-start="910" selection-end="910" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zappyui/testCamera.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="96" column="31" selection-start="4209" selection-end="4209" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#27#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loader/LoaderLevel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="22" selection-start="178" selection-end="178" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#27#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zappyui/Camera.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="138" column="25" selection-start="5133" selection-end="5133" vertical-scroll-proportion="5.79021">
+          <folding>
+            <element signature="e#27#49#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -9,34 +9,44 @@ __author__ = 'Travis Moy'
 # Curiously, an __init__(self): taking no default parameters doesn't bug out. It can take a parameter, but if you make
 # a default value...
 
+# You can ALSO stop it from bugging out if you put a 'pass' (and nothing else) in DEFAULT_KEYBINDS, but...hmm.
+
+# So, ANY function in Keybinds which takes a default parameter, combined with the definition of DEFAULT_KEYBINDS which
+# does something, is causing the error.
+
+# I guess the question is "Why does what I do in Keybinds.py influence my testCameraSetLevel"?
+
+# Let's see if I can't narrow down what's going on in scratch_paper.
+
+
 def DEFAULT_KEYBINDS():
-    return dict()
+    pass
+    added = 10 + 25
+#    return None
+#    return dict()
 
 
 # Transforms keypresses into orders
-class Keybinds(object):
+class ZAPPY_Keybinds(object):
     pass
+
+    def function_with_default_param(self, fancifully_named_input="ZOO"):
+        self._thing = fancifully_named_input
 
     #def __init__(self, blue):
     #    self.what = "WHAT"
     #    self.blue = blue
-    def __init__(self, blue=5):
-        self.what = "WHAT"
-        self.blue = blue
+
+    #def __init__(self, blue=5):
+    #    self.what = "WHAT"
+    #    self.blue = blue
+
     #def __init__(self, binds="Blue!"):
     #    self._binds = binds
-        
-    # OKAY hold on a moment. When I put in binds=DEFAULT_KEYBINDS(), what is happening?
-    # Is it binding it to the dictionary created by the function DEFAULT_KEYBINDS? YES IT IS, BUT IT RUNS IT ONCE AT THE
-    # START AND THEN USES THAT FOR ALL FUTURE OBJECTS
-    # Or is it binding to the result returned by DEFAULT_KEYBINDS()?
-    # Remember you've had Issues with Python initializers before!
-
-    # Wait, hold on. I *thought* python naming could go however you liked, case-wise, but am I accidentally mucking up
-    # the function definition there? NO YOU'RE NOT.
 
     #def __init__(self, binds=DEFAULT_KEYBINDS()):
     #    self._binds = binds
-    
+
+########################################################################################################################
     #def handle_keys(self, symbol, modifiers):
     #    pass

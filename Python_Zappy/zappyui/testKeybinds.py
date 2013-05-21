@@ -29,10 +29,10 @@ class TestKeybinds(unittest.TestCase):
         self.assertFalse(self.default_keybinds.key_is_bound(key.F7))
 
     def test_get_orders(self):
-        self.assertEqual(self.default_keybinds.get_orders(key.UP), ORDERS.UP)
-        self.assertEqual(self.default_keybinds.get_orders(key.RIGHT), ORDERS.RIGHT)
-        self.assertEqual(self.default_keybinds.get_orders(key.LEFT), ORDERS.LEFT)
-        self.assertEqual(self.default_keybinds.get_orders(key.F7), None)
+        self.assertEqual(self.default_keybinds.get_order(key.UP), ORDERS.UP)
+        self.assertEqual(self.default_keybinds.get_order(key.RIGHT), ORDERS.RIGHT)
+        self.assertEqual(self.default_keybinds.get_order(key.LEFT), ORDERS.LEFT)
+        self.assertEqual(self.default_keybinds.get_order(key.F7), None)
 
     def test_bind_unbound_key(self):
         size = len(self.default_keybinds._binds)

@@ -27,7 +27,7 @@ class Keybinds(object):
         else:
             self._binds = binds
 
-    def get_orders(self, key):
+    def get_order(self, key):
         try:
             return self._binds[key]
         except KeyError:
@@ -45,6 +45,3 @@ class Keybinds(object):
             return True
         except KeyError:
             return False
-
-    def handle_keys(self, symbol, modifiers):
-        pass

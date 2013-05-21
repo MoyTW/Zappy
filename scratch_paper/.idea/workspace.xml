@@ -7,7 +7,7 @@
     <file path="/funcs_as_default_params_test.py" changelist="1d60facd-52a5-42f5-93cd-d6c96f5542b8" time="1369168646354" ignored="false" />
     <file path="$PROJECT_DIR$/../Python_Zappy/zappyui/Keybinds.py" changelist="1d60facd-52a5-42f5-93cd-d6c96f5542b8" time="1369170156717" ignored="false" />
     <file path="/Keybinds.py" changelist="1d60facd-52a5-42f5-93cd-d6c96f5542b8" time="1369170156717" ignored="false" />
-    <file path="/testCameraDraw.py" changelist="1d60facd-52a5-42f5-93cd-d6c96f5542b8" time="1369171890259" ignored="false" />
+    <file path="/testCameraDraw.py" changelist="1d60facd-52a5-42f5-93cd-d6c96f5542b8" time="1369172340480" ignored="false" />
     <file path="/testCameraSetLevel.py" changelist="1d60facd-52a5-42f5-93cd-d6c96f5542b8" time="1369171884254" ignored="false" />
     <file path="/LoaderLevel.py" changelist="1d60facd-52a5-42f5-93cd-d6c96f5542b8" time="1369170883517" ignored="false" />
     <file path="$APPLICATION_HOME_DIR$/helpers/pycharm/tcunittest.py" changelist="1d60facd-52a5-42f5-93cd-d6c96f5542b8" time="1369171270255" ignored="false" />
@@ -35,7 +35,7 @@
       <file leaf-file-name="testCameraDraw.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/DoubleWindowBug/testCameraDraw.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="24" selection-start="1398" selection-end="1398" vertical-scroll-proportion="0.5753425">
+            <state line="32" column="13" selection-start="919" selection-end="919" vertical-scroll-proportion="0.46575344">
               <folding>
                 <element signature="e#27#42#0" expanded="true" />
               </folding>
@@ -78,8 +78,8 @@
         <option value="$PROJECT_DIR$/DoubleWindowBug/Camera.py" />
         <option value="$PROJECT_DIR$/DoubleWindowBug/loader/LoaderLevel.py" />
         <option value="$PROJECT_DIR$/DoubleWindowBug/DummyCamera.py" />
-        <option value="$PROJECT_DIR$/DoubleWindowBug/testCameraDraw.py" />
         <option value="$PROJECT_DIR$/DoubleWindowBug/testCameraSetLevel.py" />
+        <option value="$PROJECT_DIR$/DoubleWindowBug/testCameraDraw.py" />
       </list>
     </option>
   </component>
@@ -476,13 +476,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DoubleWindowBug/DummyCamera.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="12" selection-start="88" selection-end="88" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/DoubleWindowBug/testCameraSetLevel.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="48" column="37" selection-start="1643" selection-end="1643" vertical-scroll-proportion="0.0">
@@ -492,9 +485,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/DoubleWindowBug/DummyCamera.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="12" selection-start="88" selection-end="88" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/DoubleWindowBug/testCameraDraw.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="24" selection-start="1398" selection-end="1398" vertical-scroll-proportion="0.5753425">
+        <state line="32" column="13" selection-start="919" selection-end="919" vertical-scroll-proportion="0.46575344">
           <folding>
             <element signature="e#27#42#0" expanded="true" />
           </folding>

@@ -25,30 +25,18 @@ class TestCameraDraw(unittest.TestCase):
 
         window = pyglet.window.Window(width=width, height=height)
 
-        labels = list()
-        labels.append(pyglet.text.Label('TEST: Camera.draw()', font_size=30, x=width // 2, y=height - 60,
-                                        anchor_x='center', anchor_y='center'))
-        labels.append(pyglet.text.Label("Press 'y' if the icon looks good.", font_size=20, x=width // 2, y=120,
-                                        anchor_x='center', anchor_y='center'))
-        labels.append(pyglet.text.Label('Press any other key if it does not.', font_size=20, x=width // 2, y=80,
-                                        anchor_x='center', anchor_y='center'))
+        label = pyglet.text.Label('TEST: Camera.draw()', font_size=30, x=width // 2, y=height - 60,
+                                  anchor_x='center', anchor_y='center')
 
         @window.event
         def on_draw():
-            if self.default_camera is not None:
-                self.default_camera.draw()
-                for label in labels:
-                    label.draw()
-            else:
-                pyglet.app.exit()
+            #self.default_camera.draw()
+            label.draw()
 
         @window.event
         def on_key_press(symbol, modifiers):
             if symbol != key.Y:
-
                 self.good = False
-                #self.assertTrue(False, "User did not accept the results of Camera.draw()!")
-                #pyglet.app.exit()
             else:
                 self.good = True
             pyglet.app.exit()

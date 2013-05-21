@@ -2,7 +2,6 @@ __author__ = 'Travis Moy'
 
 import unittest
 import UIController
-from pyglet.window import key
 
 
 class DummyKeybinds(object):
@@ -12,9 +11,9 @@ class DummyKeybinds(object):
         self.binds['new'] = 'new_order'
         self.binds['close'] = 'close_order'
 
-    def get_order(self):
+    def get_order(self, key):
         try:
-            return self._binds[key]
+            return self.binds[key]
         except KeyError:
             return None
 
@@ -36,7 +35,7 @@ class DummyScreen(object):
 # Also, how do I test draw()?
 class TestUIController(unittest.TestCase):
     def setUp(self):
-        self.none_controller = UIController.UIController(None, DummyScreen(0), keybinds=DummyKeybinds)
+        self.none_controller = UIController.UIController(None, DummyScreen(0), keybinds=DummyKeybinds())
 
     def tearDown(self):
         self.none_controller = None
@@ -52,11 +51,12 @@ class TestUIController(unittest.TestCase):
         self.assertEqual(previous_screen, self.none_controller._screen_head)
 
     def test_handle_new_screen(self):
+        old_head = self.none_controller._screen_head
         self.assertEqual(len(self.none_controller._screen_history), 0, "The list is not empty to start with! What is "
                                                                        "this sorcery!?")
         self.none_controller._handle_new_screen("Blue!")
         self.assertEqual(len(self.none_controller._screen_history), 1)
-        self.assertEqual(self.none_controller._screen_history[0], None)
+        self.assertEqual(self.none_controller._screen_history[0], old_head)
         self.assertEqual(self.none_controller._screen_head, "Blue!")
 
     def test_close_head_screen(self):

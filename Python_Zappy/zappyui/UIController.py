@@ -1,6 +1,7 @@
 __author__ = 'Travis Moy'
 
 import Keybinds
+import pyglet
 
 
 class UIController(object):
@@ -12,16 +13,27 @@ class UIController(object):
         self._keybinds = keybinds
 
     def _handle_keys(self, symbol, modifiers):
-        pass
+        order = self._keybinds.get_order(symbol)
+        order_result = self._screen_head.handle_order(order)
+        if order_result != self._screen_head:
+            if order_result is None:
+                self._close_head_screen()
+            else:
+                self._handle_new_screen(order_result)
 
     def _draw(self):
         pass
 
     def _handle_new_screen(self, head):
-        pass
+        self._screen_history.append(self._screen_head)
+        self._screen_head = head
 
     def _close_head_screen(self):
-        pass
+        if len(self._screen_history) == 0:
+            pyglet.app.exit()
+        else:
+            self._screen_head = self._screen_history[-1]
+            self._screen_history.pop(-1)
 
     def _setup_callbacks(self):
         pass

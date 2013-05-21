@@ -47,8 +47,10 @@
     <file path="/testCameraDraw.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369089309662" ignored="false" />
     <file path="/UIKeybinds.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369093199445" ignored="false" />
     <file path="/testKeybinds.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369167714719" ignored="false" />
-    <file path="/Keybinds.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369167664859" ignored="false" />
+    <file path="/Keybinds.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369169217102" ignored="false" />
     <file path="/Orders.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369167417272" ignored="false" />
+    <file path="$PROJECT_DIR$/../scratch_paper/funcs_as_default_params_test.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369168742540" ignored="false" />
+    <file path="/funcs_as_default_params_test.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369168646354" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,19 +70,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Keybinds.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Keybinds.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/zappyui/Keybinds.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="1" selection-start="28" selection-end="28" vertical-scroll-proportion="0.0">
+            <state line="27" column="8" selection-start="834" selection-end="834" vertical-scroll-proportion="0.62237763">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="testKeybinds.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="testKeybinds.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/zappyui/testKeybinds.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="75" selection-start="172" selection-end="172" vertical-scroll-proportion="0.16410257">
+            <state line="5" column="0" selection-start="173" selection-end="173" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -110,8 +112,8 @@
         <option value="$PROJECT_DIR$/level/Cell.py" />
         <option value="$PROJECT_DIR$/zappyui/UIKeybinds.py" />
         <option value="$PROJECT_DIR$/zappyui/Orders.py" />
-        <option value="$PROJECT_DIR$/zappyui/Keybinds.py" />
         <option value="$PROJECT_DIR$/zappyui/testKeybinds.py" />
+        <option value="$PROJECT_DIR$/zappyui/Keybinds.py" />
       </list>
     </option>
   </component>
@@ -602,7 +604,7 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39934713" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32861805" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32861805" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -770,16 +772,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/zappyui/Keybinds.py">
+    <entry file="file://$PROJECT_DIR$/zappyui/testKeybinds.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="1" selection-start="28" selection-end="28" vertical-scroll-proportion="0.0">
+        <state line="5" column="0" selection-start="173" selection-end="173" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/zappyui/testKeybinds.py">
+    <entry file="file://$PROJECT_DIR$/zappyui/Keybinds.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="75" selection-start="172" selection-end="172" vertical-scroll-proportion="0.16410257">
+        <state line="27" column="8" selection-start="834" selection-end="834" vertical-scroll-proportion="0.62237763">
           <folding />
         </state>
       </provider>

@@ -3,7 +3,7 @@ __author__ = 'Travis Moy'
 import unittest
 # IF YOU IMPORT zappyui.Keybinds, the test messes up.
 # ...okay. I'm confused, and how the heck do I diagnose what's going wrong?
-#import zappyui.Keybinds
+import zappyui.Keybinds
 #from pyglet.window import key
 
 

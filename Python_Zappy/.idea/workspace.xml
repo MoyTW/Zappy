@@ -46,8 +46,8 @@
     <file path="/testUIScreenLevel.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369091003549" ignored="false" />
     <file path="/testCameraDraw.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369173857974" ignored="false" />
     <file path="/UIKeybinds.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369093199445" ignored="false" />
-    <file path="/testKeybinds.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369174383093" ignored="false" />
-    <file path="/Keybinds.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369174307339" ignored="false" />
+    <file path="/testKeybinds.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369176133205" ignored="false" />
+    <file path="/Keybinds.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369175898180" ignored="false" />
     <file path="/Orders.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369167417272" ignored="false" />
     <file path="$PROJECT_DIR$/../scratch_paper/funcs_as_default_params_test.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369168742540" ignored="false" />
     <file path="/funcs_as_default_params_test.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369168646354" ignored="false" />
@@ -85,7 +85,7 @@
       <file leaf-file-name="Keybinds.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/zappyui/Keybinds.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="39" column="12" selection-start="1044" selection-end="1044" vertical-scroll-proportion="0.0">
+            <state line="30" column="12" selection-start="887" selection-end="887" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="e#27#60#0" expanded="true" />
               </folding>
@@ -96,10 +96,19 @@
       <file leaf-file-name="testKeybinds.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/zappyui/testKeybinds.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="30" selection-start="607" selection-end="607" vertical-scroll-proportion="0.9179487">
+            <state line="51" column="8" selection-start="2134" selection-end="2134" vertical-scroll-proportion="0.33333334">
               <folding>
                 <element signature="e#27#42#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Orders.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/zappyui/Orders.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="17" selection-start="125" selection-end="125" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -365,7 +374,7 @@
       <recent name="F:\aP-Personal_Projects\Zappy\Python_Zappy\zappyui\test_assets\images" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.All Tests">
+  <component name="RunManager" selected="Python tests.UITests">
     <configuration default="false" name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -732,13 +741,6 @@
         <state line="14" column="0" selection-start="234" selection-end="234" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/zappyui/Orders.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="17" selection-start="125" selection-end="125" vertical-scroll-proportion="0.24615385">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/zappyui/UIController.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="9" column="12" selection-start="153" selection-end="153" vertical-scroll-proportion="0.36923078">
@@ -794,9 +796,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/zappyui/Orders.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="17" selection-start="125" selection-end="125" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/zappyui/Keybinds.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="12" selection-start="1044" selection-end="1044" vertical-scroll-proportion="0.0">
+        <state line="30" column="12" selection-start="887" selection-end="887" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="e#27#60#0" expanded="true" />
           </folding>
@@ -805,7 +814,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/zappyui/testKeybinds.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="30" selection-start="607" selection-end="607" vertical-scroll-proportion="0.9179487">
+        <state line="51" column="8" selection-start="2134" selection-end="2134" vertical-scroll-proportion="0.33333334">
           <folding>
             <element signature="e#27#42#0" expanded="true" />
           </folding>

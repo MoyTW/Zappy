@@ -27,6 +27,9 @@ class Keybinds(object):
         else:
             self._binds = binds
 
+    def get_orders(self, key):
+        pass
+
     def key_is_bound(self, key):
         pass
 

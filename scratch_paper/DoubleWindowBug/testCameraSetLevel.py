@@ -15,44 +15,22 @@ class TestCameraSetLevel(unittest.TestCase):
         self.default_level = None
         self.level_one = None
 
-    def test_draw(self):
+    def test_set_level(self):
         self.good = False
-        self.second_level = False
-        width = 640
-        height = 480
 
-        window = pyglet.window.Window(width=width, height=height)
+        window = pyglet.window.Window()
 
-        header = pyglet.text.Label('TEST: Camera.set_level()', font_size=30, x=width // 2, y=height - 60,
+        header = pyglet.text.Label('TEST: Camera.set_level()', font_size=30, x=window.width // 2, y=window.height - 60,
                                    anchor_x='center', anchor_y='center')
-        prompt = pyglet.text.Label("Press any key to swap levels.", font_size=20, x=width // 2, y=120,
-                                   anchor_x='center', anchor_y='center')
-        labels = list()
-        labels.append(pyglet.text.Label("Press 'y' if the icon looks good.", font_size=20, x=width // 2, y=120,
-                                        anchor_x='center', anchor_y='center'))
-        labels.append(pyglet.text.Label('Press any other key if it does not.', font_size=20, x=width // 2, y=80,
-                                        anchor_x='center', anchor_y='center'))
 
         @window.event
         def on_draw():
             window.clear()
             header.draw()
-            if self.second_level:
-                pass
-                for label in labels:
-                    label.draw()
-            else:
-                prompt.draw()
 
         @window.event
         def on_key_press(symbol, modifiers):
-            if not self.second_level:
-                self.second_level = True
-                return
-
-            if symbol != key.Y:
-                self.good = False
-            else:
+            if symbol == key.Y:
                 self.good = True
             pyglet.app.exit()
 

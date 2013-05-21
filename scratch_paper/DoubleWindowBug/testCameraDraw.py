@@ -19,25 +19,21 @@ class TestCameraDraw(unittest.TestCase):
     # This test must be visually verified (I can't think of a good way to test it otherwise!).
     # Press 'y' if it is correct. Any other key will cause the test to fail.
     def test_draw(self):
-        self.good = False
-        width = 640
-        height = 480
+        self.good = True
 
-        window = pyglet.window.Window(width=width, height=height)
+        window = pyglet.window.Window()
 
-        label = pyglet.text.Label('TEST: Camera.draw()', font_size=30, x=width // 2, y=height - 60,
+        label = pyglet.text.Label('TEST: Camera.draw()', font_size=30, x=window.width // 2, y=window.height - 60,
                                   anchor_x='center', anchor_y='center')
 
         @window.event
         def on_draw():
-            #self.default_camera.draw()
+            self.default_camera.draw()
             label.draw()
 
         @window.event
         def on_key_press(symbol, modifiers):
-            if symbol != key.Y:
-                self.good = False
-            else:
+            if symbol == key.Y:
                 self.good = True
             pyglet.app.exit()
 

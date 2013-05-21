@@ -2,7 +2,7 @@ __author__ = 'Travis Moy'
 
 import unittest
 import pyglet
-import Camera
+import DummyCamera
 from pyglet.window import key
 
 
@@ -10,7 +10,7 @@ class TestCameraDraw(unittest.TestCase):
 
     def setUp(self):
         self.default_level = None
-        self.default_camera = Camera.Camera(self.default_level, cursor_image_file='test_assets/camera_cursor.png')
+        self.default_camera = DummyCamera.DummyCamera()
 
     def tearDown(self):
         self.default_camera = None
@@ -19,8 +19,6 @@ class TestCameraDraw(unittest.TestCase):
     # This test must be visually verified (I can't think of a good way to test it otherwise!).
     # Press 'y' if it is correct. Any other key will cause the test to fail.
     def test_draw(self):
-        self.default_camera.center_on(2, 3)
-
         self.good = False
         width = 640
         height = 480

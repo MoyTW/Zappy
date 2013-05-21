@@ -20,10 +20,7 @@ __author__ = 'Travis Moy'
 
 
 def DEFAULT_KEYBINDS():
-    pass
-    added = 10 + 25
-#    return None
-#    return dict()
+    return dict()
 
 
 # Transforms keypresses into orders

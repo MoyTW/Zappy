@@ -55,8 +55,6 @@ class TestCameraSetLevel(unittest.TestCase):
                         label.draw()
                 else:
                     prompt.draw()
-            else:
-                pyglet.app.exit()
 
         @window.event
         def on_key_press(symbol, modifiers):

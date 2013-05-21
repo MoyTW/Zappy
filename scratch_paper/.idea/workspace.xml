@@ -5,14 +5,16 @@
     <ignored path="scratch_paper.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/funcs_as_default_params_test.py" changelist="1d60facd-52a5-42f5-93cd-d6c96f5542b8" time="1369168646354" ignored="false" />
-    <file path="$PROJECT_DIR$/../Python_Zappy/zappyui/Keybinds.py" changelist="1d60facd-52a5-42f5-93cd-d6c96f5542b8" time="1369170156717" ignored="false" />
+    <file path="$PROJECT_DIR$/../Python_Zappy/zappyui/Keybinds.py" changelist="1d60facd-52a5-42f5-93cd-d6c96f5542b8" time="1369173915318" ignored="false" />
     <file path="/Keybinds.py" changelist="1d60facd-52a5-42f5-93cd-d6c96f5542b8" time="1369170156717" ignored="false" />
-    <file path="/testCameraDraw.py" changelist="1d60facd-52a5-42f5-93cd-d6c96f5542b8" time="1369173684457" ignored="false" />
-    <file path="/testCameraSetLevel.py" changelist="1d60facd-52a5-42f5-93cd-d6c96f5542b8" time="1369172931765" ignored="false" />
+    <file path="/testCameraDraw.py" changelist="1d60facd-52a5-42f5-93cd-d6c96f5542b8" time="1369173857974" ignored="false" />
+    <file path="/testCameraSetLevel.py" changelist="1d60facd-52a5-42f5-93cd-d6c96f5542b8" time="1369173868366" ignored="false" />
     <file path="/LoaderLevel.py" changelist="1d60facd-52a5-42f5-93cd-d6c96f5542b8" time="1369170883517" ignored="false" />
     <file path="$APPLICATION_HOME_DIR$/helpers/pycharm/tcunittest.py" changelist="1d60facd-52a5-42f5-93cd-d6c96f5542b8" time="1369171270255" ignored="false" />
     <file path="$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py" changelist="1d60facd-52a5-42f5-93cd-d6c96f5542b8" time="1369171270255" ignored="false" />
     <file path="/DummyCamera.py" changelist="1d60facd-52a5-42f5-93cd-d6c96f5542b8" time="1369171836877" ignored="false" />
+    <file path="$PROJECT_DIR$/../Python_Zappy/zappyui/testCameraDraw.py" changelist="1d60facd-52a5-42f5-93cd-d6c96f5542b8" time="1369173883605" ignored="false" />
+    <file path="$PROJECT_DIR$/../Python_Zappy/zappyui/testCameraSetLevel.py" changelist="1d60facd-52a5-42f5-93cd-d6c96f5542b8" time="1369173873535" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

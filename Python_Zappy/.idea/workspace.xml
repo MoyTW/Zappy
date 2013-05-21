@@ -42,17 +42,17 @@
     <file path="$PROJECT_DIR$/../../7DayRL/Drone/definitions.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369084783378" ignored="false" />
     <file path="/definitions.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369084782446" ignored="false" />
     <file path="/1.lvl" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369087917323" ignored="false" />
-    <file path="/testCameraSetLevel.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369172732950" ignored="false" />
+    <file path="/testCameraSetLevel.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369173868366" ignored="false" />
     <file path="/testUIScreenLevel.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369091003549" ignored="false" />
-    <file path="/testCameraDraw.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369172549601" ignored="false" />
+    <file path="/testCameraDraw.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369173857974" ignored="false" />
     <file path="/UIKeybinds.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369093199445" ignored="false" />
     <file path="/testKeybinds.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369170069903" ignored="false" />
     <file path="/Keybinds.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369170156717" ignored="false" />
     <file path="/Orders.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369167417272" ignored="false" />
     <file path="$PROJECT_DIR$/../scratch_paper/funcs_as_default_params_test.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369168742540" ignored="false" />
     <file path="/funcs_as_default_params_test.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369168646354" ignored="false" />
-    <file path="$PROJECT_DIR$/../scratch_paper/DoubleWindowBug/testCameraDraw.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369172619102" ignored="false" />
-    <file path="$PROJECT_DIR$/../scratch_paper/DoubleWindowBug/testCameraSetLevel.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369172732950" ignored="false" />
+    <file path="$PROJECT_DIR$/../scratch_paper/DoubleWindowBug/testCameraDraw.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369173684457" ignored="false" />
+    <file path="$PROJECT_DIR$/../scratch_paper/DoubleWindowBug/testCameraSetLevel.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369173102502" ignored="false" />
     <file path="$PROJECT_DIR$/../scratch_paper/DoubleWindowBug/loader.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369170458222" ignored="false" />
     <file path="$PROJECT_DIR$/../scratch_paper/DoubleWindowBug/loader/__init__.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369170496573" ignored="false" />
     <file path="$PROJECT_DIR$/../scratch_paper/DoubleWindowBug/__init__.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369170503421" ignored="false" />
@@ -82,52 +82,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Keybinds.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/zappyui/Keybinds.py">
+      <file leaf-file-name="testKeybinds.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/zappyui/testKeybinds.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="68" selection-start="910" selection-end="910" vertical-scroll-proportion="0.0">
+            <state line="5" column="23" selection-start="196" selection-end="196" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Camera.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/zappyui/Camera.py">
+      <file leaf-file-name="Keybinds.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/zappyui/Keybinds.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="138" column="25" selection-start="5133" selection-end="5133" vertical-scroll-proportion="5.79021">
-              <folding>
-                <element signature="e#27#49#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="testCamera.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/zappyui/testCamera.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="96" column="31" selection-start="4209" selection-end="4209" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#27#42#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LoaderLevel.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/loader/LoaderLevel.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="22" selection-start="178" selection-end="178" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#27#45#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="testKeybinds.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/zappyui/testKeybinds.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="23" selection-start="196" selection-end="196" vertical-scroll-proportion="0.0">
+            <state line="24" column="0" selection-start="956" selection-end="956" vertical-scroll-proportion="0.54545456">
               <folding />
             </state>
           </provider>
@@ -144,8 +111,6 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/zappyui/testCameraGraphical.py" />
-        <option value="$PROJECT_DIR$/zappyui/testCameraSetLevel.py" />
-        <option value="$PROJECT_DIR$/zappyui/testCameraDraw.py" />
         <option value="$PROJECT_DIR$/zappyui/UIScreen.py" />
         <option value="$PROJECT_DIR$/zappyui/UIController.py" />
         <option value="$PROJECT_DIR$/zappyui/testUIScreenLevel.py" />
@@ -158,6 +123,8 @@
         <option value="$PROJECT_DIR$/zappyui/Orders.py" />
         <option value="$PROJECT_DIR$/zappyui/ZAPPY_Keybinds.py" />
         <option value="$PROJECT_DIR$/zappyui/testKeybinds.py" />
+        <option value="$PROJECT_DIR$/zappyui/testCameraSetLevel.py" />
+        <option value="$PROJECT_DIR$/zappyui/testCameraDraw.py" />
         <option value="$PROJECT_DIR$/zappyui/Keybinds.py" />
       </list>
     </option>
@@ -723,11 +690,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/zappyui/testUIScreenLevel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="15" selection-start="58" selection-end="58" vertical-scroll-proportion="0.12328767" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="13" selection-start="82" selection-end="82" vertical-scroll-proportion="0.0" />
@@ -766,13 +728,6 @@
         <state line="14" column="0" selection-start="234" selection-end="234" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/zappyui/testCameraDraw.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="16" selection-start="0" selection-end="2370" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/zappyui/Orders.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="17" selection-start="125" selection-end="125" vertical-scroll-proportion="0.24615385">
@@ -794,6 +749,47 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/zappyui/Camera.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="138" column="25" selection-start="5133" selection-end="5133" vertical-scroll-proportion="4.783217">
+          <folding>
+            <element signature="e#27#49#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zappyui/testCamera.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="96" column="31" selection-start="4209" selection-end="4209" vertical-scroll-proportion="3.9384615">
+          <folding>
+            <element signature="e#27#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loader/LoaderLevel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="22" selection-start="178" selection-end="178" vertical-scroll-proportion="0.4051282">
+          <folding>
+            <element signature="e#27#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zappyui/testCameraDraw.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="49" column="32" selection-start="1886" selection-end="1886" vertical-scroll-proportion="0.574359">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zappyui/testCameraSetLevel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="47" column="12" selection-start="1792" selection-end="1806" vertical-scroll-proportion="0.32820514">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/zappyui/testKeybinds.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="23" selection-start="196" selection-end="196" vertical-scroll-proportion="0.0">
@@ -803,35 +799,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/zappyui/Keybinds.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="68" selection-start="910" selection-end="910" vertical-scroll-proportion="0.0">
+        <state line="24" column="0" selection-start="956" selection-end="956" vertical-scroll-proportion="0.54545456">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/zappyui/testCamera.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="96" column="31" selection-start="4209" selection-end="4209" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#27#42#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/loader/LoaderLevel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="22" selection-start="178" selection-end="178" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#27#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/zappyui/Camera.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="138" column="25" selection-start="5133" selection-end="5133" vertical-scroll-proportion="5.79021">
-          <folding>
-            <element signature="e#27#49#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>

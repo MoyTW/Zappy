@@ -43,12 +43,11 @@ class TestCameraDraw(unittest.TestCase):
 
         @window.event
         def on_draw():
+            window.clear()
             if self.default_camera is not None:
                 self.default_camera.draw()
                 for label in labels:
                     label.draw()
-            else:
-                pyglet.app.exit()
 
         @window.event
         def on_key_press(symbol, modifiers):

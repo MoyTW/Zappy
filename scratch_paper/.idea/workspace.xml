@@ -7,8 +7,8 @@
     <file path="/funcs_as_default_params_test.py" changelist="1d60facd-52a5-42f5-93cd-d6c96f5542b8" time="1369168646354" ignored="false" />
     <file path="$PROJECT_DIR$/../Python_Zappy/zappyui/Keybinds.py" changelist="1d60facd-52a5-42f5-93cd-d6c96f5542b8" time="1369170156717" ignored="false" />
     <file path="/Keybinds.py" changelist="1d60facd-52a5-42f5-93cd-d6c96f5542b8" time="1369170156717" ignored="false" />
-    <file path="/testCameraDraw.py" changelist="1d60facd-52a5-42f5-93cd-d6c96f5542b8" time="1369172549601" ignored="false" />
-    <file path="/testCameraSetLevel.py" changelist="1d60facd-52a5-42f5-93cd-d6c96f5542b8" time="1369172732950" ignored="false" />
+    <file path="/testCameraDraw.py" changelist="1d60facd-52a5-42f5-93cd-d6c96f5542b8" time="1369173684457" ignored="false" />
+    <file path="/testCameraSetLevel.py" changelist="1d60facd-52a5-42f5-93cd-d6c96f5542b8" time="1369172931765" ignored="false" />
     <file path="/LoaderLevel.py" changelist="1d60facd-52a5-42f5-93cd-d6c96f5542b8" time="1369170883517" ignored="false" />
     <file path="$APPLICATION_HOME_DIR$/helpers/pycharm/tcunittest.py" changelist="1d60facd-52a5-42f5-93cd-d6c96f5542b8" time="1369171270255" ignored="false" />
     <file path="$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py" changelist="1d60facd-52a5-42f5-93cd-d6c96f5542b8" time="1369171270255" ignored="false" />
@@ -32,10 +32,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="testCameraDraw.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="testCameraDraw.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/DoubleWindowBug/testCameraDraw.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="0" selection-start="852" selection-end="852" vertical-scroll-proportion="0.0">
+            <state line="26" column="13" selection-start="689" selection-end="689" vertical-scroll-proportion="0.6712329">
               <folding>
                 <element signature="e#27#42#0" expanded="true" />
               </folding>
@@ -43,21 +43,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DummyCamera.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DoubleWindowBug/DummyCamera.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="12" selection-start="88" selection-end="88" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="testCameraSetLevel.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="testCameraSetLevel.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DoubleWindowBug/testCameraSetLevel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="22" selection-start="332" selection-end="332" vertical-scroll-proportion="0.7145359">
+            <state line="4" column="13" selection-start="57" selection-end="57" vertical-scroll-proportion="0.0">
               <folding>
-                <element signature="e#27#42#0" expanded="true" />
+                <element signature="e#28#43#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -78,8 +69,8 @@
         <option value="$PROJECT_DIR$/DoubleWindowBug/Camera.py" />
         <option value="$PROJECT_DIR$/DoubleWindowBug/loader/LoaderLevel.py" />
         <option value="$PROJECT_DIR$/DoubleWindowBug/DummyCamera.py" />
-        <option value="$PROJECT_DIR$/DoubleWindowBug/testCameraDraw.py" />
         <option value="$PROJECT_DIR$/DoubleWindowBug/testCameraSetLevel.py" />
+        <option value="$PROJECT_DIR$/DoubleWindowBug/testCameraDraw.py" />
       </list>
     </option>
   </component>
@@ -469,13 +460,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Python27/Lib/site-packages/pyglet/event.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="342" column="0" selection-start="12465" selection-end="12465" vertical-scroll-proportion="0.3326923">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/DoubleWindowBug/DummyCamera.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="12" selection-start="88" selection-end="88" vertical-scroll-proportion="0.0">
@@ -483,18 +467,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DoubleWindowBug/testCameraDraw.py">
+    <entry file="file://C:/Python27/Lib/site-packages/pyglet/event.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="0" selection-start="852" selection-end="852" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#27#42#0" expanded="true" />
-          </folding>
+        <state line="349" column="24" selection-start="12726" selection-end="12726" vertical-scroll-proportion="0.61986303">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/DoubleWindowBug/testCameraSetLevel.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="22" selection-start="332" selection-end="332" vertical-scroll-proportion="0.7145359">
+        <state line="4" column="13" selection-start="57" selection-end="57" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#28#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DoubleWindowBug/testCameraDraw.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="13" selection-start="689" selection-end="689" vertical-scroll-proportion="0.6712329">
           <folding>
             <element signature="e#27#42#0" expanded="true" />
           </folding>

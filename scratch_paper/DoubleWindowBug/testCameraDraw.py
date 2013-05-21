@@ -3,24 +3,17 @@ __author__ = 'Travis Moy'
 import unittest
 import pyglet
 import DummyCamera
-from pyglet.window import key
 
 
 class TestCameraDraw(unittest.TestCase):
 
     def setUp(self):
-        self.default_level = None
         self.default_camera = DummyCamera.DummyCamera()
 
     def tearDown(self):
         self.default_camera = None
-        self.default_level = None
 
-    # This test must be visually verified (I can't think of a good way to test it otherwise!).
-    # Press 'y' if it is correct. Any other key will cause the test to fail.
     def test_draw(self):
-        self.good = True
-
         window = pyglet.window.Window()
 
         label = pyglet.text.Label('TEST: Camera.draw()', font_size=30, x=window.width // 2, y=window.height - 60,
@@ -28,15 +21,14 @@ class TestCameraDraw(unittest.TestCase):
 
         @window.event
         def on_draw():
-            self.default_camera.draw()
-            label.draw()
+            if self.default_camera is not None:
+                self.default_camera.draw()
+                label.draw()
+            #else:
+                #pyglet.app.exit()
 
         @window.event
         def on_key_press(symbol, modifiers):
-            if symbol == key.Y:
-                self.good = True
             pyglet.app.exit()
 
         pyglet.app.run()
-
-        self.assertTrue(self.good, "User did not accept the results of Camera.draw()!")

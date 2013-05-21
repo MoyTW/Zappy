@@ -49,15 +49,20 @@ class TestKeybinds(unittest.TestCase):
         self.assertEqual(self.default_keybinds._binds[key.UP], ORDERS.CONFIRM)
         self.assertEqual(size, len(self.default_keybinds._binds))
 
-    def test_unbind_key(self):
+    def test_unbind_key_in_dict(self):
         size = len(self.default_keybinds._binds)
-        self.default_keybinds.unbind_key(key.DOWN)
+        self.assertTrue(self.default_keybinds.unbind_key(key.DOWN))
         try:
             self.default_keybinds._binds[key.DOWN]
             self.assertTrue(False, "key.DOWN is still in they dictionary!")
         except KeyError:
             pass
         self.assertEqual(size - 1, len(self.default_keybinds._binds))
+
+    def test_unbind_key_not_in_dict(self):
+        size = len(self.default_keybinds._binds)
+        self.assertFalse(self.default_keybinds.unbind_key(key.F7))
+        self.assertEqual(size, len(self.default_keybinds._binds))
 
 suite = unittest.TestLoader().loadTestsFromTestCase(TestKeybinds)
 unittest.TextTestRunner(verbosity=2).run(suite)

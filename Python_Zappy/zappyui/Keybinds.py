@@ -28,16 +28,23 @@ class Keybinds(object):
             self._binds = binds
 
     def get_orders(self, key):
-        pass
+        try:
+            return self._binds[key]
+        except KeyError:
+            return None
 
     def key_is_bound(self, key):
-        pass
+        return key in self._binds.keys()
 
     def bind_key(self, key, order):
-        pass
+        self._binds[key] = order
 
     def unbind_key(self, key):
-        pass
+        try:
+            self._binds.pop(key)
+            return True
+        except KeyError:
+            return False
 
     def handle_keys(self, symbol, modifiers):
         pass

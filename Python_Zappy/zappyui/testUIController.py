@@ -30,6 +30,9 @@ class DummyScreen(object):
         elif order == 'close_order':
             return None
 
+    def __repr__(self):
+        return "DummyScreen#{0}".format(self.id)
+
 
 # I don't really know how to test the setup_callbacks() function.
 # Also, how do I test draw()?
@@ -40,14 +43,25 @@ class TestUIController(unittest.TestCase):
     def tearDown(self):
         self.none_controller = None
 
+    def test_draw_expected_failure(self):
+        self.assertFalse(True, "Draw is not yet implemented.")
+
     # I'm unsure how to test this, really. This is the best I can think of off the top of my head.
     def test_handle_keys(self):
         self.none_controller._handle_keys('new', None)
         self.assertEqual(len(self.none_controller._screen_history), 1)
         self.none_controller._handle_keys('close', None)
         self.assertEqual(len(self.none_controller._screen_history), 0)
+
+        # Load it with a new one, to make sure something is in history.
+        self.none_controller._handle_keys('new', None)
+
         previous_screen = self.none_controller._screen_head
         self.none_controller._handle_keys('self', None)
+        self.assertEqual(previous_screen, self.none_controller._screen_head)
+
+        previous_screen = self.none_controller._screen_head
+        self.none_controller._handle_keys('should_do_nothing', None)
         self.assertEqual(previous_screen, self.none_controller._screen_head)
 
     def test_handle_new_screen(self):
@@ -65,7 +79,6 @@ class TestUIController(unittest.TestCase):
         self.none_controller._close_head_screen()
         self.assertEqual(self.none_controller._screen_head, "Filler!")
         self.assertEqual(len(self.none_controller._screen_history), 0)
-
         # I want to test that it attempts to call - or does call - pyglet.app.exit(). How would I do such a thing?
 
 suite = unittest.TestLoader().loadTestsFromTestCase(TestUIController)

@@ -12,8 +12,16 @@ class UIController(object):
         self._screen_history = list()
         self._keybinds = keybinds
 
+        if self._window is not None:
+            self._setup_callbacks()
+
     def _handle_keys(self, symbol, modifiers):
         order = self._keybinds.get_order(symbol)
+
+        # Make sure the symbol is a valid key
+        if order is None:
+            return
+
         order_result = self._screen_head.handle_order(order)
         if order_result != self._screen_head:
             if order_result is None:
@@ -35,5 +43,13 @@ class UIController(object):
             self._screen_head = self._screen_history[-1]
             self._screen_history.pop(-1)
 
+    # Gamepad support?
     def _setup_callbacks(self):
-        pass
+        @self._window.event
+        def on_key_press(symbol, modifiers):
+            self._handle_keys(symbol, modifiers)
+
+        @self._window.draw
+        def on_draw():
+            self._window.clear()
+            self._draw()

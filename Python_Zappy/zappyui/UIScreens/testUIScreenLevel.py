@@ -21,7 +21,7 @@ class TestUIScreenLevel(unittest.TestCase):
         pass
 
     def test_move(self):
-        self.default_screen._move("TestOrder")
+        self.assertEqual(self.default_screen, self.default_screen._move("TestOrder"))
         try:
             self.assertEqual(self.dummy_control.zappy_attempt_move_called_with, "TestOrder")
         except AttributeError:
@@ -31,7 +31,7 @@ class TestUIScreenLevel(unittest.TestCase):
         self.assertEqual("ScreenSelectTool", self.default_screen._open_select_tool())
 
     def test_use_item(self):
-        self.default_screen._use_item()
+        self.assertEqual(self.default_screen, self.default_screen._use_item())
         try:
             self.assertTrue(self.dummy_control.zappy_use_item_called)
         except AttributeError:

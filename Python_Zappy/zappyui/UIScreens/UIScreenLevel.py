@@ -44,20 +44,22 @@ class UIScreenLevel(UIScreen.UIScreen):
 
     # If UP/DOWN/LEFT/RIGHT
     def _move(self, order):
-        pass
+        self._control.zappy_attempt_move(order)
+        return self
 
     # If CONFIRM
     def _open_select_tool(self):
-        pass
+        return self._factory.create_ScreenSelectTool()
 
     # If ITEMS
     def _use_item(self):
-        pass
+        self._control.zappy_use_item()
+        return self
 
     # If LOOK
     def _open_free_look(self):
-        pass
+        return self._factory.create_ScreenFreeLook()
 
     # If MENU
     def _open_level_menu(self):
-        pass
+        return self._factory.create_ScreenLevelMenu()

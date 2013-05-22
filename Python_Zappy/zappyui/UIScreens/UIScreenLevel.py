@@ -4,7 +4,7 @@ __author__ = 'Travis Moy'
 
 import zappyui.Camera
 from zappyui.Orders import ORDERS
-import pyglet
+
 
 class UIScreenLevel(UIScreen.UIScreen):
     sidebar_width = 250
@@ -47,7 +47,7 @@ class UIScreenLevel(UIScreen.UIScreen):
         pass
 
     # If CONFIRM
-    def _open_select_tools(self):
+    def _open_select_tool(self):
         pass
 
     # If ITEMS

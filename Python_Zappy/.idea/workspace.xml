@@ -43,7 +43,7 @@
     <file path="/definitions.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369084782446" ignored="false" />
     <file path="/1.lvl" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369087917323" ignored="false" />
     <file path="/testCameraSetLevel.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369259977511" ignored="false" />
-    <file path="/testUIScreenLevel.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369260641482" ignored="false" />
+    <file path="/testUIScreenLevel.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369262403705" ignored="false" />
     <file path="/testCameraDraw.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369173857974" ignored="false" />
     <file path="/UIKeybinds.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369093199445" ignored="false" />
     <file path="/testKeybinds.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369176844918" ignored="false" />
@@ -68,8 +68,9 @@
     <file path="/LevelController.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369255856571" ignored="false" />
     <file path="/UIScreenSelectTools.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369256833241" ignored="false" />
     <file path="/UIScreenFreeLook.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369256902981" ignored="false" />
-    <file path="/DummyController.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369259505433" ignored="false" />
-    <file path="/DummyFactory.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369258386201" ignored="false" />
+    <file path="/DummyController.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369262152385" ignored="false" />
+    <file path="/DummyFactory.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369262351514" ignored="false" />
+    <file path="/UIScreenLevelMenu.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369262076729" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,10 +90,39 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="DummyController.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="UIScreenLevel.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/zappyui/UIScreens/UIScreenLevel.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="49" column="25" selection-start="1563" selection-end="1563" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="testUIScreenLevel.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/zappyui/UIScreens/testUIScreenLevel.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="47" column="47" selection-start="1809" selection-end="1809" vertical-scroll-proportion="0.75384617">
+              <folding>
+                <element signature="e#27#42#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DummyController.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/zappyui/UIScreens/DummyController.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="22" selection-start="217" selection-end="217" vertical-scroll-proportion="0.45128205">
+            <state line="13" column="26" selection-start="245" selection-end="245" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DummyFactory.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/zappyui/UIScreens/DummyFactory.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="12" column="31" selection-start="273" selection-end="273" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -108,7 +138,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/zappyui/UIController.py" />
         <option value="$PROJECT_DIR$/zappyui/Orders.py" />
         <option value="$PROJECT_DIR$/zappyui/Camera.py" />
         <option value="$PROJECT_DIR$/level/LevelController.py" />
@@ -118,12 +147,13 @@
         <option value="$PROJECT_DIR$/zappyui/UIScreens/UIScreenSelectTool.py" />
         <option value="$PROJECT_DIR$/zappyui/UIScreens/UIScreenFreeLook.py" />
         <option value="$PROJECT_DIR$/zappyui/FactoryScreens.py" />
-        <option value="$PROJECT_DIR$/zappyui/UIScreens/DummyFactory.py" />
-        <option value="$PROJECT_DIR$/zappyui/UIScreens/DummyController.py" />
         <option value="$PROJECT_DIR$/zappyui/testCameraSetLevel.py" />
-        <option value="$PROJECT_DIR$/zappyui/UIScreens/UIScreenLevel.py" />
-        <option value="$PROJECT_DIR$/zappyui/UIScreens/testUIScreenLevel.py" />
         <option value="$PROJECT_DIR$/zappyui/UIScreens/testUIScreenLevelDraw.py" />
+        <option value="$PROJECT_DIR$/zappyui/UIScreens/UIScreenLevel.py" />
+        <option value="$PROJECT_DIR$/zappyui/UIScreens/UIScreenLevelMenu.py" />
+        <option value="$PROJECT_DIR$/zappyui/UIScreens/DummyController.py" />
+        <option value="$PROJECT_DIR$/zappyui/UIScreens/DummyFactory.py" />
+        <option value="$PROJECT_DIR$/zappyui/UIScreens/testUIScreenLevel.py" />
       </list>
     </option>
   </component>
@@ -610,53 +640,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/zappyui/UIScreens/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="24" selection-start="24" selection-end="24" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/zappyui/UIScreens/UIScreenSelectTool.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="8" selection-start="98" selection-end="98" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/zappyui/UIScreens/UIScreenFreeLook.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="22" selection-start="67" selection-end="67" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/zappyui/FactoryScreens.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="88" selection-start="298" selection-end="298" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/zappyui/UIScreens/DummyFactory.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="8" selection-start="64" selection-end="64" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/zappyui/testCameraDraw.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="18" selection-start="1744" selection-end="1744" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/images/defaults/defaultcell.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/level/Cell.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-2.4615386">
@@ -701,16 +684,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/zappyui/UIScreens/UIScreenLevel.py">
+    <entry file="file://$PROJECT_DIR$/zappyui/testCamera.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="12" selection-start="1532" selection-end="1532" vertical-scroll-proportion="1.8871795">
+        <state line="112" column="0" selection-start="4749" selection-end="4860" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zappyui/FactoryScreens.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="0" selection-start="158" selection-end="298" vertical-scroll-proportion="0.36923078">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zappyui/UIScreens/UIScreenSelectTool.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zappyui/UIScreens/UIScreenFreeLook.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zappyui/UIScreens/UIScreenLevelMenu.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="15" selection-start="42" selection-end="42" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/zappyui/UIScreens/testUIScreenLevelDraw.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="41" selection-start="1123" selection-end="1123" vertical-scroll-proportion="1.4358975">
+        <state line="25" column="0" selection-start="614" selection-end="743" vertical-scroll-proportion="0.041025642">
           <folding>
             <element signature="e#27#56#0" expanded="true" />
           </folding>
@@ -719,8 +730,31 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/zappyui/UIScreens/DummyController.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="22" selection-start="217" selection-end="217" vertical-scroll-proportion="0.45128205">
+        <state line="13" column="26" selection-start="245" selection-end="245" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zappyui/UIScreens/UIScreenLevel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="49" column="25" selection-start="1563" selection-end="1563" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zappyui/UIScreens/DummyFactory.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="31" selection-start="273" selection-end="273" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zappyui/UIScreens/testUIScreenLevel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="47" column="47" selection-start="1809" selection-end="1809" vertical-scroll-proportion="0.75384617">
+          <folding>
+            <element signature="e#27#42#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -10,3 +10,9 @@ class DummyController(object):
 
     def get_zappy(self):
         return "zappy"
+
+    def zappy_attempt_move(self, order):
+        self.zappy_attempt_move_called_with = order
+
+    def zappy_use_item(self):
+        self.zappy_use_item_called = True

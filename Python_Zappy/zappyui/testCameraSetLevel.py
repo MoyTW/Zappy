@@ -33,7 +33,7 @@ class TestCameraSetLevel(unittest.TestCase):
 
         window = pyglet.window.Window(width=width, height=height)
 
-        header = pyglet.text.Label('TEST: Camera.draw()', font_size=30, x=width // 2, y=height - 60,
+        header = pyglet.text.Label('TEST: Camera.set_level()', font_size=30, x=width // 2, y=height - 60,
                                    anchor_x='center', anchor_y='center')
         prompt = pyglet.text.Label("Press any key to swap levels.", font_size=20, x=width // 2, y=120,
                                    anchor_x='center', anchor_y='center')

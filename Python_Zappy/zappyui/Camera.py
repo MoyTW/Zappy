@@ -11,14 +11,15 @@ class Camera(object):
     DEFAULT_CURSOR_IMAGE = 'images/camera_cursor.png'
     LOADER = pyglet.resource.Loader(['@assets'])
 
+    _draw_cursor = True
     _sprites = list()
     _batches = dict()
     _magnification = 1
     _sprite_across = 64
 
-    def __init__(self, _level=None, lower_left=(0, 0), upper_right=(640, 480), center_tile=(0, 0),
+    def __init__(self, level=None, lower_left=(0, 0), upper_right=(640, 480), center_tile=(0, 0),
                  cursor_image_file=DEFAULT_CURSOR_IMAGE):
-        self._level = _level
+        self._level = level
         self._center_tile = center_tile
 
         # These are set by self._load_cursor(); listed for my ease.
@@ -43,6 +44,12 @@ class Camera(object):
     def get_center_tile(self):
         return self._center_tile[0], self._center_tile[1]
 
+    def enable_cursor(self):
+        self._draw_cursor = True
+
+    def disable_cursor(self):
+        self._draw_cursor = False
+
     def set_level(self, _level, center_tile=(0, 0)):
         self._level = _level
         self._center_tile = center_tile
@@ -58,7 +65,8 @@ class Camera(object):
         batch_keys.sort()
         for key in batch_keys:
             self._batches.get(key).draw()
-        self._cursor.draw()
+        if self._draw_cursor:
+            self._cursor.draw()
 
     def center_on(self, x, y):
         if self._level is None:

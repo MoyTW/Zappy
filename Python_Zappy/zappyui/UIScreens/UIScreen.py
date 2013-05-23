@@ -23,3 +23,6 @@ class UIScreen(object):
 
     def draw(self):
         warnings.warn("UIScreen.draw() was called! This shouldn't happen - something has gone horribly wrong!")
+
+    def close_on_child_completion(self):
+        return False

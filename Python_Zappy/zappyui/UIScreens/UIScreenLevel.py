@@ -9,11 +9,16 @@ from zappyui.Orders import ORDERS
 class UIScreenLevel(UIScreen.UIScreen):
     sidebar_width = 250
 
-    def __init__(self, level_controller, window_info, factory_screens):
+    def __init__(self, level_controller, window_viewport_info, factory_screens):
         self._control = level_controller
-        self._window_info = window_info
+        self._window_info = window_viewport_info
         self._factory = factory_screens
 
+        # Set by _init_camera; included for my convenience
+        self._camera = None
+        self._init_camera(level_controller, window_viewport_info)
+
+    def _init_camera(self, level_controller, window_info):
         level = level_controller.get_level()
         self._camera = zappyui.Camera.Camera(level, lower_left=(0, 0),
                                              upper_right=(window_info.width - self.sidebar_width, window_info.height))

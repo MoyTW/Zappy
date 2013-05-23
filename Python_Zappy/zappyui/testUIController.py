@@ -10,6 +10,7 @@ class DummyKeybinds(object):
         self.binds['self'] = 'self_order'
         self.binds['new'] = 'new_order'
         self.binds['close'] = 'close_order'
+        self.binds['complete'] = 'complete_order'
 
     def get_order(self, key):
         try:
@@ -27,8 +28,15 @@ class DummyScreen(object):
             return self
         elif order == 'new_order':
             return DummyScreen(self.id + 1)
+        elif order == 'complete_order':
+            return True
         elif order == 'close_order':
             return None
+
+    def close_on_child_completion(self):
+        if self.id == 0 or self.id == 1:
+            return False
+        return True
 
     def __repr__(self):
         return "DummyScreen#{0}".format(self.id)
@@ -45,6 +53,14 @@ class TestUIController(unittest.TestCase):
 
     def test_draw_expected_failure(self):
         self.assertFalse(True, "Draw is not yet implemented.")
+
+    def test_handle_keys_screen_completion(self):
+        self.none_controller._handle_keys('new', None)
+        self.none_controller._handle_keys('new', None)
+        self.none_controller._handle_keys('new', None)
+        self.none_controller._handle_keys('new', None)
+        self.none_controller._handle_keys('complete', None)
+        self.assertEqual(len(self.none_controller._screen_history), 1)
 
     # I'm unsure how to test this, really. This is the best I can think of off the top of my head.
     def test_handle_keys(self):

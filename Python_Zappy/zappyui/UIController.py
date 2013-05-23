@@ -24,8 +24,12 @@ class UIController(object):
 
         order_result = self._screen_head.handle_order(order)
         if order_result != self._screen_head:
-            if order_result is None:
+            if order_result is None or order_result is False:
                 self._close_head_screen()
+            elif order_result is True:
+                self._close_head_screen()
+                while self._screen_head.close_on_child_completion() and len(self._screen_history) > 0:
+                    self._close_head_screen()
             else:
                 self._handle_new_screen(order_result)
 

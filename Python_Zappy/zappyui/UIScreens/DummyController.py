@@ -16,3 +16,6 @@ class DummyController(object):
 
     def zappy_use_item(self):
         self.zappy_use_item_called = True
+
+    def zappy_get_tools(self):
+        return ["Tool1", "Tool2", "Tool3"]

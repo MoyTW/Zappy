@@ -2,26 +2,21 @@ from zappyui.UIScreens import UIScreen
 
 __author__ = 'Travis Moy'
 
-import zappyui.Camera
 from zappyui.Orders import ORDERS
 
 
 class UIScreenLevel(UIScreen.UIScreen):
-    sidebar_width = 250
 
-    def __init__(self, level_controller, window_viewport_info, factory_screens):
+    def __init__(self, camera, level_controller, window_viewport_info, factory_screens):
         self._control = level_controller
         self._window_info = window_viewport_info
         self._factory = factory_screens
+        self._camera = camera
 
-        # Set by _init_camera; included for my convenience
-        self._camera = None
-        self._init_camera(level_controller, window_viewport_info)
+        self._init_camera(level_controller)
 
-    def _init_camera(self, level_controller, window_info):
+    def _init_camera(self, level_controller):
         level = level_controller.get_level()
-        self._camera = zappyui.Camera.Camera(level, lower_left=(0, 0),
-                                             upper_right=(window_info.width - self.sidebar_width, window_info.height))
         self._camera.center_on((level.get_width() / 2), (level.get_height() / 2))
         self._camera.center_on_entity(self._control.get_zappy())
 

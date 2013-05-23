@@ -25,3 +25,5 @@ class direction(object):
             return x, y
 
 DIR = direction()
+
+SIDEBAR_WIDTH = 250

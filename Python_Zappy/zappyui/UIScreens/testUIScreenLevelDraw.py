@@ -7,6 +7,8 @@ import loader.LoaderLevel
 import zappyui.UIScreens.UIScreenLevel as UIScreenLevel
 import zappyui.UIScreens.DummyController as DummyController
 import zappyui.UIScreens.DummyFactory as DummyFactory
+import zappyui.Camera
+import z_defs
 
 
 class DummyWindowInfo(object):
@@ -26,7 +28,10 @@ class TestUIScreenLevel(unittest.TestCase):
         temp_loader = loader.LoaderLevel.LoaderLevel('zappyui/test_assets')
         self.default_level = temp_loader.get_level(0)
 
-        self.default_screen = UIScreenLevel.UIScreenLevel(DummyController.DummyController(self.default_level),
+        camera = zappyui.Camera.Camera(self.default_level, lower_left=(0, 0),
+                                       upper_right = (self.width - z_defs.SIDEBAR_WIDTH, self.height))
+
+        self.default_screen = UIScreenLevel.UIScreenLevel(camera, DummyController.DummyController(self.default_level),
                                                           DummyWindowInfo(self.width, self.height),
                                                           DummyFactory.DummyFactory())
 

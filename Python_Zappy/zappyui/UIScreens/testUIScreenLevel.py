@@ -6,6 +6,8 @@ import zappyui.UIScreens.DummyController as DummyController
 import zappyui.UIScreens.UIScreenLevel as UIScreenLevel
 import collections
 import loader
+import z_defs
+import zappyui.Camera
 
 DummyInfo = collections.namedtuple('DummyInfo', 'width height')
 
@@ -14,7 +16,14 @@ class TestUIScreenLevel(unittest.TestCase):
     def setUp(self):
         temp_loader = loader.LoaderLevel.LoaderLevel('zappyui/test_assets')
         self.dummy_control = DummyController.DummyController(temp_loader.get_level(0))
-        self.default_screen = UIScreenLevel.UIScreenLevel(self.dummy_control, DummyInfo(0, 0),
+
+        self.width = 640
+        self.height = 480
+
+        camera = zappyui.Camera.Camera(self.dummy_control.get_level(), lower_left=(0, 0),
+                                       upper_right = (self.width - z_defs.SIDEBAR_WIDTH, self.height))
+
+        self.default_screen = UIScreenLevel.UIScreenLevel(camera, self.dummy_control, DummyInfo(0, 0),
                                                           DummyFactory.DummyFactory())
 
     def tearDown(self):

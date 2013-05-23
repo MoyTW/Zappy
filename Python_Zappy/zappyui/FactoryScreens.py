@@ -1,6 +1,6 @@
 __author__ = 'Travis Moy'
 
-import zappyui.UIScreens as Screens
+import z_defs
 
 
 class ViewportInfo(object):
@@ -12,19 +12,19 @@ class ViewportInfo(object):
 class FactoryScreens(object):
     def __init__(self, window, level_controller=None):
         self._window = window
-        self._sidebar_width = Screens.UIScreenLevel.sidebar_width
-        self._level_controller = level_controller
+        self._sidebar_width = z_defs.SIDEBAR_WIDTH
 
         # Blah blah my convenience.
         self._window_viewport = None
         self._level_viewport = None
         self._init_viewport_infos(window)
 
-    def _init_viewport_infos(self, window):
-        self._window_viewport = ViewportInfo(window.width, window.height)
-        self._level_viewport = ViewportInfo(window.width - self._sidebar_width, window.height)
+        # Blah blah my convenience.
+        self._camera = None
+        self._level_controller = None
+        self.set_level_controller(level_controller)
 
-    def set_level_controller(self):
+    def set_level_controller(self, level_controller):
         pass
 
     def create_ScreenLevel(self):
@@ -36,3 +36,7 @@ class FactoryScreens(object):
 
     def create_ScreenUseTool(self):
         pass
+
+    def _init_viewport_infos(self, window):
+        self._window_viewport = ViewportInfo(window.width, window.height)
+        self._level_viewport = ViewportInfo(window.width - self._sidebar_width, window.height)

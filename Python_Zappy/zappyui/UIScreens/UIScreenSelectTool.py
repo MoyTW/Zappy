@@ -19,11 +19,11 @@ class UIScreenSelectTool(UIScreen.UIScreen):
 
     def handle_order(self, order):
         if order == ORDERS.LEFT or order == ORDERS.RIGHT:
-            self._move_selection(order)
+            return self._move_selection(order)
         elif order == ORDERS.CONFIRM:
-            self._select_tool()
+            return self._select_tool()
         elif order == ORDERS.CANCEL:
-            self._cancel()
+            return self._cancel()
 
     def draw(self):
         pass

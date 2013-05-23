@@ -1,6 +1,7 @@
 __author__ = 'Travis Moy'
 
 import z_defs
+import zappyui.UIScreens as Screens
 
 
 class ViewportInfo(object):
@@ -27,9 +28,17 @@ class FactoryScreens(object):
     def set_level_controller(self, level_controller):
         pass
 
+    def create_ScreenFreeLook(self):
+        if self._level_controller is None:
+            return None
+        return Screens.UIScreenFreeLook(self._camera)
+
     def create_ScreenLevel(self):
         pass
         #return Screens.UIScreenLevel.UIScreenLevel(level_controller, self._window_viewport, self)
+
+    def create_ScreenLevelMenu(self):
+        pass
 
     def create_ScreenSelectTool(self):
         pass

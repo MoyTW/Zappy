@@ -1,7 +1,7 @@
 __author__ = 'Travis Moy'
 
 import unittest
-import UIController
+import zappyui.UIController
 
 
 class DummyKeybinds(object):
@@ -46,7 +46,7 @@ class DummyScreen(object):
 # Also, how do I test draw()?
 class TestUIController(unittest.TestCase):
     def setUp(self):
-        self.none_controller = UIController.UIController(None, DummyScreen(0), keybinds=DummyKeybinds())
+        self.none_controller = zappyui.UIController.UIController(None, DummyScreen(0), keybinds=DummyKeybinds())
 
     def tearDown(self):
         self.none_controller = None

@@ -1,12 +1,11 @@
 __author__ = 'Travis Moy'
 
-from pyglet.window import key
 import unittest
 import pyglet
 import loader.LoaderLevel
 import zappyui.UIScreens.UIScreenLevel as UIScreenLevel
-import zappyui.UIScreens.DummyController as DummyController
-import zappyui.UIScreens.DummyFactory as DummyFactory
+import dummies.DummyController as DummyController
+import dummies.DummyFactory as DummyFactory
 import zappyui.Camera
 import z_defs
 

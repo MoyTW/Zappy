@@ -1,13 +1,15 @@
 __author__ = 'Travis Moy'
 
 import unittest
-import zappyui.UIScreens.DummyFactory as DummyFactory
-import zappyui.UIScreens.DummyController as DummyController
-import zappyui.UIScreens.UIScreenLevel as UIScreenLevel
 import collections
+
+import dummies.DummyFactory as DummyFactory
+import dummies.DummyController as DummyController
+import zappyui.UIScreens.UIScreenLevel as UIScreenLevel
 import loader
 import z_defs
 import zappyui.Camera
+
 
 DummyInfo = collections.namedtuple('DummyInfo', 'width height')
 

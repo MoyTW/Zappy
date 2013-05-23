@@ -71,8 +71,9 @@
     <file path="/DummyController.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369339899906" ignored="false" />
     <file path="/DummyFactory.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369342591781" ignored="false" />
     <file path="/UIScreenLevelMenu.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369262076729" ignored="false" />
-    <file path="/UIScreenSelectTool.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369343647312" ignored="false" />
+    <file path="/UIScreenSelectTool.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369343855626" ignored="false" />
     <file path="/UIScreenIntroMenu.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369342964344" ignored="false" />
+    <file path="/UIScreenBaseMenu.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369344682131" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,33 +93,22 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="UIScreenFreeLook.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/zappyui/UIScreens/UIScreenFreeLook.py">
+      <file leaf-file-name="UIScreenMenuBase.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/zappyui/UIScreens/UIScreenMenuBase.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="19" selection-start="384" selection-end="384" vertical-scroll-proportion="0.54948807">
-              <folding>
-                <element signature="e#27#42#0" expanded="true" />
-              </folding>
+            <state line="6" column="22" selection-start="164" selection-end="164" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UIScreenSelectTool.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="UIScreenSelectTool.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/zappyui/UIScreens/UIScreenSelectTool.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="19" selection-start="825" selection-end="825" vertical-scroll-proportion="0.0">
+            <state line="15" column="0" selection-start="443" selection-end="443" vertical-scroll-proportion="0.3686007">
               <folding>
                 <element signature="e#27#42#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Orders.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/zappyui/Orders.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="13" selection-start="700" selection-end="700" vertical-scroll-proportion="0.0">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -133,8 +123,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/zappyui/testCameraSetLevel.py" />
-        <option value="$PROJECT_DIR$/zappyui/UIScreens/testUIScreenLevelDraw.py" />
         <option value="$PROJECT_DIR$/zappyui/UIScreens/UIScreenLevelMenu.py" />
         <option value="$PROJECT_DIR$/zappyui/UIScreens/testUIScreenLevel.py" />
         <option value="$PROJECT_DIR$/zappyui/UIScreens/UIScreenLevel.py" />
@@ -149,6 +137,8 @@
         <option value="$PROJECT_DIR$/zappyui/Orders.py" />
         <option value="$PROJECT_DIR$/zappyui/UIScreens/UIScreenFreeLook.py" />
         <option value="$PROJECT_DIR$/zappyui/UIScreens/UIScreenSelectTool.py" />
+        <option value="$PROJECT_DIR$/zappyui/UIScreenBaseMenu.py" />
+        <option value="$PROJECT_DIR$/zappyui/UIScreens/UIScreenMenuBase.py" />
       </list>
     </option>
   </component>
@@ -229,39 +219,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="test_assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Python_Zappy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Python_Zappy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zappyui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="UIScreens" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Python_Zappy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Python_Zappy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="level" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -634,11 +592,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/zappyui/UIScreens/testUIScreenLevel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="21" selection-start="21" selection-end="21" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/zappyui/FactoryScreens.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="37" column="12" selection-start="1086" selection-end="1086" vertical-scroll-proportion="1.4102564" />
@@ -652,13 +605,6 @@
     <entry file="file://$PROJECT_DIR$/zappyui/testUIController.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="37" column="13" selection-start="922" selection-end="922" vertical-scroll-proportion="0.66841185">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/zappyui/UIController.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="40" selection-start="1465" selection-end="1465" vertical-scroll-proportion="1.0409557">
           <folding />
         </state>
       </provider>
@@ -677,13 +623,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/zappyui/UIScreens/UIScreenLevelMenu.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="0" selection-start="98" selection-end="98" vertical-scroll-proportion="0.28668943">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/zappyui/UIScreens/UIScreen.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="27" column="20" selection-start="1126" selection-end="1126" vertical-scroll-proportion="0.7486911">
@@ -694,13 +633,6 @@
     <entry file="file://$PROJECT_DIR$/zappyui/UIScreens/UIScreenIntroMenu.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="4" column="0" selection-start="74" selection-end="74" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/zappyui/UIScreens/UIScreenLevel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="4" selection-start="194" selection-end="194" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -721,23 +653,51 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/zappyui/Orders.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="13" selection-start="700" selection-end="700" vertical-scroll-proportion="0.0">
+        <state line="24" column="13" selection-start="700" selection-end="700" vertical-scroll-proportion="0.79522187">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/zappyui/UIScreens/UIScreenSelectTool.py">
+    <entry file="file://$PROJECT_DIR$/zappyui/UIScreens/UIScreenLevel.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="19" selection-start="825" selection-end="825" vertical-scroll-proportion="0.0">
+        <state line="11" column="4" selection-start="194" selection-end="194" vertical-scroll-proportion="-0.7120419">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zappyui/UIScreens/UIScreenFreeLook.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="19" selection-start="576" selection-end="576" vertical-scroll-proportion="0.91808873">
           <folding>
             <element signature="e#27#42#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/zappyui/UIScreens/UIScreenFreeLook.py">
+    <entry file="file://$PROJECT_DIR$/zappyui/UIScreens/UIScreenLevelMenu.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="19" selection-start="384" selection-end="384" vertical-scroll-proportion="0.54948807">
+        <state line="7" column="0" selection-start="98" selection-end="98" vertical-scroll-proportion="0.28668943">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zappyui/UIController.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="0" selection-start="58" selection-end="58" vertical-scroll-proportion="0.16382253">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zappyui/UIScreens/UIScreenMenuBase.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="22" selection-start="164" selection-end="164" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zappyui/UIScreens/UIScreenSelectTool.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="0" selection-start="443" selection-end="443" vertical-scroll-proportion="0.3686007">
           <folding>
             <element signature="e#27#42#0" expanded="true" />
           </folding>

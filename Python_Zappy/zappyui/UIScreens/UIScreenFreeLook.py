@@ -5,9 +5,8 @@ from zappyui.Orders import ORDERS
 
 
 class UIScreenFreeLook(UIScreen.UIScreen):
-    def __init__(self, camera, factory_screens):
+    def __init__(self, camera):
         self._camera = camera
-        self._factory = factory_screens
 
     def draw(self):
         self._camera.draw()

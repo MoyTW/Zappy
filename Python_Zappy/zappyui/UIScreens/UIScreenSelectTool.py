@@ -26,7 +26,7 @@ class UIScreenSelectTool(UIScreen.UIScreen):
             return self._cancel()
 
     def draw(self):
-        pass
+        print "In ScreenSelectTool now."
 
     def close_on_child_completion(self):
         return True

@@ -34,7 +34,7 @@ class UIController(object):
                 self._handle_new_screen(order_result)
 
     def _draw(self):
-        pass
+        self._screen_head.draw()
 
     def _handle_new_screen(self, head):
         self._screen_history.append(self._screen_head)
@@ -53,7 +53,7 @@ class UIController(object):
         def on_key_press(symbol, modifiers):
             self._handle_keys(symbol, modifiers)
 
-        @self._window.draw
+        @self._window.event
         def on_draw():
             self._window.clear()
             self._draw()

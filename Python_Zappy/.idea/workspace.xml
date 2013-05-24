@@ -79,7 +79,7 @@
     <file path="/DummyWindow.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369347206818" ignored="false" />
     <file path="/dummies.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369346770077" ignored="false" />
     <file path="/exceptions.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369349393544" ignored="false" />
-    <file path="/UIScreenMenuBase.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369433563607" ignored="false" />
+    <file path="/UIScreenMenuBase.py" changelist="f86ef7d7-8144-4fcf-8bc1-0c5980f3dcc9" time="1369433822377" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +102,7 @@
       <file leaf-file-name="UIScreenMenuBase.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/zappyui/UIScreens/UIScreenMenuBase.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="68" column="43" selection-start="3113" selection-end="3113" vertical-scroll-proportion="0.8773424">
+            <state line="62" column="12" selection-start="2838" selection-end="2838" vertical-scroll-proportion="0.36626917">
               <folding>
                 <element signature="e#27#72#0" expanded="true" />
               </folding>
@@ -811,7 +811,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/zappyui/UIScreens/UIScreenMenuBase.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="43" selection-start="3113" selection-end="3113" vertical-scroll-proportion="0.8773424">
+        <state line="62" column="12" selection-start="2838" selection-end="2838" vertical-scroll-proportion="0.36626917">
           <folding>
             <element signature="e#27#72#0" expanded="true" />
           </folding>

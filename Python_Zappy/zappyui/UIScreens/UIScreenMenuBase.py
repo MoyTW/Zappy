@@ -54,7 +54,22 @@ class UIScreenMenuBase(UIScreen.UIScreen):
     def handle_order(self, order):
         if order == ORDERS.UP or order == ORDERS.DOWN:
             return self._change_selection(order)
+        elif order == ORDERS.CONFIRM:
+            return self._confirm_selection()
         return self
+
+    def _confirm_selection(self):
+        if self._possible_selections[self._selection] == 'player':
+            print "You have selected the Player button! It does nothing."
+            return self
+        elif self._possible_selections[self._selection] == 'levels':
+            print "LEVELS!"
+            return self
+        elif self._possible_selections[self._selection] == 'options':
+            print "Options also does nothing."
+            return self
+        else:
+            pyglet.app.exit()
 
     def _change_selection(self, order):
         if order == ORDERS.UP:
@@ -63,7 +78,6 @@ class UIScreenMenuBase(UIScreen.UIScreen):
                 self._selection = len(self._possible_selections) - 1
         elif order == ORDERS.DOWN:
             self._selection += 1
-            print len(self._possible_selections)
             if self._selection >= len(self._possible_selections):
                 self._selection = 0
         self._reposition_selection_sprite()

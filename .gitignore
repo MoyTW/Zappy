@@ -1,0 +1,5 @@
+*.dia~
+*.pyc
+*.xml
+*.autosave
+*.idea

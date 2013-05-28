@@ -11,7 +11,9 @@ import warnings
 
 class LoaderLevel(object):
     def __init__(self, levels_folder='levels'):
+        self._levels_folder = levels_folder
         self._levels_path = self._find_levels_path(levels_folder)
+        self._preview_loader = pyglet.resource.Loader(script_home="{0}/preview_images".format(self._levels_path))
 
         self._entity_index = LoaderEntityIndex.LoaderEntityIndex()
         self._levels = dict()
@@ -61,10 +63,11 @@ class LoaderLevel(object):
         self._levels[info.get_number()] = level.Level.Level(info)
 
     def _return_level_preview(self, level_number):
-        path = self._levels_path + "/preview_images/" + "{0}.png".format(level_number)
+        path = "{0}.png".format(level_number)
+
         try:
-            return pyglet.resource.image(path)
-        except pyglet.resource.ResourceNotFoundException:
+            return self._preview_loader.image(path)
+        except pyglet.resource.ResourceNotFoundException as e:
             warnstr = "There is no preview available for level {0}".format(level_number)
             warnings.warn(warnstr, RuntimeWarning)
             return self._default_preview
@@ -143,4 +146,5 @@ class LoaderLevel(object):
 
     # No unit test.
     def _find_levels_path(self, levels_folder):
-        return os.path.join(os.path.dirname(__file__), "..", levels_folder)
+        path = os.path.split(os.path.dirname(__file__))[0]
+        return os.path.join(path, levels_folder)

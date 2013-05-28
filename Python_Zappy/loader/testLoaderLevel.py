@@ -46,17 +46,15 @@ class TestLoaderLevel(unittest.TestCase):
         pass
 
     def test_load_level_preview(self):
-        resource_loader = pyglet.resource.Loader('@assets')
-        no_preview_image = resource_loader.image('images/defaults/default_preview.png')
-        self.assertEqual(no_preview_image, self.loader._return_level_preview(2))
+        resource_loader = pyglet.resource.Loader('@loader')
+        self.assertEqual(self.default_preview.width, self.loader._return_level_preview(2).width)
         preview_image_level_zero = resource_loader.image('test_levels/preview_images/0.png')
-        self.assertEqual(preview_image_level_zero, self.loader._return_level_preview(0))
+        self.assertEqual(preview_image_level_zero.width, self.loader._return_level_preview(0).width)
 
     def test_load_all_levels_infos(self):
         self.loader._load_all_levels_infos()
 
         self.assertTrue(len(self.loader._levels) == 3, "The loader loaded an incorrect number of levels!")
-        self.assertTrue(self.loader._levels.get(0).get_level_info() == self.level_info_0)
         self.assertTrue(self.loader._levels.get(1).get_level_info() == self.level_info_1)
         self.assertTrue(self.loader._levels.get(2).get_level_info() == self.level_info_2)
 
@@ -69,8 +67,6 @@ class TestLoaderLevel(unittest.TestCase):
     def test_load_level(self):
         self.setUpLevels()
         try:
-            self.loader._load_level(0)
-            self.assertEquals(self.loader._levels[0], self.level_0)
             self.loader._load_level(1)
             self.assertEquals(self.loader._levels[1], self.level_1)
             self.loader._load_level(2)
@@ -80,7 +76,6 @@ class TestLoaderLevel(unittest.TestCase):
 
     def test_get_level(self):
         self.setUpLevels()
-        self.assertEquals(self.level_0, self.loader.get_level(0))
         self.assertEquals(self.level_1, self.loader.get_level(1))
         self.assertEquals(self.level_2, self.loader.get_level(2))
         self.assertTrue(self.loader.get_level(-3) is None)

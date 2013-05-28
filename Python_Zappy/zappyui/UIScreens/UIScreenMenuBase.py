@@ -1,13 +1,13 @@
 __author__ = 'Travis Moy'
 
-import zappyui.UIScreens.UIScreen as UIScreen
+import UIScreen
 import pyglet
 from zappyui.Orders import ORDERS
 
 
 # This is the Base screen, which is at the bottom of this history.
 class UIScreenMenuBase(UIScreen.UIScreen):
-    ASSETS_PATH = 'images/base_menu/'
+    ASSETS_PATH = 'images/menu_base/'
     BUTTON_DISTANCE = 65
 
     def __init__(self, window_viewport, selection=1):

@@ -37,11 +37,14 @@ class FactoryScreens(object):
                                              upper_right=(self._window.width - z_defs.SIDEBAR_WIDTH,
                                                           self._window.height))
 
+    def create_ScreenMenuBase(self):
+        return Screens.UIScreenMenuBase.UIScreenMenuBase(self._window_viewport)
+
     def create_ScreenFreeLook(self):
         if self._level_controller is None:
             raise uiexcept.LevelNotLoadedException("Factory was asked to create a in-level screen, but no level was "
                                                    "loaded! The programmer has made a fatal oversight!")
-        return Screens.UIScreenFreeLook(self._camera)
+        return Screens.UIScreenFreeLook.UIScreenFreeLook(self._camera)
 
     def create_ScreenLevel(self):
         if self._level_controller is None:
@@ -56,7 +59,7 @@ class FactoryScreens(object):
         if self._level_controller is None:
             raise uiexcept.LevelNotLoadedException("Factory was asked to create a in-level screen, but no level was "
                                                    "loaded! The programmer has made a fatal oversight!")
-        return Screens.UIScreenSelectTool(self._level_controller, self._level_viewport, self)
+        return Screens.UIScreenSelectTool.UIScreenSelectTool(self._level_controller, self._level_viewport, self)
 
     def create_ScreenUseTool(self):
         pass

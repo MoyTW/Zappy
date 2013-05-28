@@ -1,30 +1,20 @@
 __author__ = 'Travis Moy'
 
 import pyglet
-from zappyui.UIScreens.UIScreenMenuBase import UIScreenMenuBase
 from zappyui.UIController import UIController
+from zappyui.FactoryScreens import FactoryScreens
+from loader.LoaderLevel import LoaderLevel
 
-#width = 1920
-#height = 1080
-width = 640 * 2
-height = 480 * 2
+width = 1920
+height = 1080
+#width = 640 * 2
+#height = 480 * 2
+
 window = pyglet.window.Window(width=width, height=height)
-print width, height
 
+level_loader = LoaderLevel()
+factory = FactoryScreens(window)
 
-class Viewport(object):
-    def __init__(self, width, height):
-        self.width = width
-        self.height = height
-
-menu = UIScreenMenuBase(Viewport(width, height))
-uicontrol = UIController(window, menu)
-
-'''
-@window.event
-def on_draw():
-    window.clear()
-    menu.draw()
-'''
+uicontrol = UIController(window, factory.create_ScreenMenuBase())
 
 pyglet.app.run()

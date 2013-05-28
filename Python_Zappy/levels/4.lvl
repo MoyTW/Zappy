@@ -1,0 +1,12 @@
+!NAME!,Level Four
+!NUMBER!,4
+!WIDTH!,8
+!HEIGHT!,2
+
+!DEFINITIONS!
+a,True,images/floor.png,[]
+D,True,images/floor.png,[Drone]
+
+!MAP!
+D,a,a,a,a,a,a,a
+a,a,a,a,a,a,a,a

@@ -5,10 +5,12 @@ from zappyui.UIController import UIController
 from zappyui.FactoryScreens import FactoryScreens
 from loader.LoaderLevel import LoaderLevel
 
-width = 1920
-height = 1080
-#width = 640 * 2
-#height = 480 * 2
+#width = 1920
+#height = 1080
+width = 1280
+height = 1024
+#width = 640
+#height = 480
 
 window = pyglet.window.Window(width=width, height=height)
 

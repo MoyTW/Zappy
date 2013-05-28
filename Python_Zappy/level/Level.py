@@ -45,6 +45,9 @@ class Level:
     def get_height(self):
         return self._info.get_height()
 
+    def get_preview(self):
+        return self._info.get_preview()
+
     def get_cell_at(self, x, y):
         if self._check_coordinates(x, y):
             return self._cells[x][y]

@@ -42,7 +42,7 @@ class FactoryScreens(object):
         return Screens.UIScreenMenuBase.UIScreenMenuBase(self._window_viewport, self)
 
     def create_ScreenMenuLevel(self):
-        return Screens.UIScreenMenuLevel.UIScreenMenuLevel(self._loader_level, self)
+        return Screens.UIScreenMenuLevel.UIScreenMenuLevel(self._loader_level, self._window_viewport, self)
 
     def create_ScreenFreeLook(self):
         if self._level_controller is None:

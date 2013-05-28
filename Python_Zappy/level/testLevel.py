@@ -27,9 +27,6 @@ class TestLevel(unittest.TestCase):
         self.empty_test_level = None
         self.initialized_test_level = None
 
-    def test_load_level_preview(self):
-        pass
-
     def test_cells_are_none(self):
         self.assertEquals(self.empty_test_level.cells_are_none(), True)
         self.assertEquals(self.initialized_test_level.cells_are_none(), False)

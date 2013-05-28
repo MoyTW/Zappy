@@ -5,6 +5,8 @@ import level.Cell
 import LoaderEntityIndex
 import os
 import LoaderCellDefinition
+import pyglet
+import warnings
 
 
 class LoaderLevel(object):
@@ -13,6 +15,7 @@ class LoaderLevel(object):
 
         self._entity_index = LoaderEntityIndex.LoaderEntityIndex()
         self._levels = dict()
+        self._default_preview = self._return_default_preview()
 
         self._load_all_levels_infos()
 
@@ -33,6 +36,10 @@ class LoaderLevel(object):
             pass
         return self._levels.get(level_number)
 
+    def _return_default_preview(self):
+        resource_loader = pyglet.resource.Loader('@assets')
+        return resource_loader.image('images/defaults/default_preview.png')
+
     # For every level in the folder, load the level info (Name, number, how large it is, whatever else I later add).
     # Should this be called in the constructor?
     def _load_all_levels_infos(self):
@@ -45,7 +52,7 @@ class LoaderLevel(object):
         file = open(os.path.join(self._levels_path, filename), 'r')
         lines = file.readlines()
         number = self._read_line_value(lines[1])
-        preview = self._load_level_preview(number)
+        preview = self._return_level_preview(number)
         info = level.LevelInfo.LevelInfo(name=self._read_line_value(lines[0]),
                                          number=number,
                                          width=self._read_line_value(lines[2]),
@@ -53,8 +60,14 @@ class LoaderLevel(object):
                                          preview=preview)
         self._levels[info.get_number()] = level.Level.Level(info)
 
-    def _load_level_preview(self, level_number):
-        pass
+    def _return_level_preview(self, level_number):
+        path = self._levels_path + "/preview_images/" + "{0}.png".format(level_number)
+        try:
+            return pyglet.resource.image(path)
+        except pyglet.resource.ResourceNotFoundException:
+            warnstr = "There is no preview available for level {0}".format(level_number)
+            warnings.warn(warnstr, RuntimeWarning)
+            return self._default_preview
 
     def _read_line_value(self, line):
         pair = line.split(',')

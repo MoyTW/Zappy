@@ -13,9 +13,12 @@ class TestLoaderLevel(unittest.TestCase):
 
         self.loader = loader.LoaderLevel.LoaderLevel('loader/test_levels')
 
-        self.level_info_0 = level.LevelInfo.LevelInfo('This is a test level!', 0, 5, 6, None)
-        self.level_info_1 = level.LevelInfo.LevelInfo('Four-Square', 1, 2, 2, None)
-        self.level_info_2 = level.LevelInfo.LevelInfo('Rectangle', 2, 8, 2, None)
+        resource_loader = pyglet.resource.Loader('@assets')
+        self.default_preview = resource_loader.image('images/defaults/default_preview.png')
+
+        self.level_info_0 = level.LevelInfo.LevelInfo('This is a test level!', 0, 5, 6, self.default_preview)
+        self.level_info_1 = level.LevelInfo.LevelInfo('Four-Square', 1, 2, 2, self.default_preview)
+        self.level_info_2 = level.LevelInfo.LevelInfo('Rectangle', 2, 8, 2, self.default_preview)
 
     def setUpLevels(self):
         # Set up level 0
@@ -41,6 +44,13 @@ class TestLoaderLevel(unittest.TestCase):
 
     def tearDown(self):
         pass
+
+    def test_load_level_preview(self):
+        resource_loader = pyglet.resource.Loader('@assets')
+        no_preview_image = resource_loader.image('images/defaults/default_preview.png')
+        self.assertEqual(no_preview_image, self.loader._return_level_preview(2))
+        preview_image_level_zero = resource_loader.image('test_levels/preview_images/0.png')
+        self.assertEqual(preview_image_level_zero, self.loader._return_level_preview(0))
 
     def test_load_all_levels_infos(self):
         self.loader._load_all_levels_infos()

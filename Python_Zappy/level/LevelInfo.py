@@ -25,6 +25,10 @@ class LevelInfo:
         return self._preview
 
     def __eq__(self, other):
-        if other is None:
+        try:
+            return self._name == other.get_name() and self._height == other.get_height() and \
+                self._number == other.get_number() and self._width == other.get_width() and \
+                self._height == other.get_height() and self._preview.width == other.get_preview().width and \
+                self._preview.height == other.get_preview().height
+        except AttributeError:
             return False
-        return self.__dict__ == other.__dict__

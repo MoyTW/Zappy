@@ -12,7 +12,7 @@ class TestFactoryScreens(unittest.TestCase):
         self.width = 640
         self.height = 480
         self.dummy_control = DummyController(None)
-        self.default_factory = zappyui.FactoryScreens.FactoryScreens(DummyWindow(self.width, self.height))
+        self.default_factory = zappyui.FactoryScreens.FactoryScreens(DummyWindow(self.width, self.height), None)
 
     def tearDown(self):
         self.default_factory = None

@@ -12,8 +12,8 @@ height = 1080
 
 window = pyglet.window.Window(width=width, height=height)
 
-level_loader = LoaderLevel()
-factory = FactoryScreens(window)
+loader_level = LoaderLevel()
+factory = FactoryScreens(window, loader_level)
 
 uicontrol = UIController(window, factory.create_ScreenMenuBase())
 

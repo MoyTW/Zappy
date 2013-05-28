@@ -13,8 +13,9 @@ class ViewportInfo(object):
 
 
 class FactoryScreens(object):
-    def __init__(self, window, level_controller=None):
+    def __init__(self, window, loader_level, level_controller=None):
         self._window = window
+        self._loader_level = loader_level
 
         # Blah blah my convenience.
         self._window_viewport = None
@@ -38,7 +39,10 @@ class FactoryScreens(object):
                                                           self._window.height))
 
     def create_ScreenMenuBase(self):
-        return Screens.UIScreenMenuBase.UIScreenMenuBase(self._window_viewport)
+        return Screens.UIScreenMenuBase.UIScreenMenuBase(self._window_viewport, self)
+
+    def create_ScreenMenuLevel(self):
+        return Screens.UIScreenMenuLevel.UIScreenMenuLevel(self._loader_level, self)
 
     def create_ScreenFreeLook(self):
         if self._level_controller is None:

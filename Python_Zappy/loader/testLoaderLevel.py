@@ -13,9 +13,9 @@ class TestLoaderLevel(unittest.TestCase):
 
         self.loader = loader.LoaderLevel.LoaderLevel('loader/test_levels')
 
-        self.level_info_0 = level.LevelInfo.LevelInfo('This is a test level!', 0, 5, 6)
-        self.level_info_1 = level.LevelInfo.LevelInfo('Four-Square', 1, 2, 2)
-        self.level_info_2 = level.LevelInfo.LevelInfo('Rectangle', 2, 8, 2)
+        self.level_info_0 = level.LevelInfo.LevelInfo('This is a test level!', 0, 5, 6, None)
+        self.level_info_1 = level.LevelInfo.LevelInfo('Four-Square', 1, 2, 2, None)
+        self.level_info_2 = level.LevelInfo.LevelInfo('Rectangle', 2, 8, 2, None)
 
     def setUpLevels(self):
         # Set up level 0

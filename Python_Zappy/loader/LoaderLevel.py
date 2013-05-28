@@ -16,6 +16,9 @@ class LoaderLevel(object):
 
         self._load_all_levels_infos()
 
+    def get_num_levels(self):
+        return len(self._levels)
+
     def get_level_info(self, level_number):
         level = self._levels.get(level_number)
         if level is None:
@@ -41,11 +44,17 @@ class LoaderLevel(object):
     def _load_level_info(self, filename):
         file = open(os.path.join(self._levels_path, filename), 'r')
         lines = file.readlines()
+        number = self._read_line_value(lines[1])
+        preview = self._load_level_preview(number)
         info = level.LevelInfo.LevelInfo(name=self._read_line_value(lines[0]),
-                                         number=self._read_line_value(lines[1]),
+                                         number=number,
                                          width=self._read_line_value(lines[2]),
-                                         height=self._read_line_value(lines[3]))
+                                         height=self._read_line_value(lines[3]),
+                                         preview=preview)
         self._levels[info.get_number()] = level.Level.Level(info)
+
+    def _load_level_preview(self, level_number):
+        pass
 
     def _read_line_value(self, line):
         pair = line.split(',')

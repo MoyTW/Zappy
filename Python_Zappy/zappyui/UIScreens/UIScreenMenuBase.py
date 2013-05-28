@@ -9,11 +9,12 @@ from zappyui.Orders import ORDERS
 class UIScreenMenuBase(UIScreen.UIScreen):
     ASSETS_PATH = 'images/menu_base/'
     BUTTON_DISTANCE = 65
+    _possible_selections = ['player', 'levels', 'options', 'exit']
 
-    def __init__(self, window_viewport, selection=1):
+    def __init__(self, window_viewport, factory, selection=1):
         self._viewport = window_viewport
         self._selection = selection
-        self._possible_selections = ['player', 'levels', 'options', 'exit']
+        self._factory = factory
 
         self._center_pixel = (self._viewport.width / 2, self._viewport.height / 2)
 
@@ -63,8 +64,7 @@ class UIScreenMenuBase(UIScreen.UIScreen):
             print "You have selected the Player button! It does nothing."
             return self
         elif self._possible_selections[self._selection] == 'levels':
-            print "LEVELS!"
-            return self
+            return self._factory.create_ScreenMenuLevel()
         elif self._possible_selections[self._selection] == 'options':
             print "Options also does nothing."
             return self

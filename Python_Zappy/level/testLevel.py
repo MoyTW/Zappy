@@ -14,7 +14,7 @@ class TestLevel(unittest.TestCase):
         self.width = 5
         self.height = 3
 
-        self.test_info = level.LevelInfo.LevelInfo("Test Level", 0, self.width, self.height)
+        self.test_info = level.LevelInfo.LevelInfo("Test Level", 0, self.width, self.height, None)
         self.test_cells = [[level.Cell.Cell(self.default_image_path) for h in range(self.height)]
                            for w in range(self.width)]
 
@@ -26,6 +26,9 @@ class TestLevel(unittest.TestCase):
         self.test_cells = None
         self.empty_test_level = None
         self.initialized_test_level = None
+
+    def test_load_level_preview(self):
+        pass
 
     def test_cells_are_none(self):
         self.assertEquals(self.empty_test_level.cells_are_none(), True)

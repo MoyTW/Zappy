@@ -1,0 +1,13 @@
+!NAME!,This is a test level!
+!NUMBER!,4
+!WIDTH!,3
+!HEIGHT!,3
+
+!DEFINITIONS!
+a,True,images/floor.png,[]
+b,False,images/wall.png,[]
+
+!MAP!
+b,a,b
+b,a,a
+b,a,b

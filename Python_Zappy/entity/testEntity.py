@@ -7,7 +7,7 @@ import Entity
 class TestEntity(unittest.TestCase):
 
     def setUp(self):
-        self.default_entity = Entity.Entity(None)
+        self.default_entity = Entity.Entity(None, None)
 
     def tearDown(self):
         self.default_entity = None

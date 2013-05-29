@@ -8,8 +8,9 @@ class Entity(object):
     DEFAULT_IMAGE_PATH = 'images/defaults/default_entity.png'
     IMAGE_FOLDER = 'images/entities/'
 
-    def __init__(self, image_name):
+    def __init__(self, image_name, level):
         self._image_name = image_name
+        self._level = level
 
         self._image = None
         self._load_image()

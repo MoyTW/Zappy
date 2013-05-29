@@ -14,8 +14,13 @@ class UIScreenMenuLevel(UIScreen.UIScreen):
     PREVIEW_SCALE = .75
     BLOCK_WIDTH = 250
     BLOCK_HEIGHT = 400
-    BORDER_WIDTH = 40
+    BORDER_WIDTH = 50
     BORDER_HEIGHT = 40
+
+    _level_drawables = list()
+    _fixed_drawables = list()
+    _level_batch = pyglet.graphics.Batch()
+    _fixed_batch = pyglet.graphics.Batch()
 
     def __init__(self, loader_level, viewport_info, factory):
         self._loader_level = loader_level
@@ -27,6 +32,7 @@ class UIScreenMenuLevel(UIScreen.UIScreen):
         self._avail_height = None
         self._num_cols = None
         self._num_rows = None
+
         self._init_number_levels_to_show()
 
         self._num_levels = self._loader_level.get_num_levels()
@@ -35,6 +41,25 @@ class UIScreenMenuLevel(UIScreen.UIScreen):
 
         self._draw_points = [[None for _ in range(self._num_rows)] for _ in range(self._num_cols)]
         self._init_draw_points()
+
+        self._init_fixed_drawables()
+
+    def _init_fixed_drawables(self):
+        temp_loader = pyglet.resource.Loader('@assets')
+
+        left_image = temp_loader.image("{0}left.png".format(self.ASSETS_PATH))
+        left_sprite = pyglet.sprite.Sprite(left_image,
+                                           x=self.BORDER_WIDTH / 2 - left_image.width / 2,
+                                           y=self._viewport_info.height / 2 - left_image.height / 2,
+                                           batch=self._fixed_batch)
+        self._fixed_drawables.append(left_sprite)
+
+        right_image = temp_loader.image("{0}right.png".format(self.ASSETS_PATH))
+        right_sprite = pyglet.sprite.Sprite(right_image, x=self._viewport_info.width -
+                                            self.BORDER_WIDTH / 2 - (left_image.width / 2),
+                                            y=self._viewport_info.height / 2 - right_image.height / 2,
+                                            batch=self._fixed_batch)
+        self._fixed_drawables.append(right_sprite)
 
     def _init_number_levels_to_show(self):
         self.avail_width = self._viewport_info.width - self.BORDER_WIDTH * 2
@@ -63,7 +88,9 @@ class UIScreenMenuLevel(UIScreen.UIScreen):
         if info is None:
             return
 
-        preview_sprite = pyglet.sprite.Sprite(info.get_preview(), x=point[0] - self.BLOCK_WIDTH / 2, y=point[1])
+        preview_sprite = pyglet.sprite.Sprite(info.get_preview(),
+                                              x=point[0] - info.get_preview().width * self.PREVIEW_SCALE / 2,
+                                              y=point[1])
         preview_sprite.scale = self.PREVIEW_SCALE
         preview_sprite.draw()
 
@@ -84,4 +111,5 @@ class UIScreenMenuLevel(UIScreen.UIScreen):
 
     # Draw as follows: [0][3], [1][3], [2][3], [3][3]
     def draw(self):
+        self._fixed_batch.draw()
         self._draw_level_display()

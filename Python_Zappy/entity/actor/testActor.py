@@ -31,6 +31,7 @@ class TestActor(unittest.TestCase):
         loader = LoaderLevel.LoaderLevel('loader/test_levels')
         level_zero = loader.get_level(4)
         actor = Actor.Actor(4, level_zero)
+        level_zero.place_entity_at(actor, 1, 1)
 
         self.assertTrue(actor.attempt_move(DIR.N))
         self.assertEqual(actor._current_moves, 3)

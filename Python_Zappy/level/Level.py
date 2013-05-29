@@ -78,6 +78,12 @@ class Level:
             return self._cells[x][y].remove_entity(entity)
         return False
 
+    def move_entity_from_to(self, entity, old_x, old_y, new_x, new_y):
+        if not self.remove_entity_from(entity, old_x, old_y):
+            return False
+        self.place_entity_at(entity, new_x, new_y)
+        return True
+
     # Dumb search
     def find_coordinates_of_entity(self, entity):
         for x in range(self.get_width()):

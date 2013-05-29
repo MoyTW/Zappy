@@ -53,14 +53,25 @@ class Level:
             return self._cells[x][y]
         return None
 
+    def cell_is_passable(self, x, y):
+        cell = self.get_cell_at(x, y)
+        if cell is not None:
+            return cell.get_passable()
+        return False
+
     def get_display_images_at(self, x, y):
         if self._check_coordinates(x, y):
             return self._cells[x][y].get_display_images()
         return None
 
+    # If the entity has the function "set_coords" defined, this will attempt to call it.
     def place_entity_at(self, entity, x, y):
         if self._check_coordinates(x, y):
             self._cells[x][y].add_entity(entity)
+        try:
+            entity.set_coords(x, y)
+        except AttributeError:
+            pass
 
     def remove_entity_from(self, entity, x, y):
         if self._check_coordinates(x, y):

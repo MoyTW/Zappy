@@ -23,11 +23,15 @@ class Actor(Entity.Entity):
     def get_tools(self):
         return self._tools
 
+    # Not sure if I want to do it by coordinate, any more.
+    # I think I want to do it by entity, instead.
+    '''
     def use_tool_on(self, tool, coordinates):
         if tool in self._tools:
             return tool.use_on(coordinates)
         else:
             return False
+    '''
 
     def attempt_move(self, direction):
         if self._current_moves <= 0:

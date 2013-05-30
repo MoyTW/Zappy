@@ -15,13 +15,20 @@ class Actor(Entity.Entity):
         self._y = y
 
         self._tools = tools
-        self._senses = senses
+        if senses is None:
+            self._senses = list()
+        else:
+            self._senses = senses
 
         # Set by self.detect_entities()
         self._detected_entities = list()
 
     def detect_entities(self):
-        pass
+        self._detected_entities = list()
+        for sense in self._senses:
+            self._detected_entities.extend(sense.detect_entities(self._x, self._y, self._level))
+        if self in self._detected_entities:
+            self._detected_entities.remove(self)
 
     def set_coords(self, x, y):
         self._x = x

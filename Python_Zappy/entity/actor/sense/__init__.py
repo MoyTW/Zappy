@@ -1,1 +1,4 @@
-__author__ = 'Tsukasa'
+__author__ = 'Travis Moy'
+
+import Sense
+import SenseSeismic

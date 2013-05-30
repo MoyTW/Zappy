@@ -5,20 +5,34 @@ import entity.actor.Actor as Actor
 import dummies.DummyTool as DummyTool
 import loader.LoaderLevel as LoaderLevel
 from z_defs import DIR
+import entity.actor.sense.SenseSeismic as SenseSeismic
 
 
 class TestActor(unittest.TestCase):
 
     def setUp(self):
-        pass
+        self.loader = LoaderLevel.LoaderLevel('loader/test_levels')
 
     def tearDown(self):
-        pass
+        self.loader = None
 
     def test_inheritance(self):
         actor = Actor.Actor(2, 'blue', image_name='test_entity.png')
         self.assertEqual(actor._level, 'blue')
         self.assertEqual(actor._image.width, 100)
+
+    def test_detect_entities(self):
+        level = self.loader.get_level(2)
+        sense = SenseSeismic.SenseSeismic(1)
+        actor = Actor.Actor(1, level, senses=[sense])
+        level.place_entity_at(actor, 1, 1)
+
+        actor.detect_entities()
+        self.assertEqual(len(actor._detected_entities), 6)
+
+        level.move_entity_from_to(actor, 1, 1, 4, 1)
+        actor.detect_entities()
+        self.assertEqual(len(actor._detected_entities), 0)
 
     '''
     def test_use_tool(self):
@@ -30,10 +44,9 @@ class TestActor(unittest.TestCase):
     '''
 
     def test_attempt_move(self):
-        loader = LoaderLevel.LoaderLevel('loader/test_levels')
-        level_zero = loader.get_level(4)
-        actor = Actor.Actor(4, level_zero)
-        level_zero.place_entity_at(actor, 1, 1)
+        level = self.loader.get_level(4)
+        actor = Actor.Actor(4, level)
+        level.place_entity_at(actor, 1, 1)
 
         self.assertTrue(actor.attempt_move(DIR.N))
         self.assertEqual(actor._current_moves, 3)

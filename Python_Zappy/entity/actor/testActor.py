@@ -17,14 +17,14 @@ class TestActor(unittest.TestCase):
         self.loader = None
 
     def test_inheritance(self):
-        actor = Actor.Actor(2, 'blue', image_name='test_entity.png')
+        actor = Actor.Actor('blue', 2, image_name='test_entity.png')
         self.assertEqual(actor._level, 'blue')
         self.assertEqual(actor._image.width, 100)
 
     def test_detect_entities(self):
         level = self.loader.get_level(2)
         sense = SenseSeismic.SenseSeismic(1)
-        actor = Actor.Actor(1, level, senses=[sense])
+        actor = Actor.Actor(level, 1, senses=[sense])
         level.place_entity_at(actor, 1, 1)
 
         actor.detect_entities()
@@ -45,7 +45,7 @@ class TestActor(unittest.TestCase):
 
     def test_attempt_move(self):
         level = self.loader.get_level(4)
-        actor = Actor.Actor(4, level)
+        actor = Actor.Actor(level, 4)
         level.place_entity_at(actor, 1, 1)
 
         self.assertTrue(actor.attempt_move(DIR.N))

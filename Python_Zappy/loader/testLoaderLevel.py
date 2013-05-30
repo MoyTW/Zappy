@@ -18,9 +18,11 @@ class TestLoaderLevel(unittest.TestCase):
         resource_loader = pyglet.resource.Loader('@assets')
         self.default_preview = resource_loader.image('images/defaults/default_preview.png')
 
+        print self.default_preview
+
         self.level_info_0 = level.LevelInfo.LevelInfo('This is a test level!', 0, 5, 6, self.default_preview)
         self.level_info_1 = level.LevelInfo.LevelInfo('Four-Square', 1, 2, 2, self.default_preview)
-        self.level_info_2 = level.LevelInfo.LevelInfo('Rectangle', 2, 8, 2, self.default_preview)
+        self.level_info_2 = level.LevelInfo.LevelInfo('Rectangle', 2, 8, 3, self.default_preview)
 
     def setUpLevels(self):
         # Set up level 0
@@ -39,10 +41,14 @@ class TestLoaderLevel(unittest.TestCase):
         self.level_1.place_entity_at(self.loader._entity_index.create_entity_by_name('TestObj'), 0, 1)
 
         # Set up level 2
-        cells_2 = [[level.Cell.Cell(image_file='images/floor.png', passable=True) for _ in range(2)] for _ in range(8)]
+        cells_2 = [[level.Cell.Cell(image_file='images/floor.png', passable=True) for _ in range(3)] for _ in range(8)]
         self.level_2 = level.Level.Level(self.level_info_2, cells_2)
+        self.level_2.place_entity_at(self.loader._entity_index.create_entity_by_name('TestObj'), 1, 1)
+        self.level_2.place_entity_at(self.loader._entity_index.create_entity_by_name('TestObj'), 1, 1)
         self.level_2.place_entity_at(self.loader._entity_index.create_entity_by_name('TestObj'), 0, 1)
         self.level_2.place_entity_at(self.loader._entity_index.create_entity_by_name('TestObj'), 0, 1)
+        self.level_2.place_entity_at(self.loader._entity_index.create_entity_by_name('TestObj'), 1, 2)
+        self.level_2.place_entity_at(self.loader._entity_index.create_entity_by_name('TestObj'), 1, 2)
 
     def tearDown(self):
         pass

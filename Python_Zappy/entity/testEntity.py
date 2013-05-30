@@ -1,7 +1,7 @@
 __author__ = 'Travis Moy'
 
 import unittest
-import Entity
+import entity.Entity as Entity
 
 
 class TestEntity(unittest.TestCase):

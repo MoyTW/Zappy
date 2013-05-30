@@ -6,7 +6,7 @@ from z_defs import DIR
 
 class Actor(Entity.Entity):
 
-    def __init__(self, max_moves, level, x=0, y=0, tools=None, senses=None, image_name=None):
+    def __init__(self, level, max_moves=1, x=0, y=0, tools=None, senses=None, image_name=None):
         super(Actor, self).__init__(image_name=image_name, level=level)
 
         self._max_moves = max_moves

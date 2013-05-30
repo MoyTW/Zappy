@@ -5,6 +5,7 @@ import pyglet
 import loader.LoaderLevel
 import zappyui.Camera
 from z_defs import DIR
+import dummies.DummyLoaderEntityIndex
 
 
 class TestCamera(unittest.TestCase):
@@ -14,6 +15,7 @@ class TestCamera(unittest.TestCase):
         pyglet.resource.reindex()
 
         temp_loader = loader.LoaderLevel.LoaderLevel('zappyui/test_assets')
+        temp_loader._entity_index = dummies.DummyLoaderEntityIndex.DummyLoaderEntityIndex()
         self.default_level = temp_loader.get_level(0)
         self.default_camera = zappyui.Camera.Camera(self.default_level,
                                                     cursor_image_file='test_assets/camera_cursor.png')

@@ -31,8 +31,7 @@ def convert_to_builtin_type(obj):
     # For my purposes module's probably not necessary, but all right, fair's fair
     # NEVER MIND I EAT MY WORDS
     d = {'__class__': obj.__class__.__name__,
-         '__module__': obj.__module__,
-         }
+         '__module__': obj.__module__}
     d.update(obj.__dict__)
     return d
 

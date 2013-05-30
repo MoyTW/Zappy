@@ -53,6 +53,11 @@ class Level:
             return self._cells[x][y]
         return None
 
+    def get_all_entities_at(self, x, y):
+        if self._check_coordinates(x, y):
+            return self._cells[x][y].get_all_entities()
+        return None
+
     def cell_is_passable(self, x, y):
         cell = self.get_cell_at(x, y)
         if cell is not None:

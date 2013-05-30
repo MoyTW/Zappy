@@ -3,6 +3,7 @@ __author__ = 'Travis Moy'
 import unittest
 import loader.LoaderLevel
 import level.LevelInfo
+import dummies.DummyLoaderEntityIndex
 import pyglet
 
 
@@ -12,6 +13,7 @@ class TestLoaderLevel(unittest.TestCase):
         pyglet.resource.reindex()
 
         self.loader = loader.LoaderLevel.LoaderLevel('loader/test_levels')
+        self.loader._entity_index = dummies.DummyLoaderEntityIndex.DummyLoaderEntityIndex()
 
         resource_loader = pyglet.resource.Loader('@assets')
         self.default_preview = resource_loader.image('images/defaults/default_preview.png')
@@ -54,7 +56,7 @@ class TestLoaderLevel(unittest.TestCase):
     def test_load_all_levels_infos(self):
         self.loader._load_all_levels_infos()
 
-        self.assertTrue(len(self.loader._levels) == 3, "The loader loaded an incorrect number of levels!")
+        self.assertTrue(len(self.loader._levels) == 4, "The loader loaded an incorrect number of levels!")
         self.assertTrue(self.loader._levels.get(1).get_level_info() == self.level_info_1)
         self.assertTrue(self.loader._levels.get(2).get_level_info() == self.level_info_2)
 

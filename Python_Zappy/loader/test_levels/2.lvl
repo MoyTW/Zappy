@@ -1,12 +1,13 @@
 !NAME!,Rectangle
 !NUMBER!,2
 !WIDTH!,8
-!HEIGHT!,2
+!HEIGHT!,3
 
 !DEFINITIONS!
 a,True,images/floor.png,[]
 D,True,images/floor.png,[TestObj,TestObj]
 
 !MAP!
-D,a,a,a,a,a,a,a
-a,a,a,a,a,a,a,a
+a,D,a,a,a,a,a,a
+D,D,a,a,a,a,a,a
+a,a,a,a,a,a,a,D

@@ -16,3 +16,5 @@ class ZappyAlgs(object):
             set_coords.add((x_center + x_alg, y_center - y_alg))
             set_coords.add((x_center - x_alg, y_center + y_alg))
             set_coords.add((x_center - x_alg, y_center - y_alg))
+
+Z_ALGS = ZappyAlgs()

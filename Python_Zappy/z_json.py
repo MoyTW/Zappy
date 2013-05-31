@@ -20,13 +20,31 @@ def object_to_dict(obj):
     return d
 
 
+def recursive_unicode_conversion(value):
+    if type(value) == list:
+        for i in range(len(value)):
+            value[i] = recursive_unicode_conversion(value[i])
+    elif type(value) == dict:
+        for k, v in value.items():
+            value.pop(k, v)
+            value[k.encode('ascii')] = recursive_unicode_conversion(v)
+            pass
+    elif type(value) == unicode:
+        return value.encode('ascii')
+    return value
+
+
 def dict_to_object(d):
     if '__class__' in d:
         class_name = d.pop('__class__')
         module_name = d.pop('__module__')
         module = __import__(module_name)
         class_ = getattr(module, class_name)
-        args = dict((key.encode('ascii'), value) for key, value in d.items())
+
+        args = dict()
+        for key, value in d.items():
+            args[key.encode('ascii')] = recursive_unicode_conversion(value)
+
         inst = class_(**args)
     else:
         raise IOError("Cannot determine the class of the following dict: {0}".format(d))

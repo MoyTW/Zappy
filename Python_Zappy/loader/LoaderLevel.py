@@ -15,7 +15,7 @@ class LoaderLevel(object):
         self._levels_path = self._find_levels_path(levels_folder)
         self._preview_loader = pyglet.resource.Loader(script_home="{0}/preview_images".format(self._levels_path))
 
-        self._entity_index = LoaderEntityIndex.LoaderEntityIndex()
+        self._entity_index = LoaderEntityIndex.LoaderEntityIndex(None)
         self._levels = dict()
         self._default_preview = self._return_default_preview()
 

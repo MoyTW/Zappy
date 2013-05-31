@@ -7,7 +7,7 @@ import json
 
 class JsonConverter(object):
     def simple_to_json(self, object):
-        return json.dumps(object, default=object_to_dict)
+        return json.dumps(object, default=object_to_dict, sort_keys=True, indent=4)
 
     def simple_to_custom_object(self, json_string):
         return json_string.loads(json_string, object_hook=dict_to_object)

@@ -62,8 +62,8 @@ template = ActorTemplate.ActorTemplate(_max_moves=2, _tools={19: ['Manipulator',
 
 #print "Template: {0}".format(template)
 
-json_string = json.dumps(template, default=convert_to_builtin_type)
-#print "Json of template: {0}".format(json_string)
+json_string = json.dumps(template, default=convert_to_builtin_type, sort_keys=True, indent=4)
+print "Json of template: {0}".format(json_string)
 
 loaded_template = json.loads(json_string, object_hook=dict_to_object)
 print "Loaded json template: {0}".format(loaded_template)

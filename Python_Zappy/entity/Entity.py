@@ -17,6 +17,10 @@ class Entity(object):
 
     def _load_image(self):
         loader = pyglet.resource.Loader('@assets')
+
+        if self._image_name is None:
+            self._image = loader.image(self.DEFAULT_IMAGE_PATH)
+
         try:
             self._image = loader.image('{0}{1}'.format(self.IMAGE_FOLDER, self._image_name))
         except pyglet.resource.ResourceNotFoundException as e:

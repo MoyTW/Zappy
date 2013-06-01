@@ -1,6 +1,9 @@
 __author__ = 'Travis Moy'
 
 import pyglet
+import entity.Entity
+import z_json
+import warnings
 
 
 class LoaderEntityIndex(object):
@@ -21,9 +24,21 @@ class LoaderEntityIndex(object):
     # entity_dict is filled with Template objects
     # Call Template.create_instance(level, self)
     def create_entity_by_name(self, name):
-        pass
+        if name not in self._template_dict:
+            self._load_template_by_name(name)
 
-    # Attempt to load name using loader
-    # Create Template from json, push onto dict
+        if self._template_dict[name] is None:
+            ret_ent = entity.Entity.Entity(level=self._level, image_name=None)
+        else:
+            ret_ent = self._template_dict[name].create_instance(level=self._level, entity_index=self)
+        return ret_ent
+
+    # Attempt to load name using loader; if cannot find or error in conversion, defaults to None
     def _load_template_by_name(self, name):
-        pass
+        try:
+            json = self._loader.text(name).text
+            template = z_json.JSONCONVERTER.simple_to_custom_object(json_string=json)
+            self._template_dict[name] = template
+        except (pyglet.resource.ResourceNotFoundException, z_json.JsonConverterException) as e:
+            warnings.warn(e.message)
+            self._template_dict[name] = None

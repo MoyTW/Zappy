@@ -23,7 +23,7 @@ class Entity(object):
 
         try:
             self._image = loader.image('{0}{1}'.format(self.IMAGE_FOLDER, self._image_name))
-        except pyglet.resource.ResourceNotFoundException as e:
+        except pyglet.resource.ResourceNotFoundException:
             warnstr = 'Cannot load image {0}; attemping to load default entity image.'.format(self._image_name)
             warnings.warn(warnstr, RuntimeWarning)
             self._image = loader.image(self.DEFAULT_IMAGE_PATH)

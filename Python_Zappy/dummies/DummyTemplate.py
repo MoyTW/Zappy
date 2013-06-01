@@ -7,13 +7,14 @@ class DummyTemplate(object):
         self.name = name
         self.integer = integer
 
-    def create_instance(self):
-        return "Instance"
+    def create_instance(self, level, entity_index):
+        return self.__repr__()
 
     def __repr__(self):
         return "Name: {0} Integer: {1}".format(self.name, self.integer)
 
     def __eq__(self, other):
-        if other is None:
+        try:
+            return self.__dict__ == other.__dict__
+        except AttributeError:
             return False
-        return self.__dict__ == other.__dict__

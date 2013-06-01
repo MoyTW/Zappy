@@ -5,6 +5,10 @@ __author__ = 'Travis Moy'
 import json
 
 
+class JsonConverterException(Exception):
+    pass
+
+
 class JsonConverter(object):
     def simple_to_json(self, object):
         return json.dumps(object, default=object_to_dict, sort_keys=True, indent=4)
@@ -38,16 +42,19 @@ def recursive_unicode_conversion(value):
 
 def dict_to_object(d):
     if '__class__' in d:
-        class_name = d.pop('__class__')
-        module_name = d.pop('__module__')
-        module = __import__(module_name, fromlist=[class_name])
-        class_ = getattr(module, class_name)
+        try:
+            class_name = d.pop('__class__')
+            module_name = d.pop('__module__')
+            module = __import__(module_name, fromlist=[class_name])
+            class_ = getattr(module, class_name)
 
-        args = dict()
-        for key, value in d.items():
-            args[key.encode('ascii')] = recursive_unicode_conversion(value)
+            args = dict()
+            for key, value in d.items():
+                args[key.encode('ascii')] = recursive_unicode_conversion(value)
 
-        inst = class_(**args)
+            inst = class_(**args)
+        except Exception as e:
+            raise JsonConverterException(e.message)
     else:
-        raise IOError("Cannot determine the class of the following dict: {0}".format(d))
+        raise JsonConverterException("Cannot determine the class of the following dict: {0}".format(d))
     return inst

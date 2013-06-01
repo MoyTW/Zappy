@@ -10,7 +10,9 @@ class JsonConverter(object):
         return json.dumps(object, default=object_to_dict, sort_keys=True, indent=4)
 
     def simple_to_custom_object(self, json_string):
-        return json_string.loads(json_string, object_hook=dict_to_object)
+        return json.loads(json_string, object_hook=dict_to_object)
+
+JSONCONVERTER = JsonConverter()
 
 
 def object_to_dict(obj):
@@ -38,7 +40,7 @@ def dict_to_object(d):
     if '__class__' in d:
         class_name = d.pop('__class__')
         module_name = d.pop('__module__')
-        module = __import__(module_name)
+        module = __import__(module_name, fromlist=[class_name])
         class_ = getattr(module, class_name)
 
         args = dict()

@@ -1,0 +1,6 @@
+{
+    "__class__": "DummyTemplate", 
+    "__module__": "dummies.DummyTemplate", 
+    "integer": 10, 
+    "name": "Test"
+}

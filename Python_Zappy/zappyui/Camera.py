@@ -136,14 +136,11 @@ class Camera(object):
         self._num_cols = 1 + int(math.ceil(float((upper_right[1] - lower_left[1])) /
                                  float(self._sprite_across)))
 
+        # the -32 + rows/cols mod 2 * 32 is to make sure that if the number of rows/cols is even, it doesn't misalign.
         self._lower_left_pixel = ((center_pixel[0] - (float(self._num_rows) / 2.0) *
-                                  self._sprite_across - 32 + (self._num_rows % 2) * 32),  # this -32 + rows mod 2*32 is
-                                  # to make sure that if the number of rows is even, it doesn't misalign.
+                                  self._sprite_across - 32 + (self._num_rows % 2) * 32),
                                  (center_pixel[1] - (float(self._num_cols) / 2.0) *
-                                  self._sprite_across))
-
-        print self._num_rows
-        print center_pixel, self._lower_left_pixel
+                                  self._sprite_across) - 32 + (self._num_cols % 2) * 32)
 
     # Checks local, assets for target file: if no, tries to load default. If no default, throws.
     def _load_cursor(self, file):

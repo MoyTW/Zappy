@@ -38,10 +38,8 @@ class TestTemplateActor(unittest.TestCase):
         template_actor = TemplateActor.TemplateActor(_max_moves=max_moves, _tools=tools_list, _senses=sense_list,
                                                      _image_name=image_name)
 
-        actor = Actor.Actor(level=level_parameter,
-                            max_moves=max_moves,
-                            tools=template_actor._create_tool_list(level_parameter, None), # Kind of a cheat, really...
-                            senses=sense_list,
+        actor = Actor.Actor(level=level_parameter, max_moves=max_moves,
+                            tools=template_actor._create_tool_list(level_parameter, None), senses=sense_list,
                             image_name=image_name)
         created_actor = template_actor.create_instance(level=level_parameter, entity_index=None)
 

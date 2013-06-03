@@ -6,13 +6,15 @@ from z_defs import DIR
 
 class Actor(Entity.Entity):
 
-    def __init__(self, level, max_moves=1, x=-1, y=-1, tools=None, senses=None, image_name=None):
+    def __init__(self, level, max_moves=1, x=-1, y=-1, tools=None, senses=None, image_name=None,
+                 player_controlled=False):
         super(Actor, self).__init__(image_name=image_name, level=level)
 
         self._max_moves = max_moves
         self._current_moves = max_moves
         self._x = x
         self._y = y
+        self._player_controlled = player_controlled
 
         self._tools = tools
         if senses is None:

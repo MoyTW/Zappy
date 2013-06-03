@@ -13,6 +13,8 @@ class UIScreenLevel(UIScreen.UIScreen):
         self._factory = factory_screens
         self._camera = camera
 
+        print self._camera._upper_right
+
         self._init_camera(level_controller)
 
     def _init_camera(self, level_controller):

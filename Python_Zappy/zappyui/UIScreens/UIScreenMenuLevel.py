@@ -193,8 +193,7 @@ class UIScreenMenuLevel(UIScreen.UIScreen):
 
     def _attempt_to_launch_level(self):
         level = self._selection + self._current_page * self._num_on_page
-        print "Attempting to launch level {0}!".format(level)
-        return self
+        return self._factory.create_ScreenLevel(self._loader_level.get_level_controller(level))
 
     def _flip_page(self, direction):
         self._current_page += direction

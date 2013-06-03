@@ -1,7 +1,7 @@
 {
     "__class__": "TemplateActor", 
     "__module__": "loader.TemplateActor", 
-    "_image_name": "entities/boxydrone.png", 
+    "_image_name": "boxydrone.png", 
     "_max_moves": 1, 
     "_player_controlled": true, 
     "_senses": null, 

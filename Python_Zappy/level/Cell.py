@@ -34,8 +34,8 @@ class Cell(object):
                     display_dict[priority].append(image)
                 else:
                     display_dict[priority] = [image]
-            except AttributeError:
-                pass
+            except AttributeError as e:
+                print e.message
         return display_dict
 
     # Don't store the result of this function! It is for looking, not touching!

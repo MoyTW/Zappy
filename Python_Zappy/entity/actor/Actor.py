@@ -5,6 +5,7 @@ from z_defs import DIR
 
 
 class Actor(Entity.Entity):
+    _priority = 3
 
     def __init__(self, level, max_moves=1, x=-1, y=-1, tools=None, senses=None, image_name=None,
                  player_controlled=False):

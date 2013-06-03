@@ -16,7 +16,11 @@ class TemplateActor(Template.Template):
         self._image_name = _image_name
 
     def create_instance(self, level, entity_index):
-        pass
+        return Actor.Actor(level=level,
+                           max_moves=self._max_moves,
+                           tools=self._create_tool_list(level, entity_index),
+                           senses=self._senses,
+                           image_name=self._image_name)
 
     def _create_tool_list(self, level, entity_index):
         tool_list = list()

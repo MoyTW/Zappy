@@ -1,5 +1,6 @@
 __author__ = 'Travis Moy'
 
+import SenseTemplate
 import ActorTemplate
 import json
 
@@ -56,6 +57,7 @@ def convert_to_builtin_type(obj):
 
 template = ActorTemplate.ActorTemplate(_max_moves=2, _tools={19: ['Manipulator',
                                                                   ['bloo', 'blah'],
+                                                                  SenseTemplate.SenseTemplate("Seismic", 5),
                                                                   {"Two": 2, "Three": 3, "Nineteen": 19}]},
                                        _senses=['Seismic'],
                                        _image_name='No_Image.png')
@@ -70,3 +72,4 @@ print "Loaded json template: {0}".format(loaded_template)
 
 print loaded_template._senses, loaded_template._senses[0], type(loaded_template._senses[0])
 print loaded_template._image_name, type(loaded_template._image_name)
+loaded_template._tools['19'][2].test_func()

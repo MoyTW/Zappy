@@ -34,6 +34,9 @@ class UIController(object):
                 self._handle_new_screen(order_result)
 
     def _draw(self):
+        for screen in self._screen_history:
+            if screen.draw_if_not_head():
+                screen.draw()
         self._screen_head.draw()
 
     def _handle_new_screen(self, head):

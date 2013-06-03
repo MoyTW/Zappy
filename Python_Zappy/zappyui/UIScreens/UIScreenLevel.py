@@ -28,7 +28,7 @@ class UIScreenLevel(UIScreen.UIScreen):
         if order == ORDERS.UP or order == ORDERS.DOWN or order == ORDERS.LEFT or order == ORDERS.RIGHT:
             return_screen = self._move(order)
         elif order == ORDERS.CONFIRM:
-            return_screen = self._open_select_tools()
+            return_screen = self._open_select_tool()
         elif order == ORDERS.ITEMS:
             return_screen = self._use_item()
         elif order == ORDERS.LOOK:
@@ -40,6 +40,9 @@ class UIScreenLevel(UIScreen.UIScreen):
 
     def draw(self):
         self._camera.draw()
+
+    def draw_if_not_head(self):
+        return True
 
     def _draw_sidebar(self):
         pass

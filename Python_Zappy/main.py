@@ -12,8 +12,8 @@ from loader.LoaderLevel import LoaderLevel
 #height = 1024
 
 width = 640
-#height = 480
-height = 530
+height = 480
+#height = 530
 
 window = pyglet.window.Window(width=width, height=height)
 

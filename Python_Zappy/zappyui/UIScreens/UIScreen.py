@@ -21,6 +21,9 @@ class UIScreen(object):
         warnings.warn("UIScreen.handle_order() was called! This shouldn't happen - something has gone horribly wrong!")
         return self
 
+    def draw_if_not_head(self):
+        return False
+
     def draw(self):
         warnings.warn("UIScreen.draw() was called! This shouldn't happen - something has gone horribly wrong!")
 

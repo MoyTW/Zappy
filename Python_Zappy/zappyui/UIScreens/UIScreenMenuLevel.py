@@ -151,14 +151,20 @@ class UIScreenMenuLevel(UIScreen.UIScreen):
 
     def _change_selection(self, order):
         if order == ORDERS.DOWN:
-            if not self._selection >= (self._num_rows - 1) * self._num_cols:
+            if self._selection == -1 or self._selection == self._num_on_page:
+                pass
+            elif not self._selection >= (self._num_rows - 1) * self._num_cols:
                 self._selection += self._num_cols
         if order == ORDERS.UP:
-            if self._selection != self._num_on_page and not self._selection < self._num_cols:
+            if self._selection == -1 or self._selection == self._num_on_page:
+                pass
+            elif self._selection != self._num_on_page and not self._selection < self._num_cols:
                 self._selection -= self._num_cols
         if order == ORDERS.LEFT:
             if self._selection == self._num_on_page:
                 self._selection = self._previous_selection
+            elif self._selection == -1:
+                pass
             elif self._selection == self._num_on_page or self._selection % self._num_cols != 0:
                 self._selection -= 1
             elif self.can_page_left():
@@ -167,6 +173,8 @@ class UIScreenMenuLevel(UIScreen.UIScreen):
         if order == ORDERS.RIGHT:
             if self._selection == -1:
                 self._selection = self._previous_selection
+            elif self._selection == self._num_on_page:
+                pass
             elif self._selection % self._num_cols != self._num_cols - 1:
                 self._selection += 1
             elif self.can_page_right():
@@ -197,7 +205,10 @@ class UIScreenMenuLevel(UIScreen.UIScreen):
 
     def _flip_page(self, direction):
         self._current_page += direction
-        self._selection = 0
+        if direction > 0:
+            self._selection = 0
+        else:
+            self._selection = self._num_on_page - 1
         self._move_level_selection_sprite()
         self._repopulate_level_drawables()
         return self

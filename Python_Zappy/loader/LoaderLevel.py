@@ -15,7 +15,7 @@ class LoaderLevel(object):
         self._levels_path = self._find_levels_path(levels_folder)
         self._preview_loader = pyglet.resource.Loader(script_home="{0}/preview_images".format(self._levels_path))
 
-        self._entity_index = LoaderEntityIndex.LoaderEntityIndex(None)
+        self._entity_index = LoaderEntityIndex.LoaderEntityIndex()
         self._levels = dict()
         self._default_preview = self._return_default_preview()
 
@@ -137,12 +137,23 @@ class LoaderLevel(object):
                 cell_def = cell_defs_dict[cols[col]]
                 self._build_cell_from_def_and_add_entities(x, y, cell_def, _level)
 
+    # If it encounters an entity which is player controlled, sets the level.player_actor to that entity
     def _build_cell_from_def_and_add_entities(self, x, y, cell_def, _level):
         passable = cell_def.passable == 'True'
         _level._cells[x][y] = level.Cell.Cell(image_file=cell_def.image_location, passable=passable)
         if cell_def.entity_strings is not None:
             for entity_string in cell_def.entity_strings:
-                _level.place_entity_at(self._entity_index.create_entity_by_name(entity_string), x, y)
+                entity = self._entity_index.create_entity_by_name(entity_string, _level)
+                try:
+                    if entity.is_player_controlled():
+                        if _level.get_player_actor() is None:
+                            _level.set_player_actor(entity)
+                        else:
+                            warnings.warn('Level {0} has more than one actor marked as player-controllable!'
+                                    .format(_level.get_number()))
+                except AttributeError:
+                    pass
+                _level.place_entity_at(entity, x, y)
 
     # No unit test.
     def _find_levels_path(self, levels_folder):

@@ -1,0 +1,14 @@
+!NAME!,This level will see if it can locate a player-controlled entity!
+!NUMBER!,5
+!WIDTH!,3
+!HEIGHT!,3
+
+!DEFINITIONS!
+a,True,images/floor.png,[]
+b,False,images/wall.png,[]
+D,True,images/floor.png,[zappy/ZappyBasic.json]
+
+!MAP!
+b,a,b
+b,D,a
+b,a,b

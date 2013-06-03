@@ -5,6 +5,7 @@ import loader.LoaderLevel
 import level.LevelInfo
 import dummies.DummyLoaderEntityIndex
 import pyglet
+import loader.LoaderEntityIndex
 
 
 class TestLoaderLevel(unittest.TestCase):
@@ -17,8 +18,6 @@ class TestLoaderLevel(unittest.TestCase):
 
         resource_loader = pyglet.resource.Loader('@assets')
         self.default_preview = resource_loader.image('images/defaults/default_preview.png')
-
-        print self.default_preview
 
         self.level_info_0 = level.LevelInfo.LevelInfo('This is a test level!', 0, 5, 6, self.default_preview)
         self.level_info_1 = level.LevelInfo.LevelInfo('Four-Square', 1, 2, 2, self.default_preview)
@@ -33,22 +32,22 @@ class TestLoaderLevel(unittest.TestCase):
             cells_0[i][1] = level.Cell.Cell(image_file='images/wall.png', passable=False)
 
         self.level_0 = level.Level.Level(self.level_info_0, cells_0)
-        self.level_0.place_entity_at(self.loader._entity_index.create_entity_by_name('TestObj'), 0, 0)
+        self.level_0.place_entity_at(self.loader._entity_index.create_entity_by_name('TestObj', None), 0, 0)
 
         # Set up level 1
         cells_1 = [[level.Cell.Cell(image_file='images/floor.png', passable=True) for _ in range(2)] for _ in range(2)]
         self.level_1 = level.Level.Level(self.level_info_1, cells_1)
-        self.level_1.place_entity_at(self.loader._entity_index.create_entity_by_name('TestObj'), 0, 1)
+        self.level_1.place_entity_at(self.loader._entity_index.create_entity_by_name('TestObj', None), 0, 1)
 
         # Set up level 2
         cells_2 = [[level.Cell.Cell(image_file='images/floor.png', passable=True) for _ in range(3)] for _ in range(8)]
         self.level_2 = level.Level.Level(self.level_info_2, cells_2)
-        self.level_2.place_entity_at(self.loader._entity_index.create_entity_by_name('TestObj'), 1, 1)
-        self.level_2.place_entity_at(self.loader._entity_index.create_entity_by_name('TestObj'), 1, 1)
-        self.level_2.place_entity_at(self.loader._entity_index.create_entity_by_name('TestObj'), 0, 1)
-        self.level_2.place_entity_at(self.loader._entity_index.create_entity_by_name('TestObj'), 0, 1)
-        self.level_2.place_entity_at(self.loader._entity_index.create_entity_by_name('TestObj'), 1, 2)
-        self.level_2.place_entity_at(self.loader._entity_index.create_entity_by_name('TestObj'), 1, 2)
+        self.level_2.place_entity_at(self.loader._entity_index.create_entity_by_name('TestObj', None), 1, 1)
+        self.level_2.place_entity_at(self.loader._entity_index.create_entity_by_name('TestObj', None), 1, 1)
+        self.level_2.place_entity_at(self.loader._entity_index.create_entity_by_name('TestObj', None), 0, 1)
+        self.level_2.place_entity_at(self.loader._entity_index.create_entity_by_name('TestObj', None), 0, 1)
+        self.level_2.place_entity_at(self.loader._entity_index.create_entity_by_name('TestObj', None), 1, 2)
+        self.level_2.place_entity_at(self.loader._entity_index.create_entity_by_name('TestObj', None), 1, 2)
 
     def tearDown(self):
         pass
@@ -62,7 +61,7 @@ class TestLoaderLevel(unittest.TestCase):
     def test_load_all_levels_infos(self):
         self.loader._load_all_levels_infos()
 
-        self.assertTrue(len(self.loader._levels) == 4, "The loader loaded an incorrect number of levels!")
+        self.assertTrue(len(self.loader._levels) == 5, "The loader loaded an incorrect number of levels!")
         self.assertTrue(self.loader._levels.get(1).get_level_info() == self.level_info_1)
         self.assertTrue(self.loader._levels.get(2).get_level_info() == self.level_info_2)
 
@@ -70,7 +69,7 @@ class TestLoaderLevel(unittest.TestCase):
         self.loader._load_all_levels_infos()
 
         self.assertTrue(self.loader.get_level_info(1) == self.level_info_1)
-        self.assertTrue(self.loader.get_level_info(5) is None)
+        self.assertTrue(self.loader.get_level_info(15) is None)
 
     def test_load_level(self):
         self.setUpLevels()
@@ -88,6 +87,15 @@ class TestLoaderLevel(unittest.TestCase):
         self.assertEquals(self.level_2, self.loader.get_level(2))
         self.assertTrue(self.loader.get_level(-3) is None)
         self.assertTrue(self.loader.get_level(12) is None)
+
+    def test_can_locate_player_controlled_entity(self):
+        self.loader._entity_index = loader.LoaderEntityIndex.LoaderEntityIndex()
+        level_5 = self.loader.get_level(5)
+        player_actor = level_5.get_player_actor()
+        try:
+            self.assertEqual((1, 1), (player_actor._x, player_actor._y))
+        except AttributeError:
+            self.assertFalse(True, "Is not returning the appropriate actor!")
 
 suite = unittest.TestLoader().loadTestsFromTestCase(TestLoaderLevel)
 unittest.TextTestRunner(verbosity=2).run(suite)

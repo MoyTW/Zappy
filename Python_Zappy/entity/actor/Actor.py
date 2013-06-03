@@ -39,6 +39,9 @@ class Actor(Entity.Entity):
     def get_tools(self):
         return self._tools
 
+    def is_player_controlled(self):
+        return self._player_controlled
+
     # Not sure if I want to do it by coordinate, any more.
     # I think I want to do it by entity, instead.
     '''

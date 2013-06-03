@@ -8,9 +8,7 @@ import warnings
 
 class LoaderEntityIndex(object):
 
-    def __init__(self, level):
-        self._level = level
-
+    def __init__(self):
         self._loader = pyglet.resource.Loader('@assets.entities')
         self._template_dict = dict()
 
@@ -23,14 +21,14 @@ class LoaderEntityIndex(object):
     # Consults dict; if not in dict, load. If in dict, create new instance, return
     # entity_dict is filled with Template objects
     # Call Template.create_instance(level, self)
-    def create_entity_by_name(self, name):
+    def create_entity_by_name(self, name, level):
         if name not in self._template_dict:
             self._load_template_by_name(name)
 
         if self._template_dict[name] is None:
-            ret_ent = entity.Entity.Entity(level=self._level, image_name=None)
+            ret_ent = entity.Entity.Entity(level=level, image_name=None)
         else:
-            ret_ent = self._template_dict[name].create_instance(level=self._level, entity_index=self)
+            ret_ent = self._template_dict[name].create_instance(level=level, entity_index=self)
         return ret_ent
 
     # Attempt to load name using loader; if cannot find or error in conversion, defaults to None

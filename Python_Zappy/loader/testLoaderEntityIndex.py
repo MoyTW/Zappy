@@ -3,8 +3,8 @@ __author__ = 'Travis Moy'
 import unittest
 import os
 import pyglet
-import loaderExceptions
-import LoaderEntityIndex
+import loader.loaderExceptions
+import loader.LoaderEntityIndex
 import dummies.DummyTemplate
 from z_json import JSONCONVERTER
 import entity.Entity
@@ -15,7 +15,7 @@ class TestLoaderEntityIndex(unittest.TestCase):
     def setUp(self):
         self._default_level = None
         self._custom_loader = pyglet.resource.Loader('@loader')
-        self._index = LoaderEntityIndex.LoaderEntityIndex(None)
+        self._index = loader.LoaderEntityIndex.LoaderEntityIndex()
         self._index._loader = self._custom_loader
         self._default_entity = entity.Entity.Entity(None, self._default_level)
 
@@ -39,7 +39,7 @@ class TestLoaderEntityIndex(unittest.TestCase):
     def test_load_entity_by_name(self):
         try:
             self._index._load_template_by_name(self.filename)
-        except loaderExceptions.CouldNotFindJSONFile as e:
+        except loader.loaderExceptions.CouldNotFindJSONFile as e:
             self.assertFalse(True, e.message)
         self.assertTrue(self.filename in self._index._template_dict)
         self.assertEqual(self._index._template_dict[self.filename], self.template)
@@ -50,16 +50,16 @@ class TestLoaderEntityIndex(unittest.TestCase):
         self.assertEqual(self._index._template_dict['no_such_file.json'], None)
 
     def test_create_entity_by_name_not_loaded(self):
-        self.assertEqual(self._index.create_entity_by_name(self.filename), self.template.__repr__())
+        self.assertEqual(self._index.create_entity_by_name(self.filename, None), self.template.__repr__())
 
     def test_create_entity_by_name_loaded(self):
         self._index._load_template_by_name(self.filename)
-        self.assertEqual(self._index.create_entity_by_name(self.filename), self.template.__repr__())
+        self.assertEqual(self._index.create_entity_by_name(self.filename, None), self.template.__repr__())
 
     # Creates a default entity
     def test_create_entity_by_name_cannot_find(self):
         try:
-            created_entity = self._index.create_entity_by_name('no_such_file.json')
+            created_entity = self._index.create_entity_by_name('no_such_file.json', None)
             self.assertEqual(created_entity._image_name, self._default_entity._image_name)
             self.assertEqual(created_entity._level, self._default_entity._level)
         except AttributeError:

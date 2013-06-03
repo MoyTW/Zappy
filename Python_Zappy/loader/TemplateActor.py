@@ -21,8 +21,9 @@ class TemplateActor(Template.Template):
 
     def _create_tool_list(self, level, entity_index):
         tool_list = list()
-        for template_tool in self._tools:
-            instance = template_tool.create_instance(level=level, entity_index=entity_index)
-            if instance is not None:
-                tool_list.append(instance)
+        if self._tools is not None:
+            for template_tool in self._tools:
+                instance = template_tool.create_instance(level=level, entity_index=entity_index)
+                if instance is not None:
+                    tool_list.append(instance)
         return tool_list

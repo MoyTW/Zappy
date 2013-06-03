@@ -5,9 +5,10 @@ import level.levelExceptions
 
 class Level:
     # cells is a rectangular grid of Cell objects.
-    def __init__(self, info, cells=None):
+    def __init__(self, info, cells=None, player_actor=None):
         self._info = info
         self._cells = cells
+        self._player_actor = player_actor
 
     def cells_are_none(self):
         if self._cells is None:
@@ -47,6 +48,13 @@ class Level:
 
     def get_preview(self):
         return self._info.get_preview()
+
+    def get_player_actor(self):
+        return self._player_actor
+
+    def set_player_actor(self, actor):
+        if self._player_actor is None:
+            self._player_actor = actor
 
     def get_cell_at(self, x, y):
         if self._check_coordinates(x, y):

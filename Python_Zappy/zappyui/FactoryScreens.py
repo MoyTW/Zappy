@@ -13,7 +13,7 @@ class ViewportInfo(object):
 
 
 class FactoryScreens(object):
-    def __init__(self, window, loader_level, level_controller=None):
+    def __init__(self, window, loader_level):
         self._window = window
         self._loader_level = loader_level
 
@@ -22,10 +22,9 @@ class FactoryScreens(object):
         self._level_viewport = None
         self._init_viewport_infos(window)
 
-        # Blah blah my convenience.
+        # Only set when the UIScreenLevel is created.
         self._camera = None
         self._level_controller = None
-        self.set_level_controller(level_controller)
 
     def set_level_controller(self, level_controller):
         if level_controller is None:
@@ -50,10 +49,8 @@ class FactoryScreens(object):
                                                    "loaded! The programmer has made a fatal oversight!")
         return Screens.UIScreenFreeLook.UIScreenFreeLook(self._camera)
 
-    def create_ScreenLevel(self):
-        if self._level_controller is None:
-            raise uiexcept.LevelNotLoadedException("Factory was asked to create a in-level screen, but no level was "
-                                                   "loaded! The programmer has made a fatal oversight!")
+    def create_ScreenLevel(self, level_controller):
+        self.set_level_controller(level_controller)
         return Screens.UIScreenLevel.UIScreenLevel(self._camera, self._level_controller, self._window_viewport, self)
 
     def create_ScreenLevelMenu(self):

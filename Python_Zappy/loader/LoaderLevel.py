@@ -2,6 +2,7 @@ __author__ = 'Travis Moy'
 
 import level.Level
 import level.Cell
+import level.LevelController
 import LoaderEntityIndex
 import os
 import LoaderCellDefinition
@@ -31,12 +32,19 @@ class LoaderLevel(object):
         return level.get_level_info()
 
     def get_level(self, level_number):
-        try:
+        try:  # Okay what's this try/except block for? Oh! If it's None - and therefore not a valid level.
             if self._levels.get(level_number).cells_are_none():
                 self._load_level(level_number)
         except AttributeError:
-            pass
+            warnings.warn('{0} is not a valid level number!'.format(level_number))
         return self._levels.get(level_number)
+
+    def get_level_controller(self, level_number):
+        temp_level = self.get_level(level_number)
+        if temp_level is not None:
+            return level.LevelController.LevelController(temp_level)
+        else:
+            return None
 
     def _return_default_preview(self):
         resource_loader = pyglet.resource.Loader('@assets')

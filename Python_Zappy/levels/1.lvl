@@ -1,12 +1,22 @@
-!NAME!,Four-Square
+!NAME!,Eleven-Square
 !NUMBER!,1
-!WIDTH!,2
-!HEIGHT!,2
+!WIDTH!,11
+!HEIGHT!,11
 
 !DEFINITIONS!
 a,True,images/floor.png,[]
+b,False,images/wall.png,[]
 D,True,images/floor.png,[zappy/ZappyBasic.json]
 
 !MAP!
-D,a
-a,a
+a,a,a,a,a,a,a,a,a,a,a
+a,a,a,a,a,b,a,a,a,a,a
+a,a,a,a,a,a,a,a,a,a,a
+a,a,a,a,a,b,a,a,a,a,a
+a,a,a,a,a,a,a,a,a,a,a
+a,b,a,b,a,D,a,b,a,b,a
+a,a,a,a,a,a,a,a,a,a,a
+a,a,a,a,a,b,a,a,a,a,a
+a,a,a,a,a,a,a,a,a,a,a
+a,a,a,a,a,b,a,a,a,a,a
+a,a,a,a,a,a,a,a,a,a,a

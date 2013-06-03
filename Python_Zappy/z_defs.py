@@ -27,9 +27,4 @@ class direction(object):
 DIR = direction()
 
 #SIDEBAR_WIDTH = 250
-SIDEBAR_WIDTH = 300
-
-# 190 safe
-# 191 safe
-# 192 unsafe
-# what is going on
+SIDEBAR_WIDTH = 0

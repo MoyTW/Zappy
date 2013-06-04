@@ -21,5 +21,17 @@ class TestZAlgs(unittest.TestCase):
         self.assertEqual(13, len(self.algs.calc_coords_in_range(_range=2, x_center=5, y_center=5)))
         self.assertEqual(25, len(self.algs.calc_coords_in_range(_range=3, x_center=5, y_center=5)))
 
+    def test_add_obstruction(self):
+        obstructions = [z_algs.CellAngles(0, .125, .25), z_algs.CellAngles(.6, .65, .7)]
+        obstructions = self.algs._add_obstruction(obstructions, z_algs.CellAngles(.9, .925, .95))
+        self.assertEqual(len(obstructions), 3)
+        obstructions = self.algs._add_obstruction(obstructions, z_algs.CellAngles(.65, .8, .95))
+        self.assertEqual(len(obstructions), 2)
+
+        obstructions = [z_algs.CellAngles(0, .125, .25), z_algs.CellAngles(.6, .65, .7), z_algs.CellAngles(.3, .35, .4)]
+        obstructions = self.algs._add_obstruction(obstructions, z_algs.CellAngles(0, .5, 1.0))
+        self.assertEqual(len(obstructions), 1)
+
+
 suite = unittest.TestLoader().loadTestsFromTestCase(TestZAlgs)
 unittest.TextTestRunner(verbosity=2).run(suite)

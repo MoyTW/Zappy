@@ -58,6 +58,10 @@ class ZappyAlgs(object):
                     if not func_transparent(*cell):
                         obstructions = self._add_obstruction(obstructions, cell_angles)
 
+            iteration += 1
+
+        return visible_cells
+
     def _cell_is_visible(self, cell_angles, obstructions):
         near_visible = True
         center_visible = True

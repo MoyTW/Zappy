@@ -4,6 +4,13 @@ import unittest
 import z_algs
 
 
+def no_obstruction(x, y):
+    obstructions = [(0, 3), (3, 3), (0, 4), (0, 5), (1, 5)]
+    if (x, y) in obstructions:
+        return False
+    return True
+
+
 class TestZAlgs(unittest.TestCase):
 
     def setUp(self):
@@ -39,6 +46,16 @@ class TestZAlgs(unittest.TestCase):
         self.assertTrue(self.algs._cell_is_visible(cell_passes, obstructions))
         cell_fails = z_algs.CellAngles(angle * 5, angle * 5 + angle * .5, angle * 5 + angle)
         self.assertFalse(self.algs._cell_is_visible(cell_fails, obstructions))
+
+    # See http://roguebasin.roguelikedevelopment.org/index.php?title=Restrictive_Precise_Angle_Shadowcasting
+    # Exepected length 16
+    def test_cells_in_octant(self):
+        cells = self.algs._visible_cells_in_vertical_octant_from(0, 0, 1, 1, 5, no_obstruction)
+        self.assertEqual(len(cells), 16)
+        self.assertTrue((0, 4) not in cells)
+        self.assertTrue((0, 5) not in cells)
+        self.assertTrue((4, 4) not in cells)
+        self.assertTrue((5, 5) not in cells)
 
 
 suite = unittest.TestLoader().loadTestsFromTestCase(TestZAlgs)

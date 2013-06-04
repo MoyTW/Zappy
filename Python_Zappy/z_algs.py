@@ -46,24 +46,32 @@ class ZappyAlgs(object):
             angle_allocation = 1.0 / float(num_cells_in_row)
 
             for i in range(iteration + 1):
-                visible = True
                 cell = ((x_center + i) * quad_x, (y_center + iteration) * quad_y)
                 cell_angles = CellAngles(near=(float(i) * angle_allocation),
                                          center=(float(i + .5) * angle_allocation),
                                          far=(float(i + 1) * angle_allocation))
 
-                for obstruction in obstructions:
-                    if self._cell_is_obstructed(cell_angles, obstruction):
-                        visible = False
+                visible = self._cell_is_visible(cell_angles, obstructions)
 
                 if visible:
                     visible_cells.append(cell)
+                    if not func_transparent(*cell):
+                        obstructions = self._add_obstruction(obstructions, cell_angles)
 
-                if not func_transparent(*cell):
-                    obstructions = self._add_obstruction(obstruction, cell_angles)
+    def _cell_is_visible(self, cell_angles, obstructions):
+        near_visible = True
+        center_visible = True
+        far_visible = True
 
-    def _cell_is_obstructed(self, cell_angles, obstruction):
-        pass
+        for obstruction in obstructions:
+            if obstruction.near < cell_angles.near < obstruction.far:
+                near_visible = False
+            if obstruction.near < cell_angles.center < obstruction.far:
+                center_visible = False
+            if obstruction.near < cell_angles.far < obstruction.far:
+                far_visible = False
+
+        return (center_visible and near_visible) or (center_visible and far_visible)
 
     # Generates a new list by combining all old obstructions with the new one (removing them if they are combined) and
     # adding the resulting obstruction to the list

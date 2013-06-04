@@ -32,6 +32,14 @@ class TestZAlgs(unittest.TestCase):
         obstructions = self.algs._add_obstruction(obstructions, z_algs.CellAngles(0, .5, 1.0))
         self.assertEqual(len(obstructions), 1)
 
+    def test_cell_is_obstructed(self):
+        obstructions = [z_algs.CellAngles(0.0, .125, .25), z_algs.CellAngles(.75, .875, 1)]
+        angle = 1.0 / 6.0
+        cell_passes = z_algs.CellAngles(angle, angle + angle * .5, angle + angle)
+        self.assertTrue(self.algs._cell_is_visible(cell_passes, obstructions))
+        cell_fails = z_algs.CellAngles(angle * 5, angle * 5 + angle * .5, angle * 5 + angle)
+        self.assertFalse(self.algs._cell_is_visible(cell_fails, obstructions))
+
 
 suite = unittest.TestLoader().loadTestsFromTestCase(TestZAlgs)
 unittest.TextTestRunner(verbosity=2).run(suite)

@@ -11,6 +11,9 @@ class DummyController(object):
     def get_zappy(self):
         return "zappy"
 
+    def get_zappy_x_y(self):
+        return (0, 0)
+
     def zappy_attempt_move(self, order):
         self.zappy_attempt_move_called_with = order
 

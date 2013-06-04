@@ -43,6 +43,12 @@ class Actor(Entity.Entity):
     def is_player_controlled(self):
         return self._player_controlled
 
+    def has_moves(self):
+        return self._current_moves > 0
+
+    def replenish_moves(self):
+        self._current_moves = self._max_moves
+
     # Not sure if I want to do it by coordinate, any more.
     # I think I want to do it by entity, instead.
     '''

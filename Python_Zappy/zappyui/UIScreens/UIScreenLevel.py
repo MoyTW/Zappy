@@ -49,7 +49,8 @@ class UIScreenLevel(UIScreen.UIScreen):
 
     # If UP/DOWN/LEFT/RIGHT
     def _move(self, order):
-        self._control.zappy_attempt_move(order)
+        self._control.zappy_attempt_move(ORDERS.to_direction(order))
+        self._camera.center_on(*self._control.get_zappy_x_y())
         return self
 
     # If CONFIRM

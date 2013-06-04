@@ -61,6 +61,9 @@ class Camera(object):
         if self._level is None:
             return False
 
+        # This is pretty ugly, honestly.
+        self.center_on(self._center_tile[0], self._center_tile[1])
+
         batch_keys = self._batches.keys()
         batch_keys.sort()
         for key in batch_keys:

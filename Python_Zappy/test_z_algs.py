@@ -11,6 +11,15 @@ def no_obstruction(x, y):
     return True
 
 
+def stops_at_y_is_three(x, y):
+    print y
+    if y >= 3:
+        print 'returning false'
+        return False
+    print 'returning true'
+    return True
+
+
 class TestZAlgs(unittest.TestCase):
 
     def setUp(self):
@@ -38,6 +47,8 @@ class TestZAlgs(unittest.TestCase):
         obstructions = [z_algs.CellAngles(0, .125, .25), z_algs.CellAngles(.6, .65, .7), z_algs.CellAngles(.3, .35, .4)]
         obstructions = self.algs._add_obstruction(obstructions, z_algs.CellAngles(0, .5, 1.0))
         self.assertEqual(len(obstructions), 1)
+        self.assertEqual(obstructions[0].near, 0)
+        self.assertEqual(obstructions[0].far, 1)
 
     def test_cell_is_obstructed(self):
         obstructions = [z_algs.CellAngles(0.0, .125, .25), z_algs.CellAngles(.75, .875, 1)]
@@ -56,6 +67,9 @@ class TestZAlgs(unittest.TestCase):
         self.assertTrue((0, 5) not in cells)
         self.assertTrue((4, 4) not in cells)
         self.assertTrue((5, 5) not in cells)
+
+        cells = self.algs._visible_cells_in_vertical_octant_from(0, 0, 1, 1, 5, stops_at_y_is_three)
+        self.assertEqual(len(cells), 9)
 
 
 suite = unittest.TestLoader().loadTestsFromTestCase(TestZAlgs)

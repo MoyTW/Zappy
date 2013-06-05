@@ -82,7 +82,7 @@ class ZappyAlgs(object):
     def _add_obstruction(self, obstructions, new_obstruction):
         new_object = CellAngles(new_obstruction.near, new_obstruction.center, new_obstruction.far)
         new_list = [o for o in obstructions if not self._combine_obstructions(o, new_object)]
-        new_list.append(new_obstruction)
+        new_list.append(new_object)
         return new_list
 
     # Returns True if you combine, False otherwise
@@ -100,8 +100,8 @@ class ZappyAlgs(object):
 
         # If they overlap, combine and return True
         if low.far >= high.near:
-            new.near = low.near
-            new.far = high.far
+            new.near = min(low.near, high.near)
+            new.far = max(low.far, high.far)
             return True
 
         return False

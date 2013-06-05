@@ -27,15 +27,36 @@ class ZappyAlgs(object):
             set_coords.add((x_center - x_alg, y_center + y_alg))
             set_coords.add((x_center - x_alg, y_center - y_alg))
 
+    # Currently returns a square, if sight is unimpeded!
     def calc_visible_cells_from(self, x_center, y_center, radius, func_transparent):
-        pass
+        cells = self._visible_cells_in_quadrant_from(x_center, y_center, 1, 1, radius, func_transparent)
+        cells.update(self._visible_cells_in_quadrant_from(x_center, y_center, 1, -1, radius, func_transparent))
+        cells.update(self._visible_cells_in_quadrant_from(x_center, y_center, -1, -1, radius, func_transparent))
+        cells.update(self._visible_cells_in_quadrant_from(x_center, y_center, -1, 1, radius, func_transparent))
+        cells.add((x_center, y_center))
+        return cells
 
     def _visible_cells_in_quadrant_from(self, x_center, y_center, quad_x, quad_y, radius, func_transparent):
-        pass
+        if quad_x < 0:
+            q_x = -1
+        elif quad_x > 0:
+            q_x = 1
+        else:
+            raise RuntimeError("quad_x is zero! Unacceptable; there's no quadrant along the horizontal line!")
+        if quad_y < 0:
+            q_y = -1
+        elif quad_y > 0:
+            q_y = 1
+        else:
+            raise RuntimeError("quad_x is zero! Unacceptable; there's no quadrant along the vertical line!")
+        cells = self._visible_cells_in_octant_from(x_center, y_center, q_x, q_y, radius, func_transparent, True)
+        cells.update(self._visible_cells_in_octant_from(x_center, y_center, q_x, q_y, radius, func_transparent, False))
 
-    def _visible_cells_in_vertical_octant_from(self, x_center, y_center, quad_x, quad_y, radius, func_transparent):
+        return cells
+
+    def _visible_cells_in_octant_from(self, x_center, y_center, quad_x, quad_y, radius, func_transparent, is_vertical):
         iteration = 1
-        visible_cells = list()
+        visible_cells = set()
         obstructions = list()
 
         # End conditions: iteration <= radius and we do not have full obstruction coverage (indicated by one object
@@ -45,22 +66,29 @@ class ZappyAlgs(object):
             num_cells_in_row = iteration + 1
             angle_allocation = 1.0 / float(num_cells_in_row)
 
-            for i in range(iteration + 1):
-                cell = ((x_center + i) * quad_x, (y_center + iteration) * quad_y)
-                cell_angles = CellAngles(near=(float(i) * angle_allocation),
-                                         center=(float(i + .5) * angle_allocation),
-                                         far=(float(i + 1) * angle_allocation))
+            for step in range(iteration + 1):
+                cell = self._cell_at(x_center, y_center, quad_x, quad_y, step, iteration, is_vertical)
+                cell_angles = CellAngles(near=(float(step) * angle_allocation),
+                                         center=(float(step + .5) * angle_allocation),
+                                         far=(float(step + 1) * angle_allocation))
 
                 visible = self._cell_is_visible(cell_angles, obstructions)
 
                 if visible:
-                    visible_cells.append(cell)
+                    visible_cells.add(cell)
                     if not func_transparent(*cell):
                         obstructions = self._add_obstruction(obstructions, cell_angles)
 
             iteration += 1
 
         return visible_cells
+
+    def _cell_at(self, x_center, y_center, quad_x, quad_y, step, iteration, is_vertical):
+        if is_vertical:
+            cell = (x_center + step * quad_x, y_center + iteration * quad_y)
+        else:
+            cell = (x_center + iteration * quad_x, y_center + step * quad_y)
+        return cell
 
     def _cell_is_visible(self, cell_angles, obstructions):
         near_visible = True

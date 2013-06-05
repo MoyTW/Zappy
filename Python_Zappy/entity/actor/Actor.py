@@ -33,6 +33,9 @@ class Actor(Entity.Entity):
         if self in self._detected_entities:
             self._detected_entities.remove(self)
 
+    def get_coords(self):
+        return self._x, self._y
+
     def set_coords(self, x, y):
         self._x = x
         self._y = y

@@ -61,14 +61,14 @@ class TestZAlgs(unittest.TestCase):
     # See http://roguebasin.roguelikedevelopment.org/index.php?title=Restrictive_Precise_Angle_Shadowcasting
     # Exepected length 16
     def test_cells_in_octant(self):
-        cells = self.algs._visible_cells_in_vertical_octant_from(0, 0, 1, 1, 5, no_obstruction)
+        cells = self.algs._visible_cells_in_octant_from(0, 0, 1, 1, 5, no_obstruction, True)
         self.assertEqual(len(cells), 16)
         self.assertTrue((0, 4) not in cells)
         self.assertTrue((0, 5) not in cells)
         self.assertTrue((4, 4) not in cells)
         self.assertTrue((5, 5) not in cells)
 
-        cells = self.algs._visible_cells_in_vertical_octant_from(0, 0, 1, 1, 5, stops_at_y_is_three)
+        cells = self.algs._visible_cells_in_octant_from(0, 0, 1, 1, 5, stops_at_y_is_three, True)
         self.assertEqual(len(cells), 9)
 
 

@@ -4,6 +4,12 @@
     "_image_name": "boxydrone.png", 
     "_max_moves": 1, 
     "_player_controlled": true, 
-    "_senses": null, 
+    "_senses": [
+        {
+            "__class__": "SenseSight", 
+            "__module__": "entity.actor.sense.SenseSight", 
+            "_range": 5
+        }
+    ], 
     "_tools": null
 }

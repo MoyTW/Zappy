@@ -1,6 +1,7 @@
 __author__ = 'Travis Moy'
 
 import level.levelExceptions
+import warnings
 
 
 class Level:
@@ -9,6 +10,8 @@ class Level:
         self._info = info
         self._cells = cells
         self._player_actor = player_actor
+
+        warnings.warn('cell_is_transparent() returns cell_is_passable()!')
 
     def cells_are_none(self):
         if self._cells is None:
@@ -71,6 +74,10 @@ class Level:
         if cell is not None:
             return cell.get_passable()
         return False
+
+    def cell_is_transparent(self, x, y):
+        warnings.warn('level.cell_is_transparent() is a placeholder! Returns level.cell_is_passable()!')
+        return self.cell_is_passable(x, y)
 
     def get_display_images_at(self, x, y):
         if self._check_coordinates(x, y):

@@ -88,7 +88,6 @@ class Camera(object):
         visible_cells = Z_ALGS.calc_visible_cells_from(*player_actor.get_coords(),
                                                        radius=player_actor._senses[0]._range,
                                                        func_transparent=self._level.cell_is_transparent)
-        print "Visible cells: ", visible_cells
 
         for row in range(0, self._num_rows):
             for col in range(0, self._num_cols):
@@ -98,8 +97,6 @@ class Camera(object):
                 if (cell_row_index, cell_col_index) in visible_cells:
                     display_images = self._level.get_display_images_at(cell_row_index, cell_col_index)
                     self._process_display_images_and_add_sprites(display_images, row, col)
-                else:
-                    print (cell_row_index, cell_col_index), 'is not in visible_cells'
 
     # Processes the display images. No duh. That's a useless comment.
     # Currently it creates sprites for the first image of each priority.

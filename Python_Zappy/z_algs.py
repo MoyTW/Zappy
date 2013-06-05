@@ -1,5 +1,7 @@
 __author__ = 'Travis Moy'
 
+import math
+
 
 class CellAngles(object):
     def __init__(self, near, center, far):
@@ -12,6 +14,8 @@ class CellAngles(object):
 
 
 class ZappyAlgs(object):
+    RADIUS_FUDGE = 1.0 / 3.0
+
     def calc_coords_in_range(self, _range, x_center, y_center):
         coords = set()
         for i in range(_range + 1):
@@ -68,16 +72,21 @@ class ZappyAlgs(object):
 
             for step in range(iteration + 1):
                 cell = self._cell_at(x_center, y_center, quad_x, quad_y, step, iteration, is_vertical)
-                cell_angles = CellAngles(near=(float(step) * angle_allocation),
-                                         center=(float(step + .5) * angle_allocation),
-                                         far=(float(step + 1) * angle_allocation))
 
-                visible = self._cell_is_visible(cell_angles, obstructions)
+                # Calculate the distance from the centerpoint
+                cell_distance = math.sqrt((x_center - cell[0]) * (x_center - cell[0]) +
+                                          (y_center - cell[1]) * (y_center - cell[1]))
+                if not cell_distance > float(radius) + self.RADIUS_FUDGE:
+                    cell_angles = CellAngles(near=(float(step) * angle_allocation),
+                                             center=(float(step + .5) * angle_allocation),
+                                             far=(float(step + 1) * angle_allocation))
 
-                if visible:
-                    visible_cells.add(cell)
-                    if not func_transparent(*cell):
-                        obstructions = self._add_obstruction(obstructions, cell_angles)
+                    visible = self._cell_is_visible(cell_angles, obstructions)
+
+                    if visible:
+                        visible_cells.add(cell)
+                        if not func_transparent(*cell):
+                            obstructions = self._add_obstruction(obstructions, cell_angles)
 
             iteration += 1
 

@@ -186,7 +186,7 @@ class UIScreenMenuLevel(UIScreen.UIScreen):
 
     def _move_level_selection_sprite(self):
         x = self._selection % self._num_cols
-        y = self._selection / self._num_rows - 1
+        y = self._selection / self._num_cols - 1
         point = self._draw_points[x][y]
         self._level_selection_sprite.x = point[0] - (self._level_selection_sprite.width / 2)
         self._level_selection_sprite.y = point[1]
@@ -227,6 +227,7 @@ class UIScreenMenuLevel(UIScreen.UIScreen):
             self._right_sprite.draw()
 
     def _draw_selection(self):
+        print self._selection
         if -1 < self._selection < self._num_on_page:
             self._level_selection_sprite.draw()
         elif self._selection == -1:

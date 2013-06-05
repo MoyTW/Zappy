@@ -5,7 +5,7 @@ import dummies.DummyTool
 import loader.TemplateTool as TemplateTool
 import loader.TemplateActor as TemplateActor
 import entity.actor.Actor as Actor
-import entity.actor.sense as senses
+import entity.actor.senses as senses
 
 
 class TestTemplateActor(unittest.TestCase):

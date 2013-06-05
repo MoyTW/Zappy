@@ -5,7 +5,7 @@ import entity.actor.Actor as Actor
 import dummies.DummyTool as DummyTool
 import loader.LoaderLevel as LoaderLevel
 from z_defs import DIR
-import entity.actor.sense.SenseSeismic as SenseSeismic
+import entity.actor.senses.SenseSeismic as SenseSeismic
 
 
 class TestActor(unittest.TestCase):

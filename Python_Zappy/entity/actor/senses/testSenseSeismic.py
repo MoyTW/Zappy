@@ -1,7 +1,7 @@
 __author__ = 'Travis Moy'
 
 import unittest
-import entity.actor.sense.SenseSeismic as SenseSeismic
+import entity.actor.senses.SenseSeismic as SenseSeismic
 import dummies.DummyLoaderEntityIndex
 import loader.LoaderLevel
 

@@ -63,7 +63,7 @@ class ZappyAlgs(object):
             set_coords.add((x_center - x_alg, y_center + y_alg))
             set_coords.add((x_center - x_alg, y_center - y_alg))
 
-    # Currently returns a square, if sight is unimpeded!
+    # func_transparent is a function with the sig: boolean func(x, y)
     def calc_visible_cells_from(self, x_center, y_center, radius, func_transparent):
         cells = self._visible_cells_in_quadrant_from(x_center, y_center, 1, 1, radius, func_transparent)
         cells.update(self._visible_cells_in_quadrant_from(x_center, y_center, 1, -1, radius, func_transparent))
@@ -72,21 +72,11 @@ class ZappyAlgs(object):
         cells.add((x_center, y_center))
         return cells
 
+    # Parameters quad_x, quad_y should only be 1 or -1. The combination of the two determines the quadrant.
     def _visible_cells_in_quadrant_from(self, x_center, y_center, quad_x, quad_y, radius, func_transparent):
-        if quad_x < 0:
-            q_x = -1
-        elif quad_x > 0:
-            q_x = 1
-        else:
-            raise RuntimeError("quad_x is zero! Unacceptable; there's no quadrant along the horizontal line!")
-        if quad_y < 0:
-            q_y = -1
-        elif quad_y > 0:
-            q_y = 1
-        else:
-            raise RuntimeError("quad_x is zero! Unacceptable; there's no quadrant along the vertical line!")
-        cells = self._visible_cells_in_octant_from(x_center, y_center, q_x, q_y, radius, func_transparent, True)
-        cells.update(self._visible_cells_in_octant_from(x_center, y_center, q_x, q_y, radius, func_transparent, False))
+        cells = self._visible_cells_in_octant_from(x_center, y_center, quad_x, quad_y, radius, func_transparent, True)
+        cells.update(self._visible_cells_in_octant_from(x_center, y_center, quad_x, quad_y, radius, func_transparent,
+                                                        False))
 
         return cells
 

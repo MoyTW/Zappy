@@ -1,7 +1,7 @@
 __author__ = 'Travis Moy'
 
 from loader.TemplateActor import TemplateActor
-from entity.actor.sense import SenseSight
+from entity.actor.senses import SenseSight
 from z_json import JSONCONVERTER
 
 

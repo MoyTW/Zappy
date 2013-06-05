@@ -93,9 +93,13 @@ class Camera(object):
         self._sprites = list()
         player_actor = self._level.get_player_actor()
         # Ugly as hell, we're poking all over where we shouldn't be!
-        visible_cells = Z_ALGS.calc_visible_cells_from(*player_actor.get_coords(),
-                                                       radius=player_actor._senses[0]._range,
-                                                       func_transparent=self._level.cell_is_transparent)
+        # If there's no entity to match, it will disregard the FOW.
+        try:
+            visible_cells = Z_ALGS.calc_visible_cells_from(*player_actor.get_coords(),
+                                                           radius=player_actor._senses[0]._range,
+                                                           func_transparent=self._level.cell_is_transparent)
+        except AttributeError:
+            visible_cells = None
 
         for row in range(0, self._num_rows):
             for col in range(0, self._num_cols):
@@ -105,7 +109,7 @@ class Camera(object):
                 display_images = self._level.get_display_images_at(cell_row_index, cell_col_index)
                 self._process_display_images_and_add_sprites(display_images, row, col)
 
-                if (cell_row_index, cell_col_index) not in visible_cells and \
+                if visible_cells is not None and (cell_row_index, cell_col_index) not in visible_cells and \
                         self._level.get_cell_at(cell_row_index, cell_col_index) is not None:
                     sprite = pyglet.sprite.Sprite(
                         self._fow_image,

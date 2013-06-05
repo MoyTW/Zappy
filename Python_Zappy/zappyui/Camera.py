@@ -10,11 +10,13 @@ from z_algs import Z_ALGS
 class Camera(object):
     IMAGE_ACROSS = 64
     DEFAULT_CURSOR_IMAGE = 'images/camera_cursor.png'
+    FOW_IMAGE = 'images/defaults/default_fow.png'
     LOADER = pyglet.resource.Loader(['@assets'])
 
     _draw_cursor = True
     _sprites = list()
     _batches = dict()
+    _fow_batch = pyglet.graphics.Batch()
     _magnification = 1
     _sprite_across = 64
 
@@ -22,6 +24,10 @@ class Camera(object):
                  cursor_image_file=DEFAULT_CURSOR_IMAGE):
         self._level = level
         self._center_tile = center_tile
+
+        # Convenience.
+        self._fow_image = None
+        self._load_fow_image()
 
         # These are set by self._load_cursor(); listed for my ease.
         self._cursor_image = None
@@ -72,6 +78,8 @@ class Camera(object):
         if self._draw_cursor:
             self._cursor.draw()
 
+        self._fow_batch.draw()
+
     def center_on(self, x, y):
         if self._level is None:
             return False
@@ -94,9 +102,17 @@ class Camera(object):
                 cell_row_index = lower_left_index[0] + row
                 cell_col_index = lower_left_index[1] + col
 
-                if (cell_row_index, cell_col_index) in visible_cells:
-                    display_images = self._level.get_display_images_at(cell_row_index, cell_col_index)
-                    self._process_display_images_and_add_sprites(display_images, row, col)
+                display_images = self._level.get_display_images_at(cell_row_index, cell_col_index)
+                self._process_display_images_and_add_sprites(display_images, row, col)
+
+                if (cell_row_index, cell_col_index) not in visible_cells and \
+                        self._level.get_cell_at(cell_row_index, cell_col_index) is not None:
+                    sprite = pyglet.sprite.Sprite(
+                        self._fow_image,
+                        x=self._lower_left_pixel[0] + row * self._sprite_across,
+                        y=self._lower_left_pixel[1] + col * self._sprite_across,
+                        batch=self._fow_batch)
+                    self._sprites.append(sprite)
 
     # Processes the display images. No duh. That's a useless comment.
     # Currently it creates sprites for the first image of each priority.
@@ -163,3 +179,6 @@ class Camera(object):
                 warnings.warn("Error loading specified Cursor image, attempting to load default Cursor image.")
                 self._cursor_image = self.LOADER.image(self.DEFAULT_CURSOR_IMAGE)
         self._cursor = pyglet.sprite.Sprite(self._cursor_image)
+
+    def _load_fow_image(self):
+        self._fow_image = self.LOADER.image(self.FOW_IMAGE)

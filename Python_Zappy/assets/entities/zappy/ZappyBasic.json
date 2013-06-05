@@ -8,7 +8,7 @@
         {
             "__class__": "SenseSight", 
             "__module__": "entity.actor.sense.SenseSight", 
-            "_range": 5
+            "_range": 9
         }
     ], 
     "_tools": null

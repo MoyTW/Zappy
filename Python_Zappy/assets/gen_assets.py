@@ -11,6 +11,6 @@ def convert_and_write_to_file(object, filename):
     f.write(json_string)
     f.close()
 
-zappy_basic_template = TemplateActor(_max_moves=1, _image_name='boxydrone.png', _senses=[SenseSight.SenseSight(5)],
+zappy_basic_template = TemplateActor(_max_moves=1, _image_name='boxydrone.png', _senses=[SenseSight.SenseSight(9)],
                                      _player_controlled=True)
 convert_and_write_to_file(zappy_basic_template, 'entities/zappy/ZappyBasic.json')

@@ -11,7 +11,9 @@ class Adversary(Actor.Actor):
         self._behaviors = behaviors
 
     # Adversary.take_action() is called for each Adversary on the level.
-    # The function will iterate through the behaviors in-order until it has exhausted the list, or the entity runs out
-    # of moves.
+    # First, it uses its senses to detect entities.
+    #
+    # Then, the function will iterate through the behaviors in-order until it has exhausted the list, or the entity
+    # runs out of moves.
     def take_action(self):
         pass

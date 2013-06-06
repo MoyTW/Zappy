@@ -1,17 +1,16 @@
 !NAME!,This is a test level!
 !NUMBER!,0
 !WIDTH!,5
-!HEIGHT!,6
+!HEIGHT!,5
 
 !DEFINITIONS!
 a,True,images/floor.png,[]
 b,False,images/wall.png,[]
-D,True,images/floor.png,[zappy/ZappyBasic.json]
+D,True,images/floor.png,[TestObj]
 
 !MAP!
-b,b,b,b,b
-b,b,b,b,b
+a,a,b,a,a
 a,a,a,a,a
-a,a,a,a,a
-b,b,b,b,b
-D,a,a,a,a
+a,b,D,a,b
+a,a,b,a,a
+a,a,b,a,a

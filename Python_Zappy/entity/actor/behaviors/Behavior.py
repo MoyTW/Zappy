@@ -4,6 +4,7 @@ __author__ = 'Travis Moy'
 class Behavior(object):
 
     # If _can_execute(), _execute()
+    # Returns True on successful execution, False otherwise
     def attempt_to_execute(self, level, adversary):
         pass
 

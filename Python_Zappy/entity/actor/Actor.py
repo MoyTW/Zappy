@@ -33,8 +33,17 @@ class Actor(Entity.Entity):
         if self in self._detected_entities:
             self._detected_entities.remove(self)
 
+    def get_detected_entities(self):
+        return self._detected_entities
+
     def get_coords(self):
         return self._x, self._y
+
+    def get_current_moves(self):
+        return self._current_moves
+
+    def use_moves(self, moves):
+        self._current_moves -= moves
 
     def set_coords(self, x, y):
         self._x = x

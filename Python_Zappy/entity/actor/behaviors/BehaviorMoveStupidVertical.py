@@ -4,18 +4,14 @@ import Behavior
 from z_defs import DIR
 
 
-# Attempts to move horizontally towards the player. If it cannot, attempts to move vertically towards the player.
-# If it cannot, does nothing.
-class BehaviorMoveStupid(Behavior.Behavior):
+class BehaviorMoveStupidHorizontal(Behavior.Behavior):
 
-    # Executes if you have a move
     def _can_execute(self, level, adversary):
         if adversary._current_moves > 0:
             return True
         else:
             return False
 
-    # Tries to move horizontally; else tries to move vertically; else fails.
     def _execute(self, level, adversary):
         zappy = level.get_player_actor()
         if zappy in adversary.get_detected_entities():
@@ -23,15 +19,9 @@ class BehaviorMoveStupid(Behavior.Behavior):
             atz_x, atz_y = (zappy.get_coords()[i] - adversary.get_coords()[i] for i in range(2))
 
             # Check for horizontal
-            if atz_x < 0:
-                moved = self._try_to_move(DIR.W, level, adversary)
-            elif atz_x > 0:
-                moved = self._try_to_move(DIR.E, level, adversary)
-
-            # Check for vertical
-            if not moved and atz_y < 0:  # We want to move down
+            if atz_y < 0:
                 moved = self._try_to_move(DIR.S, level, adversary)
-            elif not moved and atz_y > 0:  # We want to move up
+            elif atz_y > 0:
                 moved = self._try_to_move(DIR.N, level, adversary)
 
             return moved

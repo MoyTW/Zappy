@@ -4,6 +4,7 @@ import unittest
 import loader.LoaderLevel
 import entity.actor.Adversary as Adversary
 import entity.actor.behaviors.BehaviorMoveStupid as BehaviorMoveStupid
+import entity.actor.senses.SenseSeismic as SenseSeismic
 
 
 class TestBehaviorMoveStupid(unittest.TestCase):
@@ -11,7 +12,7 @@ class TestBehaviorMoveStupid(unittest.TestCase):
     def setUp(self):
         self.loader_level = loader.LoaderLevel.LoaderLevel('entity/actor/behaviors/behavior_test_levels')
         self.level = self.loader_level.get_level(0)
-        self.adversary = Adversary.Adversary(self.level)
+        self.adversary = Adversary.Adversary(self.level, senses=[SenseSeismic.SenseSeismic(5)])
         self.behavior = BehaviorMoveStupid.BehaviorMoveStupid()
 
     def tearDown(self):
@@ -28,23 +29,26 @@ class TestBehaviorMoveStupid(unittest.TestCase):
     def test_execute(self):
         data = self._gen_test_data()
         for d in data:
-            self.assertEqual(self.run_test_data(*d[0]), d[1])
+            result = self.run_test_data(*d[0])
+            self.assertEqual(result, d[1], "Data: {0} Result: {1}".format(d, result))
 
     # Data is: [(x, y), (expected_horizontal, expected_vertical)]
     def _gen_test_data(self):
         data = [
-            [(3, 3), (-1, 0)]
-            [(3, 4), (0, -1)]
-            [(1, 3), (1, 0)]
-            [(1, 4), (0, -1)]
-            [(1, 1), (0, 0)]
-            [(0, 1), (0, 1)]
+            [(1, 0), (0, 1)],
+            [(3, 3), (-1, 0)],
+            [(3, 4), (0, -1)],
+            [(1, 3), (1, 0)],
+            [(1, 4), (0, -1)],
+            [(1, 1), (0, 0)],
+            [(0, 1), (1, 0)],
             [(0, 0), (1, 0)]
         ]
         return data
 
     def run_test_data(self, x, y):
         self.level.place_entity_at(self.adversary, x, y)
+        self.adversary.detect_entities()
         self.behavior._execute(self.level, self.adversary)
         new_x, new_y = self.adversary.get_coords()
         self.level.remove_entity_from(self.adversary, new_x, new_y)

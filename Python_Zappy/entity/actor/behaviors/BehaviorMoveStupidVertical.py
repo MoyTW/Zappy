@@ -7,7 +7,7 @@ from z_defs import DIR
 class BehaviorMoveStupidVertical(Behavior.Behavior):
 
     def _can_execute(self, level, adversary):
-        if adversary._current_moves > 0:
+        if adversary.get_current_moves() > 0:
             return True
         else:
             return False
@@ -24,6 +24,8 @@ class BehaviorMoveStupidVertical(Behavior.Behavior):
             elif atz_y > 0:
                 moved = self._try_to_move(DIR.N, level, adversary)
 
+            if moved:
+                adversary.use_moves(1)
             return moved
         else:
             return False

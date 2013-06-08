@@ -15,7 +15,7 @@ class TestAdversary(unittest.TestCase):
         vertical = BehaviorMoveStupidVertical()
 
         self.level = loader.LoaderLevel.LoaderLevel('entity/actor/behaviors/behavior_test_levels').get_level(0)
-        self.adversary = Adversary.Adversary(level=self.level, senses=SenseSeismic.SenseSeismic(5),
+        self.adversary = Adversary.Adversary(level=self.level, senses=[SenseSeismic.SenseSeismic(5)],
                                              behaviors=[horizontal, vertical])
 
     def tearDown(self):
@@ -24,29 +24,31 @@ class TestAdversary(unittest.TestCase):
 
     def test_multiple_passes(self):
         self.adversary._max_moves = 3
+        self.adversary.replenish_moves()
         self.level.place_entity_at(self.adversary, 0, 0)
         self.assertTrue(self.adversary.take_action())
         self.assertEqual(self.adversary.get_coords(), (1, 1))
         self.level.remove_entity_from(self.adversary, *self.adversary.get_coords())
         self.assertEqual(self.adversary.get_current_moves(), 1)
 
-    def test_behaviors_ordering(self):
+    def test_second_executed_if_first_not(self):
         # Test that if first fails, goes to second.
         self.level.place_entity_at(self.adversary, 1, 0)
         self.assertTrue(self.adversary.take_action())
         self.assertEqual(self.adversary.get_coords(), (1, 1))
         self.level.remove_entity_from(self.adversary, *self.adversary.get_coords())
 
-        # Test that the first is executed if it does not fail.
+    def test_first_executed_second_not(self):
         self.level.place_entity_at(self.adversary, 0, 0)
         self.assertTrue(self.adversary.take_action())
         self.assertEqual(self.adversary.get_coords(), (1, 0))
         self.level.remove_entity_from(self.adversary, *self.adversary.get_coords())
 
+    def test_neither_executed(self):
         # Test that nothing happens if both fail.
         self.level.place_entity_at(self.adversary, 1, 1)
         self.assertFalse(self.adversary.take_action())
-        self.assertEqual(self.adversary.get_coords(), (1, 0))
+        self.assertEqual(self.adversary.get_coords(), (1, 1))
         self.level.remove_entity_from(self.adversary, *self.adversary.get_coords())
 
 suite = unittest.TestLoader().loadTestsFromTestCase(TestAdversary)

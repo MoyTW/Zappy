@@ -10,7 +10,7 @@ class BehaviorMoveStupid(Behavior.Behavior):
 
     # Executes if you have a move
     def _can_execute(self, level, adversary):
-        if adversary._current_moves > 0:
+        if adversary.get_current_moves() > 0:
             return True
         else:
             return False
@@ -34,6 +34,8 @@ class BehaviorMoveStupid(Behavior.Behavior):
             elif not moved and atz_y > 0:  # We want to move up
                 moved = self._try_to_move(DIR.N, level, adversary)
 
+            if moved:
+                adversary.use_moves(1)
             return moved
         else:
             return False

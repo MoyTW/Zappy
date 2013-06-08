@@ -8,12 +8,17 @@ class Adversary(Actor.Actor):
         super(Adversary, self).__init__(level=level, max_moves=max_moves, x=x, y=y, tools=tools, senses=senses,
                                         image_name=image_name)
 
-        self._behaviors = behaviors
+        if behaviors is None:
+            self._behaviors = list()
+        else:
+            self._behaviors = behaviors
 
     # Adversary.take_action() is called for each Adversary on the level.
     # First, it uses its senses to detect entities.
     #
     # Then, the function will iterate through the behaviors in-order until it has exhausted the list, or the entity
     # runs out of moves.
+    #
+    # Returns True if any action was taken and False if no actions were taken.
     def take_action(self):
         pass

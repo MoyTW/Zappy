@@ -4,7 +4,7 @@ import Behavior
 from z_defs import DIR
 
 
-class BehaviorMoveStupidHorizontal(Behavior.Behavior):
+class BehaviorMoveStupidVertical(Behavior.Behavior):
 
     def _can_execute(self, level, adversary):
         if adversary._current_moves > 0:
@@ -18,7 +18,7 @@ class BehaviorMoveStupidHorizontal(Behavior.Behavior):
             moved = False
             atz_x, atz_y = (zappy.get_coords()[i] - adversary.get_coords()[i] for i in range(2))
 
-            # Check for horizontal
+            # Check for vertical
             if atz_y < 0:
                 moved = self._try_to_move(DIR.S, level, adversary)
             elif atz_y > 0:

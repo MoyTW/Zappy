@@ -17,7 +17,10 @@ class Actor(Entity.Entity):
         self._y = y
         self._player_controlled = player_controlled
 
-        self._tools = tools
+        if tools is None:
+            self._tools = tools
+        else:
+            self._tools = list()
         if senses is None:
             self._senses = list()
         else:

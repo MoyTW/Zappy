@@ -7,7 +7,18 @@ class LevelController(object):
     def __init__(self, level):
         self._level = level
         self._zappy = self._level.get_player_actor()
+        self._level_won = False
+        self._level_failed = False
         warnings.warn('LevelController is not yet fully implemented! zappy_get_tools are passing.')
+
+    def is_level_completed(self):
+        return self.level_won or self._level_failed
+
+    def is_level_won(self):
+        return self._level_won
+
+    def is_level_failed(self):
+        return self._level_failed
 
     def get_level(self):
         return self._level

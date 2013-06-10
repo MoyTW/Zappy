@@ -18,6 +18,7 @@ class BehaviorAttackMelee(Behavior.Behavior):
         player_actor = level.get_player_actor()
         player_actor.deal_damage(self._strength)
         adversary.use_moves(1)
+        return True
 
     def _are_adjacent(self, zappy, adversary):
         atz_x, atz_y = (zappy.get_coords()[i] - adversary.get_coords()[i] for i in range(2))

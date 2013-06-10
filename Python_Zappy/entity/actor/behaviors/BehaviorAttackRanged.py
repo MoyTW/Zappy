@@ -23,4 +23,5 @@ class BehaviorAttackRanged(Behavior.Behavior):
         zappy = level.get_player_actor()
         zappy.deal_damage(1)
         adversary.use_moves(1)
-        print adversary, "has used a range attack on Zappy! Zappy takes 1 damage!"
+        print adversary, "used a ranged attack! Player has taken 1 damage! Player's hp:", zappy.get_current_hp()
+        return True

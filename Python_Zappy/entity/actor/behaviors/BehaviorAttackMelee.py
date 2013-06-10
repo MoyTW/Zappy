@@ -4,7 +4,7 @@ import Behavior
 import math
 
 
-class BehaviorMeleeAttack(Behavior.Behavior):
+class BehaviorAttackMelee(Behavior.Behavior):
 
     def __init__(self, _strength=1):
         self._strength = _strength

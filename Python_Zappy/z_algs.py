@@ -54,6 +54,7 @@ class ZappyAlgs(object):
             self._get_coords_in_outer_shell(i, x_center, y_center, coords)
         return coords
 
+    # Internal functions to calc_coords_in_range
     def _get_coords_in_outer_shell(self, _range, x_center, y_center, set_coords):
         for i in range(_range + 1):
             x_alg = i
@@ -72,8 +73,28 @@ class ZappyAlgs(object):
         cells.add((x_center, y_center))
         return cells
 
+    # LOS is mutal - that is, if the target has LOS to the origin, the origin has LOS to the target.
+    # Therefore it doesn't really matter which order they're provided in.
+    def check_los(self, target_x, target_y, origin_x, origin_y, radius, func_transparent):
+        ott_x = target_x - origin_x
+        ott_y = target_y - origin_y
+        cells = self._visible_cells_in_quadrant_from(origin_x, origin_y, ott_x, ott_y, radius, func_transparent)
+
+        return (target_x, target_y) in cells
+
+    # Internal functions to calc_visible_cells_from()
     # Parameters quad_x, quad_y should only be 1 or -1. The combination of the two determines the quadrant.
+    # 0 is coerced to -1. (0 means it's on the edge and whichever one doesn't matter).
     def _visible_cells_in_quadrant_from(self, x_center, y_center, quad_x, quad_y, radius, func_transparent):
+        if quad_x > 0:
+            quad_x = 1
+        elif quad_x <= 0:
+            quad_x = -1
+        if quad_y > 0:
+            quad_y = 1
+        elif quad_y <= 0:
+            quad_y = -1
+
         cells = self._visible_cells_in_octant_from(x_center, y_center, quad_x, quad_y, radius, func_transparent, True)
         cells.update(self._visible_cells_in_octant_from(x_center, y_center, quad_x, quad_y, radius, func_transparent,
                                                         False))

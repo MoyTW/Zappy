@@ -7,8 +7,8 @@
             "__module__": "entity.actor.behaviors.BehaviorMoveStupid"
         }, 
         {
-            "__class__": "BehaviorMeleeAttack", 
-            "__module__": "entity.actor.behaviors.BehaviorMeleeAttack", 
+            "__class__": "BehaviorAttackMelee", 
+            "__module__": "entity.actor.behaviors.BehaviorAttackMelee", 
             "_strength": 2
         }
     ], 

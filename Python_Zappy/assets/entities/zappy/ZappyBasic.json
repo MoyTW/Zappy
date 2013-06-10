@@ -7,7 +7,7 @@
     "_senses": [
         {
             "__class__": "SenseSight", 
-            "__module__": "entity.actor.senses.SenseSight",
+            "__module__": "entity.actor.senses.SenseSight", 
             "_range": 9
         }
     ], 

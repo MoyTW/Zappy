@@ -1,0 +1,20 @@
+{
+    "__class__": "TemplateAdversary", 
+    "__module__": "loader.TemplateAdversary", 
+    "_behaviors": [
+        {
+            "__class__": "BehaviorMoveStupid", 
+            "__module__": "entity.actor.behaviors.BehaviorMoveStupid"
+        }
+    ], 
+    "_image_name": null, 
+    "_max_moves": 2, 
+    "_senses": [
+        {
+            "__class__": "SenseSeismic", 
+            "__module__": "entity.actor.senses.SenseSeismic", 
+            "_range": 9
+        }
+    ], 
+    "_tools": null
+}

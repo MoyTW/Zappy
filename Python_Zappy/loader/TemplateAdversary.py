@@ -4,7 +4,7 @@ import Template
 import entity.actor.Adversary as Adversary
 
 
-class TemplateActor(Template.Template):
+class TemplateAdversary(Template.Template):
 
     # _tools are TemplateTool instances
     # _senses are Sense instances

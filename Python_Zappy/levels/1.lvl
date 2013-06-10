@@ -6,16 +6,17 @@
 !DEFINITIONS!
 a,True,images/floor.png,[]
 b,False,images/wall.png,[]
+e,True,images/floor.png,[adversaries/FastStupidSight.json]
 D,True,images/floor.png,[zappy/ZappyBasic.json]
 
 !MAP!
 b,b,b,b,b,b,b,b,b,b,b,b,b,b,b
+b,e,a,a,a,a,a,b,a,a,a,a,a,a,b
+b,a,a,a,a,a,a,b,a,a,e,e,a,a,b
 b,a,a,a,a,a,a,b,a,a,a,a,a,a,b
-b,a,a,a,a,a,a,a,a,a,a,a,a,a,b
+b,a,b,b,b,b,a,b,a,b,b,b,b,a,b
 b,a,a,a,a,a,a,b,a,a,a,a,a,a,b
-b,a,a,a,a,a,a,a,a,a,a,a,a,a,b
 b,a,a,a,a,a,a,b,a,a,a,a,a,a,b
-b,a,a,a,a,a,a,a,a,a,a,a,a,a,b
 b,b,a,b,a,b,a,D,a,b,a,b,a,b,b
 b,a,a,a,a,a,a,a,a,a,a,a,a,a,b
 b,a,a,a,a,a,a,b,a,a,a,a,a,a,b

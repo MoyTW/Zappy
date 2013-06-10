@@ -13,6 +13,7 @@ class Camera(object):
     FOW_IMAGE = 'images/defaults/default_fow.png'
     LOADER = pyglet.resource.Loader(['@assets'])
 
+    _explored_cells = set()  # Cells which the player has, at some point, seen.
     _draw_cursor = True
     _sprites = list()
     _batches = dict()
@@ -98,6 +99,7 @@ class Camera(object):
             visible_cells = Z_ALGS.calc_visible_cells_from(*player_actor.get_coords(),
                                                            radius=player_actor._senses[0]._range,
                                                            func_transparent=self._level.cell_is_transparent)
+            self._explored_cells.update(visible_cells)
         except AttributeError:
             visible_cells = None
 
@@ -106,17 +108,20 @@ class Camera(object):
                 cell_row_index = lower_left_index[0] + row
                 cell_col_index = lower_left_index[1] + col
 
-                display_images = self._level.get_display_images_at(cell_row_index, cell_col_index)
-                self._process_display_images_and_add_sprites(display_images, row, col)
+                # Check to see if it's in _explored_cells
+                if (cell_row_index, cell_col_index) in self._explored_cells:
+                    display_images = self._level.get_display_images_at(cell_row_index, cell_col_index)
+                    self._process_display_images_and_add_sprites(display_images, row, col)
 
-                if visible_cells is not None and (cell_row_index, cell_col_index) not in visible_cells and \
-                        self._level.get_cell_at(cell_row_index, cell_col_index) is not None:
-                    sprite = pyglet.sprite.Sprite(
-                        self._fow_image,
-                        x=self._lower_left_pixel[0] + row * self._sprite_across,
-                        y=self._lower_left_pixel[1] + col * self._sprite_across,
-                        batch=self._fow_batch)
-                    self._sprites.append(sprite)
+                    # This is the code to draw the FOW sprite over the cell.
+                    if visible_cells is not None and (cell_row_index, cell_col_index) not in visible_cells and \
+                            self._level.get_cell_at(cell_row_index, cell_col_index) is not None:
+                        sprite = pyglet.sprite.Sprite(
+                            self._fow_image,
+                            x=self._lower_left_pixel[0] + row * self._sprite_across,
+                            y=self._lower_left_pixel[1] + col * self._sprite_across,
+                            batch=self._fow_batch)
+                        self._sprites.append(sprite)
 
     # Processes the display images. No duh. That's a useless comment.
     # Currently it creates sprites for the first image of each priority.

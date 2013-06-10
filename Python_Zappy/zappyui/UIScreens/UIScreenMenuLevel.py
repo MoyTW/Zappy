@@ -200,8 +200,9 @@ class UIScreenMenuLevel(UIScreen.UIScreen):
             return self._attempt_to_launch_level()
 
     def _attempt_to_launch_level(self):
-        level = self._selection + self._current_page * self._num_on_page
-        return self._factory.create_ScreenLevel(self._loader_level.get_level_controller(level))
+        level_num = self._selection + self._current_page * self._num_on_page
+        self._loader_level.regen_level(level_num)
+        return self._factory.create_ScreenLevel(self._loader_level.get_level_controller(level_num))
 
     def _flip_page(self, direction):
         self._current_page += direction

@@ -34,6 +34,12 @@ class Level:
                                                                   .format(self._info.get_name(),
                                                                           self._info.get_number()))
 
+    # Also replaces the player_actor
+    def replace_cells(self, cells):
+        self._player_actor = None
+        self._cells = None
+        self.set_cells(cells)
+
     def get_level_info(self):
         return self._info
 

@@ -13,7 +13,6 @@ class Camera(object):
     FOW_IMAGE = 'images/defaults/default_fow.png'
     LOADER = pyglet.resource.Loader(['@assets'])
 
-    _explored_cells = set()  # Cells which the player has, at some point, seen.
     _draw_cursor = True
     _sprites = list()
     _batches = dict()
@@ -25,6 +24,8 @@ class Camera(object):
                  cursor_image_file=DEFAULT_CURSOR_IMAGE):
         self._level = level
         self._center_tile = center_tile
+
+        self._explored_cells = set()  # Cells which the player has, at some point, seen.
 
         # Convenience.
         self._fow_image = None

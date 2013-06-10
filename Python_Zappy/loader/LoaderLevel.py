@@ -39,11 +39,18 @@ class LoaderLevel(object):
             warnings.warn('{0} is not a valid level number!'.format(level_number))
         return self._levels.get(level_number)
 
+    def regen_level(self, level_number):
+        try:
+            self._load_level(level_number)
+        except AttributeError:
+            warnings.warn('{0} is not a valid level number!'.format(level_number))
+
     def get_level_controller(self, level_number):
         temp_level = self.get_level(level_number)
         if temp_level is not None:
             return level.LevelController.LevelController(temp_level)
         else:
+            print "LoaderLevel.get_level_controller is returning None!"
             return None
 
     def _return_default_preview(self):
@@ -134,7 +141,7 @@ class LoaderLevel(object):
     # If entities, use Level.place_entity_at(), using self._entity_index to create them.
     def _build_cell_map_and_assign_to_level(self, cell_defs_dict, lines, index_begin_map, _level):
         cells = [[None for _ in range(0, _level.get_height())] for _ in range(0, _level.get_width())]
-        _level.set_cells(cells)
+        _level.replace_cells(cells)
 
         for row_index in range(index_begin_map + 1, len(lines)):
             line = lines[row_index].strip()

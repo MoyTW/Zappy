@@ -45,7 +45,7 @@ class TestActor(unittest.TestCase):
 
     def test_attempt_move(self):
         level = self.loader.get_level(4)
-        actor = Actor.Actor(level, 4)
+        actor = Actor.Actor(level, max_moves=4)
         level.place_entity_at(actor, 1, 1)
 
         self.assertTrue(actor.attempt_move(DIR.N))

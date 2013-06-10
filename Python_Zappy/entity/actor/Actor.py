@@ -7,10 +7,12 @@ from z_defs import DIR
 class Actor(Entity.Entity):
     _priority = 3
 
-    def __init__(self, level, max_moves=1, x=-1, y=-1, tools=None, senses=None, image_name=None,
+    def __init__(self, level, max_hp=1, max_moves=1, x=-1, y=-1, tools=None, senses=None, image_name=None,
                  player_controlled=False):
         super(Actor, self).__init__(image_name=image_name, level=level)
 
+        self._max_hp = max_hp
+        self._current_hp = self._max_hp
         self._max_moves = max_moves
         self._current_moves = max_moves
         self._x = x
@@ -29,28 +31,21 @@ class Actor(Entity.Entity):
         # Set by self.detect_entities()
         self._detected_entities = list()
 
-    def detect_entities(self):
-        self._detected_entities = list()
-        for sense in self._senses:
-            self._detected_entities.extend(sense.detect_entities(self._x, self._y, self._level))
-        if self in self._detected_entities:
-            self._detected_entities.remove(self)
-
+# Accessors
     def get_detected_entities(self):
         return self._detected_entities
 
     def get_coords(self):
         return self._x, self._y
 
+    def get_max_hp(self):
+        return self._max_hp
+
+    def get_current_hp(self):
+        return self._current_hp
+
     def get_current_moves(self):
         return self._current_moves
-
-    def use_moves(self, moves):
-        self._current_moves -= moves
-
-    def set_coords(self, x, y):
-        self._x = x
-        self._y = y
 
     def get_tools(self):
         return self._tools
@@ -58,8 +53,21 @@ class Actor(Entity.Entity):
     def is_player_controlled(self):
         return self._player_controlled
 
+    def is_destroyed(self):
+        return self._current_hp < 0
+
     def has_moves(self):
         return self._current_moves > 0
+
+    def use_moves(self, moves):
+        self._current_moves -= moves
+
+    def deal_damage(self, damage):
+        self._current_hp -= damage
+
+    def set_coords(self, x, y):
+        self._x = x
+        self._y = y
 
     def replenish_moves(self):
         self._current_moves = self._max_moves
@@ -73,6 +81,13 @@ class Actor(Entity.Entity):
         else:
             return False
     '''
+
+    def detect_entities(self):
+        self._detected_entities = list()
+        for sense in self._senses:
+            self._detected_entities.extend(sense.detect_entities(self._x, self._y, self._level))
+        if self in self._detected_entities:
+            self._detected_entities.remove(self)
 
     def attempt_move(self, direction):
         if self._current_moves <= 0:

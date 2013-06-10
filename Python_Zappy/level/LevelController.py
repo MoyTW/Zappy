@@ -12,7 +12,7 @@ class LevelController(object):
         warnings.warn('LevelController is not yet fully implemented! zappy_get_tools are passing.')
 
     def is_level_completed(self):
-        return self.level_won or self._level_failed
+        return self._level_won or self._level_failed
 
     def is_level_won(self):
         return self._level_won
@@ -42,6 +42,7 @@ class LevelController(object):
         pass
 
     def _turn_has_ended(self):
+        # Adversaries' turns
         for entity in self._level.get_all_entities():
             if entity is not self._zappy:
                 try:
@@ -49,5 +50,13 @@ class LevelController(object):
                     entity.take_action()
                 except AttributeError:
                     pass
-        warnings.warn("_turn_has_ended only replenishes Zappy's move points at this time!")
+
+        print self._zappy.get_current_hp()
+
+        # Check end conditions
+        if self._zappy.is_destroyed():
+            self._level_failed = True
+            return
+
+        # Player's turn
         self._zappy.replenish_moves()

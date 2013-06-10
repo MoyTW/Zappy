@@ -6,7 +6,8 @@ from zappyui.FactoryScreens import FactoryScreens
 from loader.LoaderLevel import LoaderLevel
 
 width = 1920
-height = 1080
+height = 640
+#height = 1080
 
 #width = 1280
 #height = 1024

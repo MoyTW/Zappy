@@ -53,6 +53,12 @@ class FactoryScreens(object):
         self.set_level_controller(level_controller)
         return Screens.UIScreenLevel.UIScreenLevel(self._camera, self._level_controller, self._window_viewport, self)
 
+    def create_ScreenLevelEnd(self):
+        if self._level_controller is None:
+            raise uiexcept.LevelNotLoadedException("Factory was asked to create a in-level screen, but no level was "
+                                                   "loaded! The programmer has made a fatal oversight!")
+        return Screens.UIScreenLevelEnd.UIScreenLevelEnd(self._level_controller)
+
     def create_ScreenLevelMenu(self):
         pass
 

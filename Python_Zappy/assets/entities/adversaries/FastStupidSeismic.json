@@ -5,6 +5,11 @@
         {
             "__class__": "BehaviorMoveStupid", 
             "__module__": "entity.actor.behaviors.BehaviorMoveStupid"
+        }, 
+        {
+            "__class__": "BehaviorMeleeAttack", 
+            "__module__": "entity.actor.behaviors.BehaviorMeleeAttack", 
+            "_strength": 2
         }
     ], 
     "_image_name": null, 

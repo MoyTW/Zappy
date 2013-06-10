@@ -17,12 +17,14 @@ zappy_basic_template = TemplateActor(_senses=[SenseSight.SenseSight(9)], _image_
                                      _player_controlled=True)
 convert_and_write_to_file(zappy_basic_template, 'entities/zappy/ZappyBasic.json')
 
-stupid_seismic_enemy = TemplateAdversary(_behaviors=[BehaviorMoveStupid.BehaviorMoveStupid()],
+stupid_seismic_enemy = TemplateAdversary(_behaviors=[BehaviorMoveStupid.BehaviorMoveStupid(),
+                                                     BehaviorMeleeAttack.BehaviorMeleeAttack(_strength=2)],
                                          _max_moves=2,
                                          _senses=[SenseSeismic.SenseSeismic(9)])
 convert_and_write_to_file(stupid_seismic_enemy, 'entities/adversaries/FastStupidSeismic.json')
 
-stupid_sight_enemy = TemplateAdversary(_behaviors=[BehaviorMoveStupid.BehaviorMoveStupid()],
+stupid_sight_enemy = TemplateAdversary(_behaviors=[BehaviorMoveStupid.BehaviorMoveStupid(),
+                                                   BehaviorMeleeAttack.BehaviorMeleeAttack(_strength=2)],
                                        _max_moves=2,
                                        _senses=[SenseSeismic.SenseSeismic(9)])
 convert_and_write_to_file(stupid_sight_enemy, 'entities/adversaries/FastStupidSight.json')

@@ -4,3 +4,4 @@ import BehaviorMoveStupid
 import BehaviorMoveStupidHorizontal
 import BehaviorMoveStupidVertical
 import BehaviorAttackMelee
+import BehaviorAttackRanged

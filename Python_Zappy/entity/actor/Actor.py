@@ -54,7 +54,7 @@ class Actor(Entity.Entity):
         return self._player_controlled
 
     def is_destroyed(self):
-        return self._current_hp < 0
+        return self._current_hp <= 0
 
     def has_moves(self):
         return self._current_moves > 0

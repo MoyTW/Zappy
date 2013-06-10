@@ -10,8 +10,9 @@ class BehaviorAttackMelee(Behavior.Behavior):
         self._strength = _strength
 
     def _can_execute(self, level, adversary):
-        adjacent = self._are_adjacent(level.get_player_actor(), adversary)
-        return adjacent
+        if adversary.get_current_moves() > 0:
+            adjacent = self._are_adjacent(level.get_player_actor(), adversary)
+            return adjacent
 
     def _execute(self, level, adversary):
         player_actor = level.get_player_actor()

@@ -3,6 +3,12 @@
     "__module__": "loader.TemplateAdversary", 
     "_behaviors": [
         {
+            "__class__": "BehaviorAttackRanged", 
+            "__module__": "entity.actor.behaviors.BehaviorAttackRanged", 
+            "_range": 3, 
+            "_strength": 1
+        }, 
+        {
             "__class__": "BehaviorMoveStupid", 
             "__module__": "entity.actor.behaviors.BehaviorMoveStupid"
         }, 

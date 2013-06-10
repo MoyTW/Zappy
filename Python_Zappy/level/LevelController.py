@@ -31,5 +31,12 @@ class LevelController(object):
         pass
 
     def _turn_has_ended(self):
+        for entity in self._level.get_all_entities():
+            if entity is not self._zappy:
+                try:
+                    entity.replenish_moves()
+                    entity.take_action()
+                except AttributeError:
+                    pass
         warnings.warn("_turn_has_ended only replenishes Zappy's move points at this time!")
         self._zappy.replenish_moves()

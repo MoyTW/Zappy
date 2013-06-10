@@ -69,6 +69,17 @@ class Level:
             return self._cells[x][y].get_all_entities()
         return None
 
+    # Horrifying, really. A more efficient (but more work-intensive) way would be to maintain an internal list, and to
+    # update it each time an entity is placed or removed.
+    #
+    # However, until it becomes a problem performance-wise, just leave it at this.
+    def get_all_entities(self):
+        entities = list()
+        for x in range(self.get_width()):
+            for y in range(self.get_height()):
+                entities.extend(self.get_all_entities_at(x, y))
+        return entities
+
     def cell_is_passable(self, x, y):
         cell = self.get_cell_at(x, y)
         if cell is not None:

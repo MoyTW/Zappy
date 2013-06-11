@@ -2,6 +2,7 @@ __author__ = 'Travis Moy'
 
 import entity.Entity as Entity
 from z_defs import DIR, RANK
+import warnings
 
 
 class Actor(Entity.Entity):
@@ -10,6 +11,7 @@ class Actor(Entity.Entity):
     def __init__(self, level, max_hp=1, max_moves=1, tools=None, senses=None, image_name=None, rank=RANK.AVERAGE,
                  player_controlled=False):
         super(Actor, self).__init__(image_name=image_name, level=level)
+        warnings.warn("Actor cannot yet apply status effects. turn_begin() and turn_end are passing.")
 
         self._max_hp = max_hp
         self._current_hp = self._max_hp
@@ -27,10 +29,20 @@ class Actor(Entity.Entity):
         else:
             self._senses = senses
 
+        # Entities will always spawn "clean" - can be changed in the future but I don't see the need to do so...
+        # Maybe I'll change my mind.
+        self._status_effects = list()
+
         # Set by self.detect_entities()
         self._detected_entities = list()
 
 # Accessors
+    def get_status_effects(self):
+        return self._status_effects
+
+    def get_rank(self):
+        return self._rank
+
     def get_detected_entities(self):
         return self._detected_entities
 
@@ -77,6 +89,29 @@ class Actor(Entity.Entity):
         else:
             return False
     '''
+
+    # At the begnning of the turn:
+    #   Replenish the movement points
+    #   Apply each status effect, in turn (this done because if you are, for example, deafened, but you somehow acquire
+    # a new hearing sense within the turn, you will be made unable to use it, as is proper)
+    def turn_begin(self):
+        pass
+
+    # At the end of the turn:
+    #   Lower all CD timers (Tools and Status Effects)
+    #   Check for expired status effects; umapply and remove expired
+    def turn_end(self):
+        pass
+
+    # Note that status effects don't take effect until the beginning of the Actor's turn.
+    #   I suppose that you could theoretically blind yourself and then still use your sight, but...that's kind of silly
+    # and really, why would you blind yourself? I don't see the need to prevent that.
+    def apply_status_effect(self, effect):
+        pass
+
+    # Unapplies and removes the status effect.
+    def remove_status_effect(self, effect):
+        pass
 
     def detect_entities(self):
         self._detected_entities = list()

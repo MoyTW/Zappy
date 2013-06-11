@@ -5,6 +5,7 @@ from loader.TemplateActor import TemplateActor
 from loader.TemplateAdversary import TemplateAdversary
 from z_json import JSONCONVERTER
 from entity.actor.behaviors import *
+from z_defs import RANK
 
 
 def convert_and_write_to_file(object, filename):
@@ -23,11 +24,13 @@ stupid_seismic_enemy = TemplateAdversary(_behaviors=[BehaviorAttackRanged.Behavi
                                                      BehaviorMoveStupid.BehaviorMoveStupid(),
                                                      BehaviorAttackMelee.BehaviorAttackMelee(_strength=2)],
                                          _max_moves=2,
-                                         _senses=[SenseSeismic.SenseSeismic(9)])
+                                         _senses=[SenseSeismic.SenseSeismic(9)],
+                                         _rank=RANK.WEAK)
 convert_and_write_to_file(stupid_seismic_enemy, 'entities/adversaries/FastStupidSeismic.json')
 
 stupid_sight_enemy = TemplateAdversary(_behaviors=[BehaviorMoveStupid.BehaviorMoveStupid(),
                                                    BehaviorAttackMelee.BehaviorAttackMelee(_strength=2)],
                                        _max_moves=2,
-                                       _senses=[SenseSeismic.SenseSeismic(9)])
+                                       _senses=[SenseSeismic.SenseSeismic(9)],
+                                       _rank=RANK.WEAK)
 convert_and_write_to_file(stupid_sight_enemy, 'entities/adversaries/FastStupidSight.json')

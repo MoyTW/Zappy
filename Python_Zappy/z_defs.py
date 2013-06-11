@@ -1,6 +1,10 @@
 __author__ = 'Travis Moy'
 
 
+class actor_power_rank(object):
+    WEAK, AVERAGE, POWERFUL, TERRIFYING = range(0, 4)
+
+
 class direction(object):
     N, NE, E, SE, S, SW, W, NW = range(0, 8)
 
@@ -25,6 +29,7 @@ class direction(object):
             return x, y
 
 DIR = direction()
+RANK = actor_power_rank()
 
 #SIDEBAR_WIDTH = 250
 SIDEBAR_WIDTH = 0

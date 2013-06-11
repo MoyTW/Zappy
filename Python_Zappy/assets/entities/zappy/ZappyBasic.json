@@ -5,6 +5,7 @@
     "_max_hp": 10, 
     "_max_moves": 1, 
     "_player_controlled": true, 
+    "_rank": 1, 
     "_senses": [
         {
             "__class__": "SenseSight", 

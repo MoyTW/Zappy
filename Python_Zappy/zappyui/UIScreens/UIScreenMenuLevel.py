@@ -23,7 +23,6 @@ class UIScreenMenuLevel(UIScreen.UIScreen):
     _level_batch = pyglet.graphics.Batch()
 
     def __init__(self, loader_level, viewport_info, factory):
-        warnings.warn("Not yet fully implemented; cannot launch levels.")
         self._loader_level = loader_level
         self._viewport_info = viewport_info
         self._factory = factory

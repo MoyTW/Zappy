@@ -15,6 +15,7 @@
     "_image_name": null, 
     "_max_hp": 1, 
     "_max_moves": 2, 
+    "_rank": 1, 
     "_senses": [
         {
             "__class__": "SenseSeismic", 

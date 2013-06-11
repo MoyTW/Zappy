@@ -7,7 +7,7 @@ from z_defs import DIR
 class Actor(Entity.Entity):
     _priority = 3
 
-    def __init__(self, level, max_hp=1, max_moves=1, x=-1, y=-1, tools=None, senses=None, image_name=None,
+    def __init__(self, level, max_hp=1, max_moves=1, tools=None, senses=None, image_name=None,
                  player_controlled=False):
         super(Actor, self).__init__(image_name=image_name, level=level)
 
@@ -15,8 +15,6 @@ class Actor(Entity.Entity):
         self._current_hp = self._max_hp
         self._max_moves = max_moves
         self._current_moves = max_moves
-        self._x = x
-        self._y = y
         self._player_controlled = player_controlled
 
         if tools is None:
@@ -34,9 +32,6 @@ class Actor(Entity.Entity):
 # Accessors
     def get_detected_entities(self):
         return self._detected_entities
-
-    def get_coords(self):
-        return self._x, self._y
 
     def get_max_hp(self):
         return self._max_hp

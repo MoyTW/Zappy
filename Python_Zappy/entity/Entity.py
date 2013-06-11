@@ -9,12 +9,18 @@ class Entity(object):
     IMAGE_FOLDER = 'images/entities/'
     _priority = 0
 
-    def __init__(self, image_name, level):
+    def __init__(self, image_name, level, x=-1, y=-1):
         self._image_name = image_name
         self._level = level
 
+        self._x = x
+        self._y = y
+
         self._image = None
         self._load_image()
+
+    def get_coords(self):
+        return self._x, self._y
 
     def get_image(self):
         return self._image

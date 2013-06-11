@@ -4,8 +4,8 @@ import Actor
 
 
 class Adversary(Actor.Actor):
-    def __init__(self, level, max_hp=1, behaviors=None, max_moves=1, x=-1, y=-1, tools=None, senses=None, image_name=None):
-        super(Adversary, self).__init__(level=level, max_hp=max_hp, max_moves=max_moves, x=x, y=y, tools=tools,
+    def __init__(self, level, max_hp=1, max_moves=1, tools=None, senses=None, image_name=None, behaviors=None):
+        super(Adversary, self).__init__(level=level, max_hp=max_hp, max_moves=max_moves, tools=tools,
                                         senses=senses, image_name=image_name)
 
         if behaviors is None:

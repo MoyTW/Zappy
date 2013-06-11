@@ -23,6 +23,9 @@ class TestCameraSetLevel(unittest.TestCase):
         self.default_camera = None
         self.default_level = None
 
+    '''
+    No longer applies - the squares will be dark, because they are not illuminated by the player entity's field of view.
+    Test therefore obsoleted.
     def test_draw(self):
         self.default_camera.center_on(2, 3)
 
@@ -73,3 +76,4 @@ class TestCameraSetLevel(unittest.TestCase):
         pyglet.app.run()
 
         self.assertTrue(self.good, "User did not accept the results of Camera.set_level()!")
+    '''

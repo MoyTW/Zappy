@@ -9,7 +9,8 @@ import dummies.DummyFactory as DummyFactory
 import zappyui.Camera
 import z_defs
 
-
+'''
+Obsolete.
 class DummyWindowInfo(object):
     def __init__(self, width, height):
         self.width = width
@@ -38,7 +39,7 @@ class TestUIScreenLevel(unittest.TestCase):
         pass
 
     def test_screen_draw_expected_failure(self):
-        '''
+
         self.good = True
         window = pyglet.window.Window(width=self.width, height=self.height)
 
@@ -60,9 +61,7 @@ class TestUIScreenLevel(unittest.TestCase):
         pyglet.app.run()
 
         self.assertTrue(self.good, "User did not accept results of test.")
-        '''
-        self.assertTrue(False, "Not yet implemented to my satisfaction.")
-
 
 #suite = unittest.TestLoader().loadTestsFromTestCase(TestUIScreenLevel)
 #unittest.TextTestRunner(verbosity=2).run(suite)
+'''

@@ -16,9 +16,10 @@ TOOL_NAMES_DICT = {'dummy': dummies.DummyTool.DummyTool,
 # Return None.
 class TemplateTool(Template.Template):
 
-    def __init__(self, _tool_name, _range, _energy_cost):
+    def __init__(self, _tool_name, _range, _cooldown, _energy_cost):
         self._tool_name = _tool_name
         self._range = _range
+        self._cooldown = _cooldown
         self._energy_cost = _energy_cost
 
         self._tool_class = None
@@ -33,4 +34,5 @@ class TemplateTool(Template.Template):
     def create_instance(self, level, entity_index):
         if self._tool_class is None:
             return None
-        return self._tool_class(_range=self._range, _level=level, _energy_cost=self._energy_cost)
+        return self._tool_class(_range=self._range, _level=level, _cooldown=self._cooldown,
+                                _energy_cost=self._energy_cost)

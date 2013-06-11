@@ -3,9 +3,10 @@ __author__ = 'Travis Moy'
 
 class DummyTool(object):
 
-    def __init__(self, _range, _energy_cost, _level):
+    def __init__(self, _range, _energy_cost, _cooldown, _level):
         self._range = _range
         self._energy_cost = _energy_cost
+        self._cooldown = _cooldown
         self._level = _level
 
     '''

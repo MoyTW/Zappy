@@ -51,9 +51,6 @@ class TestUIController(unittest.TestCase):
     def tearDown(self):
         self.none_controller = None
 
-    def test_draw_expected_failure(self):
-        self.assertFalse(True, "Draw is not yet implemented.")
-
     def test_handle_keys_screen_completion(self):
         self.none_controller._handle_keys('new', None)
         self.none_controller._handle_keys('new', None)

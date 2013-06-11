@@ -25,9 +25,7 @@ class UIScreenLevel(UIScreen.UIScreen):
     def handle_order(self, order):
         return_screen = self
 
-        if self._control.is_level_completed():
-            return_screen = self._factory.create_ScreenLevelEnd()
-        elif order == ORDERS.UP or order == ORDERS.DOWN or order == ORDERS.LEFT or order == ORDERS.RIGHT:
+        if order == ORDERS.UP or order == ORDERS.DOWN or order == ORDERS.LEFT or order == ORDERS.RIGHT:
             return_screen = self._move(order)
         elif order == ORDERS.CONFIRM:
             return_screen = self._open_select_tool()
@@ -37,6 +35,9 @@ class UIScreenLevel(UIScreen.UIScreen):
             return_screen = self._open_free_look()
         elif order == ORDERS.MENU:
             return_screen = self._open_level_menu()
+
+        if self._control.is_level_completed():
+            return_screen = self._factory.create_ScreenLevelEnd()
 
         return return_screen
 

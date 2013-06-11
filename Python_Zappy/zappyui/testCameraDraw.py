@@ -22,6 +22,9 @@ class TestCameraDraw(unittest.TestCase):
         self.default_camera = None
         self.default_level = None
 
+    '''
+    No longer applies - the squares will be dark, because they are not illuminated by the player entity's field of view.
+    Test therefore obsoleted.
     # This test must be visually verified (I can't think of a good way to test it otherwise!).
     # Press 'y' if it is correct. Any other key will cause the test to fail.
     def test_draw(self):
@@ -64,3 +67,4 @@ class TestCameraDraw(unittest.TestCase):
         pyglet.app.run()
 
         self.assertTrue(self.good, "User did not accept the results of Camera.draw()!")
+    '''

@@ -16,7 +16,8 @@ class Tool(entity.Entity):
         return self._turns_until_ready == 0
 
     def turn_passed(self):
-        self._turns_until_ready -= 1
+        if self._turns_until_ready > 0:
+            self._turns_until_ready -= 1
 
     def use_on_location(self, _x, _y, _user, _level):
         warnings.warn("Tool.use_on_location() was called! This should have been overridden in the child class!")

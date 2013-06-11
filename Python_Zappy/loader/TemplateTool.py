@@ -16,7 +16,7 @@ TOOL_NAMES_DICT = {'dummy': dummies.DummyTool.DummyTool,
 # Return None.
 class TemplateTool(Template.Template):
 
-    def __init__(self, _tool_name, _range, _cooldown, _energy_cost, _image_name):
+    def __init__(self, _tool_name='dummy', _range=1, _cooldown=0, _energy_cost=0, _image_name=None):
         self._tool_name = _tool_name
         self._range = _range
         self._cooldown = _cooldown

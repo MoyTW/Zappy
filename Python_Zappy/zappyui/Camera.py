@@ -122,6 +122,7 @@ class Camera(object):
                             x=self._lower_left_pixel[0] + row * self._sprite_across,
                             y=self._lower_left_pixel[1] + col * self._sprite_across,
                             batch=self._fow_batch)
+                        sprite.opacity = 128
                         self._sprites.append(sprite)
 
     # Processes the display images. No duh. That's a useless comment.

@@ -109,14 +109,19 @@ class Camera(object):
                 cell_row_index = lower_left_index[0] + row
                 cell_col_index = lower_left_index[1] + col
 
+                in_fow = False
+                # Determine the FOW state
+                if visible_cells is not None and (cell_row_index, cell_col_index) not in visible_cells and \
+                        self._level.get_cell_at(cell_row_index, cell_col_index) is not None:
+                    in_fow = True
+
                 # Check to see if it's in _explored_cells
                 if (cell_row_index, cell_col_index) in self._explored_cells:
-                    display_images = self._level.get_display_images_at(cell_row_index, cell_col_index)
+                    display_images = self._level.get_display_images_at(cell_row_index, cell_col_index, in_fow)
                     self._process_display_images_and_add_sprites(display_images, row, col)
 
                     # This is the code to draw the FOW sprite over the cell.
-                    if visible_cells is not None and (cell_row_index, cell_col_index) not in visible_cells and \
-                            self._level.get_cell_at(cell_row_index, cell_col_index) is not None:
+                    if in_fow:
                         sprite = pyglet.sprite.Sprite(
                             self._fow_image,
                             x=self._lower_left_pixel[0] + row * self._sprite_across,

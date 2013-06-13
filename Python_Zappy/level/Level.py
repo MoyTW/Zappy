@@ -96,9 +96,9 @@ class Level:
         warnings.warn('level.cell_is_transparent() is a placeholder! Returns level.cell_is_passable()!')
         return self.cell_is_passable(x, y)
 
-    def get_display_images_at(self, x, y):
+    def get_display_images_at(self, x, y, _in_fow=False):
         if self._check_coordinates(x, y):
-            return self._cells[x][y].get_display_images()
+            return self._cells[x][y].get_display_images(_in_fow)
         return None
 
     # If the entity has the function "set_coords" defined, this will attempt to call it.

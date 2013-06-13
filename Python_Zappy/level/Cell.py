@@ -2,7 +2,7 @@ __author__ = 'Travis Moy'
 
 import pyglet
 import warnings
-import collections
+import entity.actor.Actor as Actor
 
 
 class Cell(object):
@@ -23,19 +23,20 @@ class Cell(object):
         return self._passable
 
     # Returns a map. Key is priority, contents are lists of images.
-    def get_display_images(self):
+    def get_display_images(self, _in_fow=False):
         display_dict = dict()
         display_dict[-1] = [self._image]
         for entity in self._contains:
-            try:
-                priority = entity.get_priority()
-                image = entity.get_image()
-                if priority in display_dict.keys():
-                    display_dict[priority].append(image)
-                else:
-                    display_dict[priority] = [image]
-            except AttributeError as e:
-                print e.message
+            if not (_in_fow and isinstance(entity, Actor.Actor)):
+                try:
+                    priority = entity.get_priority()
+                    image = entity.get_image()
+                    if priority in display_dict.keys():
+                        display_dict[priority].append(image)
+                    else:
+                        display_dict[priority] = [image]
+                except AttributeError as e:
+                    print e.message
         return display_dict
 
     # Don't store the result of this function! It is for looking, not touching!

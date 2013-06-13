@@ -20,7 +20,7 @@ class Tool(Entity.Entity):
 
     def targets_locations(self):
         return self.TYPE_LOCATION in self._list_target_types
-    
+
     def targets_entities(self):
         return self.TYPE_ENTITY in self._list_target_types
 

@@ -2,10 +2,18 @@ __author__ = 'Travis Moy'
 
 import unittest
 import entity.actor.Actor as Actor
-import dummies.DummyTool as DummyTool
+import entity.actor.effects.Effect as Effect
+import entity.tool.Tool as Tool
 import loader.LoaderLevel as LoaderLevel
 from z_defs import DIR
 import entity.actor.senses.SenseSeismic as SenseSeismic
+
+
+class StunEffect(Effect.Effect):
+    def apply(self):
+        self._target.stun()
+    def unapply(self):
+        self._target.unstun()
 
 
 class TestActor(unittest.TestCase):
@@ -15,6 +23,35 @@ class TestActor(unittest.TestCase):
 
     def tearDown(self):
         self.loader = None
+
+    def test_turn_begin(self):
+        actor = Actor.Actor(None, max_energy=70, energy_regen=5, max_moves=5)
+        actor._current_moves = 2
+        actor._current_energy = 68
+
+        effect = StunEffect(3, actor)
+        actor.apply_status_effect(effect)
+
+        actor.turn_begin()
+        self.assertTrue(actor._stunned)
+        self.assertEqual(actor._current_energy, 70)
+        self.assertEqual(actor._current_moves, 5)
+
+    def test_turn_end(self):
+        tool = Tool.Tool(None, [])
+        tool._turns_until_ready = 5
+        actor = Actor.Actor(None, tools=[tool])
+        actor._stunned = True
+        effect = Effect.Effect(5, actor)
+        actor.apply_status_effect(effect)
+        stuneffect = StunEffect(1, actor)
+        actor.apply_status_effect(stuneffect)
+
+        actor.turn_end()
+        print actor._status_effects
+        self.assertFalse(actor._stunned)
+        self.assertEqual(tool._turns_until_ready, 4)
+        self.assertEqual(effect._duration, 4)
 
     def test_inheritance(self):
         actor = Actor.Actor('blue', 2, image_name='test_entity.png')

@@ -25,6 +25,9 @@ class Adversary(Actor.Actor):
     def take_action(self):
         self.detect_entities()
 
+        if self.is_stunned():
+            return False
+
         # This is kind of ugly and awkward, but any_behavior_executed is whether ANY behavior fires.
         # behavior_executed is the controller for the outside loop.
         any_behavior_executed = False

@@ -34,12 +34,22 @@ class Actor(Entity.Entity):
 
         # Entities will always spawn "clean" - can be changed in the future but I don't see the need to do so...
         # Maybe I'll change my mind.
+        self._stunned = False
         self._status_effects = list()
 
         # Set by self.detect_entities()
         self._detected_entities = list()
 
 # Accessors
+    def is_stunned(self):
+        return self._stunned
+
+    def unstun(self):
+        self._stunned = False
+
+    def stun(self):
+        self._stunned = True
+
     def use_energy(self, amount):
         self._current_energy -= amount
         if self._current_energy < 0:
@@ -109,23 +119,34 @@ class Actor(Entity.Entity):
     #   Apply each status effect, in turn (this done because if you are, for example, deafened, but you somehow acquire
     # a new hearing sense within the turn, you will be made unable to use it, as is proper)
     def turn_begin(self):
-        pass
+        self._current_moves = self._max_moves
+        self._current_energy += self._energy_regen
+        if self._current_energy > self._max_energy:
+            self._current_energy = self._max_energy
+        for status_effect in self._status_effects:
+            status_effect.apply()
 
     # At the end of the turn:
     #   Lower all CD timers (Tools and Status Effects)
     #   Check for expired status effects; umapply and remove expired
     def turn_end(self):
-        pass
+        for tool in self._tools:
+            tool.turn_passed()
+        for status_effect in self._status_effects:
+            status_effect.turn_passed()
+            if status_effect.has_expired():
+                status_effect.unapply()
+                self.remove_status_effect(status_effect)
 
     # Note that status effects don't take effect until the beginning of the Actor's turn.
     #   I suppose that you could theoretically blind yourself and then still use your sight, but...that's kind of silly
     # and really, why would you blind yourself? I don't see the need to prevent that.
     def apply_status_effect(self, effect):
-        pass
+        self._status_effects.append(effect)
 
     # Unapplies and removes the status effect.
     def remove_status_effect(self, effect):
-        pass
+        self._status_effects.remove(effect)
 
     def detect_entities(self):
         self._detected_entities = list()

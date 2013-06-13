@@ -1,6 +1,7 @@
 __author__ = 'Travis Moy'
 
 import entity.Entity as Entity
+from z_algs import Z_ALGS
 import warnings
 
 
@@ -17,26 +18,32 @@ class Tool(Entity.Entity):
         self._requires_LOS = _requires_LOS
         self._turns_until_ready = 0
 
+    def targets_locations(self):
+        return self.TYPE_LOCATION in self._list_target_types
+    
+    def targets_entities(self):
+        return self.TYPE_ENTITY in self._list_target_types
+
     def turn_passed(self):
         if self._turns_until_ready > 0:
             self._turns_until_ready -= 1
 
     def can_use_on_location(self, _x, _y, _user, _level):
-        return self._can_use_tool_on(_type=self.TYPE_LOCATION, t_x=_x, t_y=_y, _user=_user) and \
+        return self._can_use_tool_on(self.TYPE_LOCATION, _x, _y, _user, _level) and \
             self._special_can_use_on_location(_x, _y, _user, _level)
 
     def can_use_on_entity(self, _target, _user, _level):
         _target_x, _target_y = _target.get_coords()
-        return self._can_use_tool_on(_type=self.TYPE_ENTITY, _user=_user, t_x=_target_x, t_y=_target_y) and \
+        return self._can_use_tool_on(self.TYPE_ENTITY, _user, _target_x, _target_y, _level) and \
             self._special_can_use_on_entity(_target, _user, _level)
 
     def use_on_location(self, _x, _y, _user, _level):
-        warnings.warn("Tool.use_on_location() was called! This should have been overridden in the child class!")
-        return False
+        self._on_use_tool_apply_costs(_user)
+        return self._effects_of_use_on_location(_x, _y, _user, _level)
 
     def use_on_entity(self, _target, _user, _level):
-        warnings.warn("Tool.use_on_entity() was called! This should have been overridden in the child class!")
-        return False
+        self._on_use_tool_apply_costs(_user)
+        return self._effects_of_use_on_entity(_target, _user, _level)
 
     # This function may be overridden to add additional, tool-specific constraints to the Tool.can_use_on_location
     # function.
@@ -48,27 +55,42 @@ class Tool(Entity.Entity):
     def _special_can_use_on_entity(self, _target, _user, _level):
         return True
 
+    # This function should be overridden to do whatever it is the tool should do.
+    def _effects_of_use_on_location(self, _x, _y, _user, _level):
+        return False
+
+    # This function should be overridden to do whatever it is the tool should do.
+    def _effects_of_use_on_entity(self, _target, _user, _level):
+        return False
+
+    # Call this when the tool is used. Sets the tool on CD, and applies costs.
+    def _on_use_tool_apply_costs(self, _user):
+        _user.use_energy(self._energy_cost)
+        self._turns_until_ready += (self._cooldown + 1)
+
     def _is_ready(self):
         return self._turns_until_ready == 0
 
     def _target_type_is_valid(self, _type):
         return _type in self._list_target_types
 
-    def _satisfies_LOS(self, _x, _y, _user):
+    def _satisfies_LOS(self, _x, _y, _user, _level):
         if not self._requires_LOS:
             return True
-
-        pass
+        u_x, u_y = _user.get_coords()
+        return Z_ALGS.check_los(_x, _y, u_x, u_y, self._range + 1, _level.cell_is_transparent)
 
     def _user_has_energy(self, _user):
-        pass
+        return _user.get_current_energy() >= self._energy_cost
 
     def _location_in_range(self, _x, _y, _user):
-        pass
+        u_x, u_y = _user.get_coords()
+        cells_in_range = Z_ALGS.calc_coords_in_range(self._range, u_x, u_y)
+        return (_x, _y) in cells_in_range
 
-    def _can_use_tool_on(self, _type, _user, t_x, t_y):
+    def _can_use_tool_on(self, _type, _user, _t_x, _t_y, _level):
         return self._is_ready() and self._target_type_is_valid(_type) and self._user_has_energy(_user) and \
-            self._location_in_range(t_x, t_y, _user) and self._satisfies_LOS(t_x, t_y, _user)
+            self._location_in_range(_t_x, _t_y, _user) and self._satisfies_LOS(_t_x, _t_y, _user, _level)
 
     # Flat-out ignores the 'image' data member.
     def __eq__(self, other):

@@ -63,12 +63,12 @@ class Tool(Entity.Entity):
     def _user_has_energy(self, _user):
         pass
 
-    def _location_in_range(self, _x, _y):
+    def _location_in_range(self, _x, _y, _user):
         pass
 
     def _can_use_tool_on(self, _type, _user, t_x, t_y):
         return self._is_ready() and self._target_type_is_valid(_type) and self._user_has_energy(_user) and \
-            self._location_in_range(t_x, t_y) and self._satisfies_LOS(t_x, t_y, _user)
+            self._location_in_range(t_x, t_y, _user) and self._satisfies_LOS(t_x, t_y, _user)
 
     # Flat-out ignores the 'image' data member.
     def __eq__(self, other):

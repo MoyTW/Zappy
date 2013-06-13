@@ -8,8 +8,8 @@ import warnings
 class Actor(Entity.Entity):
     _priority = 3
 
-    def __init__(self, level, max_hp=1, max_moves=1, tools=None, senses=None, image_name=None, rank=RANK.AVERAGE,
-                 player_controlled=False):
+    def __init__(self, level, max_hp=1, max_moves=1, max_energy=100, energy_regen=10, tools=None, senses=None,
+                 image_name=None, rank=RANK.AVERAGE, player_controlled=False):
         super(Actor, self).__init__(image_name=image_name, level=level)
         warnings.warn("Actor cannot yet apply status effects. turn_begin() and turn_end are passing.")
 
@@ -17,6 +17,9 @@ class Actor(Entity.Entity):
         self._current_hp = self._max_hp
         self._max_moves = max_moves
         self._current_moves = max_moves
+        self._max_energy = max_energy
+        self._current_energy = max_energy
+        self._energy_regen = energy_regen
         self._rank = rank
         self._player_controlled = player_controlled
 
@@ -37,6 +40,17 @@ class Actor(Entity.Entity):
         self._detected_entities = list()
 
 # Accessors
+    def use_energy(self, amount):
+        self._current_energy -= amount
+        if self._current_energy < 0:
+            warnings.warn("An Actor has overspent their energy! (Actor._current_energy < 0). This should not happen!")
+
+    def get_current_energy(self):
+        return self._current_energy
+
+    def get_max_energy(self):
+        return self._max_energy
+
     def get_status_effects(self):
         return self._status_effects
 

@@ -1,6 +1,8 @@
 __author__ = 'Travis Moy'
 
 import Tool
+from z_defs import RANK
+import entity.actor.effects.EffectStun as EffectStun
 
 
 '''
@@ -10,28 +12,28 @@ What do we need to do to implement this?
       -Status Effects, like Blind, Stunned, Deafened? Create a at_end_of_turn() function in Actor, called after? Or a
 front-loaded one, like at_beginning_of_turn() function? Or possibly both?
 '''
+
+
 class ZapGun(Tool.Tool):
-    pass
+    def __init__(self, _level, _range=5, _energy_cost=15, _cooldown=2, _image_name=None):
+        super(ZapGun, self).__init__(_level, [self.TYPE_ACTOR], _range=_range, _energy_cost=_energy_cost,
+                                     _cooldown=_cooldown, _image_name=_image_name)
 
-'''
-If you put CD updates at end of turn:
-Turn 0: You blast an enemy with a CD 3 ability.
-  End turn 0: CD = 2
-Turn 1:
-  End turn 1: CD = 1
-Turn 2:
-  End turn 2: CD = 0
-Turn 3:
-  CD = 0 at start, you may use again.
-'''
-
-'''
-CD Updates at beginning of turn:
-Turn 0: Blast enemy with CD 3.
-Turn 1: CD = 2
-Turn 2: CD = 1
-Turn 3: CD = 0, usable again.
-'''
+    def _effects_of_use_on_entity(self, _target, _user, _level):
+        try:
+            rank = _target.get_rank()
+            stun_duration = 0
+            if rank == RANK.WEAK:
+                stun_duration = 15
+            elif rank == RANK.AVERAGE:
+                stun_duration = 8
+            elif rank == RANK.POWERFUL:
+                stun_duration = 4
+            elif rank == RANK.TERRIFYING:
+                stun_duration = 2
+            _target.apply_status_effect(EffectStun.EffectStun(_duration=stun_duration, _target=_target))
+        except AttributeError as e:
+            print e.message
 
 '''
 Status effects:

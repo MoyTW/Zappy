@@ -6,7 +6,7 @@ import warnings
 
 
 class Tool(Entity.Entity):
-    TYPE_ENTITY, TYPE_LOCATION = range(0, 2)
+    TYPE_ACTOR, TYPE_ENTITY, TYPE_LOCATION = range(0, 3)
 
     def __init__(self, _level, _list_target_types, _range=1, _energy_cost=1, _cooldown=0, _image_name=None,
                  _requires_LOS=True):
@@ -17,6 +17,27 @@ class Tool(Entity.Entity):
         self._cooldown = _cooldown
         self._requires_LOS = _requires_LOS
         self._turns_until_ready = 0
+
+    # This function may be overridden to add additional, tool-specific constraints to the Tool.can_use_on_location
+    # function.
+    def _special_can_use_on_location(self, _x, _y, _user, _level):
+        return True
+
+    # This function may be overridden to add additional, tool-specific constraints to the Tool.can_use_on_entity
+    # function.
+    def _special_can_use_on_entity(self, _target, _user, _level):
+        return True
+
+    # This function should be overridden to do whatever it is the tool should do.
+    def _effects_of_use_on_location(self, _x, _y, _user, _level):
+        return False
+
+    # This function should be overridden to do whatever it is the tool should do.
+    def _effects_of_use_on_entity(self, _target, _user, _level):
+        return False
+
+    def targets_actors(self):
+        return self.TYPE_ACTOR in self._list_target_types
 
     def targets_locations(self):
         return self.TYPE_LOCATION in self._list_target_types
@@ -44,24 +65,6 @@ class Tool(Entity.Entity):
     def use_on_entity(self, _target, _user, _level):
         self._on_use_tool_apply_costs(_user)
         return self._effects_of_use_on_entity(_target, _user, _level)
-
-    # This function may be overridden to add additional, tool-specific constraints to the Tool.can_use_on_location
-    # function.
-    def _special_can_use_on_location(self, _x, _y, _user, _level):
-        return True
-
-    # This function may be overridden to add additional, tool-specific constraints to the Tool.can_use_on_entity
-    # function.
-    def _special_can_use_on_entity(self, _target, _user, _level):
-        return True
-
-    # This function should be overridden to do whatever it is the tool should do.
-    def _effects_of_use_on_location(self, _x, _y, _user, _level):
-        return False
-
-    # This function should be overridden to do whatever it is the tool should do.
-    def _effects_of_use_on_entity(self, _target, _user, _level):
-        return False
 
     # Call this when the tool is used. Sets the tool on CD, and applies costs.
     def _on_use_tool_apply_costs(self, _user):

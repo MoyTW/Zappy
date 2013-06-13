@@ -15,7 +15,7 @@ class TestTemplateTool(unittest.TestCase):
 
     def test_create_instance(self):
         template = TemplateTool.TemplateTool('tool', _range=5, _cooldown=0, _energy_cost=2, _image_name=None)
-        result = Tool.Tool(_range=5, _energy_cost=2, _cooldown=0, _level='lvl', _image_name=None)
+        result = Tool.Tool('lvl', list(), _range=5, _energy_cost=2, _cooldown=0, _image_name=None)
         instance = template.create_instance(level='lvl', entity_index=None)
         self.assertEqual(result, instance)
 

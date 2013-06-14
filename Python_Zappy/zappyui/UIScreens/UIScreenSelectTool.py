@@ -25,33 +25,41 @@ class UIScreenSelectTool(UIScreen.UIScreen):
         self._init_tools(level_controller)
 
         self._sprites = list()
+        self._leftmost_point = [0, 0]
         self._init_images()
         self.gen_sprites()
 
+        self._selection_sprite = pyglet.sprite.Sprite(self._selection_image)
+        self._update_selection_sprite()
+
     def _init_images(self):
         loader = pyglet.resource.Loader('@assets')
+        self._selection_image = loader.image("{0}selection.png".format(self.ASSETS_PATH))
         self._center_border_image = loader.image("{0}center_border.png".format(self.ASSETS_PATH))
         self._single_border_image = loader.image("{0}single_border.png".format(self.ASSETS_PATH))
         self._left_border_image = loader.image("{0}left_border.png".format(self.ASSETS_PATH))
         self._right_border_image = loader.image("{0}right_border.png".format(self.ASSETS_PATH))
 
+    def _update_selection_sprite(self):
+        self._selection_sprite.x = self._leftmost_point[0] + ((self.IMAGE_SIZE + self.GAP_SIZE) * self._selection)
+        self._selection_sprite.y = self._leftmost_point[1]
+
     def gen_sprites(self):
         self._sprites = list()
 
         num_tools = len(self._tools_list)
-        leftmost_point = [0, 0]
         if num_tools % 2:  # Odd
-            leftmost_point[0] = self._center_point[0] - (self.IMAGE_SIZE / 2) - \
-                                ((self.IMAGE_SIZE + self.GAP_SIZE) * (num_tools / 2))
+            self._leftmost_point[0] = self._center_point[0] - (self.IMAGE_SIZE / 2) - \
+                                     ((self.IMAGE_SIZE + self.GAP_SIZE) * (num_tools / 2))
         else:  # Even
-            leftmost_point[0] = self._center_point[0] - (self.GAP_SIZE / 2) - \
-                                ((self.IMAGE_SIZE + self.GAP_SIZE) * (num_tools / 2))
-        leftmost_point[1] = (self._viewport.height / 3) - self.IMAGE_SIZE
+            self._leftmost_point[0] = self._center_point[0] - (self.GAP_SIZE / 2) - \
+                                     ((self.IMAGE_SIZE + self.GAP_SIZE) * (num_tools / 2))
+        self._leftmost_point[1] = (self._viewport.height / 3) - self.IMAGE_SIZE
 
         for i in range(num_tools):
             tool = self._tools_list[i]
-            tool_x = leftmost_point[0] + ((self.IMAGE_SIZE + self.GAP_SIZE) * i)
-            tool_y = leftmost_point[1]
+            tool_x = self._leftmost_point[0] + ((self.IMAGE_SIZE + self.GAP_SIZE) * i)
+            tool_y = self._leftmost_point[1]
             border_x = tool_x - self.GAP_SIZE / 2
             border_y = tool_y - self.GAP_SIZE / 2
             self._sprites.append(pyglet.sprite.Sprite(tool.get_image(), x=tool_x, y=tool_y, batch=self._tools_batch))
@@ -86,13 +94,15 @@ class UIScreenSelectTool(UIScreen.UIScreen):
     def draw(self):
         self._border_batch.draw()
         self._tools_batch.draw()
+        self._selection_sprite.draw()
 
     def close_on_child_completion(self):
         return True
 
     def _select_tool(self):
         tool = self._tools_list[self._selection]
-        return self._factory.create_ScreenUseTool(tool)
+        print "Attempting to select", tool
+        #return self._factory.create_ScreenUseTool(tool)
 
     def _move_selection(self, order):
         if order == ORDERS.LEFT:
@@ -103,6 +113,7 @@ class UIScreenSelectTool(UIScreen.UIScreen):
             self._selection += 1
             if self._selection >= len(self._tools_list):
                 self._selection = 0
+        self._update_selection_sprite()
         return self
 
     def _cancel(self):

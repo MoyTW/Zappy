@@ -1,6 +1,5 @@
 __author__ = 'Travis Moy'
 
-from entity.tool.Tool import Tool
 from loader.TemplateTool import TemplateTool
 from loader.TemplateActor import TemplateActor
 from loader.TemplateAdversary import TemplateAdversary

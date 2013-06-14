@@ -5,6 +5,7 @@ from z_algs import Z_ALGS
 
 
 class Tool(Entity.Entity):
+    DEFAULT_IMAGE_PATH = 'images/defaults/default_tool.png'
     TYPE_ACTOR, TYPE_ENTITY, TYPE_LOCATION = range(0, 3)
 
     def __init__(self, _level, _list_target_types=None, _range=1, _energy_cost=1, _cooldown=0, _image_name=None,

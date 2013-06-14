@@ -6,8 +6,7 @@ import warnings
 import entity.tool.Tool as Tool
 
 
-TOOL_NAMES_DICT = {'dummy': dummies.DummyTool.DummyTool,
-                   'tool': Tool.Tool,
+TOOL_NAMES_DICT = {'tool': Tool.Tool,
                    'manipulator': None,
                    'holoprojector': None,
                    'sampling_laser': None,
@@ -18,12 +17,19 @@ TOOL_NAMES_DICT = {'dummy': dummies.DummyTool.DummyTool,
 # Return None.
 class TemplateTool(Template.Template):
 
-    def __init__(self, _tool_name='tool', _range=1, _cooldown=0, _energy_cost=0, _image_name=None):
+    def __init__(self, _tool_name='tool', _list_target_types=None, _range=1, _cooldown=0, _energy_cost=0,
+                 _image_name=None, _requires_LOS=True):
         self._tool_name = _tool_name
         self._range = _range
         self._cooldown = _cooldown
         self._energy_cost = _energy_cost
         self._image_name = _image_name
+        self._requires_LOS = _requires_LOS
+
+        if _list_target_types is None:
+            self._list_target_types = list()
+        else:
+            self._list_target_types = _list_target_types
 
         self._tool_class = None
         try:
@@ -37,5 +43,10 @@ class TemplateTool(Template.Template):
     def create_instance(self, level, entity_index):
         if self._tool_class is None:
             return None
-        return self._tool_class(_range=self._range, _level=level, _cooldown=self._cooldown,
-                                _energy_cost=self._energy_cost, _image_name=self._image_name)
+        return self._tool_class(_level=level,
+                                _list_target_types=self._list_target_types,
+                                _range=self._range,
+                                _energy_cost=self._energy_cost,
+                                _cooldown=self._cooldown,
+                                _image_name=self._image_name,
+                                _requires_LOS=self._requires_LOS)

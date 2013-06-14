@@ -2,7 +2,6 @@ __author__ = 'Travis Moy'
 
 import entity.Entity as Entity
 from z_algs import Z_ALGS
-import warnings
 
 
 class Tool(Entity.Entity):
@@ -12,11 +11,15 @@ class Tool(Entity.Entity):
                  _requires_LOS=True):
         super(Tool, self).__init__(image_name=_image_name, level=_level)
         self._range = _range
-        self._list_target_types = _list_target_types
         self._energy_cost = _energy_cost
         self._cooldown = _cooldown
         self._requires_LOS = _requires_LOS
         self._turns_until_ready = 0
+
+        if _list_target_types is None:
+            self._list_target_types = list()
+        else:
+            self._list_target_types = _list_target_types
 
     # This function may be overridden to add additional, tool-specific constraints to the Tool.can_use_on_location
     # function.
@@ -102,6 +105,9 @@ class Tool(Entity.Entity):
             self_dict.pop('_image')
             other_dict = other.__dict__
             other_dict.pop('_image')
-            return self_dict == other_dict
+            self_list = self_dict.pop('_list_target_types')
+            other_list = other_dict.pop('_list_target_types')
+            print self_list, other_list
+            return self_dict == other_dict and sorted(self_list) == sorted(other_list)
         except AttributeError:
             return False

@@ -1,7 +1,7 @@
 __author__ = 'Travis Moy'
 
 import unittest
-import dummies.DummyTool
+import entity.tool.Tool as Tool
 import loader.TemplateTool as TemplateTool
 import loader.TemplateActor as TemplateActor
 import entity.actor.Actor as Actor
@@ -11,7 +11,7 @@ import entity.actor.senses as senses
 class TestTemplateActor(unittest.TestCase):
 
     def setUp(self):
-        template_tool_0 = TemplateTool.TemplateTool(_tool_name='dummy', _range=5, _cooldown=0, _energy_cost=2,
+        template_tool_0 = TemplateTool.TemplateTool(_tool_name='tool', _range=5, _cooldown=0, _energy_cost=2,
                                                     _image_name=None)
         template_tool_None = TemplateTool.TemplateTool(_tool_name='blatooie', _range=5, _cooldown=0, _energy_cost=2,
                                                        _image_name=None)
@@ -21,13 +21,14 @@ class TestTemplateActor(unittest.TestCase):
         self.template_tools_list = None
 
     def test_create_tool_list(self):
-        dummy_tool = dummies.DummyTool.DummyTool(_range=5, _energy_cost=2, _cooldown=0, _level=None)
+        dummy_tool = Tool.Tool(_level=None, _list_target_types=None, _range=5, _energy_cost=2, _cooldown=0)
         template_actor = TemplateActor.TemplateActor(5, _tools=self.template_tools_list)
 
         tool_list = template_actor._create_tool_list(None, None)
         if tool_list is None:
-            self.assertEqual(False, "TemplateActor.create_tool_list() returned None!")
+            self.assertTrue(False, "TemplateActor.create_tool_list() returned None!")
         self.assertEqual(len(tool_list), 1)
+        print tool_list
         self.assertEqual(dummy_tool, tool_list[0])
 
     def test_create_instance(self):

@@ -22,6 +22,24 @@
             "_image_name": null, 
             "_range": 3, 
             "_tool_name": "zap_gun"
+        }, 
+        {
+            "__class__": "TemplateTool", 
+            "__module__": "loader.TemplateTool", 
+            "_cooldown": 0, 
+            "_energy_cost": 0, 
+            "_image_name": null, 
+            "_range": 1, 
+            "_tool_name": "tool"
+        }, 
+        {
+            "__class__": "TemplateTool", 
+            "__module__": "loader.TemplateTool", 
+            "_cooldown": 0, 
+            "_energy_cost": 0, 
+            "_image_name": null, 
+            "_range": 1, 
+            "_tool_name": "zap_gun"
         }
     ]
 }

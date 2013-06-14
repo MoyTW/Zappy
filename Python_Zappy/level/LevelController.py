@@ -39,7 +39,7 @@ class LevelController(object):
         pass
 
     def zappy_get_tools(self):
-        pass
+        return self._zappy.get_tools()
 
     def _turn_has_ended(self):
         # Adversaries' turns

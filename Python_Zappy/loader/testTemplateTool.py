@@ -20,7 +20,7 @@ class TestTemplateTool(unittest.TestCase):
         self.assertEqual(result, instance)
 
     def test_create_instance_not_in_dict(self):
-        template = TemplateTool.TemplateTool('zoo', 5, _cooldown=0, _energy_cost=2, _image_name=None)
+        template = TemplateTool.TemplateTool('zoo', _range=0, _cooldown=0, _energy_cost=2, _image_name=None)
         instance = template.create_instance(level='lvl', entity_index=None)
         self.assertEqual(None, instance)
 

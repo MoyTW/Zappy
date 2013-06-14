@@ -1,9 +1,11 @@
 __author__ = 'Travis Moy'
 
-from entity.actor.senses import *
+from entity.tool.Tool import Tool
+from loader.TemplateTool import TemplateTool
 from loader.TemplateActor import TemplateActor
 from loader.TemplateAdversary import TemplateAdversary
 from z_json import JSONCONVERTER
+from entity.actor.senses import *
 from entity.actor.behaviors import *
 from z_defs import RANK
 
@@ -15,6 +17,8 @@ def convert_and_write_to_file(object, filename):
     f.close()
 
 zappy_basic_template = TemplateActor(_senses=[SenseSight.SenseSight(9)],
+                                     _tools=[TemplateTool('zap_gun', [Tool.TYPE_ACTOR], _range=3, _cooldown=0,
+                                                          _energy_cost=5)],
                                      _max_hp=10,
                                      _image_name='boxydrone.png',
                                      _player_controlled=True)

@@ -14,10 +14,10 @@ front-loaded one, like at_beginning_of_turn() function? Or possibly both?
 '''
 
 
-class ZapGun(Tool.Tool):
+class ToolZapGun(Tool.Tool):
     def __init__(self, _level, _range=5, _energy_cost=15, _cooldown=2, _image_name=None):
-        super(ZapGun, self).__init__(_level, [self.TYPE_ACTOR], _range=_range, _energy_cost=_energy_cost,
-                                     _cooldown=_cooldown, _image_name=_image_name)
+        super(ToolZapGun, self).__init__(_level, [self.TYPE_ACTOR], _range=_range, _energy_cost=_energy_cost,
+                                         _cooldown=_cooldown, _image_name=_image_name)
 
     def _effects_of_use_on_entity(self, _target, _user, _level):
         try:

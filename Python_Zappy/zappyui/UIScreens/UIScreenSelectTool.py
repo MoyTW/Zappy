@@ -109,7 +109,7 @@ class UIScreenSelectTool(UIScreen.UIScreen):
     def _select_tool(self):
         tool = self._tools_list[self._selection]
         print "Attempting to select", tool
-        #return self._factory.create_ScreenUseTool(tool)
+        return self._factory.create_ScreenTargetLocation(tool)
 
     def _move_selection(self, order):
         if order == ORDERS.LEFT:

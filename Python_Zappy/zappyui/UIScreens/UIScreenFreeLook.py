@@ -7,6 +7,7 @@ from zappyui.Orders import ORDERS
 class UIScreenFreeLook(UIScreen.UIScreen):
     def __init__(self, camera):
         self._camera = camera
+        self._start_tile = self._camera.get_center_tile()
 
     def draw(self):
         self._camera.draw()
@@ -22,4 +23,5 @@ class UIScreenFreeLook(UIScreen.UIScreen):
         return self
 
     def _cancel(self):
+        self._camera.center_on(*self._start_tile)
         return None

@@ -12,6 +12,7 @@ def DEFAULT_KEYBINDS():
     binds[key.DOWN] = ORDERS.DOWN
     binds[key.ENTER] = ORDERS.CONFIRM
     binds[key.BACKSPACE] = ORDERS.CANCEL
+    binds[key.L] = ORDERS.LOOK
     return binds
 
 

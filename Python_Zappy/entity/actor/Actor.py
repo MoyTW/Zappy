@@ -8,9 +8,9 @@ import warnings
 class Actor(Entity.Entity):
     _priority = 3
 
-    def __init__(self, level, entity_name='Default Actor Name', max_hp=1, max_moves=1, max_energy=100, energy_regen=10,
-                 tools=None, senses=None, image_name=None, rank=RANK.AVERAGE, player_controlled=False):
-        super(Actor, self).__init__(entity_name=entity_name, image_name=image_name, level=level)
+    def __init__(self, _level, _entity_name='Default Actor Name', max_hp=1, max_moves=1, max_energy=100, energy_regen=10,
+                 tools=None, senses=None, _image_name=None, rank=RANK.AVERAGE, player_controlled=False):
+        super(Actor, self).__init__(_entity_name=_entity_name, _image_name=_image_name, _level=_level)
         warnings.warn("Actor cannot yet apply status effects. turn_begin() and turn_end are passing.")
 
         self._max_hp = max_hp

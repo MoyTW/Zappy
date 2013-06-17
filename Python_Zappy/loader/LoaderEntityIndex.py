@@ -26,7 +26,7 @@ class LoaderEntityIndex(object):
             self._load_template_by_name(name)
 
         if self._template_dict[name] is None:
-            ret_ent = entity.Entity.Entity(level=level, image_name=None)
+            ret_ent = entity.Entity.Entity(_level=level, _image_name=None)
         else:
             ret_ent = self._template_dict[name].create_instance(level=level, entity_index=self)
         return ret_ent

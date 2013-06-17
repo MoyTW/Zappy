@@ -5,10 +5,10 @@ from z_defs import RANK
 
 
 class Adversary(Actor.Actor):
-    def __init__(self, level, entity_name='Default Adversary Name', max_hp=1, max_moves=1, tools=None, senses=None,
-                 image_name=None, behaviors=None, rank=RANK.AVERAGE):
-        super(Adversary, self).__init__(level=level, max_hp=max_hp, max_moves=max_moves, tools=tools,
-                                        senses=senses, image_name=image_name, rank=rank, entity_name=entity_name)
+    def __init__(self, _level, _entity_name='Default Adversary Name', max_hp=1, max_moves=1, tools=None, senses=None,
+                 _image_name=None, behaviors=None, rank=RANK.AVERAGE):
+        super(Adversary, self).__init__(_level=_level, max_hp=max_hp, max_moves=max_moves, tools=tools,
+                                        senses=senses, _image_name=_image_name, rank=rank, _entity_name=_entity_name)
 
         if behaviors is None:
             self._behaviors = list()

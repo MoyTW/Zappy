@@ -21,12 +21,12 @@ class TemplateActor(Template.Template):
         self._player_controlled = _player_controlled
 
     def create_instance(self, level, entity_index):
-        return Actor.Actor(level=level,
-                           entity_name=self._entity_name,
+        return Actor.Actor(_level=level,
+                           _entity_name=self._entity_name,
                            max_hp=self._max_hp,
                            max_moves=self._max_moves,
                            tools=self._create_tool_list(level, entity_index),
                            senses=self._senses,
-                           image_name=self._image_name,
+                           _image_name=self._image_name,
                            rank=self._rank,
                            player_controlled=self._player_controlled)

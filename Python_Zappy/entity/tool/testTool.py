@@ -30,7 +30,7 @@ class TestTool(unittest.TestCase):
 
     def test_location_in_range(self):
         tool = Tool.Tool(None, [], _range=3)
-        actor = Actor.Actor(level=None)
+        actor = Actor.Actor(_level=None)
         actor._x = 5
         actor._y = 5
 
@@ -40,7 +40,7 @@ class TestTool(unittest.TestCase):
         self.assertFalse(tool._location_in_range(3, 3, actor))
 
     def test_user_has_energy(self):
-        actor = Actor.Actor(level=None, max_energy=15)
+        actor = Actor.Actor(_level=None, max_energy=15)
         cheap_tool = Tool.Tool(None, [], _energy_cost=10)
         goldilocks_tool = Tool.Tool(None, [], _energy_cost=15)
         expensive_tool = Tool.Tool(None, [], _energy_cost=20)

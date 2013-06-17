@@ -54,7 +54,7 @@ class TestActor(unittest.TestCase):
         self.assertEqual(effect._duration, 4)
 
     def test_inheritance(self):
-        actor = Actor.Actor('blue', 2, image_name='test_entity.png')
+        actor = Actor.Actor('blue', 2, _image_name='test_entity.png')
         self.assertEqual(actor._level, 'blue')
         self.assertEqual(actor._image.width, 100)
 

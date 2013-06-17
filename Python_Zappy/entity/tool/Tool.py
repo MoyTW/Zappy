@@ -8,9 +8,9 @@ class Tool(Entity.Entity):
     DEFAULT_IMAGE_PATH = 'images/defaults/default_tool.png'
     TYPE_ACTOR, TYPE_ENTITY, TYPE_LOCATION = range(0, 3)
 
-    def __init__(self, _level, _list_target_types=None, _range=1, _energy_cost=1, _cooldown=0, _image_name=None,
+    def __init__(self, _level, _entity_name='Default Tool Name', _list_target_types=None, _range=1, _energy_cost=1, _cooldown=0, _image_name=None,
                  _requires_LOS=True):
-        super(Tool, self).__init__(image_name=_image_name, level=_level)
+        super(Tool, self).__init__(image_name=_image_name, level=_level, entity_name=_entity_name)
         self._range = _range
         self._energy_cost = _energy_cost
         self._cooldown = _cooldown

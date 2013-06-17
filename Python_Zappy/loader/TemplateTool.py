@@ -17,8 +17,10 @@ TOOL_NAMES_DICT = {'tool': Tool.Tool,
 # Return None.
 class TemplateTool(Template.Template):
 
-    def __init__(self, _tool_name='tool', _range=1, _cooldown=0, _energy_cost=0, _image_name=None):
+    def __init__(self, _tool_name='tool', _entity_name='Default Tool Name', _range=1, _cooldown=0, _energy_cost=0,
+                 _image_name=None):
         self._tool_name = _tool_name
+        self._entity_name = _entity_name
         self._range = _range
         self._cooldown = _cooldown
         self._energy_cost = _energy_cost
@@ -38,10 +40,8 @@ class TemplateTool(Template.Template):
             print "RETURNING NONE FROM TempalteTool.create_instance()"
             return None
         return _tool_class(_level=level,
-                                # These two should be decided on a class-by-class basis!
-                                #_requires_LOS=self._requires_LOS
-                                #_list_target_types=self._list_target_types,
-                                _range=self._range,
-                                _energy_cost=self._energy_cost,
-                                _cooldown=self._cooldown,
-                                _image_name=self._image_name)
+                           _entity_name=self._entity_name,
+                           _range=self._range,
+                           _energy_cost=self._energy_cost,
+                           _cooldown=self._cooldown,
+                           _image_name=self._image_name)

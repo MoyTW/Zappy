@@ -12,6 +12,7 @@
             "_strength": 2
         }
     ], 
+    "_entity_name": "Default Adversary Template", 
     "_image_name": null, 
     "_max_hp": 1, 
     "_max_moves": 2, 

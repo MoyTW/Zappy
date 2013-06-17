@@ -1,6 +1,7 @@
 {
     "__class__": "TemplateActor", 
     "__module__": "loader.TemplateActor", 
+    "_entity_name": "Default Actor Name", 
     "_image_name": "boxydrone.png", 
     "_max_hp": 10, 
     "_max_moves": 1, 
@@ -19,6 +20,7 @@
             "__module__": "loader.TemplateTool", 
             "_cooldown": 0, 
             "_energy_cost": 5, 
+            "_entity_name": "Zap Gun", 
             "_image_name": null, 
             "_range": 3, 
             "_tool_name": "zap_gun"
@@ -28,18 +30,10 @@
             "__module__": "loader.TemplateTool", 
             "_cooldown": 0, 
             "_energy_cost": 0, 
+            "_entity_name": "Useless Tool", 
             "_image_name": null, 
             "_range": 1, 
             "_tool_name": "tool"
-        }, 
-        {
-            "__class__": "TemplateTool", 
-            "__module__": "loader.TemplateTool", 
-            "_cooldown": 0, 
-            "_energy_cost": 0, 
-            "_image_name": null, 
-            "_range": 1, 
-            "_tool_name": "zap_gun"
         }
     ]
 }

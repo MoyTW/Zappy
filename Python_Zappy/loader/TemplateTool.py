@@ -3,14 +3,14 @@ __author__ = 'Travis Moy'
 import Template
 import warnings
 import entity.tool.Tool as Tool
-import entity.tool.ToolZapGun as ZapGun
+import entity.tool.ToolZapGun as ToolZapGun
 
 
 TOOL_NAMES_DICT = {'tool': Tool.Tool,
                    'manipulator': None,
                    'holoprojector': None,
                    'sampling_laser': None,
-                   'zap_gun': ZapGun.ToolZapGun}
+                   'zap_gun': ToolZapGun.ToolZapGun}
 
 
 # What happens if we can't find the name in the dict?

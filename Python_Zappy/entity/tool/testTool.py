@@ -23,10 +23,10 @@ class TestTool(unittest.TestCase):
         tool = Tool.Tool(level, [], _requires_LOS=True)
         level.place_entity_at(actor, 1, 0)
 
-        self.assertTrue(tool._satisfies_LOS(_x=1, _y=0, _user=tool, _level=level))
-        self.assertFalse(tool._satisfies_LOS(_x=3, _y=0, _user=tool, _level=level))
-        self.assertFalse(tool._satisfies_LOS(_x=3, _y=2, _user=tool, _level=level))
-        self.assertTrue(tool._satisfies_LOS(_x=0, _y=1, _user=tool, _level=level))
+        self.assertTrue(tool._satisfies_LOS(_x=1, _y=0, _user=tool))
+        self.assertFalse(tool._satisfies_LOS(_x=3, _y=0, _user=tool))
+        self.assertFalse(tool._satisfies_LOS(_x=3, _y=2, _user=tool))
+        self.assertTrue(tool._satisfies_LOS(_x=0, _y=1, _user=tool))
 
     def test_location_in_range(self):
         tool = Tool.Tool(None, [], _range=3)

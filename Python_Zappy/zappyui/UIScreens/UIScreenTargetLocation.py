@@ -37,8 +37,8 @@ class UIScreenTargetLocation(UIScreen.UIScreen):
     def _select_target(self):
         tar_x, tar_y = self._camera.get_center_tile()
         print "Attempted to target", self._camera.get_center_tile()
-        if self._tool.can_use_on_location(tar_x, tar_y, self._zappy, self._level_controller.get_level()):
-            self._tool.use_on_location(tar_x, tar_y, self._zappy, self._level_controller.get_level())
+        if self._tool.can_use_on_location(tar_x, tar_y, self._zappy):
+            self._tool.use_on_location(tar_x, tar_y, self._zappy)
         elif self._tool.targets_entities():
             print "Tool targets entities, not locations!"
         elif self._tool.targets_actors():

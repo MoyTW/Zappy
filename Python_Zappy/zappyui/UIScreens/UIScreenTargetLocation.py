@@ -34,6 +34,9 @@ class UIScreenTargetLocation(UIScreen.UIScreen):
         self._camera.step(ORDERS.to_direction(order))
         return self
 
+    def _on_destruct(self):
+        self._camera.center_on(*self._start_tile)
+
     def _cancel(self):
         self._camera.center_on(*self._start_tile)
         return None
@@ -54,8 +57,9 @@ class UIScreenTargetLocation(UIScreen.UIScreen):
 
             # Check to see if there are targets
             if entity_list is not None and len(entity_list) > 0:
+                print "Targeting!"
                 # Call the factory and return the new screen
-                print "Entity List:", entity_list
+                return self._factory.create_ScreenTargetEntity(entity_list, self._tool)
             else:
                 return self
 

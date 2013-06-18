@@ -22,10 +22,8 @@ class UIScreenSelectTool(UIScreen.UIScreen):
         self._selection = selection
 
         self._center_point = (viewport_info.width / 2, viewport_info.height / 2)
-        self.activate()
 
-        self._tools_list = None
-        self._init_tools(level_controller)
+        self._tools_list = level_controller.zappy_get_tools()
 
         self._sprites = list()
         self._leftmost_point = [0, 0]
@@ -49,18 +47,16 @@ class UIScreenSelectTool(UIScreen.UIScreen):
             return self
 
     def draw(self):
-        self._border_batch.draw()
-        self._tools_batch.draw()
         if self._active:
+            self._border_batch.draw()
+            self._tools_batch.draw()
             self._selection_sprite.draw()
         self._selection_label.draw()
 
-    def activate(self):
-        self._active = True
+    def _on_activate(self):
         self._camera.disable_cursor()
 
-    def deactivate(self):
-        self._active = False
+    def _on_deactivate(self):
         self._camera.enable_cursor()
 
     def close_on_child_completion(self):
@@ -116,9 +112,6 @@ class UIScreenSelectTool(UIScreen.UIScreen):
             else:
                 self._sprites.append(pyglet.sprite.Sprite(self._center_border_image, x=border_x, y=border_y,
                                                           batch=self._border_batch))
-
-    def _init_tools(self, level_controller):
-        self._tools_list = level_controller.zappy_get_tools()
 
     def _select_tool(self):
         tool = self._tools_list[self._selection]

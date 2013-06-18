@@ -69,14 +69,18 @@ class FactoryScreens(object):
         return Screens.UIScreenSelectTool.UIScreenSelectTool(self._camera, self._level_controller, self._level_viewport,
                                                              self)
 
+    def create_ScreenTargetEntity(self, _entity_list, _tool):
+        if self._level_controller is None:
+            raise uiexcept.LevelNotLoadedException("Factory was asked to create a in-level screen, but no level was "
+                                                   "loaded! The programmer has made a fatal oversight!")
+        return Screens.UIScreenTargetEntity.UIScreenTargetEntity(_entity_list, _tool, self._camera,
+                                                                 self._level_controller, self._level_viewport)
+
     def create_ScreenTargetLocation(self, tool):
         if self._level_controller is None:
             raise uiexcept.LevelNotLoadedException("Factory was asked to create a in-level screen, but no level was "
                                                    "loaded! The programmer has made a fatal oversight!")
         return Screens.UIScreenTargetLocation.UIScreenTargetLocation(tool, self._camera, self._level_controller, self)
-
-    def create_ScreenUseTool(self):
-        pass
 
     def _init_viewport_infos(self, window):
         self._window_viewport = ViewportInfo(window.width, window.height)

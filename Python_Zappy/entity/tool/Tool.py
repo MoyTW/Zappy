@@ -82,6 +82,8 @@ class Tool(Entity.Entity):
         return self._turns_until_ready == 0
 
     def _target_type_is_valid(self, _type):
+        if _type == self.TYPE_ENTITY:
+            return self.TYPE_ACTOR in self._list_target_types or self.TYPE_ENTITY in self._list_target_types
         return _type in self._list_target_types
 
     def _satisfies_LOS(self, _x, _y):
@@ -103,6 +105,18 @@ class Tool(Entity.Entity):
         return self._user.get_current_moves() >= self._move_cost
 
     def _can_use_tool_on(self, _type, _t_x, _t_y):
+        if not self._is_ready():
+            print "TOOL NOT READY"
+        elif not self._target_type_is_valid(_type):
+            print "TARGET_TYPE_NOT_VALID"
+        elif not self._user_has_energy():
+            print "USER HAS NO ENERGY"
+        elif not self._location_in_range(_t_x, _t_y):
+            print "LOCATION NOT IN RANGE"
+        elif not self._satisfies_LOS(_t_x, _t_y):
+            print "DOES NOT SATISFY LOS"
+        elif not self._user_has_moves():
+            print "USER HAS NO MOVES"
         return self._is_ready() and self._target_type_is_valid(_type) and self._user_has_energy() and \
                self._location_in_range(_t_x, _t_y) and self._satisfies_LOS(_t_x, _t_y) and self._user_has_moves()
 

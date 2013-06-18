@@ -23,9 +23,23 @@ class UIScreen(object):
 
     def activate(self):
         self._active = True
+        self._on_activate()
 
     def deactivate(self):
         self._active = False
+        self._on_deactivate()
+
+    def destruct(self):
+        self._on_destruct()
+
+    def _on_activate(self):
+        pass
+
+    def _on_deactivate(self):
+        pass
+
+    def _on_destruct(self):
+        pass
 
     def draw_if_not_head(self):
         return False

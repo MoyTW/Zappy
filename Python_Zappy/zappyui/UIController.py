@@ -54,9 +54,12 @@ class UIController(object):
         if len(self._screen_history) == 0:
             pyglet.app.exit()
         else:
+            old = self._screen_head
             self._screen_head = self._screen_history[-1]
             self._screen_history.pop(-1)
             try:
+                old.deactivate()
+                old.destruct()
                 self._screen_head.activate()
             except AttributeError:
                 print "Catching for test."

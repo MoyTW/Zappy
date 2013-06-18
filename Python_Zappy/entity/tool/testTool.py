@@ -49,6 +49,14 @@ class TestTool(unittest.TestCase):
         self.assertTrue(goldilocks_tool._user_has_energy())
         self.assertFalse(expensive_tool._user_has_energy())
 
+    def test_user_has_moves(self):
+        actor = Actor.Actor(_level=None)
+        tool = Tool.Tool(None, _user=actor)
+
+        self.assertTrue(tool._user_has_moves())
+        actor.use_moves(1)
+        self.assertFalse(tool._user_has_moves())
+
 
 suite = unittest.TestLoader().loadTestsFromTestCase(TestTool)
 unittest.TextTestRunner(verbosity=2).run(suite)

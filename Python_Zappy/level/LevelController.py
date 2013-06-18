@@ -33,7 +33,9 @@ class LevelController(object):
         self._zappy.attempt_move(direction)
         if not self._zappy.has_moves():
             self._turn_has_ended()
-        return self
+
+    def zappy_use_tool_on_location(self, _tool, _x, _y):
+        pass
 
     def zappy_use_item(self):
         pass

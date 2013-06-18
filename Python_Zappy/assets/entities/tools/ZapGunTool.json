@@ -1,0 +1,10 @@
+{
+    "__class__": "TemplateTool", 
+    "__module__": "loader.TemplateTool", 
+    "_cooldown": 0, 
+    "_energy_cost": 0, 
+    "_entity_name": "Floor Gun", 
+    "_image_name": null, 
+    "_range": 1, 
+    "_tool_name": "zap_gun"
+}

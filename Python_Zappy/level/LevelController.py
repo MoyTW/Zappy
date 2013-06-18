@@ -11,6 +11,9 @@ class LevelController(object):
         self._level_failed = False
         warnings.warn('LevelController is not yet fully implemented! zappy_get_tools are passing.')
 
+    def get_entities_at(self, _x, _y):
+        return self._level.get_all_entities_at(_x, _y)
+
     def is_level_completed(self):
         return self._level_won or self._level_failed
 
@@ -35,7 +38,9 @@ class LevelController(object):
             self._turn_has_ended()
 
     def zappy_use_tool_on_location(self, _tool, _x, _y):
-        pass
+        _tool.use_on_location(_x, _y)
+        if not self._zappy.has_moves():
+            self._turn_has_ended()
 
     def zappy_use_item(self):
         pass

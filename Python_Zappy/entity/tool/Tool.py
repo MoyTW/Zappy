@@ -109,13 +109,12 @@ class Tool(Entity.Entity):
     # Flat-out ignores the 'image' data member.
     def __eq__(self, other):
         try:
-            self_dict = self.__dict__
+            self_dict = self.__dict__.copy()
             self_dict.pop('_image')
-            other_dict = other.__dict__
+            other_dict = other.__dict__.copy()
             other_dict.pop('_image')
             self_list = self_dict.pop('_list_target_types')
             other_list = other_dict.pop('_list_target_types')
-            print self_list, other_list
             return self_dict == other_dict and sorted(self_list) == sorted(other_list)
-        except AttributeError:
+        except (AttributeError, KeyError):
             return False

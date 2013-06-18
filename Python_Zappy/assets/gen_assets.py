@@ -38,3 +38,6 @@ stupid_sight_enemy = TemplateAdversary(_behaviors=[BehaviorMoveStupid.BehaviorMo
                                        _senses=[SenseSeismic.SenseSeismic(9)],
                                        _rank=RANK.WEAK)
 convert_and_write_to_file(stupid_sight_enemy, 'entities/adversaries/FastStupidSight.json')
+
+zap_gun_tool = TemplateTool('zap_gun', _entity_name='Floor Gun')
+convert_and_write_to_file(zap_gun_tool, 'entities/tools/ZapGunTool.json')

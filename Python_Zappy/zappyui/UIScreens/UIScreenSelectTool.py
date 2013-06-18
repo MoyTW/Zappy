@@ -106,9 +106,11 @@ class UIScreenSelectTool(UIScreen.UIScreen):
     def close_on_child_completion(self):
         return True
 
+    def draw_if_not_head(self):
+        return True
+
     def _select_tool(self):
         tool = self._tools_list[self._selection]
-        print "Attempting to select", tool
         return self._factory.create_ScreenTargetLocation(tool)
 
     def _move_selection(self, order):

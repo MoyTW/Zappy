@@ -7,13 +7,14 @@
 a,True,images/floor.png,[]
 b,False,images/wall.png,[]
 e,True,images/floor.png,[adversaries/FastStupidSeismic.json]
+t,True,images/floor.png,[tools/ZapGunTool.json]
 D,True,images/floor.png,[zappy/ZappyBasic.json]
 
 !MAP!
 b,b,b,b,b,b,b,b,b,b,b,b,b,b,b
-b,e,a,a,a,a,a,b,a,a,a,a,a,a,b
+b,e,t,a,a,a,a,b,a,a,a,a,a,a,b
 b,a,a,a,a,a,a,b,a,a,a,a,a,a,b
-b,a,a,a,a,a,a,b,a,a,a,a,a,a,b
+b,a,a,a,a,t,a,b,a,a,a,a,a,a,b
 b,a,b,b,b,b,a,b,a,b,b,b,b,a,b
 b,a,a,a,a,a,a,b,a,a,a,a,a,a,b
 b,a,a,a,a,a,a,b,a,a,a,a,a,a,b

@@ -17,7 +17,7 @@ class UIScreenTargetLocation(UIScreen.UIScreen):
         self._start_tile = self._camera.get_center_tile()
 
     def draw(self):
-        self._camera.draw()
+        pass
 
     def handle_order(self, order):
         if ORDERS.is_direction(order):

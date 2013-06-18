@@ -35,7 +35,6 @@ class UIController(object):
 
     def _draw(self):
         for screen in self._screen_history:
-            print screen
             if screen.draw_if_not_head():
                 screen.draw()
 
@@ -45,12 +44,22 @@ class UIController(object):
         self._screen_history.append(self._screen_head)
         self._screen_head = head
 
+        try:
+            self._screen_history[-1].deactivate()
+            self._screen_head.activate()
+        except AttributeError:
+            print "Catching for test."
+
     def _close_head_screen(self):
         if len(self._screen_history) == 0:
             pyglet.app.exit()
         else:
             self._screen_head = self._screen_history[-1]
             self._screen_history.pop(-1)
+            try:
+                self._screen_head.activate()
+            except AttributeError:
+                print "Catching for test."
 
     # Gamepad support?
     def _setup_callbacks(self):

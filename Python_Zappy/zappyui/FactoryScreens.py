@@ -66,7 +66,8 @@ class FactoryScreens(object):
         if self._level_controller is None:
             raise uiexcept.LevelNotLoadedException("Factory was asked to create a in-level screen, but no level was "
                                                    "loaded! The programmer has made a fatal oversight!")
-        return Screens.UIScreenSelectTool.UIScreenSelectTool(self._level_controller, self._level_viewport, self)
+        return Screens.UIScreenSelectTool.UIScreenSelectTool(self._camera, self._level_controller, self._level_viewport,
+                                                             self)
 
     def create_ScreenTargetLocation(self, tool):
         if self._level_controller is None:

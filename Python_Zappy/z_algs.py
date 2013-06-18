@@ -74,7 +74,7 @@ class ZappyAlgs(object):
         return cells
 
     # LOS is mutal - that is, if the target has LOS to the origin, the origin has LOS to the target.
-    # Therefore it doesn't really matter which order they're provided in.
+    # However, the origin always has LOS to itself. Therefore, it does matter which order the coordinates are given.
     def check_los(self, target_x, target_y, origin_x, origin_y, radius, func_transparent):
         ott_x = target_x - origin_x
         ott_y = target_y - origin_y

@@ -25,7 +25,7 @@ class ToolZapGun(Tool.Tool):
                                          _cooldown=_cooldown, _image_name=_image_name)
     '''
 
-    def _effects_of_use_on_entity(self, _target, _user):
+    def _effects_of_use_on_entity(self, _target):
         try:
             rank = _target.get_rank()
             stun_duration = 0

@@ -79,6 +79,7 @@ class ZappyAlgs(object):
         ott_x = target_x - origin_x
         ott_y = target_y - origin_y
         cells = self._visible_cells_in_quadrant_from(origin_x, origin_y, ott_x, ott_y, radius, func_transparent)
+        cells.add((origin_x, origin_y))
 
         return (target_x, target_y) in cells
 

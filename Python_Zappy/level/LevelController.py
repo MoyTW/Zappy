@@ -42,12 +42,15 @@ class LevelController(object):
         return self._zappy.get_tools()
 
     def _turn_has_ended(self):
+        self._zappy.turn_end()
+
         # Adversaries' turns
         for entity in self._level.get_all_entities():
             if entity is not self._zappy:
                 try:
-                    entity.replenish_moves()
+                    entity.turn_begin()
                     entity.take_action()
+                    entity.turn_end()
                 except AttributeError:
                     pass
 
@@ -59,4 +62,4 @@ class LevelController(object):
             return
 
         # Player's turn
-        self._zappy.replenish_moves()
+        self._zappy.turn_begin()

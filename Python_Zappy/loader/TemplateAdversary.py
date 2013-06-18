@@ -21,12 +21,14 @@ class TemplateAdversary(Template.Template):
         self._rank = _rank
 
     def create_instance(self, level, entity_index):
-        return Adversary.Adversary(_level=level,
-                                   _entity_name=self._entity_name,
-                                   behaviors=self._behaviors,
-                                   max_moves=self._max_moves,
-                                   max_hp=self._max_hp,
-                                   tools=self._create_tool_list(level, entity_index),
-                                   senses=self._senses,
-                                   _image_name=self._image_name,
-                                   rank=self._rank)
+        adversary = Adversary.Adversary(_level=level,
+                                        _entity_name=self._entity_name,
+                                        behaviors=self._behaviors,
+                                        max_moves=self._max_moves,
+                                        max_hp=self._max_hp,
+                                        senses=self._senses,
+                                        _image_name=self._image_name,
+                                        rank=self._rank)
+        tools = self._create_tool_list(level, entity_index, adversary)
+        adversary.init_tool_list(tools)
+        return adversary

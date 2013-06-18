@@ -104,6 +104,9 @@ class Actor(Entity.Entity):
     def replenish_moves(self):
         self._current_moves = self._max_moves
 
+    def init_tool_list(self, _tool_list):
+        self._tools = _tool_list
+
     # Not sure if I want to do it by coordinate, any more.
     # I think I want to do it by entity, instead.
     '''

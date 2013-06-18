@@ -2,6 +2,7 @@ __author__ = 'Travis Moy'
 
 import UIScreen
 import pyglet
+from zappyui.Orders import ORDERS
 
 
 class UIScreenLevelEnd(UIScreen.UIScreen):
@@ -17,7 +18,7 @@ class UIScreenLevelEnd(UIScreen.UIScreen):
                           x=viewport_info.width // 2 - 190,
                           y=viewport_info.height // 2,
                           batch=self.defeat_batch)
-        pyglet.text.Label('Press any key to return to level select.',
+        pyglet.text.Label('Press CANCEL to return to level select.',
                           font_size=18,
                           x=viewport_info.width // 2 - 190,
                           y=viewport_info.height // 2 - 50,
@@ -27,5 +28,7 @@ class UIScreenLevelEnd(UIScreen.UIScreen):
         self.defeat_batch.draw()
 
     def handle_order(self, order):
-        return True
-
+        if order == ORDERS.CANCEL:
+            return True
+        else:
+            return self

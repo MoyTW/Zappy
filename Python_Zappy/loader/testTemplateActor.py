@@ -31,6 +31,11 @@ class TestTemplateActor(unittest.TestCase):
         print tool_list
         self.assertEqual(dummy_tool, tool_list[0])
 
+    def test_user_is_set(self):
+        template_actor = TemplateActor.TemplateActor(_tools=self.template_tools_list)
+        created_actor = template_actor.create_instance(level=None, entity_index=None)
+        self.assertEqual(created_actor._tools[0]._user, created_actor)
+
     def test_create_instance(self):
         max_moves = 2
         tools_list = self.template_tools_list
@@ -41,9 +46,9 @@ class TestTemplateActor(unittest.TestCase):
         template_actor = TemplateActor.TemplateActor(_max_moves=max_moves, _tools=tools_list, _senses=sense_list,
                                                      _image_name=image_name)
 
-        actor = Actor.Actor(_level=level_parameter, max_moves=max_moves,
-                            tools=template_actor._create_tool_list(level_parameter, None), senses=sense_list,
-                            _image_name=image_name)
+        actor = Actor.Actor(_level=level_parameter, max_moves=max_moves, senses=sense_list, _image_name=image_name)
+        actor_tools = template_actor._create_tool_list(level_parameter, None, actor)
+        actor.init_tool_list(actor_tools)
         created_actor = template_actor.create_instance(level=level_parameter, entity_index=None)
 
         if created_actor is None:
@@ -51,7 +56,6 @@ class TestTemplateActor(unittest.TestCase):
 
         self.assertEqual(actor._max_moves, created_actor._max_moves)
         self.assertEqual((actor._x, actor._y), (created_actor._x, created_actor._y))
-        self.assertEqual(actor._tools[0], created_actor._tools[0])
         self.assertEqual(actor._senses[0], created_actor._senses[0])
         self.assertEqual(actor._image_name, created_actor._image_name)
         self.assertEqual(actor._level, created_actor._level)

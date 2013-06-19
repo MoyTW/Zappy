@@ -37,9 +37,13 @@ class UIScreenLevel(UIScreen.UIScreen):
             return_screen = self._open_level_menu()
 
         if self._control.is_level_completed():
-            return_screen = self._factory.create_ScreenLevelEnd()
+            return_screen = None
 
         return return_screen
+
+    def _on_destruct_return_screen(self):
+        if self._control.is_level_completed():
+            return self._factory.create_ScreenLevelEnd()
 
     def draw(self):
         self._camera.draw()

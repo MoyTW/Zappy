@@ -34,7 +34,7 @@ class UIScreenTargetLocation(UIScreen.UIScreen):
         self._camera.step(ORDERS.to_direction(order))
         return self
 
-    def _on_destruct(self):
+    def _on_destruct_return_screen(self):
         self._camera.center_on(*self._start_tile)
 
     def _cancel(self):

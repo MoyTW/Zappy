@@ -55,11 +55,12 @@ class UIController(object):
             pyglet.app.exit()
         else:
             old = self._screen_head
-            self._screen_head = self._screen_history[-1]
-            self._screen_history.pop(-1)
+            self._screen_head = self._screen_history.pop(-1)
             try:
                 old.deactivate()
-                old.destruct()
+                destruct_screen = old.destruct_returns_screen()
+                if destruct_screen is not None:
+                    self._handle_new_screen(destruct_screen)
                 self._screen_head.activate()
             except AttributeError:
                 print "Catching for test."

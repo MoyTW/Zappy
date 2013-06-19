@@ -29,8 +29,9 @@ class UIScreen(object):
         self._active = False
         self._on_deactivate()
 
-    def destruct(self):
+    def destruct_returns_screen(self):
         self._on_destruct()
+        return self._on_destruct_return_screen()
 
     def _on_activate(self):
         pass
@@ -39,6 +40,9 @@ class UIScreen(object):
         pass
 
     def _on_destruct(self):
+        pass
+
+    def _on_destruct_return_screen(self):
         pass
 
     def draw_if_not_head(self):

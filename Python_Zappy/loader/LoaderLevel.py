@@ -50,7 +50,7 @@ class LoaderLevel(object):
         if temp_level is not None:
             return level.LevelController.LevelController(temp_level)
         else:
-            print "LoaderLevel.get_level_controller is returning None!"
+            warnings.warn("LoaderLevel.get_level_controller is returning None!")
             return None
 
     def _return_default_preview(self):

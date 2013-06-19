@@ -93,7 +93,6 @@ class Tool(Entity.Entity):
         if not self._requires_LOS:
             return True
         u_x, u_y = self._user.get_coords()
-        print u_x, u_y
         return Z_ALGS.check_los(_x, _y, u_x, u_y, self._range + 1, self._level.cell_is_transparent)
 
     def _location_in_range(self, _x, _y):

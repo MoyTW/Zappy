@@ -28,7 +28,6 @@ class TestTemplateActor(unittest.TestCase):
         if tool_list is None:
             self.assertTrue(False, "TemplateActor.create_tool_list() returned None!")
         self.assertEqual(len(tool_list), 1)
-        print tool_list
         self.assertEqual(dummy_tool, tool_list[0])
 
     def test_user_is_set(self):

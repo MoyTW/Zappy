@@ -39,7 +39,7 @@ class TemplateTool(Template.Template):
                                                            TOOL_NAMES_DICT.keys()))
 
         if _tool_class is None:
-            print "RETURNING NONE FROM TempalteTool.create_instance()"
+            warnings.warn("RETURNING NONE FROM TempalteTool.create_instance()")
             return None
         return _tool_class(_level=level,
                            _user=user,

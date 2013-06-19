@@ -48,7 +48,6 @@ class TestActor(unittest.TestCase):
         actor.apply_status_effect(stuneffect)
 
         actor.turn_end()
-        print actor._status_effects
         self.assertFalse(actor._stunned)
         self.assertEqual(tool._turns_until_ready, 4)
         self.assertEqual(effect._duration, 4)

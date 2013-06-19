@@ -43,7 +43,6 @@ class UIScreenTargetLocation(UIScreen.UIScreen):
 
     def _select_target(self):
         tar_x, tar_y = self._camera.get_center_tile()
-        print "Attempted to target", self._camera.get_center_tile()
 
         if self._tool.can_use_on_location(tar_x, tar_y):
             self._control.zappy_use_tool_on_location(self._tool, tar_x, tar_y)
@@ -57,7 +56,6 @@ class UIScreenTargetLocation(UIScreen.UIScreen):
 
             # Check to see if there are targets
             if entity_list is not None and len(entity_list) > 0:
-                print "Targeting!"
                 # Call the factory and return the new screen
                 return self._factory.create_ScreenTargetEntity(entity_list, self._tool)
             else:

@@ -227,7 +227,6 @@ class UIScreenMenuLevel(UIScreen.UIScreen):
             self._right_sprite.draw()
 
     def _draw_selection(self):
-        print self._selection
         if -1 < self._selection < self._num_on_page:
             self._level_selection_sprite.draw()
         elif self._selection == -1:

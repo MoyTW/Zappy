@@ -48,7 +48,6 @@ class TestCameraDraw(unittest.TestCase):
         def on_draw():
             window.clear()
             if self.default_camera is not None:
-                print len(self.default_camera._sprites)
                 self.default_camera.draw()
                 for label in labels:
                     label.draw()

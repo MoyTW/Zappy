@@ -113,7 +113,6 @@ class UIScreenTargetEntity(UIScreen.UIScreen):
     def _confirm_entity(self):
         entity = self._entity_list[self._selection]
         if self._tool.can_use_on_entity(entity):
-            print "CAN USE TOOL!"
             self._control.zappy_use_tool_on_entity(self._tool, entity)
             return True
         else:

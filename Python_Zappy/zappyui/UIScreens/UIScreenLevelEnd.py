@@ -6,26 +6,33 @@ from zappyui.Orders import ORDERS
 
 
 class UIScreenLevelEnd(UIScreen.UIScreen):
-    defeat_batch = pyglet.graphics.Batch()
 
     def __init__(self, level_controller, viewport_info):
         self._viewport = viewport_info
         self._control = level_controller
         self._level = level_controller.get_level()
 
-        pyglet.text.Label('DEFEAT!',
-                          font_size=72,
-                          x=viewport_info.width // 2 - 190,
-                          y=viewport_info.height // 2,
-                          batch=self.defeat_batch)
+        self._batch = pyglet.graphics.Batch()
+
+        label_text = 'Neither Victory, Nor Defeat. WTF?'
+        if self._control.is_level_won():
+            label_text = 'Victory!'
+        elif self._control.is_level_failed():
+            label_text = 'Defeat!'
+
+        message = pyglet.text.Label(label_text,
+                                    font_size=72,
+                                    y=viewport_info.height // 2,
+                                    batch=self._batch)
+        message.x = viewport_info.width // 2 - message.content_width // 2
         pyglet.text.Label('Press CANCEL to return to level select.',
                           font_size=18,
                           x=viewport_info.width // 2 - 190,
                           y=viewport_info.height // 2 - 50,
-                          batch=self.defeat_batch)
+                          batch=self._batch)
 
     def draw(self):
-        self.defeat_batch.draw()
+        self._batch.draw()
 
     def handle_order(self, order):
         if order == ORDERS.CANCEL:

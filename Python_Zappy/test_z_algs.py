@@ -12,11 +12,8 @@ def no_obstruction(x, y):
 
 
 def stops_at_y_is_three(x, y):
-    print y
     if y >= 3:
-        print 'returning false'
         return False
-    print 'returning true'
     return True
 
 

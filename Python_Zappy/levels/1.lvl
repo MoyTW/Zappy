@@ -6,7 +6,7 @@
 !DEFINITIONS!
 a,True,images/floor.png,[]
 b,False,images/wall.png,[]
-e,True,images/floor.png,[adversaries/FastStupidSeismic.json]
+e,True,images/floor.png,[adversaries/FastStupidSeismic.json, adversaries/FastStupidSeismic.json]
 t,True,images/floor.png,[tools/ZapGunTool.json]
 D,True,images/floor.png,[zappy/ZappyBasic.json]
 

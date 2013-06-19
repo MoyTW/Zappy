@@ -16,9 +16,11 @@ def convert_and_write_to_file(object, filename):
     f.close()
 
 zappy_basic_template = TemplateActor(_senses=[SenseSight.SenseSight(9)],
-                                     _tools=[TemplateTool('zap_gun', _entity_name='Zap Gun', _range=3, _cooldown=0,
+                                     _tools=[TemplateTool('zap_gun', _entity_name='Zap Gun', _range=99, _cooldown=0,
                                                           _energy_cost=5),
-                                             TemplateTool('tool', _entity_name='Useless Tool')],
+                                             TemplateTool('tool', _entity_name='Useless Tool'),
+                                             TemplateTool('doom_gun', _entity_name='Doom Gun', _range=99, _cooldown=1,
+                                                          _energy_cost=1)],
                                      _max_hp=10,
                                      _image_name='boxydrone.png',
                                      _player_controlled=True)
@@ -27,7 +29,7 @@ convert_and_write_to_file(zappy_basic_template, 'entities/zappy/ZappyBasic.json'
 stupid_seismic_enemy = TemplateAdversary(_behaviors=[BehaviorAttackRanged.BehaviorAttackRanged(_strength=1, _range=3),
                                                      BehaviorMoveStupid.BehaviorMoveStupid(),
                                                      BehaviorAttackMelee.BehaviorAttackMelee(_strength=2)],
-                                         _max_moves=2,
+                                         _max_moves=1,
                                          _senses=[SenseSeismic.SenseSeismic(9)],
                                          _rank=RANK.WEAK)
 convert_and_write_to_file(stupid_seismic_enemy, 'entities/adversaries/FastStupidSeismic.json')

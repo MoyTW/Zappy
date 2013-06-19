@@ -22,7 +22,7 @@
             "_energy_cost": 5, 
             "_entity_name": "Zap Gun", 
             "_image_name": null, 
-            "_range": 3, 
+            "_range": 99, 
             "_tool_name": "zap_gun"
         }, 
         {
@@ -34,6 +34,16 @@
             "_image_name": null, 
             "_range": 1, 
             "_tool_name": "tool"
+        }, 
+        {
+            "__class__": "TemplateTool", 
+            "__module__": "loader.TemplateTool", 
+            "_cooldown": 1, 
+            "_energy_cost": 1, 
+            "_entity_name": "Doom Gun", 
+            "_image_name": null, 
+            "_range": 99, 
+            "_tool_name": "doom_gun"
         }
     ]
 }

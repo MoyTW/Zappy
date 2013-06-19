@@ -9,7 +9,8 @@ class LevelController(object):
         self._zappy = self._level.get_player_actor()
         self._level_won = False
         self._level_failed = False
-        warnings.warn('LevelController is not yet fully implemented! zappy_get_tools are passing.')
+
+        self._destroyed_entities = list()
 
     def get_entities_at(self, _x, _y):
         return self._level.get_all_entities_at(_x, _y)
@@ -60,13 +61,21 @@ class LevelController(object):
         for entity in self._level.get_all_entities():
             if entity is not self._zappy:
                 try:
-                    entity.turn_begin()
-                    entity.take_action()
-                    entity.turn_end()
+                    if entity.is_destroyed():
+                        self._destroyed_entities.append(entity)
+                        self._level.remove_entity_from(entity, *entity.get_coords())
+                    else:
+                        entity.turn_begin()
+                        entity.take_action()
+                        entity.turn_end()
+
+                        if entity.is_destroyed():
+                            self._destroyed_entities.append(entity)
+                            self._level.remove_entity_from(entity, *entity.get_coords())
                 except AttributeError:
                     pass
 
-        print self._zappy.get_current_hp()
+        print "Zappy HP:", self._zappy.get_current_hp()
 
         # Check end conditions
         if self._zappy.is_destroyed():

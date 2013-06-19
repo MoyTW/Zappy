@@ -11,5 +11,7 @@ How to manage?
     - If enemy, check strength (I need to add this in). Then, apply status effect.
     - Instead of "triggering" Environmentals, it "attacks" them.
 '''
+
+
 class ToolSamplingLaser(Tool.Tool):
     pass

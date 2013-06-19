@@ -4,13 +4,15 @@ import Template
 import warnings
 import entity.tool.Tool as Tool
 import entity.tool.ToolZapGun as ToolZapGun
+import entity.tool.ToolDoomGun as ToolDoomGun
 
 
 TOOL_NAMES_DICT = {'tool': Tool.Tool,
                    'manipulator': None,
                    'holoprojector': None,
                    'sampling_laser': None,
-                   'zap_gun': ToolZapGun.ToolZapGun}
+                   'zap_gun': ToolZapGun.ToolZapGun,
+                   'doom_gun': ToolDoomGun.ToolDoomGun}
 
 
 # What happens if we can't find the name in the dict?

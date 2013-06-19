@@ -40,8 +40,23 @@ class Faction(object):
     # For example, if the faction is friendly to Robots, and add_faction(Robots, HOSTILE) is added, it will register it
     # as hostile to Robots and remove the friendly relationship.
     # This will also spout off a warning.
-    def add_faction_name(self, faction, relationship):
-        pass
+    def add_faction_name(self, faction_name, relationship):
+        # Brute Force as all hell, here.
+        if relationship == self.RELATION_FRIENDLY:
+            if faction_name not in self._names_friendly_to:
+                self._names_friendly_to.append(faction_name)
+        if relationship == self.RELATION_NEUTRAL:
+            if faction_name in self._names_friendly_to:
+                self._names_friendly_to.remove(faction_name)
+            if faction_name not in self._names_neutral_to:
+                self._names_neutral_to.append(faction_name)
+        if relationship == self.RELATION_HOSTILE:
+            if faction_name in self._names_friendly_to:
+                self._names_friendly_to.remove(faction_name)
+            if faction_name in self._names_neutral_to:
+                self._names_neutral_to.remove(faction_name)
+            if faction_name not in self._names_hostile_to:
+                self._names_hostile_to.append(faction_name)
 
 
 class Factions(object):

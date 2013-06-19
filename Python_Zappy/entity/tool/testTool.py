@@ -45,9 +45,9 @@ class TestTool(unittest.TestCase):
         goldilocks_tool = Tool.Tool(None, _user=actor, _energy_cost=15)
         expensive_tool = Tool.Tool(None, _user=actor, _energy_cost=20)
 
-        self.assertTrue(cheap_tool._user_has_energy())
-        self.assertTrue(goldilocks_tool._user_has_energy())
-        self.assertFalse(expensive_tool._user_has_energy())
+        self.assertTrue(cheap_tool.user_has_energy())
+        self.assertTrue(goldilocks_tool.user_has_energy())
+        self.assertFalse(expensive_tool.user_has_energy())
 
     def test_user_has_moves(self):
         actor = Actor.Actor(_level=None)

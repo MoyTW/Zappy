@@ -17,6 +17,8 @@ class UIScreenFreeLook(UIScreen.UIScreen):
             return self._move_camera(order)
         elif order == ORDERS.CANCEL:
             return self._cancel()
+        else:
+            return self
 
     def _move_camera(self, order):
         self._camera.step(ORDERS.to_direction(order))

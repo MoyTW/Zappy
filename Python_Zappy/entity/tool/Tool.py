@@ -24,23 +24,11 @@ class Tool(Entity.Entity):
         else:
             self._list_target_types = _list_target_types
 
-    # This function may be overridden to add additional, tool-specific constraints to the Tool.can_use_on_location
-    # function.
-    def _special_can_use_on_location(self, _x, _y):
-        return True
+    def is_ready(self):
+        return self._turns_until_ready == 0
 
-    # This function may be overridden to add additional, tool-specific constraints to the Tool.can_use_on_entity
-    # function.
-    def _special_can_use_on_entity(self, _target):
-        return True
-
-    # This function should be overridden to do whatever it is the tool should do.
-    def _effects_of_use_on_location(self, _x, _y):
-        return False
-
-    # This function should be overridden to do whatever it is the tool should do.
-    def _effects_of_use_on_entity(self, _target):
-        return False
+    def user_has_energy(self):
+        return self._user.get_current_energy() >= self._energy_cost
 
     def targets_actors(self):
         return self.TYPE_ACTOR in self._list_target_types
@@ -72,14 +60,29 @@ class Tool(Entity.Entity):
         self._on_use_tool_apply_costs()
         return self._effects_of_use_on_entity(_target)
 
+    # This function may be overridden to add additional, tool-specific constraints to the Tool.can_use_on_location
+    # function.
+    def _special_can_use_on_location(self, _x, _y):
+        return True
+
+    # This function may be overridden to add additional, tool-specific constraints to the Tool.can_use_on_entity
+    # function.
+    def _special_can_use_on_entity(self, _target):
+        return True
+
+    # This function should be overridden to do whatever it is the tool should do.
+    def _effects_of_use_on_location(self, _x, _y):
+        return False
+
+    # This function should be overridden to do whatever it is the tool should do.
+    def _effects_of_use_on_entity(self, _target):
+        return False
+
     # Call this when the tool is used. Sets the tool on CD, and applies costs.
     def _on_use_tool_apply_costs(self):
         self._user.use_energy(self._energy_cost)
         self._turns_until_ready += (self._cooldown + 1)
         self._user.use_moves(self._move_cost)
-
-    def _is_ready(self):
-        return self._turns_until_ready == 0
 
     def _target_type_is_valid(self, _type):
         if _type == self.TYPE_ENTITY:
@@ -93,9 +96,6 @@ class Tool(Entity.Entity):
         print u_x, u_y
         return Z_ALGS.check_los(_x, _y, u_x, u_y, self._range + 1, self._level.cell_is_transparent)
 
-    def _user_has_energy(self):
-        return self._user.get_current_energy() >= self._energy_cost
-
     def _location_in_range(self, _x, _y):
         u_x, u_y = self._user.get_coords()
         cells_in_range = Z_ALGS.calc_coords_in_range(self._range, u_x, u_y)
@@ -105,11 +105,11 @@ class Tool(Entity.Entity):
         return self._user.get_current_moves() >= self._move_cost
 
     def _can_use_tool_on(self, _type, _t_x, _t_y):
-        if not self._is_ready():
+        if not self.is_ready():
             print "TOOL NOT READY"
         elif not self._target_type_is_valid(_type):
             print "TARGET_TYPE_NOT_VALID"
-        elif not self._user_has_energy():
+        elif not self.user_has_energy():
             print "USER HAS NO ENERGY"
         elif not self._location_in_range(_t_x, _t_y):
             print "LOCATION NOT IN RANGE"
@@ -117,7 +117,7 @@ class Tool(Entity.Entity):
             print "DOES NOT SATISFY LOS"
         elif not self._user_has_moves():
             print "USER HAS NO MOVES"
-        return self._is_ready() and self._target_type_is_valid(_type) and self._user_has_energy() and \
+        return self.is_ready() and self._target_type_is_valid(_type) and self.user_has_energy() and \
                self._location_in_range(_t_x, _t_y) and self._satisfies_LOS(_t_x, _t_y) and self._user_has_moves()
 
     # Flat-out ignores the 'image' data member.

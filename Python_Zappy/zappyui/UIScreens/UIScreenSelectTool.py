@@ -115,7 +115,11 @@ class UIScreenSelectTool(UIScreen.UIScreen):
 
     def _select_tool(self):
         tool = self._tools_list[self._selection]
-        return self._factory.create_ScreenTargetLocation(tool)
+        if tool.is_ready() and tool.user_has_energy():
+            return self._factory.create_ScreenTargetLocation(tool)
+        else:
+            print "Tool is not ready, or user does not have energy!"
+            return self
 
     def _move_selection(self, order):
         if order == ORDERS.LEFT:

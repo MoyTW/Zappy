@@ -1,6 +1,7 @@
 __author__ = 'Travis Moy'
 
 import warnings
+import entity.actor.Adversary as Adversary
 
 
 class LevelController(object):
@@ -74,6 +75,15 @@ class LevelController(object):
                             self._level.remove_entity_from(entity, *entity.get_coords())
                 except AttributeError:
                     pass
+
+        warnings.warn("The code for winning simply checks if there are any adversaries left. Is placeholder.")
+        no_adversaries = True
+        for entity in self._level.get_all_entities():
+            if isinstance(entity, Adversary.Adversary):
+                no_adversaries = False
+        if no_adversaries:
+            self._level_won = True
+            return
 
         print "Zappy HP:", self._zappy.get_current_hp()
 

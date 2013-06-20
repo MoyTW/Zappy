@@ -6,6 +6,7 @@ import entity.actor.senses.SenseSeismic as SenseSeismic
 import loader.LoaderLevel
 from entity.actor.behaviors.BehaviorMoveStupidHorizontal import BehaviorMoveStupidHorizontal
 from entity.actor.behaviors.BehaviorMoveStupidVertical import BehaviorMoveStupidVertical
+from entity.actor.Faction import FACTIONS
 
 
 class TestAdversary(unittest.TestCase):
@@ -52,7 +53,15 @@ class TestAdversary(unittest.TestCase):
         self.level.remove_entity_from(self.adversary, *self.adversary.get_coords())
 
     def test_select_target(self):
-        self.assertTrue(False)
+        self.adversary._faction = FACTIONS.TEST_0
+        self.high_threat = Adversary.Adversary(_level=self.level, _faction=FACTIONS.TEST_1, _base_threat=5)
+        self.no_threat = Adversary.Adversary(_level=self.level, _faction=FACTIONS.TEST_1, _base_threat=0)
+
+        self.level.place_entity_at(self.adversary, 1, 3)
+        self.level.place_entity_at(self.high_threat, 0, 4)
+        self.level.place_entity_at(self.no_threat, 0, 3)
+
+        self.assertEqual(self.high_threat, self.adversary.select_target())
 
 suite = unittest.TestLoader().loadTestsFromTestCase(TestAdversary)
 unittest.TextTestRunner(verbosity=2).run(suite)

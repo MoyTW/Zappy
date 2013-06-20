@@ -11,7 +11,7 @@ class Actor(Entity.Entity):
 
     def __init__(self, _level, _entity_name='Default Actor Name', _max_hp=1, _max_moves=1, _max_energy=100,
                  _energy_regen=10, _tools=None, _senses=None, _image_name=None, _rank=RANK.AVERAGE,
-                 _faction=FACTIONS.DEFAULT):
+                 _faction=FACTIONS.DEFAULT, _base_threat=1):
         super(Actor, self).__init__(_entity_name=_entity_name, _image_name=_image_name, _level=_level)
 
         self._max_hp = _max_hp
@@ -23,6 +23,7 @@ class Actor(Entity.Entity):
         self._energy_regen = _energy_regen
         self._rank = _rank
         self._faction = _faction
+        self._base_threat = _base_threat
 
         if _tools is None:
             self._tools = list()
@@ -42,6 +43,9 @@ class Actor(Entity.Entity):
         self._detected_entities = list()
 
 # Accessors
+    def get_threat(self):
+        return self._base_threat
+
     def get_faction(self):
         return self._faction
 

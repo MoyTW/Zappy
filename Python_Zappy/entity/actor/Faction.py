@@ -74,5 +74,7 @@ class Factions(object):
     CAVE_MONSTERS = Faction('Cave Monsters', _names_hostile_to=['Player', 'Robots'])
     ROBOTS = Faction('Robots', _names_friendly_to=['Engineers'], _names_hostile_to=['Player', 'Robots'])
     ENGINEERS = Faction('Engineers', _names_friendly_to=['Robots'], _names_hostile_to=['Cave Monsters'])
+    TEST_0 = Faction('Test 0', _names_hostile_to=['Test 1', 'Player'])
+    TEST_1 = Faction('Test 1', _names_hostile_to=['Test 0', 'Player'])
 
 FACTIONS = Factions()

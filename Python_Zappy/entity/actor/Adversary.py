@@ -20,8 +20,15 @@ class Adversary(Actor.Actor):
             self._behaviors = behaviors
 
     def select_target(self):
-        warnings.warn("Adversary.select_target is a placeholder!")
-        return self._level.get_player_actor()
+        hostiles = list()
+        for entity in self._detected_entities:
+            try:
+                if self._faction.is_hostile_to(entity.get_faction_name()):
+                    hostiles.append(entity)
+            except AttributeError:
+                pass
+        hostiles.sort(cmp=lambda x, y: cmp(x.get_threat(), y.get_threat()), reverse=True)
+        return hostiles[0]
 
     # Adversary.take_action() is called for each Adversary on the level.
     # First, it uses its senses to detect entities.

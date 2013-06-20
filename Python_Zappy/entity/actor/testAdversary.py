@@ -61,6 +61,7 @@ class TestAdversary(unittest.TestCase):
         self.level.place_entity_at(self.high_threat, 0, 4)
         self.level.place_entity_at(self.no_threat, 0, 3)
 
+        self.adversary.detect_entities()
         self.assertEqual(self.high_threat, self.adversary.select_target())
 
 suite = unittest.TestLoader().loadTestsFromTestCase(TestAdversary)

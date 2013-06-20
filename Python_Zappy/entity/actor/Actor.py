@@ -46,8 +46,8 @@ class Actor(Entity.Entity):
     def get_threat(self):
         return self._base_threat
 
-    def get_faction(self):
-        return self._faction
+    def get_faction_name(self):
+        return self._faction.get_faction_name()
 
     def is_stunned(self):
         return self._stunned

@@ -24,7 +24,8 @@ zappy_basic_template = TemplateActor(_senses=[SenseSight.SenseSight(9)],
                                                           _energy_cost=1)],
                                      _max_hp=10,
                                      _image_name='boxydrone.png',
-                                     _faction=FACTIONS.PLAYER)
+                                     _faction=FACTIONS.PLAYER,
+                                     _base_threat=3)
 convert_and_write_to_file(zappy_basic_template, 'entities/zappy/ZappyBasic.json')
 
 stupid_seismic_enemy = TemplateAdversary(_behaviors=[BehaviorAttackRanged.BehaviorAttackRanged(_strength=1, _range=3),

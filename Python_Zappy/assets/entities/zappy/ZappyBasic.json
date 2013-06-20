@@ -1,7 +1,7 @@
 {
     "__class__": "TemplateActor", 
     "__module__": "loader.TemplateActor", 
-    "_base_threat": 1, 
+    "_base_threat": 3, 
     "_entity_name": "Default Actor Name", 
     "_faction": {
         "__class__": "Faction", 

@@ -17,7 +17,7 @@ class BehaviorAttackRanged(Behavior.Behavior):
         return Z_ALGS.check_los(zap_x, zap_y, adv_x, adv_y, self._range + 1, _level.cell_is_transparent)
 
     def _execute_effects(self, _target, _level, _adversary):
-        zappy = _target
-        zappy.deal_damage(1)
-        print _adversary, "used a ranged attack! Player has taken 1 damage! Player's hp:", zappy.get_current_hp()
+        _target.deal_damage(1)
+        print _adversary.get_name(), "used a ranged attack on", _target.get_name(), "for", self._strength,\
+            "damage! Target's hp:", _target.get_current_hp()
         return True

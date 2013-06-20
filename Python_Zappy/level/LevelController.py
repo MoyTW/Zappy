@@ -67,7 +67,10 @@ class LevelController(object):
                         self._level.remove_entity_from(entity, *entity.get_coords())
                     else:
                         entity.turn_begin()
-                        entity.take_action()
+                        try:
+                            entity.take_action()
+                        except AttributeError:
+                            pass
                         entity.turn_end()
 
                         if entity.is_destroyed():

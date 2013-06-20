@@ -24,7 +24,7 @@ class Effect(object):
         return self._duration < 1
 
     def apply(self):
-        print self._target, "has been afflicted with", self.EFFECT_NAME, "!"
+        print self._target, "has been afflicted with", self.EFFECT_NAME, "- there are", self._duration, "rounds!"
         self._apply_effects()
 
     def unapply(self):

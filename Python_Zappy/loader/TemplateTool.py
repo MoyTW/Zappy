@@ -5,11 +5,12 @@ import warnings
 import entity.tool.Tool as Tool
 import entity.tool.ToolZapGun as ToolZapGun
 import entity.tool.ToolDoomGun as ToolDoomGun
+import entity.tool.ToolHoloprojector as ToolHoloprojector
 
 
 TOOL_NAMES_DICT = {'tool': Tool.Tool,
                    'manipulator': None,
-                   'holoprojector': None,
+                   'holoprojector': ToolHoloprojector.ToolHoloprojector,
                    'sampling_laser': None,
                    'zap_gun': ToolZapGun.ToolZapGun,
                    'doom_gun': ToolDoomGun.ToolDoomGun}

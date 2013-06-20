@@ -38,10 +38,10 @@
             "__module__": "loader.TemplateTool", 
             "_cooldown": 0, 
             "_energy_cost": 0, 
-            "_entity_name": "Useless Tool", 
+            "_entity_name": "Holoprojector", 
             "_image_name": null, 
-            "_range": 1, 
-            "_tool_name": "tool"
+            "_range": 99, 
+            "_tool_name": "holoprojector"
         }, 
         {
             "__class__": "TemplateTool", 

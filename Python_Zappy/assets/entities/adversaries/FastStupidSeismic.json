@@ -1,6 +1,7 @@
 {
     "__class__": "TemplateAdversary", 
     "__module__": "loader.TemplateAdversary", 
+    "_base_threat": 1, 
     "_behaviors": [
         {
             "__class__": "BehaviorAttackRanged", 

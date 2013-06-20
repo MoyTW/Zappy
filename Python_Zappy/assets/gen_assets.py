@@ -19,7 +19,7 @@ def convert_and_write_to_file(object, filename):
 zappy_basic_template = TemplateActor(_senses=[SenseSight.SenseSight(9)],
                                      _tools=[TemplateTool('zap_gun', _entity_name='Zap Gun', _range=99, _cooldown=0,
                                                           _energy_cost=5),
-                                             TemplateTool('tool', _entity_name='Useless Tool'),
+                                             TemplateTool('holoprojector', _entity_name='Holoprojector', _range=99),
                                              TemplateTool('doom_gun', _entity_name='Doom Gun', _range=99, _cooldown=1,
                                                           _energy_cost=1)],
                                      _max_hp=10,

@@ -3,6 +3,7 @@ __author__ = 'Travis Moy'
 import Actor
 from z_defs import RANK
 from entity.actor.Faction import FACTIONS
+import warnings
 
 
 class Adversary(Actor.Actor):
@@ -16,6 +17,10 @@ class Adversary(Actor.Actor):
             self._behaviors = list()
         else:
             self._behaviors = behaviors
+
+    def select_target(self):
+        warnings.warn("Adversary.select_target is a placeholder!")
+        return self._level.get_player_actor()
 
     # Adversary.take_action() is called for each Adversary on the level.
     # First, it uses its senses to detect entities.
@@ -42,7 +47,8 @@ class Adversary(Actor.Actor):
             behavior_executed = False
 
             while not behavior_executed and current_behavior < len(self._behaviors):
-                behavior_executed = self._behaviors[current_behavior].attempt_to_execute(self._level, self)
+                behavior_executed = self._behaviors[current_behavior].attempt_to_execute(self.select_target(),
+                                                                                         self._level, self)
                 current_behavior += 1
 
             if behavior_executed:

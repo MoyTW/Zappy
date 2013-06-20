@@ -11,8 +11,8 @@ from entity.actor.behaviors.BehaviorMoveStupidVertical import BehaviorMoveStupid
 class TestAdversary(unittest.TestCase):
 
     def setUp(self):
-        horizontal = BehaviorMoveStupidHorizontal()
-        vertical = BehaviorMoveStupidVertical()
+        horizontal = BehaviorMoveStupidHorizontal(_move_cost=1)
+        vertical = BehaviorMoveStupidVertical(_move_cost=1)
 
         self.level = loader.LoaderLevel.LoaderLevel('entity/actor/behaviors/behavior_test_levels').get_level(0)
         self.adversary = Adversary.Adversary(_level=self.level, _senses=[SenseSeismic.SenseSeismic(5)],
@@ -50,6 +50,9 @@ class TestAdversary(unittest.TestCase):
         self.assertFalse(self.adversary.take_action())
         self.assertEqual(self.adversary.get_coords(), (1, 1))
         self.level.remove_entity_from(self.adversary, *self.adversary.get_coords())
+
+    def test_select_target(self):
+        self.assertTrue(False)
 
 suite = unittest.TestLoader().loadTestsFromTestCase(TestAdversary)
 unittest.TextTestRunner(verbosity=2).run(suite)

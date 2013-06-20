@@ -4,11 +4,13 @@
     "_behaviors": [
         {
             "__class__": "BehaviorMoveStupid", 
-            "__module__": "entity.actor.behaviors.BehaviorMoveStupid"
+            "__module__": "entity.actor.behaviors.BehaviorMoveStupid", 
+            "_move_cost": 1
         }, 
         {
             "__class__": "BehaviorAttackMelee", 
             "__module__": "entity.actor.behaviors.BehaviorAttackMelee", 
+            "_move_cost": 1, 
             "_strength": 2
         }
     ], 

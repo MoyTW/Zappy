@@ -6,18 +6,15 @@ import math
 
 class BehaviorAttackMelee(Behavior.Behavior):
 
-    def __init__(self, _strength=1):
+    def __init__(self, _move_cost=1, _strength=1):
+        super(BehaviorAttackMelee, self).__init__(_move_cost)
         self._strength = _strength
 
-    def _can_execute(self, level, adversary):
-        if adversary.get_current_moves() > 0:
-            adjacent = self._are_adjacent(level.get_player_actor(), adversary)
-            return adjacent
+    def _special_can_execute(self, _target, _level, _adversary):
+        return self._are_adjacent(_target, _adversary)
 
-    def _execute(self, level, adversary):
-        player_actor = level.get_player_actor()
-        player_actor.deal_damage(self._strength)
-        adversary.use_moves(1)
+    def _execute_effects(self, _target, _level, _adversary):
+        _target.deal_damage(self._strength)
         return True
 
     def _are_adjacent(self, zappy, adversary):

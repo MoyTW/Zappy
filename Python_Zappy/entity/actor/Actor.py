@@ -1,5 +1,6 @@
 __author__ = 'Travis Moy'
 
+from entity.actor.Faction import FACTIONS
 import entity.Entity as Entity
 from z_defs import DIR, RANK
 import warnings
@@ -8,8 +9,9 @@ import warnings
 class Actor(Entity.Entity):
     _priority = 3
 
-    def __init__(self, _level, _entity_name='Default Actor Name', max_hp=1, max_moves=1, max_energy=100, energy_regen=10,
-                 tools=None, senses=None, _image_name=None, rank=RANK.AVERAGE, player_controlled=False):
+    def __init__(self, _level, _entity_name='Default Actor Name', max_hp=1, max_moves=1, max_energy=100,
+                 energy_regen=10, tools=None, senses=None, _image_name=None, rank=RANK.AVERAGE,
+                 faction=FACTIONS.DEFAULT):
         super(Actor, self).__init__(_entity_name=_entity_name, _image_name=_image_name, _level=_level)
 
         self._max_hp = max_hp
@@ -20,7 +22,7 @@ class Actor(Entity.Entity):
         self._current_energy = max_energy
         self._energy_regen = energy_regen
         self._rank = rank
-        self._player_controlled = player_controlled
+        self._faction = faction
 
         if tools is None:
             self._tools = list()
@@ -82,7 +84,7 @@ class Actor(Entity.Entity):
         return self._tools
 
     def is_player_controlled(self):
-        return self._player_controlled
+        return self._faction == FACTIONS.PLAYER
 
     def is_destroyed(self):
         return self._current_hp <= 0
@@ -105,16 +107,6 @@ class Actor(Entity.Entity):
 
     def init_tool_list(self, _tool_list):
         self._tools = _tool_list
-
-    # Not sure if I want to do it by coordinate, any more.
-    # I think I want to do it by entity, instead.
-    '''
-    def use_tool_on(self, tool, coordinates):
-        if tool in self._tools:
-            return tool.use_on(coordinates)
-        else:
-            return False
-    '''
 
     # At the begnning of the turn:
     #   Replenish the movement points

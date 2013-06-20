@@ -7,6 +7,7 @@ from z_json import JSONCONVERTER
 from entity.actor.senses import *
 from entity.actor.behaviors import *
 from z_defs import RANK
+from entity.actor.Faction import FACTIONS
 
 
 def convert_and_write_to_file(object, filename):
@@ -23,7 +24,7 @@ zappy_basic_template = TemplateActor(_senses=[SenseSight.SenseSight(9)],
                                                           _energy_cost=1)],
                                      _max_hp=10,
                                      _image_name='boxydrone.png',
-                                     _player_controlled=True)
+                                     _faction=FACTIONS.PLAYER)
 convert_and_write_to_file(zappy_basic_template, 'entities/zappy/ZappyBasic.json')
 
 stupid_seismic_enemy = TemplateAdversary(_behaviors=[BehaviorAttackRanged.BehaviorAttackRanged(_strength=1, _range=3),

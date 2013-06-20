@@ -28,7 +28,11 @@ class Adversary(Actor.Actor):
             except AttributeError:
                 pass
         hostiles.sort(cmp=lambda x, y: cmp(x.get_threat(), y.get_threat()), reverse=True)
-        return hostiles[0]
+
+        if len(hostiles) > 0:
+            return hostiles[0]
+        else:
+            return None
 
     # Adversary.take_action() is called for each Adversary on the level.
     # First, it uses its senses to detect entities.

@@ -13,4 +13,7 @@ import Tool
 #   The way the holoprojector would work would be to create a new Actor with a higher priority than Zappy, thereby
 # distracting the enemies.
 class ToolHoloprojector(Tool.Tool):
-    pass
+    def __init__(self, *args, **kwargs):
+        kwargs['_list_target_types'] = [self.TYPE_LOCATION]
+        kwargs['_requires_LOS'] = True
+        super(ToolHoloprojector, self).__init__(*args, **kwargs)

@@ -7,8 +7,11 @@ import Effect
 # Most straightforward way is just having a "is_stunned" in Actor, and if so, not taking the action...
 class EffectStun(Effect.Effect):
 
-    def apply(self):
+    EFFECT_NAME = 'Stun'
+    EFFECT_DESCRIPTION = 'Target is unable to take any action for the duration of the stun.'
+
+    def _apply_effects(self):
         self._target.stun()
 
-    def unapply(self):
+    def _unapply_effects(self):
         self._target.unstun()

@@ -42,6 +42,9 @@ class Actor(Entity.Entity):
         self._detected_entities = list()
 
 # Accessors
+    def get_faction(self):
+        return self._faction
+
     def is_stunned(self):
         return self._stunned
 

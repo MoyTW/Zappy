@@ -19,6 +19,16 @@
         }
     ], 
     "_entity_name": "Default Adversary Template", 
+    "_faction": {
+        "__class__": "Faction", 
+        "__module__": "entity.actor.Faction", 
+        "_name": "Adversaries", 
+        "_names_friendly_to": [], 
+        "_names_hostile_to": [
+            "Player"
+        ], 
+        "_names_neutral_to": []
+    }, 
     "_image_name": null, 
     "_max_hp": 1, 
     "_max_moves": 1, 

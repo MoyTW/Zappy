@@ -2,13 +2,15 @@ __author__ = 'Travis Moy'
 
 import Actor
 from z_defs import RANK
+from entity.actor.Faction import FACTIONS
 
 
 class Adversary(Actor.Actor):
-    def __init__(self, _level, _entity_name='Default Adversary Name', max_hp=1, max_moves=1, tools=None, senses=None,
-                 _image_name=None, behaviors=None, rank=RANK.AVERAGE):
-        super(Adversary, self).__init__(_level=_level, max_hp=max_hp, max_moves=max_moves, tools=tools,
-                                        senses=senses, _image_name=_image_name, rank=rank, _entity_name=_entity_name)
+    def __init__(self, _level, _entity_name='Default Adversary Name', _max_hp=1, _max_moves=1, _tools=None,
+                 _senses=None, _image_name=None, behaviors=None, _rank=RANK.AVERAGE, _faction=FACTIONS.ADVERSARY):
+        super(Adversary, self).__init__(_level=_level, _max_hp=_max_hp, _max_moves=_max_moves, _tools=_tools,
+                                        _senses=_senses, _image_name=_image_name, _rank=_rank,
+                                        _entity_name=_entity_name, _faction=_faction)
 
         if behaviors is None:
             self._behaviors = list()

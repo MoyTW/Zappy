@@ -25,7 +25,7 @@ class TestActor(unittest.TestCase):
         self.loader = None
 
     def test_turn_begin(self):
-        actor = Actor.Actor(None, max_energy=70, energy_regen=5, max_moves=5)
+        actor = Actor.Actor(None, _max_energy=70, _energy_regen=5, _max_moves=5)
         actor._current_moves = 2
         actor._current_energy = 68
 
@@ -40,7 +40,7 @@ class TestActor(unittest.TestCase):
     def test_turn_end(self):
         tool = Tool.Tool(None, [])
         tool._turns_until_ready = 5
-        actor = Actor.Actor(None, tools=[tool])
+        actor = Actor.Actor(None, _tools=[tool])
         actor._stunned = True
         effect = Effect.Effect(5, actor)
         actor.apply_status_effect(effect)
@@ -60,7 +60,7 @@ class TestActor(unittest.TestCase):
     def test_detect_entities(self):
         level = self.loader.get_level(2)
         sense = SenseSeismic.SenseSeismic(1)
-        actor = Actor.Actor(level, 1, senses=[sense])
+        actor = Actor.Actor(level, 1, _senses=[sense])
         level.place_entity_at(actor, 1, 1)
 
         actor.detect_entities()
@@ -81,7 +81,7 @@ class TestActor(unittest.TestCase):
 
     def test_attempt_move(self):
         level = self.loader.get_level(4)
-        actor = Actor.Actor(level, max_moves=4)
+        actor = Actor.Actor(level, _max_moves=4)
         level.place_entity_at(actor, 1, 1)
 
         self.assertTrue(actor.attempt_move(DIR.N))

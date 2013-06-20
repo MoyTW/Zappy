@@ -12,7 +12,7 @@ class TestBehaviorMoveStupid(unittest.TestCase):
     def setUp(self):
         self.loader_level = loader.LoaderLevel.LoaderLevel('entity/actor/behaviors/behavior_test_levels')
         self.level = self.loader_level.get_level(0)
-        self.adversary = Adversary.Adversary(self.level, senses=[SenseSeismic.SenseSeismic(5)])
+        self.adversary = Adversary.Adversary(self.level, _senses=[SenseSeismic.SenseSeismic(5)])
         self.behavior = BehaviorMoveStupid.BehaviorMoveStupid()
 
     def tearDown(self):

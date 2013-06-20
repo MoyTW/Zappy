@@ -9,29 +9,29 @@ import warnings
 class Actor(Entity.Entity):
     _priority = 3
 
-    def __init__(self, _level, _entity_name='Default Actor Name', max_hp=1, max_moves=1, max_energy=100,
-                 energy_regen=10, tools=None, senses=None, _image_name=None, rank=RANK.AVERAGE,
-                 faction=FACTIONS.DEFAULT):
+    def __init__(self, _level, _entity_name='Default Actor Name', _max_hp=1, _max_moves=1, _max_energy=100,
+                 _energy_regen=10, _tools=None, _senses=None, _image_name=None, _rank=RANK.AVERAGE,
+                 _faction=FACTIONS.DEFAULT):
         super(Actor, self).__init__(_entity_name=_entity_name, _image_name=_image_name, _level=_level)
 
-        self._max_hp = max_hp
+        self._max_hp = _max_hp
         self._current_hp = self._max_hp
-        self._max_moves = max_moves
-        self._current_moves = max_moves
-        self._max_energy = max_energy
-        self._current_energy = max_energy
-        self._energy_regen = energy_regen
-        self._rank = rank
-        self._faction = faction
+        self._max_moves = _max_moves
+        self._current_moves = _max_moves
+        self._max_energy = _max_energy
+        self._current_energy = _max_energy
+        self._energy_regen = _energy_regen
+        self._rank = _rank
+        self._faction = _faction
 
-        if tools is None:
+        if _tools is None:
             self._tools = list()
         else:
-            self._tools = tools
-        if senses is None:
+            self._tools = _tools
+        if _senses is None:
             self._senses = list()
         else:
-            self._senses = senses
+            self._senses = _senses
 
         # Entities will always spawn "clean" - can be changed in the future but I don't see the need to do so...
         # Maybe I'll change my mind.

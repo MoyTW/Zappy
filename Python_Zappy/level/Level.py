@@ -112,7 +112,12 @@ class Level:
 
     def remove_entity_from(self, entity, x, y):
         if self._check_coordinates(x, y):
-            return self._cells[x][y].remove_entity(entity)
+            if self._cells[x][y].remove_entity(entity):
+                try:
+                    entity.set_coords(-1, -1)
+                except AttributeError:
+                    pass
+                return True
         return False
 
     def move_entity_from_to(self, entity, old_x, old_y, new_x, new_y):

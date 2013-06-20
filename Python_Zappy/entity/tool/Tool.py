@@ -24,6 +24,9 @@ class Tool(Entity.Entity):
         else:
             self._list_target_types = _list_target_types
 
+    def set_user(self, _user):
+        self._user = _user
+
     def is_ready(self):
         return self._turns_until_ready == 0
 

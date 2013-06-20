@@ -115,6 +115,11 @@ class Actor(Entity.Entity):
     def init_tool_list(self, _tool_list):
         self._tools = _tool_list
 
+    def add_tool(self, _tool):
+        _tool.set_user(self)
+        self._level.remove_entity_from(_tool, *_tool.get_coords())
+        self._tools.append(_tool)
+
     # At the begnning of the turn:
     #   Replenish the movement points
     #   Apply each status effect, in turn (this done because if you are, for example, deafened, but you somehow acquire

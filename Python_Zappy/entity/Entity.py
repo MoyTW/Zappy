@@ -9,7 +9,8 @@ class Entity(object):
     IMAGE_FOLDER = 'images/entities/'
     _priority = 0
 
-    def __init__(self, _image_name, _level, _x=-1, _y=-1, _entity_name='Default Entity Name'):
+    def __init__(self, _image_name, _level, _x=-1, _y=-1, _entity_name='Default Entity Name', *args, **kwargs):
+        super(Entity, self).__init__(*args, **kwargs)
         self._image_name = _image_name
         self._level = _level
         self._entity_name = _entity_name

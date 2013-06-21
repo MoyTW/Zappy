@@ -28,7 +28,8 @@ zappy_basic_template = TemplateActor(_senses=[SenseSight.SenseSight(9)],
                                      _base_threat=3)
 convert_and_write_to_file(zappy_basic_template, 'entities/zappy/ZappyBasic.json')
 
-stupid_seismic_enemy = TemplateAdversary(_behaviors=[BehaviorAttackRanged.BehaviorAttackRanged(_strength=1, _range=3),
+stupid_seismic_enemy = TemplateAdversary(_entity_name='StupidSeismic',
+                                         _behaviors=[BehaviorAttackRanged.BehaviorAttackRanged(_strength=1, _range=3),
                                                      BehaviorMoveStupid.BehaviorMoveStupid(),
                                                      BehaviorAttackMelee.BehaviorAttackMelee(_strength=2)],
                                          _max_moves=1,
@@ -36,7 +37,8 @@ stupid_seismic_enemy = TemplateAdversary(_behaviors=[BehaviorAttackRanged.Behavi
                                          _rank=RANK.WEAK)
 convert_and_write_to_file(stupid_seismic_enemy, 'entities/adversaries/FastStupidSeismic.json')
 
-stupid_sight_enemy = TemplateAdversary(_behaviors=[BehaviorMoveStupid.BehaviorMoveStupid(),
+stupid_sight_enemy = TemplateAdversary(_entity_name='StupidSight',
+                                       _behaviors=[BehaviorMoveStupid.BehaviorMoveStupid(),
                                                    BehaviorAttackMelee.BehaviorAttackMelee(_strength=2)],
                                        _max_moves=2,
                                        _senses=[SenseSeismic.SenseSeismic(9)],

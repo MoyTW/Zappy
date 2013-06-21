@@ -64,7 +64,7 @@ class LevelController(object):
                 try:
                     if entity.is_destroyed():
                         self._destroyed_entities.append(entity)
-                        self._level.remove_entity_from(entity, *entity.get_coords())
+                        entity.destroy()
                     else:
                         entity.turn_begin()
                         try:
@@ -75,7 +75,7 @@ class LevelController(object):
 
                         if entity.is_destroyed():
                             self._destroyed_entities.append(entity)
-                            self._level.remove_entity_from(entity, *entity.get_coords())
+                            entity.destroy()
                 except AttributeError:
                     pass
 

@@ -12,6 +12,10 @@ class Destructible(object):
 
         self._current_hp = self._max_hp
 
+    # Override this in the child classes
+    def destroy(self):
+        pass
+
     def get_max_hp(self):
         return self._max_hp
 

@@ -4,18 +4,18 @@ from entity.actor.Faction import FACTIONS
 import entity.Entity as Entity
 from z_defs import DIR, RANK
 import warnings
+import entity.Destructible as Destructible
 
 
-class Actor(Entity.Entity):
+class Actor(Entity.Entity, Destructible.Destructible):
     _priority = 3
 
     def __init__(self, _level, _entity_name='Default Actor Name', _max_hp=1, _max_moves=1, _max_energy=100,
                  _energy_regen=10, _tools=None, _senses=None, _image_name=None, _rank=RANK.AVERAGE,
-                 _faction=FACTIONS.DEFAULT, _base_threat=1):
-        super(Actor, self).__init__(_entity_name=_entity_name, _image_name=_image_name, _level=_level)
+                 _faction=FACTIONS.DEFAULT, _base_threat=1, *args, **kwargs):
+        super(Actor, self).__init__(_entity_name=_entity_name, _image_name=_image_name, _max_hp=_max_hp,
+                                    _level=_level, *args, **kwargs)
 
-        self._max_hp = _max_hp
-        self._current_hp = self._max_hp
         self._max_moves = _max_moves
         self._current_moves = _max_moves
         self._max_energy = _max_energy
@@ -81,12 +81,6 @@ class Actor(Entity.Entity):
     def get_detected_entities(self):
         return self._detected_entities
 
-    def get_max_hp(self):
-        return self._max_hp
-
-    def get_current_hp(self):
-        return self._current_hp
-
     def get_current_moves(self):
         return self._current_moves
 
@@ -96,17 +90,11 @@ class Actor(Entity.Entity):
     def is_player_controlled(self):
         return self._faction == FACTIONS.PLAYER
 
-    def is_destroyed(self):
-        return self._current_hp <= 0
-
     def has_moves(self):
         return self._current_moves > 0
 
     def use_moves(self, moves):
         self._current_moves -= moves
-
-    def deal_damage(self, damage):
-        self._current_hp -= damage
 
     def set_coords(self, x, y):
         self._x = x

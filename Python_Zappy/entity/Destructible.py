@@ -3,12 +3,12 @@ __author__ = 'Travis Moy'
 
 class Destructible(object):
 
-    def __init__(self, *args, **kwargs):
-        self._max_hp = kwargs.pop('_max_hp', None)
+    def __init__(self, _max_hp=1, **kwargs):
+        self._max_hp = _max_hp
         if self._max_hp is None:
             raise AttributeError('Destructible had no max hp passed into it!')
 
-        super(Destructible, self).__init__()
+        super(Destructible, self).__init__(**kwargs)
 
         self._current_hp = self._max_hp
 

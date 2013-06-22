@@ -10,8 +10,8 @@ class Entity(object):
     # The higher the priority, the later the Entity is drawn.
     _priority = 0
 
-    def __init__(self, _image_name, _level, _x=-1, _y=-1, _entity_name='Default Entity Name', *args, **kwargs):
-        super(Entity, self).__init__(*args, **kwargs)
+    def __init__(self, _image_name, _level, _x=-1, _y=-1, _entity_name='Default Entity Name', **kwargs):
+        super(Entity, self).__init__(**kwargs)
         self._image_name = _image_name
         self._level = _level
         self._entity_name = _entity_name

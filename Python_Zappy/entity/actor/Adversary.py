@@ -9,10 +9,10 @@ import warnings
 class Adversary(Actor.Actor):
     def __init__(self, _level, _entity_name='Default Adversary Name', _max_hp=1, _max_moves=1, _tools=None,
                  _senses=None, _image_name=None, behaviors=None, _rank=RANK.AVERAGE, _faction=FACTIONS.ADVERSARY,
-                 _base_threat=1, *args, **kwargs):
+                 _base_threat=1, **kwargs):
         super(Adversary, self).__init__(_level=_level, _max_hp=_max_hp, _max_moves=_max_moves, _tools=_tools,
                                         _senses=_senses, _image_name=_image_name, _rank=_rank,
-                                        _entity_name=_entity_name, _faction=_faction, _base_threat=_base_threat, *args,
+                                        _entity_name=_entity_name, _faction=_faction, _base_threat=_base_threat,
                                         **kwargs)
 
         if behaviors is None:

@@ -2,17 +2,20 @@ __author__ = 'Travis Moy'
 
 import pyglet
 import warnings
+import os
 
 
 class LevelInfo:
-    _preview_loader = pyglet.resource.Loader('preview_images')
+    _path_top = os.path.split(os.path.dirname(__file__))[0]
+    _preview_loader = pyglet.resource.Loader(script_home=_path_top)
     _default_loader = pyglet.resource.Loader('@assets')
 
-    def __init__(self, _name, _number, _width, _height):
+    def __init__(self, _name, _number, _width, _height, _levels_folder):
         self._name = _name
         self._number = _number
         self._width = _width
         self._height = _height
+        self._levels_folder = _levels_folder
 
         self._preview_image = self._return_preview_image()
 
@@ -41,11 +44,11 @@ class LevelInfo:
         return self._default_loader.image('images/defaults/default_preview.png')
 
     def _return_preview_image(self):
-        path = "{0}.png".format(self._number)
+        path = "{0}/preview_images/{1}.png".format(self._levels_folder, self._number)
 
         try:
             return self._preview_loader.image(path)
-        except pyglet.resource.ResourceNotFoundException as e:
+        except pyglet.resource.ResourceNotFoundException:
             warnstr = "There is no preview available for level {0}".format(self._number)
             warnings.warn(warnstr, RuntimeWarning)
             return self._return_default_preview()

@@ -49,6 +49,6 @@ convert_and_write_to_file(stupid_sight_enemy, 'entities/adversaries/FastStupidSi
 zap_gun_tool = TemplateTool('zap_gun', _entity_name='Floor Gun')
 convert_and_write_to_file(zap_gun_tool, 'entities/tools/ZapGunTool.json')
 
-linfo = LevelInfo(_name='TestInfo', _number=0, _width=5, _height=5)
+linfo = LevelInfo(_name='TestInfo', _number=0, _width=5, _height=5, _levels_folder='')
 linfo_json = JSONCONVERTER.simple_to_json(linfo)
 print linfo_json

@@ -19,9 +19,9 @@ class TestLoaderLevel(unittest.TestCase):
         resource_loader = pyglet.resource.Loader('@assets')
         self.default_preview = resource_loader.image('images/defaults/default_preview.png')
 
-        self.level_info_0 = level.LevelInfo.LevelInfo('This is a test level!', 0, 5, 6)
-        self.level_info_1 = level.LevelInfo.LevelInfo('Four-Square', 1, 2, 2)
-        self.level_info_2 = level.LevelInfo.LevelInfo('Rectangle', 2, 8, 3)
+        self.level_info_0 = level.LevelInfo.LevelInfo('This is a test level!', 0, 5, 6, None)
+        self.level_info_1 = level.LevelInfo.LevelInfo('Four-Square', 1, 2, 2, None)
+        self.level_info_2 = level.LevelInfo.LevelInfo('Rectangle', 2, 8, 3, None)
 
     def setUpLevels(self):
         # Set up level 0

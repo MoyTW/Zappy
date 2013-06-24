@@ -71,7 +71,8 @@ class LoaderLevelLVL(object):
         number = self._read_line_value(lines[1])
         info = level.LevelInfo.LevelInfo(_name=self._read_line_value(lines[0]), _number=number,
                                          _width=self._read_line_value(lines[2]),
-                                         _height=self._read_line_value(lines[3]))
+                                         _height=self._read_line_value(lines[3]),
+                                         _levels_folder=self._levels_folder)
         self._levels[info.get_number()] = level.Level.Level(info)
 
     def _return_level_preview(self, level_number):

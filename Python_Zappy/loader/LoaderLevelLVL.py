@@ -69,12 +69,9 @@ class LoaderLevelLVL(object):
         file = open(os.path.join(self._levels_path, filename), 'r')
         lines = file.readlines()
         number = self._read_line_value(lines[1])
-        preview = self._return_level_preview(number)
-        info = level.LevelInfo.LevelInfo(_name=self._read_line_value(lines[0]),
-                                         _number=number,
+        info = level.LevelInfo.LevelInfo(_name=self._read_line_value(lines[0]), _number=number,
                                          _width=self._read_line_value(lines[2]),
-                                         _height=self._read_line_value(lines[3]),
-                                         _preview_location=preview)
+                                         _height=self._read_line_value(lines[3]))
         self._levels[info.get_number()] = level.Level.Level(info)
 
     def _return_level_preview(self, level_number):

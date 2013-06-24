@@ -14,7 +14,7 @@ class TestLevel(unittest.TestCase):
         self.width = 5
         self.height = 3
 
-        self.test_info = level.LevelInfo.LevelInfo("Test Level", 0, self.width, self.height, None)
+        self.test_info = level.LevelInfo.LevelInfo("Test Level", 0, self.width, self.height)
         self.test_cells = [[level.Cell.Cell(self.default_image_path) for h in range(self.height)]
                            for w in range(self.width)]
 

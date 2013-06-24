@@ -3,8 +3,8 @@
     "__module__": "level.LevelInfo",
     "_height": 5,
     "_levels_folder": "loader/test_levels",
-    "_name": "TestLevel0",
-    "_number": 0,
+    "_name": "TestLevel1",
+    "_number": 1,
     "_width": 5
 }
 

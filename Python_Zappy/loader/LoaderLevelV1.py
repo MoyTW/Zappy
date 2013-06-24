@@ -1,5 +1,6 @@
 __author__ = 'Travis Moy'
 
+import level.Level as Level
 from z_json import JSONCONVERTER
 import loader.LoaderEntityIndex as LoaderEntityIndex
 import os
@@ -39,7 +40,16 @@ class LoaderLevelV1(object):
 
     # You can just grab this from the json
     def _load_level_info(self, filename):
-        pass
+        file = open(os.path.join(self._levels_path, filename), 'r')
+
+        line = file.readline()
+        info_json = ''
+        while line != '\n':
+            info_json += line
+            line = file.readline()
+
+        info = JSONCONVERTER.simple_to_custom_object(info_json)
+        self._levels[info.get_number()] = Level.Level(info)
 
     # This loads the rest of the level (the cells, entities)
     def _load_level(self, level_number):

@@ -38,6 +38,7 @@ class LevelInfo:
     def to_json(self, obj):
         json_dict = self.__dict__.copy()
         json_dict.pop('_preview_image')
+        json_dict.pop('_version')
         json_dict.update({'__class__': self.__class__.__name__, '__module__': self.__module__})
         return json_dict
 

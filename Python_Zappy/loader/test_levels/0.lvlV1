@@ -1,0 +1,12 @@
+{
+    "__class__": "LevelInfo",
+    "__module__": "level.LevelInfo",
+    "_height": 5,
+    "_levels_folder": "loader/test_levels",
+    "_name": "TestLevel",
+    "_number": 0,
+    "_version": 0.1,
+    "_width": 5
+}
+
+THINGS

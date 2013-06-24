@@ -16,7 +16,7 @@ DummyInfo = collections.namedtuple('DummyInfo', 'width height')
 
 class TestUIScreenLevel(unittest.TestCase):
     def setUp(self):
-        temp_loader = loader.LoaderLevel.LoaderLevel('zappyui/test_assets')
+        temp_loader = loader.LoaderLevelLVL.LoaderLevelLVL('zappyui/test_assets')
         self.dummy_control = DummyController.DummyController(temp_loader.get_level(0))
 
         self.width = 640

@@ -1,7 +1,7 @@
 __author__ = 'Travis Moy'
 
 import unittest
-import loader.LoaderLevel
+import loader.LoaderLevelLVL
 import entity.actor.Adversary as Adversary
 import entity.actor.behaviors.BehaviorMoveStupid as BehaviorMoveStupid
 import entity.actor.senses.SenseSeismic as SenseSeismic
@@ -10,7 +10,7 @@ import entity.actor.senses.SenseSeismic as SenseSeismic
 class TestBehaviorMoveStupid(unittest.TestCase):
 
     def setUp(self):
-        self.loader_level = loader.LoaderLevel.LoaderLevel('entity/actor/behaviors/behavior_test_levels')
+        self.loader_level = loader.LoaderLevelLVL.LoaderLevelLVL('entity/actor/behaviors/behavior_test_levels')
         self.level = self.loader_level.get_level(0)
         self.adversary = Adversary.Adversary(self.level, _senses=[SenseSeismic.SenseSeismic(5)])
         self.behavior = BehaviorMoveStupid.BehaviorMoveStupid(_move_cost=1)

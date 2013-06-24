@@ -2,12 +2,13 @@ __author__ = 'Travis Moy'
 
 
 class LevelInfo:
-    def __init__(self, name, number, width, height, preview):
-        self._name = name
-        self._number = number
-        self._width = width
-        self._height = height
-        self._preview = preview
+    def __init__(self, _name, _number, _width, _height, _preview_location):
+        self._name = _name
+        self._number = _number
+        self._width = _width
+        self._height = _height
+        self._preview_location = _preview_location
+        self._preview_image = _preview_location
 
     def get_name(self):
         return self._name
@@ -22,7 +23,7 @@ class LevelInfo:
         return self._height
 
     def get_preview(self):
-        return self._preview
+        return self._preview_image
 
     def __eq__(self, other):
         try:
@@ -30,10 +31,10 @@ class LevelInfo:
                     self._number == other.get_number() and self._width == other.get_width() and \
                     self._height == other.get_height():
                 try:
-                    return self._preview.width == other.get_preview().width and \
-                        self._preview.height == other.get_preview().height
+                    return self._preview_image.width == other.get_preview().width and \
+                        self._preview_image.height == other.get_preview().height
                 except AttributeError:
-                    if self._preview is None and other.get_preview() is None:
+                    if self._preview_image is None and other.get_preview() is None:
                         return True
                     return False
         except AttributeError:

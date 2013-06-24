@@ -3,7 +3,7 @@ __author__ = 'Travis Moy'
 import unittest
 import entity.actor.Adversary as Adversary
 import entity.actor.senses.SenseSeismic as SenseSeismic
-import loader.LoaderLevel
+import loader.LoaderLevelLVL
 from entity.actor.behaviors.BehaviorMoveStupidHorizontal import BehaviorMoveStupidHorizontal
 from entity.actor.behaviors.BehaviorMoveStupidVertical import BehaviorMoveStupidVertical
 from entity.actor.Faction import FACTIONS
@@ -15,7 +15,7 @@ class TestAdversary(unittest.TestCase):
         horizontal = BehaviorMoveStupidHorizontal(_move_cost=1)
         vertical = BehaviorMoveStupidVertical(_move_cost=1)
 
-        self.level = loader.LoaderLevel.LoaderLevel('entity/actor/behaviors/behavior_test_levels').get_level(0)
+        self.level = loader.LoaderLevelLVL.LoaderLevelLVL('entity/actor/behaviors/behavior_test_levels').get_level(0)
         self.adversary = Adversary.Adversary(_level=self.level, _senses=[SenseSeismic.SenseSeismic(5)],
                                              behaviors=[horizontal, vertical])
 

@@ -2,7 +2,7 @@ __author__ = 'Travis Moy'
 
 import unittest
 import pyglet
-import loader.LoaderLevel
+import loader.LoaderLevelLVL
 import zappyui.Camera
 from pyglet.window import key
 
@@ -13,7 +13,7 @@ class TestCameraDraw(unittest.TestCase):
         pyglet.resource.path = ['@zappyui', '.']
         pyglet.resource.reindex()
 
-        temp_loader = loader.LoaderLevel.LoaderLevel('zappyui/test_assets')
+        temp_loader = loader.LoaderLevelLVL.LoaderLevelLVL('zappyui/test_assets')
         self.default_level = temp_loader.get_level(0)
         self.default_camera = zappyui.Camera.Camera(self.default_level,
                                                     cursor_image_file='test_assets/camera_cursor.png')

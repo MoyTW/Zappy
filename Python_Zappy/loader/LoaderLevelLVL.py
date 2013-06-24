@@ -10,7 +10,7 @@ import pyglet
 import warnings
 
 
-class LoaderLevel(object):
+class LoaderLevelLVL(object):
     def __init__(self, levels_folder='levels'):
         self._levels_folder = levels_folder
         self._levels_path = self._find_levels_path(levels_folder)
@@ -70,11 +70,11 @@ class LoaderLevel(object):
         lines = file.readlines()
         number = self._read_line_value(lines[1])
         preview = self._return_level_preview(number)
-        info = level.LevelInfo.LevelInfo(name=self._read_line_value(lines[0]),
-                                         number=number,
-                                         width=self._read_line_value(lines[2]),
-                                         height=self._read_line_value(lines[3]),
-                                         preview=preview)
+        info = level.LevelInfo.LevelInfo(_name=self._read_line_value(lines[0]),
+                                         _number=number,
+                                         _width=self._read_line_value(lines[2]),
+                                         _height=self._read_line_value(lines[3]),
+                                         _preview_location=preview)
         self._levels[info.get_number()] = level.Level.Level(info)
 
     def _return_level_preview(self, level_number):

@@ -9,18 +9,22 @@ class Cell(object):
     DEFAULT_IMAGE_PATH = 'images/defaults/defaultcell.png'
     LOADER = pyglet.resource.Loader(['@assets'])
 
-    def __init__(self, image_file=DEFAULT_IMAGE_PATH, passable=True):
+    def __init__(self, image_location=DEFAULT_IMAGE_PATH, passable=True, transparent=True):
         self._passable = bool(passable)
+        self._transparent = transparent
         self._contains = []
-        self._image_file = image_file
+        self._image_location = image_location
 
-        self._load_image(image_file)
+        self._load_image(image_location)
 
     def get_cell_image(self):
         return self._image
 
     def get_passable(self):
         return self._passable
+
+    def get_transparent(self):
+        return self._transparent
 
     # Returns a map. Key is priority, contents are lists of images.
     def get_display_images(self, _in_fow=False):
@@ -80,9 +84,10 @@ class Cell(object):
             for s, o in zip(self._contains, other._contains):
                 if s != o:
                     contains_equality = False
-            return self._passable == other._passable and self._image_file == other._image_file and contains_equality
-        except AttributeError:
+            return self._passable == other._passable and self._image_location == other._image_location\
+                and contains_equality
+        except AttributeError as e:
             return False
 
     def __repr__(self):
-        return "(P: {0} I: {1} C: {2})".format(self._passable, self._image_file, self._contains)
+        return "(P: {0} I: {1} C: {2})".format(self._passable, self._image_location, self._contains)

@@ -94,7 +94,11 @@ class Level:
 
     def cell_is_transparent(self, x, y):
         warnings.warn('level.cell_is_transparent() is a placeholder! Returns level.cell_is_passable()!')
-        return self.cell_is_passable(x, y)
+        #return self.cell_is_passable(x, y)
+        cell = self.get_cell_at(x, y)
+        if cell is not None:
+            return cell.get_transparent()
+        return False
 
     def get_display_images_at(self, x, y, _in_fow=False):
         if self._check_coordinates(x, y):
@@ -153,6 +157,8 @@ class Level:
             for w in range(0, self.get_width()):
                 for h in range(0, self.get_height()):
                     if self._cells[w][h] != other._cells[w][h]:
+                        print self._cells[w][h], other._cells[w][h]
+                        print "Cell_equality is false!"
                         cell_equality = False
 
             return cell_equality

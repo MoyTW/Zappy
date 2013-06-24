@@ -10,6 +10,12 @@ class JsonConverterException(Exception):
 
 
 class JsonConverter(object):
+
+    def load_simple(self, _json_string):
+        p = json.loads(_json_string)
+        p = recursive_unicode_conversion(p)
+        return p
+
     def simple_to_json(self, object):
         try:
             obj_func = object.to_json

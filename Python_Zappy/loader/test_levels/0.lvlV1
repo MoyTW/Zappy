@@ -8,5 +8,14 @@
     "_width": 5
 }
 
+{
+    "#": "test/wall.json",
+    ".": "test/floor.json",
+    "D": "test/drone.json"
+}
 
-THINGS
+# # # # #
+# . . . #
+# . . . #
+# . . . #
+# # # # #

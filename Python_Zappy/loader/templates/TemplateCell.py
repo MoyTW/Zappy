@@ -29,3 +29,10 @@ class TemplateCell(Template.Template):
             entity = entity_index.create_entity_by_name(entity_file)
             level.place_entity_at(entity, _x, _y)
         return cell
+
+    def __eq__(self, other):
+        try:
+            return self._image_location == other._image_location and self._passable == other._passable and \
+                   self._transparent == other._transparent and sorted(self._entity_files) == sorted(other._entity_files)
+        except AttributeError:
+            return False

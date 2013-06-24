@@ -52,3 +52,7 @@ convert_and_write_to_file(zap_gun_tool, 'entities/tools/ZapGunTool.json')
 linfo = LevelInfo(_name='TestInfo', _number=0, _width=5, _height=5, _levels_folder='')
 linfo_json = JSONCONVERTER.simple_to_json(linfo)
 print linfo_json
+
+cell_dict = {'F': 'cell_folder/template_unstable_floor', '#': 'cell_folder/template_wall'}
+cell_dict_json = JSONCONVERTER.simple_to_json(cell_dict)
+print cell_dict_json

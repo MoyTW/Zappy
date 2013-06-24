@@ -3,6 +3,8 @@ __author__ = 'Travis Moy'
 import unittest
 import loader.LoaderLevelV1 as LoaderLevel
 import level.LevelInfo as LevelInfo
+from z_json import JSONCONVERTER
+import pyglet
 
 
 class TestLoaderLevelV1(unittest.TestCase):
@@ -30,6 +32,22 @@ class TestLoaderLevelV1(unittest.TestCase):
         self.assertEqual(info.get_number(), 0)
         self.assertEqual(info.get_width(), 5)
         self.assertEqual(info.get_height(), 5)
+
+    def test_load_return_cell_templates(self):
+        template_json = '{ "#": "test/wall.json", ".": "test/floor.json", "D": "test/drone.json" }'
+
+        template_loader = pyglet.resource.Loader('@assets')
+        floor = JSONCONVERTER.simple_to_custom_object(template_loader.text('cells/test/floor.json').text)
+        wall = JSONCONVERTER.simple_to_custom_object(template_loader.text('cells/test/wall.json').text)
+        drone = JSONCONVERTER.simple_to_custom_object(template_loader.text('cells/test/drone.json').text)
+
+        templates = self.loader_level._load_return_cell_templates(template_json)
+        try:
+            self.assertEqual(templates['.'], floor)
+            self.assertEqual(templates['#'], wall)
+            self.assertEqual(templates['D'], drone)
+        except (KeyError, TypeError):
+            self.assertFalse(True, "Dict is not populated correctly!")
 
     def test_load_level(self):
         self.assertFalse(True)

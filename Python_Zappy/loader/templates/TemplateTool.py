@@ -1,6 +1,7 @@
+from loader.templates import Template
+
 __author__ = 'Travis Moy'
 
-import Template
 import warnings
 import entity.tool.Tool as Tool
 import entity.tool.ToolZapGun as ToolZapGun

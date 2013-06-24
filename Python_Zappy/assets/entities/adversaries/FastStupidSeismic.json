@@ -1,6 +1,6 @@
 {
     "__class__": "TemplateAdversary", 
-    "__module__": "loader.TemplateAdversary", 
+    "__module__": "loader.templates.TemplateAdversary", 
     "_base_threat": 1, 
     "_behaviors": [
         {

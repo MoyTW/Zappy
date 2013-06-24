@@ -2,8 +2,8 @@ __author__ = 'Travis Moy'
 
 import unittest
 import entity.tool.Tool as Tool
-import loader.TemplateTool as TemplateTool
-import loader.TemplateActor as TemplateActor
+import loader.templates.TemplateTool as TemplateTool
+import loader.templates.TemplateActor as TemplateActor
 import entity.actor.Actor as Actor
 import entity.actor.senses as senses
 

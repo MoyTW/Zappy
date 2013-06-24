@@ -1,6 +1,6 @@
 {
     "__class__": "TemplateActor", 
-    "__module__": "loader.TemplateActor", 
+    "__module__": "loader.templates.TemplateActor", 
     "_base_threat": 3, 
     "_entity_name": "Default Actor Name", 
     "_faction": {
@@ -25,7 +25,7 @@
     "_tools": [
         {
             "__class__": "TemplateTool", 
-            "__module__": "loader.TemplateTool", 
+            "__module__": "loader.templates.TemplateTool", 
             "_cooldown": 0, 
             "_energy_cost": 5, 
             "_entity_name": "Zap Gun", 
@@ -35,7 +35,7 @@
         }, 
         {
             "__class__": "TemplateTool", 
-            "__module__": "loader.TemplateTool", 
+            "__module__": "loader.templates.TemplateTool", 
             "_cooldown": 0, 
             "_energy_cost": 0, 
             "_entity_name": "Holoprojector", 
@@ -45,7 +45,7 @@
         }, 
         {
             "__class__": "TemplateTool", 
-            "__module__": "loader.TemplateTool", 
+            "__module__": "loader.templates.TemplateTool", 
             "_cooldown": 1, 
             "_energy_cost": 1, 
             "_entity_name": "Doom Gun", 

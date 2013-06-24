@@ -1,6 +1,7 @@
+from loader.templates import Template
+
 __author__ = 'Travis Moy'
 
-import Template
 import entity.actor.Adversary as Adversary
 from z_defs import RANK
 from entity.actor.Faction import FACTIONS

@@ -159,6 +159,7 @@ class LoaderLevelLVL(object):
             for entity_string in cell_def.entity_strings:
                 entity = self._entity_index.create_entity_by_name(entity_string, _level)
                 try:
+                    print entity._entity_name
                     if entity.is_player_controlled():
                         if _level.get_player_actor() is None:
                             _level.set_player_actor(entity)

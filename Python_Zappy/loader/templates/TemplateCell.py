@@ -1,6 +1,6 @@
-__author__ = 'Travis Moy'
+from loader.templates import Template
 
-import loader.Template as Template
+__author__ = 'Travis Moy'
 
 
 class TemplateCell(Template.Template):

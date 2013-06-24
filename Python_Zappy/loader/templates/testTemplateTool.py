@@ -1,7 +1,7 @@
 __author__ = 'Travis Moy'
 
 import unittest
-import loader.TemplateTool as TemplateTool
+import loader.templates.TemplateTool as TemplateTool
 import entity.tool.Tool as Tool
 
 

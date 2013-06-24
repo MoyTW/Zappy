@@ -1,8 +1,8 @@
 __author__ = 'Travis Moy'
 
-from loader.TemplateTool import TemplateTool
-from loader.TemplateActor import TemplateActor
-from loader.TemplateAdversary import TemplateAdversary
+from loader.templates.TemplateActor import TemplateActor
+from loader.templates.TemplateTool import TemplateTool
+from loader.templates.TemplateAdversary import TemplateAdversary
 from z_json import JSONCONVERTER
 from entity.actor.senses import *
 from entity.actor.behaviors import *

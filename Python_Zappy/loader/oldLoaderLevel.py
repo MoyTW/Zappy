@@ -5,12 +5,12 @@ import level.Cell
 import level.LevelController
 import LoaderEntityIndex
 import os
-import LoaderCellDefinition
+import oldLoaderCellDefinition
 import pyglet
 import warnings
 
 
-class LoaderLevelLVL(object):
+class oldLoaderLevel(object):
     def __init__(self, levels_folder='levels'):
         self._levels_folder = levels_folder
         self._levels_path = self._find_levels_path(levels_folder)
@@ -124,7 +124,7 @@ class LoaderLevelLVL(object):
                     entity_strings[i] = entity_strings[i].strip().strip('[]')
 
             # Add the cell def to the dict
-            cell_dict[line_fragments[0]] = LoaderCellDefinition.LoaderCellDefinition(image_location=line_fragments[2],
+            cell_dict[line_fragments[0]] = oldLoaderCellDefinition.oldLoaderCellDefinition(image_location=line_fragments[2],
                                                                                      passable=line_fragments[1],
                                                                                      entity_strings=entity_strings)
             current_index += 1

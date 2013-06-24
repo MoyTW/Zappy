@@ -3,7 +3,7 @@ __author__ = 'Travis Moy'
 import pyglet
 from zappyui.UIController import UIController
 from zappyui.FactoryScreens import FactoryScreens
-from loader.LoaderLevelLVL import LoaderLevelLVL
+from loader.oldLoaderLevel import oldLoaderLevel
 
 #width = 1920
 #height = 640
@@ -18,7 +18,7 @@ height = 480
 
 window = pyglet.window.Window(width=width, height=height)
 
-loader_level = LoaderLevelLVL()
+loader_level = oldLoaderLevel()
 factory = FactoryScreens(window, loader_level)
 
 uicontrol = UIController(window, factory.create_ScreenMenuBase())

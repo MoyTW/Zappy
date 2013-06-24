@@ -1,7 +1,7 @@
 __author__ = 'Travis Moy'
 
 import unittest
-import loader.LoaderLevelLVL
+import loader.oldLoaderLevel
 import level.LevelInfo
 import dummies.DummyLoaderEntityIndex
 import pyglet
@@ -13,7 +13,7 @@ class TestLoaderLevel(unittest.TestCase):
         pyglet.resource.path = ['@', '.']
         pyglet.resource.reindex()
 
-        self.loader = loader.LoaderLevelLVL.LoaderLevelLVL('loader/test_levels')
+        self.loader = loader.oldLoaderLevel.oldLoaderLevel('loader/test_levels')
         self.loader._entity_index = dummies.DummyLoaderEntityIndex.DummyLoaderEntityIndex()
 
         resource_loader = pyglet.resource.Loader('@assets')

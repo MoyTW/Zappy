@@ -1,7 +1,7 @@
 __author__ = 'Travis Moy'
 
 
-class LoaderCellDefinition(object):
+class oldLoaderCellDefinition(object):
     def __init__(self, image_location, passable, entity_strings):
         self.image_location = image_location
         self.passable = passable

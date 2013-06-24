@@ -4,7 +4,7 @@ import unittest
 import entity.actor.Actor as Actor
 import entity.actor.effects.Effect as Effect
 import entity.tool.Tool as Tool
-import loader.LoaderLevelLVL as LoaderLevel
+import loader.oldLoaderLevel as LoaderLevel
 from z_defs import DIR
 import entity.actor.senses.SenseSeismic as SenseSeismic
 
@@ -19,7 +19,7 @@ class StunEffect(Effect.Effect):
 class TestActor(unittest.TestCase):
 
     def setUp(self):
-        self.loader = LoaderLevel.LoaderLevelLVL('loader/test_levels')
+        self.loader = LoaderLevel.oldLoaderLevel('loader/test_levels')
 
     def tearDown(self):
         self.loader = None

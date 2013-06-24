@@ -1,14 +1,14 @@
 __author__ = 'Travis Moy'
 
 import unittest
-import loader.LoaderLevelLVL as LoaderLevel
+import loader.oldLoaderLevel as LoaderLevel
 import entity.tool.ToolHoloprojector as ToolHoloprojector
 
 
 class TestToolHoloprojector(unittest.TestCase):
 
     def setUp(self):
-        loader = LoaderLevel.LoaderLevelLVL('entity/actor/behaviors/behavior_test_levels')
+        loader = LoaderLevel.oldLoaderLevel('entity/actor/behaviors/behavior_test_levels')
         self.level = loader.get_level(0)
         self.zappy = self.level.get_player_actor()
         self.tool = ToolHoloprojector.ToolHoloprojector(_level=self.level)

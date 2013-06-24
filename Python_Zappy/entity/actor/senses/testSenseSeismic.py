@@ -3,13 +3,13 @@ __author__ = 'Travis Moy'
 import unittest
 import entity.actor.senses.SenseSeismic as SenseSeismic
 import dummies.DummyLoaderEntityIndex
-import loader.LoaderLevelLVL
+import loader.oldLoaderLevel
 
 
 class TestSenseSeismic(unittest.TestCase):
 
     def setUp(self):
-        self.loader_level = loader.LoaderLevelLVL.LoaderLevelLVL('loader/test_levels')
+        self.loader_level = loader.oldLoaderLevel.oldLoaderLevel('loader/test_levels')
         self.loader_level._entity_index = dummies.DummyLoaderEntityIndex.DummyLoaderEntityIndex()
         self.level = self.loader_level.get_level(2)
         self.sense = SenseSeismic.SenseSeismic(1)

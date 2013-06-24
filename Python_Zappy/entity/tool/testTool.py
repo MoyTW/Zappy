@@ -4,7 +4,7 @@ import unittest
 import entity.tool.Tool as Tool
 import entity.actor.Actor as Actor
 from z_algs import Z_ALGS
-import loader.LoaderLevelLVL as LoaderLevel
+import loader.oldLoaderLevel as LoaderLevel
 
 
 class TestTool(unittest.TestCase):
@@ -16,7 +16,7 @@ class TestTool(unittest.TestCase):
         pass
 
     def test_satisfies_LOS(self):
-        loader = LoaderLevel.LoaderLevelLVL('entity/actor/behaviors/behavior_test_levels')
+        loader = LoaderLevel.oldLoaderLevel('entity/actor/behaviors/behavior_test_levels')
         level = loader.get_level(0)
 
         actor = Actor.Actor(level)

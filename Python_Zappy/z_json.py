@@ -11,7 +11,11 @@ class JsonConverterException(Exception):
 
 class JsonConverter(object):
     def simple_to_json(self, object):
-        return json.dumps(object, default=object_to_dict, sort_keys=True, indent=4)
+        try:
+            obj_func = object.to_json
+            return json.dumps(object, default=obj_func, sort_keys=True, indent=4)
+        except AttributeError:
+            return json.dumps(object, default=object_to_dict, sort_keys=True, indent=4)
 
     def simple_to_custom_object(self, json_string):
         return json.loads(json_string, object_hook=dict_to_object)

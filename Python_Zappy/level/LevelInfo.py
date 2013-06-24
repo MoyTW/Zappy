@@ -31,6 +31,12 @@ class LevelInfo:
     def get_preview(self):
         return self._preview_image
 
+    def to_json(self, obj):
+        json_dict = self.__dict__.copy()
+        json_dict.pop('_preview_image')
+        json_dict.update({'__class__': self.__class__.__name__, '__module__': self.__module__})
+        return json_dict
+
     def _return_default_preview(self):
         return self._default_loader.image('images/defaults/default_preview.png')
 
@@ -46,15 +52,7 @@ class LevelInfo:
 
     def __eq__(self, other):
         try:
-            if self._name == other.get_name() and self._height == other.get_height() and \
-                    self._number == other.get_number() and self._width == other.get_width() and \
-                    self._height == other.get_height():
-                try:
-                    return self._preview_image.width == other.get_preview().width and \
-                        self._preview_image.height == other.get_preview().height
-                except AttributeError:
-                    if self._preview_image is None and other.get_preview() is None:
-                        return True
-                    return False
+            return self._name == other.get_name() and self._height == other.get_height() and \
+                self._number == other.get_number() and self._width == other.get_width()
         except AttributeError:
             return False

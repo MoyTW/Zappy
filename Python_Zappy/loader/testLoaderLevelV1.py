@@ -142,15 +142,25 @@ class TestLoaderLevelV1(unittest.TestCase):
         self.assertEqual(len(target_level.get_all_entities_at(2, 3)), 1)
         self.assertEqual(len(target_level.get_all_entities_at(3, 3)), 1)
 
+    # This is only the most cursory of tests - the components are tested already.
+    # It's just here to make sure nothing blows up when you combine them.
     def test_load_level(self):
         self.loader_level._load_level(0)
-        self.assertFalse(True)
+        self.loader_level._load_level(1)
 
     def test_get_level(self):
         self.assertFalse(True)
 
     def test_can_locate_player_controlled_entity(self):
-        self.assertFalse(True)
+        self.loader_level._load_level(0)
+        l0 = self.loader_level._levels[0]
+        l0_player_actor = l0.get_player_actor()
+        self.assertEqual(l0_player_actor.get_coords(), (2, 3))
+
+        self.loader_level._load_level(1)
+        l1 = self.loader_level._levels[1]
+        l1_player_actor = l1.get_player_actor()
+        self.assertEqual(l1_player_actor.get_coords(), (0, 0))
 
 suite = unittest.TestLoader().loadTestsFromTestCase(TestLoaderLevelV1)
 unittest.TextTestRunner(verbosity=2).run(suite)

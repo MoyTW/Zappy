@@ -77,9 +77,10 @@ class LoaderLevelV1(object):
         ent_list = self._read_until_blank(f)
         f.close()
 
-        #templates = self._load_return_cell_templates(cell_defs)
-        #self._load_level_cells(templates, map_layout, target_level)
-        #self._load_entity_list(ent_list, target_level)
+        templates = self._load_return_cell_templates(cell_defs)
+        self._load_level_cells(templates, map_layout, target_level)
+        self._load_entity_list(ent_list, target_level)
+        self._find_and_assign_player_actor(target_level)
 
     # Takes the json of the dict, and loads the templates into a dict mapping to characters, returns
     def _load_return_cell_templates(self, _json):
@@ -116,10 +117,18 @@ class LoaderLevelV1(object):
 
         for entry in list:
             entity = self._entity_index.create_entity_by_name(entry['_entity'], _level)
-            print entry
             if '_orders' in entry:
                 for order in entry['_orders']:
                     self._execute_entity_order(order, entity, _level)
+
+    def _find_and_assign_player_actor(self, _level):
+        entities = _level.get_all_entities()
+        for entity in entities:
+            try:
+                if entity.is_player_controlled():
+                    _level.set_player_actor(entity)
+            except AttributeError:
+                pass
 
     def _execute_entity_order(self, _order, _entity, _level):
         if _order['_order'] == 'place':

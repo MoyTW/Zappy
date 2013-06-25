@@ -1,0 +1,8 @@
+{
+    "__class__": "TemplateCell", 
+    "__module__": "loader.templates.TemplateCell", 
+    "_entity_files": [], 
+    "_image_location": "images/cells/floor.png",
+    "_passable": true, 
+    "_transparent": true
+}

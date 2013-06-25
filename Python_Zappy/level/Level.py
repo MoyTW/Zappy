@@ -11,8 +11,6 @@ class Level:
         self._cells = cells
         self._player_actor = player_actor
 
-        warnings.warn('cell_is_transparent() returns cell_is_passable()!')
-
     def cells_are_none(self):
         if self._cells is None:
             return True
@@ -93,8 +91,6 @@ class Level:
         return False
 
     def cell_is_transparent(self, x, y):
-        warnings.warn('level.cell_is_transparent() is a placeholder! Returns level.cell_is_passable()!')
-        #return self.cell_is_passable(x, y)
         cell = self.get_cell_at(x, y)
         if cell is not None:
             return cell.get_transparent()

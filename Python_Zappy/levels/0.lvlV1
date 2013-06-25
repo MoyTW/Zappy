@@ -2,40 +2,43 @@
 {
     "__class__": "LevelInfo",
     "__module__": "level.LevelInfo",
-    "_height": 6,
-    "_levels_folder": "loader/test_levels",
+    "_height": 11,
+    "_previews_folder": "levels",
     "_name": "TestLevel0",
     "_number": 0,
-    "_width": 5
+    "_width": 11
 }
 
 #- Cell definitions
 {
-    "#": "test/wall.json",
-    ".": "test/floor.json",
-    "D": "test/drone.json"
+    "#": "wall.json",
+    ".": "floor.json",
+    "D": "drone.json",
+    "0": "pit.json"
 }
 
 #- Map layout
-# # # # #
-# . . . #
-# . D . #
-# . . . #
-# # # # #
-# # # # #
+# # # # # # # # # # #
+# . . . . . . 0 0 # #
+# . D . . . 0 0 0 0 #
+# . . . . . . 0 0 . #
+# . # . . . . . . . #
+# . # # . . 0 . . . #
+# . . . . # 0 . . . #
+# . . . 0 0 0 . . . #
+# . . . . # # . . . #
+# . . . # # # # . . #
+# # # # # # # # # # #
 
 #- Entities to be placed on the map
 [
-    {
-        "_entity": "adversaries/FastStupidSeismic.json"
-    },
     {
         "_entity": "adversaries/FastStupidSeismic.json",
         "_orders": [
             {
                 "_order": "place",
-                "_x": 2,
-                "_y": 3
+                "_x": 9,
+                "_y": 0
             }
         ]
     },
@@ -44,8 +47,8 @@
         "_orders": [
             {
                 "_order": "place",
-                "_x": 3,
-                "_y": 3
+                "_x": 9,
+                "_y": 1
             }
         ]
     }

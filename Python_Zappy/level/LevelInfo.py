@@ -10,13 +10,13 @@ class LevelInfo:
     _preview_loader = pyglet.resource.Loader(script_home=_path_top)
     _default_loader = pyglet.resource.Loader('@assets')
 
-    def __init__(self, _name, _number, _width, _height, _levels_folder):
+    def __init__(self, _name, _number, _width, _height, _previews_folder):
         self._version = .1
         self._name = _name
         self._number = _number
         self._width = _width
         self._height = _height
-        self._levels_folder = _levels_folder
+        self._previews_folder = _previews_folder
 
         self._preview_image = self._return_preview_image()
 
@@ -46,7 +46,7 @@ class LevelInfo:
         return self._default_loader.image('images/defaults/default_preview.png')
 
     def _return_preview_image(self):
-        path = "{0}/preview_images/{1}.png".format(self._levels_folder, self._number)
+        path = "{0}/preview_images/{1}.png".format(self._previews_folder, self._number)
 
         try:
             return self._preview_loader.image(path)

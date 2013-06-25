@@ -25,15 +25,28 @@
 # # # # #
 
 #- Entities to be placed on the map
-{
+[
     {
         "_entity": "adversaries/FastStupidSeismic.json"
-        "_x": 2
-        "_y": 3
-    }
+    },
     {
-        "_entity": "adversaries/FastStupidSeismic.json"
-        "_x": 3
-        "_y": 3
+        "_entity": "adversaries/FastStupidSeismic.json",
+        "_orders": [
+            {
+                "_order": "place",
+                "_x": 2,
+                "_y": 3
+            }
+        ]
+    },
+    {
+        "_entity": "adversaries/FastStupidSeismic.json",
+        "_orders": [
+            {
+                "_order": "place",
+                "_x": 3,
+                "_y": 3
+            }
+        ]
     }
-}
+]

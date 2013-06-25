@@ -64,20 +64,22 @@ class LoaderLevelV1(object):
         info = JSONCONVERTER.simple_to_custom_object(info_json)
         self._levels[info.get_number()] = Level.Level(info)
 
+        f.close()
+
     # This loads the rest of the level (the cells, entities)
     def _load_level(self, _level_number):
-        level = self._levels.get(_level_number)
+        target_level = self._levels.get(_level_number)
 
         f = open(os.path.join(self._levels_path, (str(_level_number) + ".lvlV1")), 'r')
         info_text = self._read_until_blank(f)
         cell_defs = self._read_until_blank(f)
         map_layout = self._read_until_blank(f)
         ent_list = self._read_until_blank(f)
+        f.close()
 
-        print "info\n", info_text
-        print "cells\n", cell_defs
-        print "map\n", map_layout
-        print "ents\n", ent_list
+        #templates = self._load_return_cell_templates(cell_defs)
+        #self._load_level_cells(templates, map_layout, target_level)
+        #self._load_entity_list(ent_list, target_level)
 
     # Takes the json of the dict, and loads the templates into a dict mapping to characters, returns
     def _load_return_cell_templates(self, _json):
@@ -110,7 +112,18 @@ class LoaderLevelV1(object):
 
     # Creates, places, and calls setup functions of the entities in question
     def _load_entity_list(self, _json, _level):
-        pass
+        list = JSONCONVERTER.load_simple(_json)
+
+        for entry in list:
+            entity = self._entity_index.create_entity_by_name(entry['_entity'], _level)
+            print entry
+            if '_orders' in entry:
+                for order in entry['_orders']:
+                    self._execute_entity_order(order, entity, _level)
+
+    def _execute_entity_order(self, _order, _entity, _level):
+        if _order['_order'] == 'place':
+            _level.place_entity_at(_entity, x=_order['_x'], y=_order['_y'])
 
     def _find_levels_path(self, _levels_folder):
         path = os.path.split(os.path.dirname(__file__))[0]

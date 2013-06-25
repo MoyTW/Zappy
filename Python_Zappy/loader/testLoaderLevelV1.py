@@ -6,6 +6,7 @@ import level.LevelInfo as LevelInfo
 import level.Level as Level
 from z_json import JSONCONVERTER
 import pyglet
+import level.Cell as Cell
 
 
 class TestLoaderLevelV1(unittest.TestCase):
@@ -126,6 +127,20 @@ class TestLoaderLevelV1(unittest.TestCase):
             self.assertFalse(True, "The function has not yet been implemented.")
 
         self.assertTrue(equal)
+
+    def test_load_entity_list(self):
+        json = '[' \
+               '{"_entity": "adversaries/FastStupidSeismic.json"},' \
+               '{"_entity": "adversaries/FastStupidSeismic.json", "_orders": [{"_order": "place","_x": 2,"_y": 3}]},' \
+               '{"_entity": "adversaries/FastStupidSeismic.json", "_orders": [{"_order": "place","_x": 3,"_y": 3}]}' \
+               ']'
+        target_level = Level.Level(self.loader_level.get_level_info(0))
+        target_level.replace_cells([[Cell.Cell() for _ in range(0, 6)] for _ in range(0, 5)])
+        self.loader_level._load_entity_list(json, target_level)
+
+        self.assertEqual(len(target_level.get_all_entities()), 2)
+        self.assertEqual(len(target_level.get_all_entities_at(2, 3)), 1)
+        self.assertEqual(len(target_level.get_all_entities_at(3, 3)), 1)
 
     def test_load_level(self):
         self.loader_level._load_level(0)

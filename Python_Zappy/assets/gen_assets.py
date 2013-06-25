@@ -56,3 +56,6 @@ print linfo_json
 cell_dict = {'F': 'cell_folder/template_unstable_floor', '#': 'cell_folder/template_wall'}
 cell_dict_json = JSONCONVERTER.simple_to_json(cell_dict)
 print cell_dict_json
+
+list_in_dict = {'_orders': [3, {'a': 5, 'b': 2}]}
+print JSONCONVERTER.simple_to_json(list_in_dict)

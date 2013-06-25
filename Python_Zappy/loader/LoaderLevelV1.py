@@ -1,5 +1,6 @@
 __author__ = 'Travis Moy'
 
+import level.LevelController as LevelController
 import warnings
 import level.Level as Level
 from z_json import JSONCONVERTER
@@ -30,13 +31,26 @@ class LoaderLevelV1(object):
         return None
 
     def get_level(self, level_number):
-        pass
+        try:  # Okay what's this try/except block for? Oh! If it's None - and therefore not a valid level.
+            if self._levels.get(level_number).cells_are_none():
+                self._load_level(level_number)
+        except AttributeError:
+            warnings.warn('{0} is not a valid level number!'.format(level_number))
+        return self._levels.get(level_number)
 
     def regen_level(self, level_number):
-        pass
+        try:
+            self._load_level(level_number)
+        except AttributeError:
+            warnings.warn('{0} is not a valid level number!'.format(level_number))
 
     def get_level_controller(self, level_number):
-        pass
+        temp_level = self.get_level(level_number)
+        if temp_level is not None:
+            return LevelController.LevelController(temp_level)
+        else:
+            warnings.warn("LoaderLevel.get_level_controller is returning None!")
+            return None
 
     # For each level, call _load_level_info
     def _load_all_levels_infos(self):
@@ -71,7 +85,7 @@ class LoaderLevelV1(object):
         target_level = self._levels.get(_level_number)
 
         f = open(os.path.join(self._levels_path, (str(_level_number) + ".lvlV1")), 'r')
-        info_text = self._read_until_blank(f)
+        self._read_until_blank(f)  # This is to remove the info section
         cell_defs = self._read_until_blank(f)
         map_layout = self._read_until_blank(f)
         ent_list = self._read_until_blank(f)

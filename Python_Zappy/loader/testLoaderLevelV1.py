@@ -149,7 +149,10 @@ class TestLoaderLevelV1(unittest.TestCase):
         self.loader_level._load_level(1)
 
     def test_get_level(self):
-        self.assertFalse(True)
+        self.assertNotEqual(None, self.loader_level.get_level(0))
+        self.assertNotEqual(None, self.loader_level.get_level(1))
+        self.assertEqual(None, self.loader_level.get_level(-1))
+        self.assertEqual(None, self.loader_level.get_level(15))
 
     def test_can_locate_player_controlled_entity(self):
         self.loader_level._load_level(0)

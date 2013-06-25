@@ -8,7 +8,7 @@ from entity.actor.senses import *
 from entity.actor.behaviors import *
 from z_defs import RANK
 from entity.actor.Faction import FACTIONS
-from level.LevelInfo import LevelInfo
+from loader.templates.TemplateCell import TemplateCell
 
 
 def convert_and_write_to_file(object, filename):
@@ -16,6 +16,8 @@ def convert_and_write_to_file(object, filename):
     f = open(filename, 'w')
     f.write(json_string)
     f.close()
+
+#####=====----- Entities -----=====#####
 
 zappy_basic_template = TemplateActor(_senses=[SenseSight.SenseSight(9)],
                                      _tools=[TemplateTool('zap_gun', _entity_name='Zap Gun', _range=99, _cooldown=0,
@@ -48,3 +50,18 @@ convert_and_write_to_file(stupid_sight_enemy, 'entities/adversaries/FastStupidSi
 
 zap_gun_tool = TemplateTool('zap_gun', _entity_name='Floor Gun')
 convert_and_write_to_file(zap_gun_tool, 'entities/tools/ZapGunTool.json')
+
+#####=====----- Cells -----=====#####
+
+floor = TemplateCell(_image_location='images/cells/floor.png', _passable=True, _transparent=True)
+convert_and_write_to_file(floor, 'cells/floor.json')
+
+wall = TemplateCell(_image_location='images/cells/wall.png', _passable=False, _transparent=False)
+convert_and_write_to_file(wall, 'cells/wall.json')
+
+drone = TemplateCell(_image_location='images/cells/floor.png', _passable=True, _transparent=True,
+                     _entity_files=['zappy/ZappyBasic.json'])
+convert_and_write_to_file(drone, 'cells/drone.json')
+
+pit = TemplateCell(_image_location='images/cells/pit.png', _passable=False, _transparent=True)
+convert_and_write_to_file(pit, 'cells/pit.json')

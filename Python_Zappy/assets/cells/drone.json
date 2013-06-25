@@ -4,7 +4,7 @@
     "_entity_files": [
         "zappy/ZappyBasic.json"
     ], 
-    "_image_location": "images/cells/floor.png",
+    "_image_location": "images/cells/floor.png", 
     "_passable": true, 
     "_transparent": true
 }

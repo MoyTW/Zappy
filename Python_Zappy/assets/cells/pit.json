@@ -1,8 +1,8 @@
 {
     "__class__": "TemplateCell", 
     "__module__": "loader.templates.TemplateCell", 
-    "_entity_files": [],
-    "_image_location": "images/cells/pit.png",
-    "_passable": false,
+    "_entity_files": [], 
+    "_image_location": "images/cells/pit.png", 
+    "_passable": false, 
     "_transparent": true
 }

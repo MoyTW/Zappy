@@ -40,7 +40,7 @@ class TestLoaderLevelV1(unittest.TestCase):
         self.assertEqual(info.get_name(), 'TestLevel0')
         self.assertEqual(info.get_number(), 0)
         self.assertEqual(info.get_width(), 5)
-        self.assertEqual(info.get_height(), 5)
+        self.assertEqual(info.get_height(), 6)
 
     def test_load_return_cell_templates(self):
         template_json = '{ "#": "test/wall.json", ".": "test/floor.json", "D": "test/drone.json" }'
@@ -59,14 +59,14 @@ class TestLoaderLevelV1(unittest.TestCase):
         comp_level = Level.Level(self.loader_level.get_level_info(0))
         func_level = self.loader_level._levels[0]
         template = self.create_test_template()
-        layout_string = "# . # . #\n# . . . #\n# . D . #\n# . . . #\n# # # # #\n"
+        layout_string = "# # # # #\n# . . . #\n# . D . #\n# . . . #\n# # # # #\n# # # # #\n"
 
-        comp_level.replace_cells([[None for _ in range(0, 5)] for _ in range(0, 5)])
+        comp_level.replace_cells([[None for _ in range(0, 6)] for _ in range(0, 5)])
 
         # You start from the top. In other words, x = 0, y = height - 1
         i = 0
         x = 0
-        y = 4
+        y = 5
         while y >= 0:
             while x < 5:
                 char = layout_string[i]
@@ -81,11 +81,47 @@ class TestLoaderLevelV1(unittest.TestCase):
         equal = True
         try:
             for x in range(0, 5):
-                for y in range(0, 5):
-                    if comp_level._cells[x][y] != func_level._cells[x][y]:
-                        print comp_level[x][y]
-                        print func_level[x][y]
-                        equal = False
+                for y in range(0, 6):
+                    comp_cell = comp_level._cells[x][y]
+                    func_cell = func_level._cells[x][y]
+                    if comp_cell != func_cell:
+                        if len(comp_cell.get_all_entities()) != len(func_cell.get_all_entities()):
+                            equal = False
+        except TypeError:
+            self.assertFalse(True, "The function has not yet been implemented.")
+
+        self.assertTrue(equal)
+
+    def test_load_level_cells_handle_irregular_whitespace(self):
+        template = self.create_test_template()
+        layout_string = "# ##      #\n\n\n#\n # . . . #\n# . D . #\n# . . . #\n# # # # #\n# # #  # #\n"
+        func_level = self.loader_level._levels[0]
+
+        try:
+            self.loader_level._load_level_cells(template, layout_string, func_level)
+        except KeyError:
+            threw_exception = True
+            self.assertFalse(threw_exception, "Could not handle extra whitespace.")
+
+    def test_load_level_cells_irregular_whitespace_equivalent(self):
+        comp_level = Level.Level(self.loader_level.get_level_info(0))
+        func_level = self.loader_level._levels[0]
+        template = self.create_test_template()
+        layout_string = "# # # # #\n# . . . #\n# . D . #\n# . . . #\n# # # # #\n# # # # #\n"
+        irregular_layout_string = "# ##      #\n\n\n#\n # . . . #\n# . D . #\n# . . . #\n# # # # #\n# # #  # #\n"
+
+        self.loader_level._load_level_cells(template, irregular_layout_string, comp_level)
+        self.loader_level._load_level_cells(template, layout_string, func_level)
+
+        equal = True
+        try:
+            for x in range(0, 5):
+                for y in range(0, 6):
+                    comp_cell = comp_level._cells[x][y]
+                    func_cell = func_level._cells[x][y]
+                    if comp_cell != func_cell:
+                        if len(comp_cell.get_all_entities()) != len(func_cell.get_all_entities()):
+                            equal = False
         except TypeError:
             self.assertFalse(True, "The function has not yet been implemented.")
 

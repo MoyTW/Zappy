@@ -91,7 +91,22 @@ class LoaderLevelV1(object):
 
     # This is where the actual cells for the level are built by calls to the Template
     def _load_level_cells(self, _templates, _layout_string, _level):
-        pass
+        width = _level.get_width()
+        height = _level.get_height()
+        _level.replace_cells([[None for _ in range(0, height)] for _ in range(0, width)])
+
+        i = 0
+        x = 0
+        y = height - 1
+        while y >= 0:
+            while x < width:
+                _templates[_layout_string[i]].create_instance(_level, self._entity_index, _x=x, _y=y)
+                i += 1
+                while i < len(_layout_string) and (_layout_string[i] == ' ' or _layout_string[i] == '\n'):
+                    i += 1
+                x += 1
+            x = 0
+            y -= 1
 
     # Creates, places, and calls setup functions of the entities in question
     def _load_entity_list(self, _json, _level):

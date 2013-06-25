@@ -21,6 +21,10 @@ class TemplateCell(Template.Template):
     # This is kind of awkward; we're jumping up and down levels, here.
     # I mean, we're not placing the entity in the cell - we're placing it at _x, _y, which we're *hoping* but can't be
     # assured corresponds to this particular cell.
+
+    # NOTE: This behaves radically differently from the other Templates, in that it DOES NOT RETURN, and it places the
+    # Cell directly into the level! That may potentially be confusing down the line (or if somebody else happens to
+    # look at this - ha! not likely...) - is it worth it to disambiguate, or is a long note enough?
     def create_instance(self, level, entity_index, _x, _y):
         cell = Cell.Cell(image_location=self._image_location,
                          passable=self._passable,

@@ -25,8 +25,9 @@ class TemplateCell(Template.Template):
         cell = Cell.Cell(image_location=self._image_location,
                          passable=self._passable,
                          transparent=self._transparent)
+        level._cells[_x][_y] = cell
         for entity_file in self._entity_files:
-            entity = entity_index.create_entity_by_name(entity_file)
+            entity = entity_index.create_entity_by_name(entity_file, entity_index)
             level.place_entity_at(entity, _x, _y)
         return cell
 

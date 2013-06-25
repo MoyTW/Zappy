@@ -1,5 +1,6 @@
 __author__ = 'Travis Moy'
 
+import warnings
 import level.Level as Level
 from z_json import JSONCONVERTER
 import loader.LoaderEntityIndex as LoaderEntityIndex
@@ -24,7 +25,9 @@ class LoaderLevelV1(object):
         return len(self._levels)
 
     def get_level_info(self, level_number):
-        pass
+        if level_number in self._levels:
+            return self._levels[level_number].get_level_info()
+        return None
 
     def get_level(self, level_number):
         pass
@@ -40,29 +43,45 @@ class LoaderLevelV1(object):
         level_files = os.listdir(self._levels_path)
         for file in level_files:
             if file.endswith(".lvlV1"):
+                warnings.warn("LoaderLevelV1 will load all files ending with .lvlV1 into info!")
                 self._load_level_info(file)
 
-    # You can just grab this from the json
-    def _load_level_info(self, filename):
-        file = open(os.path.join(self._levels_path, filename), 'r')
+    def _read_until_blank(self, _file):
+        line = _file.readline()
+        text = ''
+        while line != '\n' and line != '':
+            if not (line[0] == '#' and line[1] == '-'):
+                text += line
+            line = _file.readline()
+        return text
 
-        line = file.readline()
-        info_json = ''
-        while line != '\n':
-            info_json += line  # Is this an efficient way? Am I creating a zillion tiny strings and tossing them away?
-            # Just a thing to note, in case I have to come back and look for ways to speed it up.
-            line = file.readline()
+    # You can just grab this from the json
+    def _load_level_info(self, _filename):
+        f = open(os.path.join(self._levels_path, _filename), 'r')
+
+        info_json = self._read_until_blank(f)
 
         info = JSONCONVERTER.simple_to_custom_object(info_json)
         self._levels[info.get_number()] = Level.Level(info)
 
     # This loads the rest of the level (the cells, entities)
-    def _load_level(self, level_number):
-        pass
+    def _load_level(self, _level_number):
+        level = self._levels.get(_level_number)
+
+        f = open(os.path.join(self._levels_path, (str(_level_number) + ".lvlV1")), 'r')
+        info_text = self._read_until_blank(f)
+        cell_defs = self._read_until_blank(f)
+        map_layout = self._read_until_blank(f)
+        ent_list = self._read_until_blank(f)
+
+        print "info\n", info_text
+        print "cells\n", cell_defs
+        print "map\n", map_layout
+        print "ents\n", ent_list
 
     # Takes the json of the dict, and loads the templates into a dict mapping to characters, returns
-    def _load_return_cell_templates(self, json):
-        templates = JSONCONVERTER.load_simple(json)
+    def _load_return_cell_templates(self, _json):
+        templates = JSONCONVERTER.load_simple(_json)
         keys = templates.keys()
         for key in keys:
             file_location = templates[key]
@@ -71,13 +90,13 @@ class LoaderLevelV1(object):
         return templates
 
     # This is where the actual cells for the level are built by calls to the Template
-    def _load_level_cells(self):
+    def _load_level_cells(self, _templates, _layout_string, _level):
         pass
 
     # Creates, places, and calls setup functions of the entities in question
-    def _load_entity_list(self):
+    def _load_entity_list(self, _json, _level):
         pass
 
-    def _find_levels_path(self, levels_folder):
+    def _find_levels_path(self, _levels_folder):
         path = os.path.split(os.path.dirname(__file__))[0]
-        return os.path.join(path, levels_folder)
+        return os.path.join(path, _levels_folder)

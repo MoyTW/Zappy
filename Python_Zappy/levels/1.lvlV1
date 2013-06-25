@@ -1,0 +1,23 @@
+#- Level info
+{
+    "__class__": "LevelInfo",
+    "__module__": "level.LevelInfo",
+    "_height": 1,
+    "_levels_folder": "loader/test_levels",
+    "_name": "TestLevel1",
+    "_number": 1,
+    "_width": 1
+}
+
+#- Cell definitions
+{
+    "#": "test/wall.json",
+    ".": "test/floor.json",
+    "D": "test/drone.json"
+}
+
+#- Map layout
+D
+
+#- Entities to be placed on the map
+[]

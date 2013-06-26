@@ -3,12 +3,14 @@ __author__ = 'Travis Moy'
 import Template
 import entity.environmentals.Environmental as Environmental
 import entity.environmentals.EnvCollapsible as EnvCollapsible
+import entity.environmentals.EnvDoor as EnvDoor
 import warnings
 
 
 ENV_NAMES_DICT = {
     'environmental': Environmental.Environmental,
-    'collapsible': EnvCollapsible.EnvCollapsible
+    'collapsible': EnvCollapsible.EnvCollapsible,
+    'door': EnvDoor.EnvDoor
 }
 
 
@@ -37,6 +39,5 @@ class TemplateEnvironmental(Template.Template):
         if _env_class is None:
             warnings.warn("RETURNING NONE FROM TempalteTool.create_instance()")
             return None
-        print self._kwargs
         return _env_class(_level=level,
                           **self._kwargs)

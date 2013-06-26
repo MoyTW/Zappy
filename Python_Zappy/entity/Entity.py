@@ -19,8 +19,7 @@ class Entity(object):
         self._x = _x
         self._y = _y
 
-        self._image = None
-        self._load_image()
+        self._image = self._load_return_image(self._image_name)
 
     def destroy(self):
         self._level.remove_entity_from(self, self._x, self._y)
@@ -37,16 +36,16 @@ class Entity(object):
     def get_priority(self):
         return self._priority
 
-    def _load_image(self):
+    def _load_return_image(self, _image_name):
         loader = pyglet.resource.Loader('@assets')
 
         if self._image_name is None:
             self._image = loader.image(self.DEFAULT_IMAGE_PATH)
 
-        image_path = '{0}{1}'.format(self.IMAGE_FOLDER, self._image_name)
+        image_path = '{0}{1}'.format(self.IMAGE_FOLDER, _image_name)
         try:
-            self._image = loader.image(image_path)
+            return loader.image(image_path)
         except pyglet.resource.ResourceNotFoundException:
             warnings.warn('Cannot load image {0}; attemping to load default entity image.'.format(image_path),
                           RuntimeWarning)
-            self._image = loader.image(self.DEFAULT_IMAGE_PATH)
+            return loader.image(self.DEFAULT_IMAGE_PATH)

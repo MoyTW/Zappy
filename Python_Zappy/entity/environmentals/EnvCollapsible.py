@@ -22,5 +22,5 @@ class EnvCollapsible(Environmental.Environmental):
         cell = self._level.get_cell_at(*self.get_coords())
         cell.set_passable(False)
         cell.set_transparent(True)
-        cell.change_cell_image(self.PIT_IMAGE_PATH)
+        cell.change_cell_image_by_location(self.PIT_IMAGE_PATH)
         self._level.remove_entity_from(self, *self.get_coords())

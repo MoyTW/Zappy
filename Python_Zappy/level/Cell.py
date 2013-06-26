@@ -32,7 +32,10 @@ class Cell(object):
     def set_transparent(self, _transparent):
         self._transparent = _transparent
 
-    def change_cell_image(self, _image_location):
+    def change_cell_image_by_image(self, _image):
+        self._image = _image
+
+    def change_cell_image_by_location(self, _image_location):
         self._image_location = _image_location
         self._load_image(_image_location)
 

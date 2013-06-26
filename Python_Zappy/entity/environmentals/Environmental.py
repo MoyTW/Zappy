@@ -19,3 +19,13 @@ class Environmental(Entity.Entity, Destructible.Destructible):
     def destroy(self):
         print self._entity_name, 'was destroyed!'
         self._level.remove_entity_from(self, *self.get_coords())
+
+    def __eq__(self, other):
+        try:
+            self_dict = self.__dict__.copy()
+            self_dict.pop('_image')
+            other_dict = other.__dict__.copy()
+            other_dict.pop('_image')
+            return self_dict == other_dict
+        except (AttributeError, KeyError):
+            return False

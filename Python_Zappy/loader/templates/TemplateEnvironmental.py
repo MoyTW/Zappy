@@ -9,19 +9,20 @@ import warnings
 ENV_NAMES_DICT = {
     'environmental': Environmental.Environmental,
     'collapsible': EnvCollapsible.EnvCollapsible
-
 }
 
 
 class TemplateEnvironmental(Template.Template):
 
-    def __init__(self, _env_class='environmental', _entity_name='Unnamed Envrionmental Template', _image_name=None,
-                 _max_hp=1, **kwargs):
+    def __init__(self, _env_class='environmental', _entity_name=None, _image_name=None, _max_hp=None, **kwargs):
         self._env_class = _env_class
-        self._entity_name = _entity_name
-        self._image_name = _image_name
-        self._max_hp = _max_hp
-        self._extra_args = kwargs
+        self._kwargs = kwargs
+        if _entity_name is not None:
+            self._kwargs['_entity_name'] = _entity_name
+        if _image_name is not None:
+            self._kwargs['_image_name'] = _image_name
+        if _max_hp is not None:
+            self._kwargs['_max_hp'] = _max_hp
 
     def create_instance(self, level, entity_index, user=None):
         _env_class = None
@@ -36,8 +37,6 @@ class TemplateEnvironmental(Template.Template):
         if _env_class is None:
             warnings.warn("RETURNING NONE FROM TempalteTool.create_instance()")
             return None
+        print self._kwargs
         return _env_class(_level=level,
-                          _entity_name=self._entity_name,
-                          _image_name=self._image_name,
-                          _map_hp=self._max_hp,
-                          **self._extra_args)
+                          **self._kwargs)

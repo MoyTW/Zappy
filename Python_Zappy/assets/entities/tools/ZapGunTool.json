@@ -6,5 +6,5 @@
     "_entity_name": "Floor Gun", 
     "_image_name": null, 
     "_range": 1, 
-    "_tool_name": "zap_gun"
+    "_tool_class": "zap_gun"
 }

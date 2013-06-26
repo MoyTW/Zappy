@@ -31,7 +31,7 @@
             "_entity_name": "Zap Gun", 
             "_image_name": null, 
             "_range": 99, 
-            "_tool_name": "zap_gun"
+            "_tool_class": "zap_gun"
         }, 
         {
             "__class__": "TemplateTool", 
@@ -41,7 +41,7 @@
             "_entity_name": "Holoprojector", 
             "_image_name": null, 
             "_range": 99, 
-            "_tool_name": "holoprojector"
+            "_tool_class": "holoprojector"
         }, 
         {
             "__class__": "TemplateTool", 
@@ -51,7 +51,7 @@
             "_entity_name": "Doom Gun", 
             "_image_name": null, 
             "_range": 99, 
-            "_tool_name": "doom_gun"
+            "_tool_class": "doom_gun"
         }
     ]
 }

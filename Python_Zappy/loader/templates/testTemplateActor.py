@@ -11,9 +11,9 @@ import entity.actor.senses as senses
 class TestTemplateActor(unittest.TestCase):
 
     def setUp(self):
-        template_tool_0 = TemplateTool.TemplateTool(_tool_name='tool', _range=5, _cooldown=0, _energy_cost=2,
+        template_tool_0 = TemplateTool.TemplateTool(_tool_class='tool', _range=5, _cooldown=0, _energy_cost=2,
                                                     _image_name=None)
-        template_tool_None = TemplateTool.TemplateTool(_tool_name='blatooie', _range=5, _cooldown=0, _energy_cost=2,
+        template_tool_None = TemplateTool.TemplateTool(_tool_class='blatooie', _range=5, _cooldown=0, _energy_cost=2,
                                                        _image_name=None)
         self.template_tools_list = [template_tool_0, template_tool_None]
 

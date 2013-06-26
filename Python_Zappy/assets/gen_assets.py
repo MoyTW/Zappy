@@ -9,7 +9,7 @@ from entity.actor.behaviors import *
 from z_defs import RANK
 from entity.actor.Faction import FACTIONS
 from loader.templates.TemplateCell import TemplateCell
-from entity.environmentals.EnvUnstableFloor import EnvUnstableFloor
+from entity.environmentals.EnvCollapsible import EnvCollapsible
 
 
 def convert_and_write_to_file(object, filename):

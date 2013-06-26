@@ -15,6 +15,7 @@
     ".": "floor.json",
     "D": "drone.json",
     "0": "pit.json"
+#-    "u": "unstable_floor.json"
 }
 
 #- Map layout

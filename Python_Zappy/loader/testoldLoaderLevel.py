@@ -25,22 +25,22 @@ class TestLoaderLevel(unittest.TestCase):
 
     def setUpLevels(self):
         # Set up level 0
-        cells_0 = [[level.Cell.Cell(image_location='images/floor.png', passable=True) for _ in range(6)] for _ in range(5)]
+        cells_0 = [[level.Cell.Cell(_image_location='images/floor.png', _passable=True) for _ in range(6)] for _ in range(5)]
         for i in range(5):
-            cells_0[i][5] = level.Cell.Cell(image_location='images/wall.png', passable=False)
-            cells_0[i][4] = level.Cell.Cell(image_location='images/wall.png', passable=False)
-            cells_0[i][1] = level.Cell.Cell(image_location='images/wall.png', passable=False)
+            cells_0[i][5] = level.Cell.Cell(_image_location='images/wall.png', _passable=False)
+            cells_0[i][4] = level.Cell.Cell(_image_location='images/wall.png', _passable=False)
+            cells_0[i][1] = level.Cell.Cell(_image_location='images/wall.png', _passable=False)
 
         self.level_0 = level.Level.Level(self.level_info_0, cells_0)
         self.level_0.place_entity_at(self.loader._entity_index.create_entity_by_name('TestObj', None), 0, 0)
 
         # Set up level 1
-        cells_1 = [[level.Cell.Cell(image_location='images/floor.png', passable=True) for _ in range(2)] for _ in range(2)]
+        cells_1 = [[level.Cell.Cell(_image_location='images/floor.png', _passable=True) for _ in range(2)] for _ in range(2)]
         self.level_1 = level.Level.Level(self.level_info_1, cells_1)
         self.level_1.place_entity_at(self.loader._entity_index.create_entity_by_name('TestObj', None), 0, 1)
 
         # Set up level 2
-        cells_2 = [[level.Cell.Cell(image_location='images/floor.png', passable=True) for _ in range(3)] for _ in range(8)]
+        cells_2 = [[level.Cell.Cell(_image_location='images/floor.png', _passable=True) for _ in range(3)] for _ in range(8)]
         self.level_2 = level.Level.Level(self.level_info_2, cells_2)
         self.level_2.place_entity_at(self.loader._entity_index.create_entity_by_name('TestObj', None), 1, 1)
         self.level_2.place_entity_at(self.loader._entity_index.create_entity_by_name('TestObj', None), 1, 1)

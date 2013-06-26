@@ -153,8 +153,8 @@ class oldLoaderLevel(object):
     # If it encounters an entity which is player controlled, sets the level.player_actor to that entity
     def _build_cell_from_def_and_add_entities(self, x, y, cell_def, _level):
         passable = cell_def.passable == 'True'
-        _level._cells[x][y] = level.Cell.Cell(image_location=cell_def.image_location, passable=passable,
-                                              transparent=passable)
+        _level._cells[x][y] = level.Cell.Cell(_image_location=cell_def.image_location, _passable=passable,
+                                              _transparent=passable)
         if cell_def.entity_strings is not None:
             for entity_string in cell_def.entity_strings:
                 entity = self._entity_index.create_entity_by_name(entity_string, _level)

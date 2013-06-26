@@ -9,6 +9,7 @@ from entity.actor.behaviors import *
 from z_defs import RANK
 from entity.actor.Faction import FACTIONS
 from loader.templates.TemplateCell import TemplateCell
+from entity.environmentals.EnvUnstableFloor import EnvUnstableFloor
 
 
 def convert_and_write_to_file(object, filename):
@@ -55,6 +56,10 @@ convert_and_write_to_file(zap_gun_tool, 'entities/tools/ZapGunTool.json')
 
 floor = TemplateCell(_image_location='images/cells/floor.png', _passable=True, _transparent=True)
 convert_and_write_to_file(floor, 'cells/floor.json')
+
+#unstable_floor = TemplateCell(_image_location='images/cells/floor.png', _passable=True, _transparent=True,
+#                              _entity_files=['environmentals/UnstableFloor.png'])
+#convert_and_write_to_file(floor, 'cells/unstable_floor.json')
 
 wall = TemplateCell(_image_location='images/cells/wall.png', _passable=False, _transparent=False)
 convert_and_write_to_file(wall, 'cells/wall.json')

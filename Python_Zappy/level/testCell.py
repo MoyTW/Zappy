@@ -44,7 +44,7 @@ class TestCell(unittest.TestCase):
 
     def test_get_passable(self):
         self.assertEquals(True, self.default_cell.get_passable())
-        impassable = level.Cell.Cell(self.default_image_path, passable=False)
+        impassable = level.Cell.Cell(self.default_image_path, _passable=False)
         self.assertEquals(False, impassable.get_passable())
 
     def test_add_entity(self):

@@ -9,13 +9,13 @@ class Cell(object):
     DEFAULT_IMAGE_PATH = 'images/defaults/defaultcell.png'
     LOADER = pyglet.resource.Loader(['@assets'])
 
-    def __init__(self, image_location=DEFAULT_IMAGE_PATH, passable=True, transparent=True):
-        self._passable = bool(passable)
-        self._transparent = transparent
+    def __init__(self, _image_location=DEFAULT_IMAGE_PATH, _passable=True, _transparent=True):
+        self._passable = _passable
+        self._transparent = _transparent
         self._contains = []
-        self._image_location = image_location
+        self._image_location = _image_location
 
-        self._load_image(image_location)
+        self._load_image(_image_location)
 
     def get_cell_image(self):
         return self._image
@@ -25,6 +25,16 @@ class Cell(object):
 
     def get_transparent(self):
         return self._transparent
+
+    def set_passable(self, _passable):
+        self._passable = _passable
+
+    def set_transparent(self, _transparent):
+        self._transparent = _transparent
+
+    def change_cell_image(self, _image_location):
+        self._image_location = _image_location
+        self._load_image(_image_location)
 
     # Returns a map. Key is priority, contents are lists of images.
     def get_display_images(self, _in_fow=False):
@@ -47,27 +57,27 @@ class Cell(object):
     def get_all_entities(self):
         return self._contains
 
-    def add_entity(self, entity):
-        self._contains.append(entity)
+    def add_entity(self, _entity):
+        self._contains.append(_entity)
 
-    def remove_entity(self, entity):
+    def remove_entity(self, _entity):
         try:
-            self._contains.remove(entity)
+            self._contains.remove(_entity)
             return True
         except ValueError:
             return False
 
-    def contains_entity(self, entity):
-        return entity in self._contains
+    def contains_entity(self, _entity):
+        return _entity in self._contains
 
     # Searches for file in local, then in assets, then tries to load default.
     # If for some reason the default is absent, throws an exception.
-    def _load_image(self, file):
+    def _load_image(self, _filename):
         try:
-            self._image = pyglet.resource.image(file)
+            self._image = pyglet.resource.image(_filename)
         except pyglet.resource.ResourceNotFoundException:
             try:
-                self._image = self.LOADER.image(file)
+                self._image = self.LOADER.image(_filename)
             except pyglet.resource.ResourceNotFoundException:
                 warnings.warn("Error loading specified Cell image, attempting to load default Cell image.")
                 self._image = self.LOADER.image(self.DEFAULT_IMAGE_PATH)

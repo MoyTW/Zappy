@@ -4,4 +4,4 @@ import Entity
 import Destructible
 import actor
 import tool
-import environmental
+import environmentals

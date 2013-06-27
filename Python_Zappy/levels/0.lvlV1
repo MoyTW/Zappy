@@ -14,14 +14,14 @@
     "#": "wall.json",
     ".": "floor.json",
     "D": "drone.json",
-    "0": "pit.json"
-#-    "u": "unstable_floor.json"
+    "0": "pit.json",
+    "u": "unstable_floor.json"
 }
 
 #- Map layout
 # # # # # # # # # # #
 # . . . . . . 0 0 # #
-# . D . . . 0 0 0 0 #
+# . D u . . 0 0 0 0 #
 # . . . . . . 0 0 . #
 # . # . . . . . . . #
 # . # # . . 0 . . . #

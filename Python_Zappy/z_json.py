@@ -66,5 +66,5 @@ def dict_to_object(d):
         except Exception as e:
             raise JsonConverterException(e.message)
     else:
-        raise JsonConverterException("Cannot determine the class of the following dict: {0}".format(d))
+        inst = d
     return inst

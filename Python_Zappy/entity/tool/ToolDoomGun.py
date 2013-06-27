@@ -5,7 +5,7 @@ import Tool
 
 class ToolDoomGun(Tool.Tool):
     def __init__(self, *args, **kwargs):
-        kwargs['_list_target_types'] = [self.TYPE_ACTOR]
+        kwargs['_list_target_types'] = [self.TYPE_ENTITY]
         kwargs['_requires_LOS'] = True
         super(ToolDoomGun, self).__init__(*args, **kwargs)
 

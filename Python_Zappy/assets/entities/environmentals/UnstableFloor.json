@@ -1,0 +1,9 @@
+{
+    "__class__": "TemplateEnvironmental", 
+    "__module__": "loader.templates.TemplateEnvironmental", 
+    "_env_class": "collapsible", 
+    "_kwargs": {
+        "_entity_name": "Unstable Floor", 
+        "_max_hp": 25
+    }
+}

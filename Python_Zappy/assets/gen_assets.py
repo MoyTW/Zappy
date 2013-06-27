@@ -9,7 +9,7 @@ from entity.actor.behaviors import *
 from z_defs import RANK
 from entity.actor.Faction import FACTIONS
 from loader.templates.TemplateCell import TemplateCell
-from entity.environmentals.EnvCollapsible import EnvCollapsible
+from loader.templates.TemplateEnvironmental import TemplateEnvironmental
 
 
 def convert_and_write_to_file(object, filename):
@@ -52,14 +52,18 @@ convert_and_write_to_file(stupid_sight_enemy, 'entities/adversaries/FastStupidSi
 zap_gun_tool = TemplateTool('zap_gun', _entity_name='Floor Gun')
 convert_and_write_to_file(zap_gun_tool, 'entities/tools/ZapGunTool.json')
 
+#####=====----- Environmentals -----=====#####
+unstable_floor = TemplateEnvironmental(_env_class='collapsible', _entity_name='Unstable Floor', _max_hp=25)
+convert_and_write_to_file(unstable_floor, 'entities/environmentals/UnstableFloor.json')
+
 #####=====----- Cells -----=====#####
 
 floor = TemplateCell(_image_location='images/cells/floor.png', _passable=True, _transparent=True)
 convert_and_write_to_file(floor, 'cells/floor.json')
 
-#unstable_floor = TemplateCell(_image_location='images/cells/floor.png', _passable=True, _transparent=True,
-#                              _entity_files=['environmentals/UnstableFloor.png'])
-#convert_and_write_to_file(floor, 'cells/unstable_floor.json')
+unstable_floor_cell = TemplateCell(_image_location='images/cells/floor.png', _passable=True, _transparent=True,
+                                   _entity_files=['environmentals/UnstableFloor.json'])
+convert_and_write_to_file(unstable_floor_cell, 'cells/unstable_floor.json')
 
 wall = TemplateCell(_image_location='images/cells/wall.png', _passable=False, _transparent=False)
 convert_and_write_to_file(wall, 'cells/wall.json')

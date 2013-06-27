@@ -18,7 +18,14 @@ class TemplateEnvironmental(Template.Template):
 
     def __init__(self, _env_class='environmental', _entity_name=None, _image_name=None, _max_hp=None, **kwargs):
         self._env_class = _env_class
-        self._kwargs = kwargs
+
+        # Necessary because when converting to json and back, you pick up an extra layer of _kwargs because **kwargs
+        # cannot strip out a non-keyworded argument! Therefore you must manually strip it.
+        if '_kwargs' in kwargs:
+            self._kwargs = kwargs['_kwargs']
+        else:
+            self._kwargs = kwargs
+
         if _entity_name is not None:
             self._kwargs['_entity_name'] = _entity_name
         if _image_name is not None:
@@ -39,6 +46,5 @@ class TemplateEnvironmental(Template.Template):
         if _env_class is None:
             warnings.warn("RETURNING NONE FROM TempalteTool.create_instance()")
             return None
-        print self._kwargs, self._env_class
         return _env_class(_level=level,
-                          **self._kwargs['_kwargs'])
+                          **self._kwargs)

@@ -52,7 +52,6 @@ def recursive_unicode_conversion(value):
 
 def dict_to_object(d):
     if '__class__' in d:
-        print d
         try:
             class_name = d.pop('__class__')
             module_name = d.pop('__module__')
@@ -67,6 +66,5 @@ def dict_to_object(d):
         except Exception as e:
             raise JsonConverterException(e.message)
     else:
-        print "NOT A CUSTOM OBJECT", d
         inst = d
     return inst

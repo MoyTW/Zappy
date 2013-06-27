@@ -96,10 +96,6 @@ class Actor(Entity.Entity, Destructible.Destructible):
     def use_moves(self, moves):
         self._current_moves -= moves
 
-    def set_coords(self, x, y):
-        self._x = x
-        self._y = y
-
     def replenish_moves(self):
         self._current_moves = self._max_moves
 

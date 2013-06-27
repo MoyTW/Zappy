@@ -56,6 +56,14 @@ convert_and_write_to_file(zap_gun_tool, 'entities/tools/ZapGunTool.json')
 unstable_floor = TemplateEnvironmental(_env_class='collapsible', _entity_name='Unstable Floor', _max_hp=25)
 convert_and_write_to_file(unstable_floor, 'entities/environmentals/UnstableFloor.json')
 
+reinforced_door_env = TemplateEnvironmental(_env_class='door', _entity_name='Reinforced Door', _max_hp=99999,
+                                            _is_open=False)
+convert_and_write_to_file(reinforced_door_env, 'entities/environmentals/ReinforcedDoor.json')
+
+weak_door_env = TemplateEnvironmental(_env_class='door', _entity_name='Weak Door', _max_hp=1,
+                                      _is_open=False)
+convert_and_write_to_file(weak_door_env, 'entities/environmentals/WeakDoor.json')
+
 #####=====----- Cells -----=====#####
 
 floor = TemplateCell(_image_location='images/cells/floor.png', _passable=True, _transparent=True)
@@ -74,3 +82,11 @@ convert_and_write_to_file(drone, 'cells/drone.json')
 
 pit = TemplateCell(_image_location='images/cells/pit.png', _passable=False, _transparent=True)
 convert_and_write_to_file(pit, 'cells/pit.json')
+
+reinforced_door_cell = TemplateCell(_image_location='images/cells/floor.png', _passable=False, _transparent=False,
+                                    _entity_files=['environmentals/ReinforcedDoor.json'])
+convert_and_write_to_file(reinforced_door_cell, 'cells/reinforced_door.json')
+
+weak_door_cell = TemplateCell(_image_location='images/cells/floor.png', _passable=False, _transparent=False,
+                              _entity_files=['environmentals/WeakDoor.json'])
+convert_and_write_to_file(weak_door_cell, 'cells/weak_door.json')

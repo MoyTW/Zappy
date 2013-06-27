@@ -15,15 +15,17 @@
     ".": "floor.json",
     "D": "drone.json",
     "0": "pit.json",
-    "u": "unstable_floor.json"
+    "u": "unstable_floor.json",
+    "R": "reinforced_door.json",
+    "W": "weak_door.json"
 }
 
 #- Map layout
 # # # # # # # # # # #
-# . . . . . . 0 0 # #
-# . D u . . 0 0 0 0 #
-# . . . . . . 0 0 . #
-# . # . . . . . . . #
+# . . . W . . 0 0 # #
+# . D u W . 0 0 0 0 #
+# . . . W . . 0 0 . #
+# W # W W . . . . . #
 # . # # . . 0 . . . #
 # . . . . # 0 . . . #
 # . . . 0 0 0 . . . #

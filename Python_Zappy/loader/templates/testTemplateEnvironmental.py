@@ -54,7 +54,7 @@ class TestTemplateEnvironmental(unittest.TestCase):
                                                                _closed_image_location='cells/wall.png',
                                                                _open=True)
         comp_env = EnvDoor.EnvDoor(None, _entity_name='door', _open_image_location='cells/floor.png',
-                                   _closed_image_location='cells/wall.png', _open=True)
+                                   _closed_image_location='cells/wall.png', _is_open=True)
         json = JSONCONVERTER.simple_to_json(template)
         print "JSON BEFORE LOADING", json
         template = JSONCONVERTER.simple_to_custom_object(json)

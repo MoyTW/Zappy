@@ -1,0 +1,10 @@
+{
+    "__class__": "TemplateEnvironmental", 
+    "__module__": "loader.templates.TemplateEnvironmental", 
+    "_env_class": "door", 
+    "_kwargs": {
+        "_entity_name": "Reinforced Door", 
+        "_is_open": false, 
+        "_max_hp": 99999
+    }
+}

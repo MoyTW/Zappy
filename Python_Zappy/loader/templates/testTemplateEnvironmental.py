@@ -4,7 +4,7 @@ import unittest
 import loader.templates.TemplateEnvironmental as TemplateEnvironmental
 import entity.environmentals.Environmental as Environmental
 import entity.environmentals.EnvDoor as EnvDoor
-
+from z_json import JSONCONVERTER
 
 class TestTemplateEnvironmental(unittest.TestCase):
 
@@ -28,6 +28,10 @@ class TestTemplateEnvironmental(unittest.TestCase):
                                                                _open=True)
         comp_env = EnvDoor.EnvDoor(None, _entity_name='door', _open_image_location='cells/floor.png',
                                    _closed_image_location='cells/wall.png', _open=True)
+        json = JSONCONVERTER.simple_to_json(template)
+        print "JSON BEFORE LOADING", json
+        template = JSONCONVERTER.simple_to_custom_object(json)
+        print "TEMPLATE", template.__dict__
         instance = template.create_instance(None, None)
         self.assertEqual(comp_env._entity_name, instance._entity_name)
         self.assertEqual(comp_env._open_image_location, instance._open_image_location)

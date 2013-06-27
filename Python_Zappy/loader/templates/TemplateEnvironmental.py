@@ -39,5 +39,6 @@ class TemplateEnvironmental(Template.Template):
         if _env_class is None:
             warnings.warn("RETURNING NONE FROM TempalteTool.create_instance()")
             return None
+        print self._kwargs, self._env_class
         return _env_class(_level=level,
                           **self._kwargs['_kwargs'])

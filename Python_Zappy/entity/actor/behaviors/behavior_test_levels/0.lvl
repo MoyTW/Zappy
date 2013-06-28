@@ -6,7 +6,7 @@
 !DEFINITIONS!
 a,True,images/floor.png,[]
 b,False,images/wall.png,[]
-D,True,images/floor.png,[zappy/ZappyBasic.json]
+D,True,images/floor.png,[test/ZappyBasic.json]
 
 !MAP!
 a,a,b,a,a

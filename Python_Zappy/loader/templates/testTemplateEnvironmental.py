@@ -52,7 +52,7 @@ class TestTemplateEnvironmental(unittest.TestCase):
         template = TemplateEnvironmental.TemplateEnvironmental('door', _entity_name='door',
                                                                _open_image_location='cells/floor.png',
                                                                _closed_image_location='cells/wall.png',
-                                                               _open=True)
+                                                               _is_open=True)
         comp_env = EnvDoor.EnvDoor(None, _entity_name='door', _open_image_location='cells/floor.png',
                                    _closed_image_location='cells/wall.png', _is_open=True)
         json = JSONCONVERTER.simple_to_json(template)

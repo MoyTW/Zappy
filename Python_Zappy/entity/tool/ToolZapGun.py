@@ -15,10 +15,10 @@ front-loaded one, like at_beginning_of_turn() function? Or possibly both?
 
 
 class ToolZapGun(Tool.Tool):
-    def __init__(self, *args, **kwargs):
+    def __init__(self, _level, **kwargs):
         kwargs['_list_target_types'] = [self.TYPE_ACTOR]
         kwargs['_requires_LOS'] = True
-        super(ToolZapGun, self).__init__(*args, **kwargs)
+        super(ToolZapGun, self).__init__(_level, **kwargs)
 
     def _effects_of_use_on_entity(self, _target):
         try:

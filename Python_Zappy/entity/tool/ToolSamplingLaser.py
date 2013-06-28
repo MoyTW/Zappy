@@ -1,6 +1,8 @@
 __author__ = 'Travis Moy'
 
 import Tool
+import entity.environmentals.Environmental as Environmental
+from z_defs import RANK
 
 
 '''
@@ -14,4 +16,26 @@ How to manage?
 
 
 class ToolSamplingLaser(Tool.Tool):
-    pass
+    def __init__(self, _level, _strength=5, **kwargs):
+        self._strength = _strength
+        kwargs['_list_target_types'] = [self.TYPE_ENTITY]
+        kwargs['_requires_LOS'] = True
+        super(ToolSamplingLaser, self).__init__(_level, **kwargs)
+
+    def _effects_of_use_on_entity(self, _target):
+        if not self._use_on_actor(_target):
+            self._use_on_env(_target)
+
+    # Returns True on completion, False on failure
+    #
+    # If RANK == WEAK, kill
+    # If RANK == AVERAGE, blind
+    # If RANK == POWERFUL or RANK == TERRIFYING, enrage
+    def _use_on_actor(self, _target):
+        pass
+
+    # Returns True on completion, False on failure
+    #
+    # Deals damage to the targeted envrionmental
+    def _use_on_env(self, _target):
+        pass

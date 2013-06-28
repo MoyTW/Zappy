@@ -15,18 +15,18 @@ import entity.actor.effects.EffectDeath as EffectDeath
 #   The way the holoprojector would work would be to create a new Actor with a higher priority than Zappy, thereby
 # distracting the enemies.
 class ToolHoloprojector(Tool.Tool):
-    HOLO_NAME = 'Hologram'
-    HOLO_HP = 999
-    HOLO_THREAT = 9
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, _level, _entity_name='Hologram', _hp=999, _threat=9, **kwargs):
+        self._entity_name = _entity_name
+        self._hp = _hp
+        self._threat = _threat
         kwargs['_list_target_types'] = [self.TYPE_LOCATION]
         kwargs['_requires_LOS'] = True
-        super(ToolHoloprojector, self).__init__(*args, **kwargs)
+        super(ToolHoloprojector, self).__init__(_level, **kwargs)
 
     def _effects_of_use_on_location(self, _x, _y):
         user_faction = self._user.get_faction()
-        holo = Actor.Actor(self._level, _entity_name=self.HOLO_NAME, _max_hp=self.HOLO_HP, _faction=user_faction,
-                           _base_threat=self.HOLO_THREAT)
+        holo = Actor.Actor(self._level, _entity_name=self._entity_name, _max_hp=self._hp, _faction=user_faction,
+                           _base_threat=self._threat)
         holo.apply_status_effect(EffectDeath.EffectDeath(5, holo))
         self._level.place_entity_at(holo, _x, _y)

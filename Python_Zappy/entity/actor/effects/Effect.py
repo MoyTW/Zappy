@@ -1,5 +1,7 @@
 __author__ = 'Travis Moy'
 
+import warnings
+
 
 class Effect(object):
     EXTENDS, OVERWRITES, STACKS = range(0, 3)
@@ -24,13 +26,19 @@ class Effect(object):
         return self._duration < 1
 
     def apply(self):
-        print self._target.get_name(), "has been afflicted with", self.EFFECT_NAME, "- ", self._duration, \
-            "rounds remaining."
-        self._apply_effects()
+        try:
+            self._apply_effects()
+            print self._target.get_name(), "has been afflicted with", self.EFFECT_NAME, "- ", self._duration, \
+                "rounds remaining."
+        except AttributeError as e:
+            warnings.warn(e.message)
 
     def unapply(self):
-        print self.EFFECT_NAME, "on", self._target, "has expired!"
-        self._unapply_effects()
+        try:
+            self._unapply_effects()
+            print self.EFFECT_NAME, "on", self._target, "has expired!"
+        except AttributeError as e:
+            warnings.warn(e.message)
 
     # This function should be overridden in the child class!
     def _apply_effects(self):

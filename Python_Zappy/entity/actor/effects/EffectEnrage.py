@@ -7,7 +7,7 @@ class EffectEnrage(Effect.Effect):
 
     EFFECT_NAME = 'Enrage'
     EFFECT_DESCRIPTION = 'While this status effect is active, the target will relentlessly pursue the enemy which' \
-                         'enraged it.'
+                         'enraged it. Note: Zappy cannot be enraged!'
 
     def __init__(self, _duration, _target, _enrager, _application_behavior=Effect.Effect.STACKS):
         super(EffectEnrage, self).__init__(_duration=_duration, _target=_target,

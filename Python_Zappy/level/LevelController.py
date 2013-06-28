@@ -37,17 +37,17 @@ class LevelController(object):
     def zappy_attempt_move(self, direction):
         self._zappy.attempt_move(direction)
         if not self._zappy.has_moves():
-            self._turn_has_ended()
+            self.turn_has_ended()
 
     def zappy_use_tool_on_location(self, _tool, _x, _y):
         _tool.use_on_location(_x, _y)
         if not self._zappy.has_moves():
-            self._turn_has_ended()
+            self.turn_has_ended()
 
     def zappy_use_tool_on_entity(self, _tool, _target):
         _tool.use_on_entity(_target)
         if not self._zappy.has_moves():
-            self._turn_has_ended()
+            self.turn_has_ended()
 
     def zappy_use_item(self):
         pass
@@ -55,7 +55,7 @@ class LevelController(object):
     def zappy_get_tools(self):
         return self._zappy.get_tools()
 
-    def _turn_has_ended(self):
+    def turn_has_ended(self):
         self._zappy.turn_end()
 
         # Adversaries' turns

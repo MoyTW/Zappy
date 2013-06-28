@@ -28,17 +28,28 @@ class TestEffectEnrage(unittest.TestCase):
 
     def test_changes_target(self):
         self.assertEqual(self.enragee.select_target(), self.level.get_player_actor())
-        self.enragee.apply_status_effect(EffectEnrage.EffectEnrage(5, self.enragee, self.enrager))
+
+        enrage = EffectEnrage.EffectEnrage(5, self.enragee, self.enrager)
+        enrage_func = enrage._select_target_override
+
+        self.enragee.apply_status_effect(enrage)
+        self.control.turn_has_ended()
         self.assertEqual(self.enragee.select_target(), self.enrager)
+        self.assertEqual(enrage_func, self.enragee.select_target)
 
     def test_expires_properly(self):
         self.assertEqual(self.enragee.select_target(), self.level.get_player_actor())
 
-        enrage = EffectEnrage.EffectEnrage(5, self.enragee, self.enrager)
+        enrage = EffectEnrage.EffectEnrage(1, self.enragee, self.enrager)
+        old_func = self.enragee.select_target
+        enrage_func = enrage._select_target_override
+
         self.enragee.apply_status_effect(enrage)
-        enrage.unapply()
+        self.control.turn_has_ended()
+        self.control.turn_has_ended()
 
         self.assertEqual(self.enragee.select_target(), self.level.get_player_actor())
+        self.assertNotEqual(old_func, enrage_func)
 
 suite = unittest.TestLoader().loadTestsFromTestCase(TestEffectEnrage)
 unittest.TextTestRunner(verbosity=2).run(suite)

@@ -3,8 +3,10 @@
     "__module__": "loader.templates.TemplateEnvironmental", 
     "_env_class": "door", 
     "_kwargs": {
+        "_closed_image_location": "vault_door_closed.png", 
         "_entity_name": "Reinforced Door", 
         "_is_open": false, 
-        "_max_hp": 99999
+        "_max_hp": 99999, 
+        "_open_image_location": "vault_door_open.png"
     }
 }

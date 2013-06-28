@@ -12,7 +12,7 @@
             "__class__": "BehaviorAttackMelee", 
             "__module__": "entity.actor.behaviors.BehaviorAttackMelee", 
             "_move_cost": 1, 
-            "_strength": 2
+            "_strength": 1
         }
     ], 
     "_entity_name": "StupidSight", 
@@ -26,14 +26,14 @@
         ], 
         "_names_neutral_to": []
     }, 
-    "_image_name": null, 
+    "_image_name": "biting_snake.png", 
     "_max_hp": 1, 
     "_max_moves": 2, 
     "_rank": 0, 
     "_senses": [
         {
-            "__class__": "SenseSeismic", 
-            "__module__": "entity.actor.senses.SenseSeismic", 
+            "__class__": "SenseSight", 
+            "__module__": "entity.actor.senses.SenseSight", 
             "_range": 9
         }
     ], 

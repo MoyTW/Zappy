@@ -36,7 +36,7 @@
 #- Entities to be placed on the map
 [
     {
-        "_entity": "adversaries/FastStupidSeismic.json",
+        "_entity": "adversaries/FastStupidSight.json",
         "_orders": [
             {
                 "_order": "place",
@@ -46,7 +46,7 @@
         ]
     },
     {
-        "_entity": "adversaries/FastStupidSeismic.json",
+        "_entity": "adversaries/FastStupidSight.json",
         "_orders": [
             {
                 "_order": "place",

@@ -33,6 +33,7 @@ zappy_basic_template = TemplateActor(_senses=[SenseSight.SenseSight(9)],
 convert_and_write_to_file(zappy_basic_template, 'entities/zappy/ZappyBasic.json')
 
 stupid_seismic_enemy = TemplateAdversary(_entity_name='StupidSeismic',
+                                         _image_name='fire_breathing_snake.png',
                                          _behaviors=[BehaviorAttackRanged.BehaviorAttackRanged(_strength=1, _range=3),
                                                      BehaviorMoveStupid.BehaviorMoveStupid(),
                                                      BehaviorAttackMelee.BehaviorAttackMelee(_strength=2)],
@@ -42,10 +43,11 @@ stupid_seismic_enemy = TemplateAdversary(_entity_name='StupidSeismic',
 convert_and_write_to_file(stupid_seismic_enemy, 'entities/adversaries/FastStupidSeismic.json')
 
 stupid_sight_enemy = TemplateAdversary(_entity_name='StupidSight',
+                                       _image_name='biting_snake.png',
                                        _behaviors=[BehaviorMoveStupid.BehaviorMoveStupid(),
-                                                   BehaviorAttackMelee.BehaviorAttackMelee(_strength=2)],
+                                                   BehaviorAttackMelee.BehaviorAttackMelee(_strength=1)],
                                        _max_moves=2,
-                                       _senses=[SenseSeismic.SenseSeismic(9)],
+                                       _senses=[SenseSight.SenseSight(9)],
                                        _rank=RANK.WEAK)
 convert_and_write_to_file(stupid_sight_enemy, 'entities/adversaries/FastStupidSight.json')
 
@@ -57,11 +59,13 @@ unstable_floor = TemplateEnvironmental(_env_class='collapsible', _entity_name='U
 convert_and_write_to_file(unstable_floor, 'entities/environmentals/UnstableFloor.json')
 
 reinforced_door_env = TemplateEnvironmental(_env_class='door', _entity_name='Reinforced Door', _max_hp=99999,
-                                            _is_open=False)
+                                            _is_open=False, _open_image_location='vault_door_open.png',
+                                            _closed_image_location='vault_door_closed.png')
 convert_and_write_to_file(reinforced_door_env, 'entities/environmentals/ReinforcedDoor.json')
 
 weak_door_env = TemplateEnvironmental(_env_class='door', _entity_name='Weak Door', _max_hp=1,
-                                      _is_open=False)
+                                      _is_open=False, _open_image_location='vault_door_open.png',
+                                      _closed_image_location='vault_door_closed.png')
 convert_and_write_to_file(weak_door_env, 'entities/environmentals/WeakDoor.json')
 
 #####=====----- Cells -----=====#####

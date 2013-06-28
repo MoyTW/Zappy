@@ -43,6 +43,9 @@ class Actor(Entity.Entity, Destructible.Destructible):
         self._detected_entities = list()
 
 # Accessors
+    def get_senses(self):
+        return self._senses
+
     def get_threat(self):
         return self._base_threat
 

@@ -21,6 +21,8 @@ class Adversary(Actor.Actor):
             self._behaviors = behaviors
 
     def select_target(self):
+        self.detect_entities()
+
         hostiles = list()
         for entity in self._detected_entities:
             try:
@@ -43,8 +45,6 @@ class Adversary(Actor.Actor):
     #
     # Returns True if any action was taken and False if no actions were taken.
     def take_action(self):
-        self.detect_entities()
-
         if self.is_stunned():
             return False
 
@@ -58,9 +58,10 @@ class Adversary(Actor.Actor):
             # If it does not execute, behavior_executed = False.
             current_behavior = 0
             behavior_executed = False
+            target = self.select_target()
 
             while not behavior_executed and current_behavior < len(self._behaviors):
-                behavior_executed = self._behaviors[current_behavior].attempt_to_execute(self.select_target(),
+                behavior_executed = self._behaviors[current_behavior].attempt_to_execute(target,
                                                                                          self._level, self)
                 current_behavior += 1
 

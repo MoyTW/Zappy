@@ -24,9 +24,12 @@ class TestToolSamplingLaser(unittest.TestCase):
         self.zappy = None
         self.tool = None
 
+    def test_on_None(self):
+        self.assertFalse(self.tool.use_on_entity(None))
+
     def test_on_env(self):
         env = Environmental.Environmental(self.level, _max_hp=100)
-        self.tool._strength = 10
+        self.tool._damage = 10
         self.tool.use_on_entity(env)
         self.assertEqual(env.get_current_hp(), 90)
 
@@ -40,7 +43,9 @@ class TestToolSamplingLaser(unittest.TestCase):
             average = Adversary.Adversary(self.level, _rank=RANK.AVERAGE)
             self.tool.use_on_entity(average)
             self.assertEqual(len(average.get_status_effects()), 1)
-            self.assertTrue(isinstance(average.get_status_effects()[0], EffectBlind.EffectBlind))
+            effect = average.get_status_effects()[0]
+            self.assertTrue(isinstance(effect, EffectBlind.EffectBlind))
+            self.assertEqual(effect._duration, self.tool._blind_duration)
         except AttributeError as e:
             print e.message
             self.assertTrue(False)
@@ -50,12 +55,16 @@ class TestToolSamplingLaser(unittest.TestCase):
             powerful = Adversary.Adversary(self.level, _rank=RANK.POWERFUL)
             self.tool.use_on_entity(powerful)
             self.assertEqual(len(powerful.get_status_effects()), 1)
-            self.assertTrue(isinstance(powerful.get_status_effects()[0], EffectEnrage.EffectEnrage))
+            powerful_effect = powerful.get_status_effects()[0]
+            self.assertTrue(isinstance(powerful_effect, EffectEnrage.EffectEnrage))
+            self.assertEqual(powerful_effect._duration, self.tool._enrage_duration)
 
             terrifying = Adversary.Adversary(self.level, _rank=RANK.POWERFUL)
             self.tool.use_on_entity(terrifying)
             self.assertEqual(len(terrifying.get_status_effects()), 1)
-            self.assertTrue(isinstance(terrifying.get_status_effects()[0], EffectEnrage.EffectEnrage))
+            terrifying_effect = terrifying.get_status_effects()[0]
+            self.assertTrue(isinstance(terrifying_effect, EffectEnrage.EffectEnrage))
+            self.assertEqual(terrifying_effect._duration, self.tool._enrage_duration)
         except AttributeError as e:
             print e.message
             self.assertTrue(False)

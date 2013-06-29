@@ -7,13 +7,14 @@ import entity.tool.Tool as Tool
 import entity.tool.ToolZapGun as ToolZapGun
 import entity.tool.ToolDoomGun as ToolDoomGun
 import entity.tool.ToolHoloprojector as ToolHoloprojector
+import entity.tool.ToolSamplingLaser as ToolSamplingLaser
 
 
 TOOL_NAMES_DICT = {
     'tool': Tool.Tool,
     'manipulator': None,
     'holoprojector': ToolHoloprojector.ToolHoloprojector,
-    'sampling_laser': None,
+    'sampling_laser': ToolSamplingLaser.ToolSamplingLaser,
     'zap_gun': ToolZapGun.ToolZapGun,
     'doom_gun': ToolDoomGun.ToolDoomGun
 }

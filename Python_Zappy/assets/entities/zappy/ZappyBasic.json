@@ -29,7 +29,7 @@
             "_cooldown": 0, 
             "_energy_cost": 5, 
             "_entity_name": "Zap Gun", 
-            "_image_name": null, 
+            "_image_name": "tools/zap_gun.png", 
             "_range": 99, 
             "_tool_class": "zap_gun"
         }, 
@@ -38,8 +38,18 @@
             "__module__": "loader.templates.TemplateTool", 
             "_cooldown": 0, 
             "_energy_cost": 0, 
+            "_entity_name": "Sampling Laser", 
+            "_image_name": "tools/sampling_laser.png", 
+            "_range": 99, 
+            "_tool_class": "sampling_laser"
+        }, 
+        {
+            "__class__": "TemplateTool", 
+            "__module__": "loader.templates.TemplateTool", 
+            "_cooldown": 0, 
+            "_energy_cost": 0, 
             "_entity_name": "Holoprojector", 
-            "_image_name": null, 
+            "_image_name": "tools/holoprojector.png", 
             "_range": 99, 
             "_tool_class": "holoprojector"
         }, 

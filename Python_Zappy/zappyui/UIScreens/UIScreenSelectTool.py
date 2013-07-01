@@ -99,6 +99,9 @@ class UIScreenSelectTool(UIScreen.UIScreen):
             border_y = tool_y - self.GAP_SIZE / 2
             self._sprites.append(pyglet.sprite.Sprite(tool.get_image(), x=tool_x, y=tool_y, batch=self._tools_batch))
 
+            self._sprites.append(pyglet.sprite.Sprite(self._single_border_image, x=border_x, y=border_y,
+                                                      batch=self._border_batch))
+            '''
             # Select which border and create
             if num_tools == 1:
                 self._sprites.append(pyglet.sprite.Sprite(self._single_border_image, x=border_x, y=border_y,
@@ -112,6 +115,7 @@ class UIScreenSelectTool(UIScreen.UIScreen):
             else:
                 self._sprites.append(pyglet.sprite.Sprite(self._center_border_image, x=border_x, y=border_y,
                                                           batch=self._border_batch))
+            '''
 
     def _select_tool(self):
         tool = self._tools_list[self._selection]

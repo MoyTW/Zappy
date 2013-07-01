@@ -27,11 +27,11 @@
             "__class__": "TemplateTool", 
             "__module__": "loader.templates.TemplateTool", 
             "_cooldown": 0, 
-            "_energy_cost": 5, 
-            "_entity_name": "Zap Gun", 
-            "_image_name": "tools/zap_gun.png", 
-            "_range": 99, 
-            "_tool_class": "zap_gun"
+            "_energy_cost": 1, 
+            "_entity_name": "Manipulator", 
+            "_image_name": "tools/waldo.png", 
+            "_range": 1, 
+            "_tool_class": "manipulator"
         }, 
         {
             "__class__": "TemplateTool", 
@@ -56,12 +56,12 @@
         {
             "__class__": "TemplateTool", 
             "__module__": "loader.templates.TemplateTool", 
-            "_cooldown": 1, 
-            "_energy_cost": 1, 
-            "_entity_name": "Doom Gun", 
-            "_image_name": null, 
+            "_cooldown": 0, 
+            "_energy_cost": 5, 
+            "_entity_name": "Zap Gun", 
+            "_image_name": "tools/zap_gun.png", 
             "_range": 99, 
-            "_tool_class": "doom_gun"
+            "_tool_class": "zap_gun"
         }
     ]
 }

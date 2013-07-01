@@ -36,6 +36,7 @@ class EnvDoor(Environmental.Environmental):
 
     def open(self):
         print self._entity_name, 'is now open!'
+        self._is_open = True
         cell = self._level.get_cell_at(*self.get_coords())
         cell.set_passable(True)
         cell.set_transparent(True)
@@ -43,6 +44,7 @@ class EnvDoor(Environmental.Environmental):
 
     def close(self):
         print self._entity_name, ' is not closed!'
+        self._is_open = False
         cell = self._level.get_cell_at(*self.get_coords())
         cell.set_passable(False)
         cell.set_transparent(False)

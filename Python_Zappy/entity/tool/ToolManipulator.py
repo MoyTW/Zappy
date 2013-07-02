@@ -30,7 +30,7 @@ class ToolManipulator(Tool.Tool):
                 return True
             elif _target.is_stunned() and (_target.get_rank() == RANK.WEAK or
                                           (_target.get_rank() == RANK.AVERAGE and
-                                              _target.get_current_hp() <= self._capture_strength)):
+                                              _target.current_hp <= self._capture_strength)):
                 print "Your manipulator is rated to capture this creature!"
                 return True
             else:

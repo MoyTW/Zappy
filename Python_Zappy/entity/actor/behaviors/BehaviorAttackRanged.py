@@ -19,5 +19,5 @@ class BehaviorAttackRanged(Behavior.Behavior):
     def _execute_effects(self, _target, _level, _adversary):
         _target.deal_damage(1)
         print _adversary.get_name(), "used a ranged attack on", _target.get_name(), "for", self._strength,\
-            "damage! Target's hp:", _target.get_current_hp()
+            "damage! Target's hp:", _target.current_hp
         return True

@@ -40,7 +40,7 @@ class ToolSamplingLaser(Tool.Tool):
         try:
             rank = _target.get_rank()
             if rank == RANK.WEAK:
-                _target.deal_damage(_target.get_current_hp())
+                _target.deal_damage(_target.current_hp)
             elif rank == RANK.AVERAGE:
                 _target.apply_status_effect(EffectBlind.EffectBlind(self._blind_duration, _target))
             elif rank == RANK.POWERFUL or rank == RANK.TERRIFYING:

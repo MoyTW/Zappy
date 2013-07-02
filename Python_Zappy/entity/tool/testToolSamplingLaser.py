@@ -31,7 +31,7 @@ class TestToolSamplingLaser(unittest.TestCase):
         env = Environmental.Environmental(self.level, _max_hp=100)
         self.tool._damage = 10
         self.tool.use_on_entity(env)
-        self.assertEqual(env.get_current_hp(), 90)
+        self.assertEqual(env.current_hp, 90)
 
     def test_on_weak(self):
         weak = Adversary.Adversary(self.level, _rank=RANK.WEAK)

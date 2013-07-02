@@ -85,7 +85,7 @@ class LevelController(object):
             self.level_won = True
             return
 
-        print "Zappy HP:", self._zappy.get_current_hp()
+        print "Zappy HP:", self._zappy.current_hp
 
         # Check end conditions
         if self._zappy.is_destroyed():

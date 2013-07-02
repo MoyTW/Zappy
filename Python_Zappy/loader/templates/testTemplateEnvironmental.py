@@ -46,6 +46,8 @@ class TestTemplateEnvironmental(unittest.TestCase):
                                                                _max_hp=3)
         comp_env = Environmental.Environmental('lvl', _entity_name='test', _image_name='timg', _max_hp=3)
         instance = template.create_instance('lvl', None)
+        print comp_env.__dict__
+        print instance.__dict__
         self.assertEqual(comp_env, instance)
 
     def test_extra_args(self):

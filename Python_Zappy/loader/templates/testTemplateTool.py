@@ -17,6 +17,8 @@ class TestTemplateTool(unittest.TestCase):
         template = TemplateTool.TemplateTool('tool', _range=5, _cooldown=0, _energy_cost=2, _image_name=None)
         result = Tool.Tool('lvl', _list_target_types=list(), _range=5, _energy_cost=2, _cooldown=0, _image_name=None)
         instance = template.create_instance(level='lvl', entity_index=None)
+        print result.__dict__
+        print instance.__dict__
         self.assertEqual(result, instance)
 
     def test_create_instance_not_in_dict(self):

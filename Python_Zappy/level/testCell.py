@@ -10,9 +10,6 @@ class DummyEntity(object):
         self.entity_image = image
         self.PRIORITY = priority
 
-    def get_image(self):
-        return self.entity_image
-
 
 class TestCell(unittest.TestCase):
     def setUp(self):

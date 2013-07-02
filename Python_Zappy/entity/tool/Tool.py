@@ -120,5 +120,5 @@ class Tool(Entity.Entity):
         elif not self._user_has_moves():
             print "USER HAS NO MOVES"
         can_use = self.is_ready() and self._target_type_is_valid(_type) and self.user_has_energy() and \
-            self._location_in_range(_t_x, _t_y) and self._satisfies_LOS(_t_x, _t_y) and self._user_has_moves()
+                  self._location_in_range(_t_x, _t_y) and self._satisfies_LOS(_t_x, _t_y) and self._user_has_moves()
         return can_use

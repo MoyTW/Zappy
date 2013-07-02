@@ -11,9 +11,10 @@ import entity.actor.senses.SenseSeismic as SenseSeismic
 
 class StunEffect(Effect.Effect):
     def apply(self):
-        self._target.stun()
+        self._target.is_stunned = True
+
     def unapply(self):
-        self._target.unstun()
+        self._target.is_stunned = False
 
 
 class TestActor(unittest.TestCase):
@@ -33,7 +34,7 @@ class TestActor(unittest.TestCase):
         actor.apply_status_effect(effect)
 
         actor.turn_begin()
-        self.assertTrue(actor._stunned)
+        self.assertTrue(actor.is_stunned)
         self.assertEqual(actor._current_energy, 70)
         self.assertEqual(actor._current_moves, 5)
 
@@ -41,14 +42,14 @@ class TestActor(unittest.TestCase):
         tool = Tool.Tool(None, [])
         tool._turns_until_ready = 5
         actor = Actor.Actor(None, _tools=[tool])
-        actor._stunned = True
+        actor.is_stunned = True
         effect = Effect.Effect(5, actor)
         actor.apply_status_effect(effect)
         stuneffect = StunEffect(1, actor)
         actor.apply_status_effect(stuneffect)
 
         actor.turn_end()
-        self.assertFalse(actor._stunned)
+        self.assertFalse(actor.is_stunned)
         self.assertEqual(tool._turns_until_ready, 4)
         self.assertEqual(effect._duration, 4)
 
@@ -63,11 +64,11 @@ class TestActor(unittest.TestCase):
         actor = Actor.Actor(level, 1, _senses=[sense])
         level.place_entity_at(actor, 1, 1)
 
-        actor.detect_entities()
+        actor._detect_entities()
         self.assertEqual(len(actor._detected_entities), 6)
 
         level.move_entity_from_to(actor, 1, 1, 4, 1)
-        actor.detect_entities()
+        actor._detect_entities()
         self.assertEqual(len(actor._detected_entities), 0)
 
     '''

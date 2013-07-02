@@ -11,7 +11,7 @@ class EffectStun(Effect.Effect):
     EFFECT_DESCRIPTION = 'Target is unable to take any action for the duration of the stun.'
 
     def _apply_effects(self):
-        self._target.stun()
+        self._target.is_stunned = True
 
     def _unapply_effects(self):
-        self._target.unstun()
+        self._target.is_stunned = False

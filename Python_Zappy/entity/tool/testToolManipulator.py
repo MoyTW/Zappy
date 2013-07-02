@@ -54,7 +54,7 @@ class TestToolManipulator(unittest.TestCase):
 
         weak_stunned = Adversary.Adversary(self.level, _rank=RANK.WEAK)
         self.level.place_entity_at(weak_stunned, 2, 3)
-        weak_stunned._stunned = True
+        weak_stunned.is_stunned = True
         self.assertTrue(self.tool.can_use_on_entity(weak_stunned))
 
         avg_healthy_unstunned = Adversary.Adversary(self.level, _rank=RANK.AVERAGE, _max_hp=3)
@@ -63,7 +63,7 @@ class TestToolManipulator(unittest.TestCase):
 
         avg_healthy_stunned = Adversary.Adversary(self.level, _rank=RANK.AVERAGE, _max_hp=3)
         self.level.place_entity_at(avg_healthy_stunned, 2, 3)
-        avg_healthy_stunned._stunned = True
+        avg_healthy_stunned.is_stunned = True
         self.assertFalse(self.tool.can_use_on_entity(avg_healthy_stunned))
 
         avg_unhealthy_unstunned = Adversary.Adversary(self.level, _rank=RANK.AVERAGE, _max_hp=1)
@@ -72,7 +72,7 @@ class TestToolManipulator(unittest.TestCase):
 
         avg_unhealthy_stunned = Adversary.Adversary(self.level, _rank=RANK.AVERAGE, _max_hp=1)
         self.level.place_entity_at(avg_unhealthy_stunned, 2, 3)
-        avg_unhealthy_stunned._stunned = True
+        avg_unhealthy_stunned.is_stunned = True
         self.assertTrue(self.tool.can_use_on_entity(avg_unhealthy_stunned))
 
         powerful = Adversary.Adversary(self.level, _rank=RANK.POWERFUL)

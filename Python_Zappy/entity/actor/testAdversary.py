@@ -27,6 +27,7 @@ class TestAdversary(unittest.TestCase):
         self.adversary._max_moves = 3
         self.adversary.replenish_moves()
         self.level.place_entity_at(self.adversary, 0, 0)
+        self.adversary.turn_begin()
         self.assertTrue(self.adversary.take_action())
         self.assertEqual(self.adversary.get_coords(), (1, 1))
         self.level.remove_entity_from(self.adversary, *self.adversary.get_coords())
@@ -35,12 +36,14 @@ class TestAdversary(unittest.TestCase):
     def test_second_executed_if_first_not(self):
         # Test that if first fails, goes to second.
         self.level.place_entity_at(self.adversary, 1, 0)
+        self.adversary.turn_begin()
         self.assertTrue(self.adversary.take_action())
         self.assertEqual(self.adversary.get_coords(), (1, 1))
         self.level.remove_entity_from(self.adversary, *self.adversary.get_coords())
 
     def test_first_executed_second_not(self):
         self.level.place_entity_at(self.adversary, 0, 0)
+        self.adversary.turn_begin()
         self.assertTrue(self.adversary.take_action())
         self.assertEqual(self.adversary.get_coords(), (1, 0))
         self.level.remove_entity_from(self.adversary, *self.adversary.get_coords())
@@ -61,7 +64,7 @@ class TestAdversary(unittest.TestCase):
         self.level.place_entity_at(self.high_threat, 0, 4)
         self.level.place_entity_at(self.no_threat, 0, 3)
 
-        self.adversary.detect_entities()
+        self.adversary.turn_begin()
         self.assertEqual(self.high_threat, self.adversary.select_target())
 
 suite = unittest.TestLoader().loadTestsFromTestCase(TestAdversary)

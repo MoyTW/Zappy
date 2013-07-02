@@ -38,7 +38,7 @@ class ToolSamplingLaser(Tool.Tool):
     # If RANK == POWERFUL or RANK == TERRIFYING, enrage
     def _use_on_actor(self, _target):
         try:
-            rank = _target.get_rank()
+            rank = _target.rank
             if rank == RANK.WEAK:
                 _target.deal_damage(_target.current_hp)
             elif rank == RANK.AVERAGE:

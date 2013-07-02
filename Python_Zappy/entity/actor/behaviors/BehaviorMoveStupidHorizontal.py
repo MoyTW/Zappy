@@ -10,7 +10,7 @@ class BehaviorMoveStupidHorizontal(Behavior.Behavior):
     def _execute_effects(self, _target, _level, _adversary):
         zappy = _target
         moved = False
-        if zappy in _adversary.get_detected_entities():
+        if zappy in _adversary._detected_entities:
             atz_x, atz_y = (zappy.get_coords()[i] - _adversary.get_coords()[i] for i in range(2))
             if math.sqrt(atz_x * atz_x + atz_y * atz_y) > 1:  # This prevents the adversary from moving ONTO Zappy.
                 # Check for horizontal

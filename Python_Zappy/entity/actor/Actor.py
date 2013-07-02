@@ -18,10 +18,10 @@ class Actor(Entity.Entity, Destructible.Destructible):
 
         self._max_moves = _max_moves
         self._current_moves = _max_moves
-        self._max_energy = _max_energy
+        self.max_energy = _max_energy
         self._current_energy = _max_energy
         self._energy_regen = _energy_regen
-        self._rank = _rank
+        self.rank = _rank
         self._faction = _faction
         self._base_threat = _base_threat
 
@@ -36,33 +36,25 @@ class Actor(Entity.Entity, Destructible.Destructible):
 
         # Entities will always spawn "clean" - can be changed in the future but I don't see the need to do so...
         # Maybe I'll change my mind.
-        self._stunned = False
+        self.is_stunned = False
         self._status_effects = list()
 
         # Set by self.detect_entities()
         self._detected_entities = list()
 
+    @property
+    def threat(self):
+        return self._base_threat
+
 # Accessors
     def get_senses(self):
         return self._senses
-
-    def get_threat(self):
-        return self._base_threat
 
     def get_faction(self):
         return self._faction
 
     def get_faction_name(self):
         return self._faction.get_faction_name()
-
-    def is_stunned(self):
-        return self._stunned
-
-    def unstun(self):
-        self._stunned = False
-
-    def stun(self):
-        self._stunned = True
 
     def use_energy(self, _amount):
         self._current_energy -= _amount
@@ -72,17 +64,8 @@ class Actor(Entity.Entity, Destructible.Destructible):
     def get_current_energy(self):
         return self._current_energy
 
-    def get_max_energy(self):
-        return self._max_energy
-
     def get_status_effects(self):
         return self._status_effects
-
-    def get_rank(self):
-        return self._rank
-
-    def get_detected_entities(self):
-        return self._detected_entities
 
     def get_current_moves(self):
         return self._current_moves
@@ -115,10 +98,11 @@ class Actor(Entity.Entity, Destructible.Destructible):
     #   Apply each status effect, in turn (this done because if you are, for example, deafened, but you somehow acquire
     # a new hearing sense within the turn, you will be made unable to use it, as is proper)
     def turn_begin(self):
+        self._detect_entities()
         self._current_moves = self._max_moves
         self._current_energy += self._energy_regen
-        if self._current_energy > self._max_energy:
-            self._current_energy = self._max_energy
+        if self._current_energy > self.max_energy:
+            self._current_energy = self.max_energy
         for status_effect in self._status_effects:
             status_effect.apply()
 
@@ -144,13 +128,6 @@ class Actor(Entity.Entity, Destructible.Destructible):
     def remove_status_effect(self, _effect):
         self._status_effects.remove(_effect)
 
-    def detect_entities(self):
-        self._detected_entities = list()
-        for sense in self._senses:
-            self._detected_entities.extend(sense.detect_entities(self._x, self._y, self._level))
-        if self in self._detected_entities:
-            self._detected_entities.remove(self)
-
     def attempt_move(self, _direction):
         if self._current_moves <= 0:
             return False
@@ -163,3 +140,13 @@ class Actor(Entity.Entity, Destructible.Destructible):
                 return True
 
         return False
+
+    def _detect_entities(self):
+        if self._level is not None:
+            self._detected_entities = list()
+            for sense in self._senses:
+                self._detected_entities.extend(sense.detect_entities(self._x, self._y, self._level))
+            if self in self._detected_entities:
+                self._detected_entities.remove(self)
+        else:
+            warnings.warn("Actor._level for actor {0} is None!".format(self.entity_name))

@@ -28,8 +28,8 @@ class ToolManipulator(Tool.Tool):
         try:
             if isinstance(_target, Environmental.Environmental):
                 return True
-            elif _target.is_stunned() and (_target.get_rank() == RANK.WEAK or
-                                          (_target.get_rank() == RANK.AVERAGE and
+            elif _target.is_stunned and (_target.rank == RANK.WEAK or
+                                          (_target.rank == RANK.AVERAGE and
                                               _target.current_hp <= self._capture_strength)):
                 print "Your manipulator is rated to capture this creature!"
                 return True

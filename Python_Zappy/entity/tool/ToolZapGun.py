@@ -22,7 +22,7 @@ class ToolZapGun(Tool.Tool):
 
     def _effects_of_use_on_entity(self, _target):
         try:
-            rank = _target.get_rank()
+            rank = _target.rank
             stun_duration = 0
             if rank == RANK.WEAK:
                 stun_duration = 15

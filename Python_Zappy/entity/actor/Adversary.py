@@ -21,8 +21,6 @@ class Adversary(Actor.Actor):
             self._behaviors = _behaviors
 
     def select_target(self):
-        self.detect_entities()
-
         hostiles = list()
         for entity in self._detected_entities:
             try:
@@ -30,7 +28,7 @@ class Adversary(Actor.Actor):
                     hostiles.append(entity)
             except AttributeError:
                 pass
-        hostiles.sort(cmp=lambda x, y: cmp(x.get_threat(), y.get_threat()), reverse=True)
+        hostiles.sort(cmp=lambda x, y: cmp(x.threat, y.threat), reverse=True)
 
         if len(hostiles) > 0:
             return hostiles[0]
@@ -45,7 +43,7 @@ class Adversary(Actor.Actor):
     #
     # Returns True if any action was taken and False if no actions were taken.
     def take_action(self):
-        if self.is_stunned():
+        if self.is_stunned:
             return False
 
         # This is kind of ugly and awkward, but any_behavior_executed is whether ANY behavior fires.

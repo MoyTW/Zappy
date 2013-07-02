@@ -7,7 +7,7 @@ import entity.actor.Adversary as Adversary
 class LevelController(object):
     def __init__(self, _level):
         self._level = _level
-        self._zappy = self._level.get_player_actor()
+        self._zappy = self._level.player_actor
         self._level_won = False
         self._level_failed = False
 

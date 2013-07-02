@@ -10,7 +10,7 @@ class TestToolHoloprojector(unittest.TestCase):
     def setUp(self):
         loader = LoaderLevel.oldLoaderLevel('entity/actor/behaviors/behavior_test_levels')
         self.level = loader.get_level(0)
-        self.zappy = self.level.get_player_actor()
+        self.zappy = self.level.player_actor
         self.tool = ToolHoloprojector.ToolHoloprojector(_level=self.level)
         self.zappy.add_tool(self.tool)
 

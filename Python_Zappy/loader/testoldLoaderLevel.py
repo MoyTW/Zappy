@@ -83,6 +83,8 @@ class TestLoaderLevel(unittest.TestCase):
 
     def test_get_level(self):
         self.setUpLevels()
+        print self.level_1.__dict__
+        print self.loader.get_level(1).__dict__
         self.assertEquals(self.level_1, self.loader.get_level(1))
         self.assertEquals(self.level_2, self.loader.get_level(2))
         self.assertTrue(self.loader.get_level(-3) is None)
@@ -91,7 +93,7 @@ class TestLoaderLevel(unittest.TestCase):
     def test_can_locate_player_controlled_entity(self):
         self.loader._entity_index = loader.LoaderEntityIndex.LoaderEntityIndex()
         level_5 = self.loader.get_level(5)
-        player_actor = level_5.get_player_actor()
+        player_actor = level_5.player_actor
         try:
             self.assertEqual((1, 1), (player_actor._x, player_actor._y))
         except AttributeError:

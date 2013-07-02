@@ -27,7 +27,7 @@ class TestEffectEnrage(unittest.TestCase):
         self.enrager = None
 
     def test_changes_target(self):
-        self.assertEqual(self.enragee.select_target(), self.level.get_player_actor())
+        self.assertEqual(self.enragee.select_target(), self.level.player_actor)
 
         enrage = EffectEnrage.EffectEnrage(5, self.enragee, self.enrager)
         enrage_func = enrage._select_target_override
@@ -38,7 +38,7 @@ class TestEffectEnrage(unittest.TestCase):
         self.assertEqual(enrage_func, self.enragee.select_target)
 
     def test_expires_properly(self):
-        self.assertEqual(self.enragee.select_target(), self.level.get_player_actor())
+        self.assertEqual(self.enragee.select_target(), self.level.player_actor)
 
         enrage = EffectEnrage.EffectEnrage(1, self.enragee, self.enrager)
         old_func = self.enragee.select_target
@@ -48,7 +48,7 @@ class TestEffectEnrage(unittest.TestCase):
         self.control.turn_has_ended()
         self.control.turn_has_ended()
 
-        self.assertEqual(self.enragee.select_target(), self.level.get_player_actor())
+        self.assertEqual(self.enragee.select_target(), self.level.player_actor)
         self.assertNotEqual(old_func, enrage_func)
 
 suite = unittest.TestLoader().loadTestsFromTestCase(TestEffectEnrage)

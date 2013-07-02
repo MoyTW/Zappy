@@ -17,7 +17,7 @@ class UIScreenLevel(UIScreen.UIScreen):
 
     def _init_camera(self, level_controller):
         level = level_controller.get_level()
-        self._camera.center_on((level.get_width() / 2), (level.get_height() / 2))
+        self._camera.center_on((level.level_width / 2), (level.level_height / 2))
         self._camera.center_on_entity(self._control.get_zappy())
 
     def handle_order(self, order):

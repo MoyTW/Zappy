@@ -117,8 +117,8 @@ class UIScreenMenuLevel(UIScreen.UIScreen):
         if info is None:
             return
 
-        preview_sprite = pyglet.sprite.Sprite(info.get_preview(),
-                                              x=point[0] - info.get_preview().width * self.PREVIEW_SCALE / 2,
+        preview_sprite = pyglet.sprite.Sprite(info.info_preview_image,
+                                              x=point[0] - info.info_preview_image.width * self.PREVIEW_SCALE / 2,
                                               y=point[1],
                                               batch=self._level_batch)
         preview_sprite.scale = self.PREVIEW_SCALE

@@ -87,7 +87,7 @@ class Camera(object):
         self._sprite_across = self.IMAGE_ACROSS * self._magnification
 
         self._sprites = list()
-        player_actor = self._level.get_player_actor()
+        player_actor = self._level.player_actor
         # Ugly as hell, we're poking all over where we shouldn't be!
         # If there's no entity to match, it will disregard the FOW.
         try:

@@ -73,7 +73,7 @@ class oldLoaderLevel(object):
                                          _width=self._read_line_value(lines[2]),
                                          _height=self._read_line_value(lines[3]),
                                          _previews_folder=self._levels_folder)
-        self._levels[info.level_number] = level.Level.Level(info)
+        self._levels[info.info_number] = level.Level.Level(info)
 
     def _return_level_preview(self, level_number):
         path = "{0}.png".format(level_number)
@@ -138,13 +138,13 @@ class oldLoaderLevel(object):
     # Iterate through the lines, adding cells as instructed by cell_defs_dict.
     # If entities, use Level.place_entity_at(), using self._entity_index to create them.
     def _build_cell_map_and_assign_to_level(self, cell_defs_dict, lines, index_begin_map, _level):
-        cells = [[None for _ in range(0, _level.get_height())] for _ in range(0, _level.get_width())]
+        cells = [[None for _ in range(0, _level.level_height)] for _ in range(0, _level.level_width)]
         _level.replace_cells(cells)
 
         for row_index in range(index_begin_map + 1, len(lines)):
             line = lines[row_index].strip()
             cols = line.split(',')
-            for col in range(0, _level.get_width()):
+            for col in range(0, _level.level_width):
                 x = col
                 y = len(lines) - 1 - row_index
                 cell_def = cell_defs_dict[cols[col]]
@@ -161,8 +161,8 @@ class oldLoaderLevel(object):
                 try:
                     print entity._entity_name
                     if entity.is_player_controlled():
-                        if _level.get_player_actor() is None:
-                            _level.set_player_actor(entity)
+                        if _level._player_actor is None:
+                            _level._player_actor = entity
                         else:
                             warnings.warn('Level {0} has more than one actor marked as player-controllable!'
                                     .format(_level.level_number))

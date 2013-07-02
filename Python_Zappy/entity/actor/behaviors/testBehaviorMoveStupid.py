@@ -22,7 +22,7 @@ class TestBehaviorMoveStupid(unittest.TestCase):
         self.behavior = None
 
     def test_can_execute(self):
-        player = self.level.get_player_actor()
+        player = self.level.player_actor
         self.assertTrue(self.behavior._can_execute(player, self.level, self.adversary))
         self.adversary.use_moves(self.adversary.get_current_moves())
         self.assertFalse(self.behavior._can_execute(player, self.level, self.adversary))
@@ -31,7 +31,7 @@ class TestBehaviorMoveStupid(unittest.TestCase):
         self.level.place_entity_at(self.adversary, 0, 0)
         self.adversary.detect_entities()
         start_moves = self.adversary.get_current_moves()
-        self.assertTrue(self.behavior.attempt_to_execute(self.level.get_player_actor(), self.level, self.adversary))
+        self.assertTrue(self.behavior.attempt_to_execute(self.level.player_actor, self.level, self.adversary))
         self.assertLess(self.adversary.get_current_moves(), start_moves)
 
     def test_execute(self):
@@ -57,7 +57,7 @@ class TestBehaviorMoveStupid(unittest.TestCase):
     def run_test_data(self, x, y):
         self.level.place_entity_at(self.adversary, x, y)
         self.adversary.detect_entities()
-        self.behavior._execute(self.level.get_player_actor(), self.level, self.adversary)
+        self.behavior._execute(self.level.player_actor, self.level, self.adversary)
         new_x, new_y = self.adversary.get_coords()
         self.level.remove_entity_from(self.adversary, new_x, new_y)
 

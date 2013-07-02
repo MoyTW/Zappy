@@ -76,7 +76,7 @@ class LoaderLevelV1(object):
         info_json = self._read_until_blank(f)
 
         info = JSONCONVERTER.simple_to_custom_object(info_json)
-        self._levels[info.level_number] = Level.Level(info)
+        self._levels[info.info_number] = Level.Level(info)
 
         f.close()
 
@@ -108,8 +108,8 @@ class LoaderLevelV1(object):
 
     # This is where the actual cells for the level are built by calls to the Template
     def _load_level_cells(self, _templates, _layout_string, _level):
-        width = _level.get_width()
-        height = _level.get_height()
+        width = _level.level_width
+        height = _level.level_height
         _level.replace_cells([[None for _ in range(0, height)] for _ in range(0, width)])
 
         i = 0
@@ -127,9 +127,9 @@ class LoaderLevelV1(object):
 
     # Creates, places, and calls setup functions of the entities in question
     def _load_entity_list(self, _json, _level):
-        list = JSONCONVERTER.load_simple(_json)
+        entity_list = JSONCONVERTER.load_simple(_json)
 
-        for entry in list:
+        for entry in entity_list:
             entity = self._entity_index.create_entity_by_name(entry['_entity'], _level)
             if '_orders' in entry:
                 for order in entry['_orders']:
@@ -140,7 +140,8 @@ class LoaderLevelV1(object):
         for entity in entities:
             try:
                 if entity.is_player_controlled():
-                    _level.set_player_actor(entity)
+                    print "Assigning", entity, "to player_actor of level", _level
+                    _level.player_actor = entity
             except AttributeError:
                 pass
 

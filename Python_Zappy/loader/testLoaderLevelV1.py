@@ -27,21 +27,21 @@ class TestLoaderLevelV1(unittest.TestCase):
 
     def test_load_all_levels_infos(self):
         info0 = self.loader_level._levels[0].get_level_info()
-        self.assertEqual(info0.level_number, 0)
-        self.assertEqual(info0.level_name, 'TestLevel0')
+        self.assertEqual(info0.info_number, 0)
+        self.assertEqual(info0.info_name, 'TestLevel0')
 
         info1 = self.loader_level._levels[1].get_level_info()
-        self.assertEqual(info1.level_number, 1)
-        self.assertEqual(info1.level_name, 'TestLevel1')
+        self.assertEqual(info1.info_number, 1)
+        self.assertEqual(info1.info_name, 'TestLevel1')
 
     def test_get_level_info(self):
         self.loader_level._load_level_info('0.lvlV1')
         info = self.loader_level._levels[0].get_level_info()
         self.assertTrue(isinstance(info, LevelInfo.LevelInfo))
-        self.assertEqual(info.level_name, 'TestLevel0')
-        self.assertEqual(info.level_number, 0)
-        self.assertEqual(info.level_width, 5)
-        self.assertEqual(info.level_height, 6)
+        self.assertEqual(info.info_name, 'TestLevel0')
+        self.assertEqual(info.info_number, 0)
+        self.assertEqual(info.info_width, 5)
+        self.assertEqual(info.info_height, 6)
 
     def test_load_return_cell_templates(self):
         template_json = '{ "#": "test/wall.json", ".": "test/floor.json", "D": "test/drone.json" }'
@@ -157,12 +157,12 @@ class TestLoaderLevelV1(unittest.TestCase):
     def test_can_locate_player_controlled_entity(self):
         self.loader_level._load_level(0)
         l0 = self.loader_level._levels[0]
-        l0_player_actor = l0.get_player_actor()
+        l0_player_actor = l0.player_actor
         self.assertEqual(l0_player_actor.get_coords(), (2, 3))
 
         self.loader_level._load_level(1)
         l1 = self.loader_level._levels[1]
-        l1_player_actor = l1.get_player_actor()
+        l1_player_actor = l1.player_actor
         self.assertEqual(l1_player_actor.get_coords(), (0, 0))
 
 suite = unittest.TestLoader().loadTestsFromTestCase(TestLoaderLevelV1)

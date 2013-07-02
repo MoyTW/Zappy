@@ -122,16 +122,3 @@ class Tool(Entity.Entity):
         can_use = self.is_ready() and self._target_type_is_valid(_type) and self.user_has_energy() and \
                   self._location_in_range(_t_x, _t_y) and self._satisfies_LOS(_t_x, _t_y) and self._user_has_moves()
         return can_use
-
-    # Flat-out ignores the 'image' data member.
-    def __eq__(self, other):
-        try:
-            self_dict = self.__dict__.copy()
-            self_dict.pop('_image')
-            other_dict = other.__dict__.copy()
-            other_dict.pop('_image')
-            self_list = self_dict.pop('_list_target_types')
-            other_list = other_dict.pop('_list_target_types')
-            return self_dict == other_dict and sorted(self_list) == sorted(other_list)
-        except (AttributeError, KeyError):
-            return False

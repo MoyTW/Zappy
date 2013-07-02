@@ -94,7 +94,7 @@ class UIScreenTargetEntity(UIScreen.UIScreen):
             entity_y = self._leftmost_point[1]
             border_x = entity_x - self.GAP_SIZE / 2
             border_y = entity_y - self.GAP_SIZE / 2
-            self._sprites.append(pyglet.sprite.Sprite(entity.get_image(), x=entity_x, y=entity_y, batch=self._entity_batch))
+            self._sprites.append(pyglet.sprite.Sprite(entity.entity_image, x=entity_x, y=entity_y, batch=self._entity_batch))
 
             # Select which border and create
             if num_entities == 1:

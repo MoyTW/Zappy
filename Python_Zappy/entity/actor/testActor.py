@@ -55,7 +55,7 @@ class TestActor(unittest.TestCase):
     def test_inheritance(self):
         actor = Actor.Actor('blue', 2, _image_name='test_entity.png')
         self.assertEqual(actor._level, 'blue')
-        self.assertEqual(actor._image.width, 100)
+        self.assertEqual(actor.entity_image.width, 100)
 
     def test_detect_entities(self):
         level = self.loader.get_level(2)

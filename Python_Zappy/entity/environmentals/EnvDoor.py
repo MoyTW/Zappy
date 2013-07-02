@@ -19,9 +19,9 @@ class EnvDoor(Environmental.Environmental):
         self._closed_image = self._load_return_image(_closed_image_location)
 
         if self._is_open:
-            self._image = self._open_image
+            self.entity_image = self._open_image
         else:
-            self._image = self._closed_image
+            self.entity_image = self._closed_image
 
     def trigger(self):
         if self._is_open:
@@ -40,7 +40,7 @@ class EnvDoor(Environmental.Environmental):
         cell = self._level.get_cell_at(*self.get_coords())
         cell.is_passable = True
         cell.is_transparent = True
-        self._image = self._open_image
+        self.entity_image = self._open_image
 
     def close(self):
         print self.entity_name, ' is not closed!'
@@ -48,4 +48,4 @@ class EnvDoor(Environmental.Environmental):
         cell = self._level.get_cell_at(*self.get_coords())
         cell.is_passable = False
         cell.is_transparent = False
-        self._image = self._closed_image
+        self.entity_image = self._closed_image

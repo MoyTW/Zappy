@@ -7,11 +7,8 @@ import level.Cell
 
 class DummyEntity(object):
     def __init__(self, image, priority):
-        self._image = image
+        self.entity_image = image
         self.PRIORITY = priority
-
-    def get_image(self):
-        return self._image
 
 
 class TestCell(unittest.TestCase):
@@ -85,10 +82,10 @@ class TestCell(unittest.TestCase):
         self.assertEquals(len(display_map.keys()), 4)
         try:
             self.assertEquals(display_map[-1][0], self.default_cell._image)
-            self.assertEquals(display_map[0][0], dummy0._image)
-            self.assertEquals(display_map[5][0], dummy1._image)
-            self.assertEquals(display_map[2][0], dummy2._image)
-            self.assertEquals(display_map[2][1], dummy3._image)
+            self.assertEquals(display_map[0][0], dummy0.entity_image)
+            self.assertEquals(display_map[5][0], dummy1.entity_image)
+            self.assertEquals(display_map[2][0], dummy2.entity_image)
+            self.assertEquals(display_map[2][1], dummy3.entity_image)
         except KeyError:
             self.assertFalse(True, "It's not fully populating the display_map! There's a missing entry!")
 

@@ -33,7 +33,7 @@ class Cell(object):
             if not (_in_fow and isinstance(entity, Actor.Actor)):
                 try:
                     priority = entity.PRIORITY
-                    image = entity.get_image()
+                    image = entity.entity_image
                     if priority in display_dict.keys():
                         display_dict[priority].append(image)
                     else:

@@ -27,21 +27,21 @@ class TestLoaderLevelV1(unittest.TestCase):
 
     def test_load_all_levels_infos(self):
         info0 = self.loader_level._levels[0].get_level_info()
-        self.assertEqual(info0.get_number(), 0)
-        self.assertEqual(info0.get_name(), 'TestLevel0')
+        self.assertEqual(info0.level_number, 0)
+        self.assertEqual(info0.level_name, 'TestLevel0')
 
         info1 = self.loader_level._levels[1].get_level_info()
-        self.assertEqual(info1.get_number(), 1)
-        self.assertEqual(info1.get_name(), 'TestLevel1')
+        self.assertEqual(info1.level_number, 1)
+        self.assertEqual(info1.level_name, 'TestLevel1')
 
     def test_get_level_info(self):
         self.loader_level._load_level_info('0.lvlV1')
         info = self.loader_level._levels[0].get_level_info()
         self.assertTrue(isinstance(info, LevelInfo.LevelInfo))
-        self.assertEqual(info.get_name(), 'TestLevel0')
-        self.assertEqual(info.get_number(), 0)
-        self.assertEqual(info.get_width(), 5)
-        self.assertEqual(info.get_height(), 6)
+        self.assertEqual(info.level_name, 'TestLevel0')
+        self.assertEqual(info.level_number, 0)
+        self.assertEqual(info.level_width, 5)
+        self.assertEqual(info.level_height, 6)
 
     def test_load_return_cell_templates(self):
         template_json = '{ "#": "test/wall.json", ".": "test/floor.json", "D": "test/drone.json" }'

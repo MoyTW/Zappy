@@ -76,7 +76,7 @@ class LoaderLevelV1(object):
         info_json = self._read_until_blank(f)
 
         info = JSONCONVERTER.simple_to_custom_object(info_json)
-        self._levels[info.get_number()] = Level.Level(info)
+        self._levels[info.level_number] = Level.Level(info)
 
         f.close()
 

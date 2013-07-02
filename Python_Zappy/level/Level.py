@@ -29,8 +29,8 @@ class Level:
         else:
             raise level.levelExceptions.LevelCellsAlreadySetError("Cannot assign cells to level {0} (#{1}) - it "
                                                                   "already has cells assigned to it!"
-                                                                  .format(self._info.get_name(),
-                                                                          self._info.get_number()))
+                                                                  .format(self._info.level_name,
+                                                                          self._info.level_number))
 
     # Also replaces the player_actor
     def replace_cells(self, cells):
@@ -42,19 +42,19 @@ class Level:
         return self._info
 
     def get_name(self):
-        return self._info.get_name()
+        return self._info.level_name
 
     def get_number(self):
-        return self._info.get_number()
+        return self._info.level_number
 
     def get_width(self):
-        return self._info.get_width()
+        return self._info.level_width
 
     def get_height(self):
-        return self._info.get_height()
+        return self._info.level_height
 
     def get_preview(self):
-        return self._info.get_preview()
+        return self._info.preview_image
 
     def get_player_actor(self):
         return self._player_actor

@@ -73,7 +73,7 @@ class oldLoaderLevel(object):
                                          _width=self._read_line_value(lines[2]),
                                          _height=self._read_line_value(lines[3]),
                                          _previews_folder=self._levels_folder)
-        self._levels[info.get_number()] = level.Level.Level(info)
+        self._levels[info.level_number] = level.Level.Level(info)
 
     def _return_level_preview(self, level_number):
         path = "{0}.png".format(level_number)
@@ -165,7 +165,7 @@ class oldLoaderLevel(object):
                             _level.set_player_actor(entity)
                         else:
                             warnings.warn('Level {0} has more than one actor marked as player-controllable!'
-                                    .format(_level.get_number()))
+                                    .format(_level.level_number))
                 except AttributeError:
                     pass
                 _level.place_entity_at(entity, x, y)

@@ -58,6 +58,14 @@ class Faction(object):
             if faction_name not in self._names_hostile_to:
                 self._names_hostile_to.append(faction_name)
 
+    def __eq__(self, other):
+        try:
+            return self._name == other._name and sorted(self._names_friendly_to) == sorted(other._names_friendly_to) \
+                       and sorted(self._names_hostile_to) == sorted(other._names_hostile_to) and \
+                       sorted(self._names_neutral_to) == sorted(other._names_neutral_to)
+        except AttributeError:
+            return False
+
 
 class Factions(object):
     DEFAULT = Faction('Default Faction')

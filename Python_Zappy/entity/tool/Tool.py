@@ -48,12 +48,12 @@ class Tool(Entity.Entity):
 
     def can_use_on_location(self, _x, _y):
         return self._can_use_tool_on(self.TYPE_LOCATION, _x, _y) and \
-               self._special_can_use_on_location(_x, _y)
+            self._special_can_use_on_location(_x, _y)
 
     def can_use_on_entity(self, _target):
         _target_x, _target_y = _target.get_coords()
         return self._can_use_tool_on(self.TYPE_ENTITY, _target_x, _target_y) and \
-               self._special_can_use_on_entity(_target)
+            self._special_can_use_on_entity(_target)
 
     def use_on_location(self, _x, _y):
         self._on_use_tool_apply_costs()

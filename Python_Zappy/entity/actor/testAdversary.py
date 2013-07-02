@@ -17,7 +17,7 @@ class TestAdversary(unittest.TestCase):
 
         self.level = loader.oldLoaderLevel.oldLoaderLevel('entity/actor/behaviors/behavior_test_levels').get_level(0)
         self.adversary = Adversary.Adversary(_level=self.level, _senses=[SenseSeismic.SenseSeismic(5)],
-                                             behaviors=[horizontal, vertical])
+                                             _behaviors=[horizontal, vertical])
 
     def tearDown(self):
         self.level = None

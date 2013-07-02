@@ -44,12 +44,6 @@ class Camera(object):
         self._num_cols = None
         self.resize_view(lower_left, upper_right)
 
-    def get_x(self):
-        return self._center_tile[0]
-
-    def get_y(self):
-        return self._center_tile[1]
-
     def get_center_tile(self):
         return self._center_tile[0], self._center_tile[1]
 
@@ -161,7 +155,7 @@ class Camera(object):
             self.center_on(loc[0], loc[1])
 
     def step(self, direction):
-        target_coords = DIR.get_coords_in_direction_from(direction, self.get_x(), self.get_y())
+        target_coords = DIR.get_coords_in_direction_from(direction, *self.get_center_tile())
         self.center_on(target_coords[0], target_coords[1])
 
     def resize_view(self, lower_left, upper_right):

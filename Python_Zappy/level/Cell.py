@@ -15,10 +15,8 @@ class Cell(object):
         self._contains = []
         self._image_location = _image_location
 
+        self._image = None
         self._load_image(_image_location)
-
-    def get_cell_image(self):
-        return self._image
 
     def get_passable(self):
         return self._passable

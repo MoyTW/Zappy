@@ -6,9 +6,9 @@ import os
 
 
 class LevelInfo:
-    _path_top = os.path.split(os.path.dirname(__file__))[0]
-    _preview_loader = pyglet.resource.Loader(script_home=_path_top)
-    _default_loader = pyglet.resource.Loader('@assets')
+    PATH_TOP = os.path.split(os.path.dirname(__file__))[0]
+    PREVIEW_LOADER = pyglet.resource.Loader(script_home=PATH_TOP)
+    DEFAULT_LOADER = pyglet.resource.Loader('@assets')
 
     def __init__(self, _name, _number, _width, _height, _previews_folder):
         self._version = .1
@@ -43,13 +43,13 @@ class LevelInfo:
         return json_dict
 
     def _return_default_preview(self):
-        return self._default_loader.image('images/defaults/default_preview.png')
+        return self.DEFAULT_LOADER.image('images/defaults/default_preview.png')
 
     def _return_preview_image(self):
         path = "{0}/preview_images/{1}.png".format(self._previews_folder, self._number)
 
         try:
-            return self._preview_loader.image(path)
+            return self.PREVIEW_LOADER.image(path)
         except pyglet.resource.ResourceNotFoundException:
             warnstr = "There is no preview available for level {0}".format(self._number)
             warnings.warn(warnstr, RuntimeWarning)

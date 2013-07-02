@@ -27,7 +27,7 @@ class TemplateAdversary(Template.Template):
     def create_instance(self, level, entity_index):
         adversary = Adversary.Adversary(_level=level,
                                         _entity_name=self._entity_name,
-                                        behaviors=self._behaviors,
+                                        _behaviors=self._behaviors,
                                         _max_moves=self._max_moves,
                                         _max_hp=self._max_hp,
                                         _senses=self._senses,

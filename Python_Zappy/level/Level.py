@@ -144,7 +144,7 @@ class Level:
         if other is None:
             return False
         elif isinstance(other, Level):
-            if not self.get_level_info() == other.get_level_info():
+            if not self._info == other._info:
                 return False
 
             cell_equality = True
@@ -162,4 +162,4 @@ class Level:
             return self.__dict__ == other.__dict__
 
     def __repr__(self):
-        return "({0}, {1}".format(self.get_level_info(), self._cells)
+        return "({0}, {1}".format(self._info, self._cells)

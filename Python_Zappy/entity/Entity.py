@@ -30,9 +30,9 @@ class Entity(object):
     def get_coords(self):
         return self._x, self._y
 
-    def set_coords(self, x, y):
-        self._x = x
-        self._y = y
+    def set_coords(self, _x, _y):
+        self._x = _x
+        self._y = _y
 
     def get_image(self):
         return self._image

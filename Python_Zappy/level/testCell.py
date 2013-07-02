@@ -40,7 +40,7 @@ class TestCell(unittest.TestCase):
         self.assertEquals(self.floor_image, self.default_cell._image)
 
     def test_get_cell_image(self):
-        self.assertEquals(self.default_image, self.default_cell.get_cell_image())
+        self.assertEquals(self.default_image, self.default_cell._image)
 
     def test_get_passable(self):
         self.assertEquals(True, self.default_cell.get_passable())

@@ -5,8 +5,8 @@ import entity.actor.Adversary as Adversary
 
 
 class LevelController(object):
-    def __init__(self, level):
-        self._level = level
+    def __init__(self, _level):
+        self._level = _level
         self._zappy = self._level.get_player_actor()
         self._level_won = False
         self._level_failed = False
@@ -34,8 +34,8 @@ class LevelController(object):
     def get_zappy_x_y(self):
         return self._zappy._x, self._zappy._y
 
-    def zappy_attempt_move(self, direction):
-        self._zappy.attempt_move(direction)
+    def zappy_attempt_move(self, _direction):
+        self._zappy.attempt_move(_direction)
         if not self._zappy.has_moves():
             self.turn_has_ended()
 

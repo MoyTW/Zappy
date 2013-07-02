@@ -87,13 +87,13 @@ class Level:
     def cell_is_passable(self, x, y):
         cell = self.get_cell_at(x, y)
         if cell is not None:
-            return cell.get_passable()
+            return cell.is_passable
         return False
 
     def cell_is_transparent(self, x, y):
         cell = self.get_cell_at(x, y)
         if cell is not None:
-            return cell.get_transparent()
+            return cell.is_transparent
         return False
 
     def get_display_images_at(self, x, y, _in_fow=False):

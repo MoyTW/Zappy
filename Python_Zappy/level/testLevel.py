@@ -83,10 +83,10 @@ class TestLevel(unittest.TestCase):
         self.assertEquals(self.initialized_test_level.get_display_images_at(-5, 12), None)
 
     def test_get_passable(self):
-        self.initialized_test_level._cells[2][2]._passable = False
-        self.assertEquals(self.initialized_test_level.get_cell_at(2, 2).get_passable(), False)
-        self.initialized_test_level._cells[3][1]._passable = False
-        self.assertEquals(self.initialized_test_level.get_cell_at(3, 1).get_passable(), False)
+        self.initialized_test_level._cells[2][2].is_passable = False
+        self.assertEquals(self.initialized_test_level.get_cell_at(2, 2).is_passable, False)
+        self.initialized_test_level._cells[3][1].is_passable = False
+        self.assertEquals(self.initialized_test_level.get_cell_at(3, 1).is_passable, False)
 
     def test_place_entity_at(self):
         teststr = "Test String!"

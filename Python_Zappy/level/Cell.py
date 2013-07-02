@@ -10,25 +10,13 @@ class Cell(object):
     LOADER = pyglet.resource.Loader(['@assets'])
 
     def __init__(self, _image_location=DEFAULT_IMAGE_PATH, _passable=True, _transparent=True):
-        self._passable = _passable
-        self._transparent = _transparent
+        self.is_passable = _passable
+        self.is_transparent = _transparent
         self._contains = []
         self._image_location = _image_location
 
         self._image = None
         self._load_image(_image_location)
-
-    def get_passable(self):
-        return self._passable
-
-    def get_transparent(self):
-        return self._transparent
-
-    def set_passable(self, _passable):
-        self._passable = _passable
-
-    def set_transparent(self, _transparent):
-        self._transparent = _transparent
 
     def change_cell_image_by_image(self, _image):
         self._image = _image
@@ -87,18 +75,7 @@ class Cell(object):
         return not self.__eq__(other)
 
     def __eq__(self, other):
-        if other is None:
-            return False
-
-        contains_equality = True
-        try:
-            for s, o in zip(self._contains, other._contains):
-                if s != o:
-                    contains_equality = False
-            return self._passable == other._passable and self._image_location == other._image_location\
-                and contains_equality
-        except AttributeError as e:
-            return False
+        return sorted(self.__dict__) == sorted(other.__dict__)
 
     def __repr__(self):
-        return "(P: {0} I: {1} C: {2})".format(self._passable, self._image_location, self._contains)
+        return "(P: {0} I: {1} C: {2})".format(self.is_passable, self._image_location, self._contains)

@@ -38,14 +38,14 @@ class EnvDoor(Environmental.Environmental):
         print self._entity_name, 'is now open!'
         self._is_open = True
         cell = self._level.get_cell_at(*self.get_coords())
-        cell.set_passable(True)
-        cell.set_transparent(True)
+        cell.is_passable = True
+        cell.is_transparent = True
         self._image = self._open_image
 
     def close(self):
         print self._entity_name, ' is not closed!'
         self._is_open = False
         cell = self._level.get_cell_at(*self.get_coords())
-        cell.set_passable(False)
-        cell.set_transparent(False)
+        cell.is_passable = False
+        cell.is_transparent = False
         self._image = self._closed_image

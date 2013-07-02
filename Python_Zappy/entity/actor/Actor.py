@@ -8,7 +8,7 @@ import entity.Destructible as Destructible
 
 
 class Actor(Entity.Entity, Destructible.Destructible):
-    _priority = 3
+    PRIORITY = 3
 
     def __init__(self, _level, _entity_name='Default Actor Name', _max_hp=1, _max_moves=1, _max_energy=100,
                  _energy_regen=10, _tools=None, _senses=None, _image_name=None, _rank=RANK.AVERAGE,

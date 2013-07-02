@@ -159,13 +159,8 @@ class oldLoaderLevel(object):
             for entity_string in cell_def.entity_strings:
                 entity = self._entity_index.create_entity_by_name(entity_string, _level)
                 try:
-                    print entity._entity_name
                     if entity.is_player_controlled():
-                        if _level._player_actor is None:
-                            _level._player_actor = entity
-                        else:
-                            warnings.warn('Level {0} has more than one actor marked as player-controllable!'
-                                    .format(_level.level_number))
+                        _level.player_actor = entity
                 except AttributeError:
                     pass
                 _level.place_entity_at(entity, x, y)

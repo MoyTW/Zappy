@@ -73,7 +73,7 @@ class UIScreenTargetEntity(UIScreen.UIScreen):
     def _update_selection_sprite_and_text(self):
         self._selection_sprite.x = self._leftmost_point[0] + ((self.IMAGE_SIZE + self.GAP_SIZE) * self._selection)
         self._selection_sprite.y = self._leftmost_point[1]
-        self._selection_label.text = self._entity_list[self._selection].get_name()
+        self._selection_label.text = self._entity_list[self._selection].entity_name
         self._selection_label.x = self._center_point[0] - (self._selection_label.content_width / 2)
 
     def _gen_sprites(self):

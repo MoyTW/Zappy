@@ -8,13 +8,10 @@ import level.Cell
 class DummyEntity(object):
     def __init__(self, image, priority):
         self._image = image
-        self._priority = priority
+        self.PRIORITY = priority
 
     def get_image(self):
         return self._image
-
-    def get_priority(self):
-        return self._priority
 
 
 class TestCell(unittest.TestCase):

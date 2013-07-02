@@ -14,6 +14,12 @@ class TestToolManipulator(unittest.TestCase):
     def setUp(self):
         loader = LoaderLevel.oldLoaderLevel('entity/actor/behaviors/behavior_test_levels')
         self.level = loader.get_level(0)
+        entities = self.level.get_all_entities()
+        print entities
+        print entities[0].get_coords()
+        print entities[0].is_player_controlled()
+        print self.level.player_actor
+
         self.zappy = self.level.player_actor
         self.tool = ToolManipulator.ToolManipulator(self.level)
         self.zappy.add_tool(self.tool)

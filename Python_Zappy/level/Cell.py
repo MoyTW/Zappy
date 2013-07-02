@@ -32,7 +32,7 @@ class Cell(object):
         for entity in self._contains:
             if not (_in_fow and isinstance(entity, Actor.Actor)):
                 try:
-                    priority = entity.get_priority()
+                    priority = entity.PRIORITY
                     image = entity.get_image()
                     if priority in display_dict.keys():
                         display_dict[priority].append(image)

@@ -8,13 +8,13 @@ class Entity(object):
     DEFAULT_IMAGE_PATH = 'images/defaults/default_entity.png'
     IMAGE_FOLDER = 'images/entities/'
     # The higher the priority, the later the Entity is drawn.
-    _priority = 0
+    PRIORITY = 0
 
     def __init__(self, _image_name, _level, _x=-1, _y=-1, _entity_name='Default Entity Name', **kwargs):
         super(Entity, self).__init__(**kwargs)
         self._image_name = _image_name
         self._level = _level
-        self._entity_name = _entity_name
+        self.entity_name = _entity_name
 
         self._x = _x
         self._y = _y
@@ -23,9 +23,6 @@ class Entity(object):
 
     def destroy(self):
         self._level.remove_entity_from(self, self._x, self._y)
-
-    def get_name(self):
-        return self._entity_name
 
     def get_coords(self):
         return self._x, self._y
@@ -36,9 +33,6 @@ class Entity(object):
 
     def get_image(self):
         return self._image
-
-    def get_priority(self):
-        return self._priority
 
     def _load_return_image(self, _image_name):
         loader = pyglet.resource.Loader('@assets')

@@ -30,12 +30,12 @@ class EnvDoor(Environmental.Environmental):
             self.open()
 
     def destroy(self):
-        print self._entity_name, 'was destroyed!'
+        print self.entity_name, 'was destroyed!'
         self.open()
         self._level.remove_entity_from(self, *self.get_coords())
 
     def open(self):
-        print self._entity_name, 'is now open!'
+        print self.entity_name, 'is now open!'
         self._is_open = True
         cell = self._level.get_cell_at(*self.get_coords())
         cell.is_passable = True
@@ -43,7 +43,7 @@ class EnvDoor(Environmental.Environmental):
         self._image = self._open_image
 
     def close(self):
-        print self._entity_name, ' is not closed!'
+        print self.entity_name, ' is not closed!'
         self._is_open = False
         cell = self._level.get_cell_at(*self.get_coords())
         cell.is_passable = False

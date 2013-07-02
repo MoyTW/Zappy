@@ -18,7 +18,7 @@ class EnvCollapsible(Environmental.Environmental):
         self._collapse()
 
     def _collapse(self):
-        print self._entity_name, 'has collapsed, leaving a pit in its wake!'
+        print self.entity_name, 'has collapsed, leaving a pit in its wake!'
         cell = self._level.get_cell_at(*self.get_coords())
         cell.is_passable = False
         cell.is_transparent = True

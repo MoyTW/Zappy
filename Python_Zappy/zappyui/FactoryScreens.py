@@ -33,7 +33,7 @@ class FactoryScreens(object):
             return
 
         self._level_controller = level_controller
-        self._camera = zappyui.Camera.Camera(self._level_controller.get_level(),
+        self._camera = zappyui.Camera.Camera(self._level_controller.level,
                                              upper_right=(self._window.width - z_defs.SIDEBAR_WIDTH,
                                                           self._window.height))
 

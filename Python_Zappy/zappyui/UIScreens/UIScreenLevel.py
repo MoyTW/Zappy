@@ -16,9 +16,9 @@ class UIScreenLevel(UIScreen.UIScreen):
         self._init_camera(level_controller)
 
     def _init_camera(self, level_controller):
-        level = level_controller.get_level()
+        level = level_controller.level
         self._camera.center_on((level.level_width / 2), (level.level_height / 2))
-        self._camera.center_on_entity(self._control.get_zappy())
+        self._camera.center_on_entity(self._control.zappy)
 
     def handle_order(self, order):
         return_screen = self
@@ -34,20 +34,20 @@ class UIScreenLevel(UIScreen.UIScreen):
         elif order == ORDERS.MENU:
             return_screen = self._open_level_menu()
 
-        if self._control.is_level_completed():
+        if self._control.level_completed:
             return_screen = None
 
         return return_screen
 
     def _on_destruct_return_screen(self):
-        if self._control.is_level_completed():
+        if self._control.level_completed:
             return self._factory.create_ScreenLevelEnd()
 
     def draw(self):
         self._camera.draw()
 
     def close_on_child_completion(self):
-        return self._control.is_level_completed()
+        return self._control.level_completed
 
     def draw_if_not_head(self):
         return True

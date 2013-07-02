@@ -8,28 +8,25 @@ class LevelController(object):
     def __init__(self, _level):
         self._level = _level
         self._zappy = self._level.player_actor
-        self._level_won = False
-        self._level_failed = False
+        self.level_won = False
+        self.level_failed = False
 
-        self._destroyed_entities = list()
+        self._destroyed_entities = list()  # Not currently used for anything!
+
+    @property
+    def level_completed(self):
+        return self.level_won or self.level_failed
+
+    @property
+    def level(self):
+        return self._level
+
+    @property
+    def zappy(self):
+        return self._zappy
 
     def get_entities_at(self, _x, _y):
         return self._level.get_all_entities_at(_x, _y)
-
-    def is_level_completed(self):
-        return self._level_won or self._level_failed
-
-    def is_level_won(self):
-        return self._level_won
-
-    def is_level_failed(self):
-        return self._level_failed
-
-    def get_level(self):
-        return self._level
-
-    def get_zappy(self):
-        return self._zappy
 
     def get_zappy_x_y(self):
         return self._zappy._x, self._zappy._y
@@ -85,14 +82,14 @@ class LevelController(object):
             if isinstance(entity, Adversary.Adversary):
                 no_adversaries = False
         if no_adversaries:
-            self._level_won = True
+            self.level_won = True
             return
 
         print "Zappy HP:", self._zappy.get_current_hp()
 
         # Check end conditions
         if self._zappy.is_destroyed():
-            self._level_failed = True
+            self.level_failed = True
             return
 
         # Player's turn

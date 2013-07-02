@@ -10,12 +10,12 @@ class UIScreenLevelEnd(UIScreen.UIScreen):
     def __init__(self, level_controller, viewport_info):
         self._viewport = viewport_info
         self._control = level_controller
-        self._level = level_controller.get_level()
+        self._level = level_controller.level
 
         self._batch = pyglet.graphics.Batch()
 
         label_text = 'Neither Victory, Nor Defeat. WTF?'
-        if self._control.is_level_won():
+        if self._control.level_won:
             label_text = 'Victory!'
         elif self._control.is_level_failed():
             label_text = 'Defeat!'

@@ -8,7 +8,8 @@ class DummyController(object):
     def get_level(self):
         return self.level
 
-    def get_zappy(self):
+    @property
+    def zappy(self):
         return "zappy"
 
     def get_zappy_x_y(self):

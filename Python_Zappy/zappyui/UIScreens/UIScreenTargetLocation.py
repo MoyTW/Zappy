@@ -12,7 +12,7 @@ class UIScreenTargetLocation(UIScreen.UIScreen):
         self._control = _level_controller
         self._factory = _factory_screens
 
-        self._zappy = _level_controller.get_zappy()
+        self._zappy = _level_controller.zappy
 
         self._start_tile = self._camera.get_center_tile()
 

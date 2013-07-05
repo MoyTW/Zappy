@@ -4,7 +4,7 @@ __author__ = 'Travis Moy'
 class Behavior(object):
 
     def __init__(self, _move_cost=1):
-        self._move_cost = _move_cost
+        self.move_cost = _move_cost
 
     # If _can_execute(), _execute()
     # Returns True on successful execution, False otherwise
@@ -34,10 +34,10 @@ class Behavior(object):
         return False
 
     def _general_can_execute(self, _target, _level, _adversary):
-        if _target is not None and _adversary.current_moves >= self._move_cost:
+        if _target is not None and _adversary.current_moves >= self.move_cost:
             return True
         else:
             return False
 
     def _on_execute_pay_costs(self, _adversary):
-        _adversary.use_moves(self._move_cost)
+        _adversary.use_moves(self.move_cost)

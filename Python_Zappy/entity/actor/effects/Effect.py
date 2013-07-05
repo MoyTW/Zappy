@@ -16,6 +16,10 @@ class Effect(object):
         self._target = _target
         self._application_behavior = _application_behavior
 
+    @property
+    def duration(self):
+        return self._duration
+
     def turn_passed(self):
         self._duration -= 1
 
@@ -24,6 +28,10 @@ class Effect(object):
 
     def has_expired(self):
         return self._duration < 1
+
+    @property
+    def target(self):
+        return self._target
 
     def apply(self):
         try:

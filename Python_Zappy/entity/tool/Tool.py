@@ -11,10 +11,10 @@ class Tool(Entity.Entity):
     def __init__(self, _level, _user=None, _entity_name='Default Tool Name', _list_target_types=None, _range=1,
                  _energy_cost=1, _move_cost=1, _cooldown=0, _image_name=None, _requires_LOS=True, **kwargs):
         super(Tool, self).__init__(_image_name=_image_name, _level=_level, _entity_name=_entity_name, **kwargs)
-        self._user = _user
-        self._range = _range
-        self._energy_cost = _energy_cost
-        self._move_cost = _move_cost
+        self.user = _user
+        self.range = _range
+        self.energy_cost = _energy_cost
+        self.move_cost = _move_cost
         self._cooldown = _cooldown
         self._requires_LOS = _requires_LOS
         self._turns_until_ready = 0
@@ -24,14 +24,32 @@ class Tool(Entity.Entity):
         else:
             self._list_target_types = _list_target_types
 
-    def set_user(self, _user):
-        self._user = _user
+    @property
+    def cooldown(self):
+        return self._cooldown
+
+    @cooldown.setter
+    def cooldown(self, value):
+        self._cooldown = value
+        if self._turns_until_ready > self._cooldown:
+            self._put_on_cooldown()
+
+    def _put_on_cooldown(self):
+        self._turns_until_ready = (self._cooldown + 1)
+
+    @property
+    def requires_los(self):
+        return self._requires_LOS
+
+    @property
+    def turns_until_ready(self):
+        return self._turns_until_ready
 
     def is_ready(self):
         return self._turns_until_ready == 0
 
     def user_has_energy(self):
-        return self._user.current_energy >= self._energy_cost
+        return self.user.current_energy >= self.energy_cost
 
     def targets_actors(self):
         return self.TYPE_ACTOR in self._list_target_types
@@ -83,9 +101,9 @@ class Tool(Entity.Entity):
 
     # Call this when the tool is used. Sets the tool on CD, and applies costs.
     def _on_use_tool_apply_costs(self):
-        self._user.use_energy(self._energy_cost)
-        self._turns_until_ready += (self._cooldown + 1)
-        self._user.use_moves(self._move_cost)
+        self._put_on_cooldown()
+        self.user.use_energy(self.energy_cost)
+        self.user.use_moves(self.move_cost)
 
     def _target_type_is_valid(self, _type):
         if _type == self.TYPE_ENTITY:
@@ -95,16 +113,16 @@ class Tool(Entity.Entity):
     def _satisfies_LOS(self, _x, _y):
         if not self._requires_LOS:
             return True
-        u_x, u_y = self._user.get_coords()
-        return Z_ALGS.check_los(_x, _y, u_x, u_y, self._range + 1, self._level.cell_is_transparent)
+        u_x, u_y = self.user.get_coords()
+        return Z_ALGS.check_los(_x, _y, u_x, u_y, self.range + 1, self._level.cell_is_transparent)
 
     def _location_in_range(self, _x, _y):
-        u_x, u_y = self._user.get_coords()
-        cells_in_range = Z_ALGS.calc_coords_in_range(self._range, u_x, u_y)
+        u_x, u_y = self.user.get_coords()
+        cells_in_range = Z_ALGS.calc_coords_in_range(self.range, u_x, u_y)
         return (_x, _y) in cells_in_range
 
     def _user_has_moves(self):
-        return self._user.current_moves >= self._move_cost
+        return self.user.current_moves >= self.move_cost
 
     def _can_use_tool_on(self, _type, _t_x, _t_y):
         if not self.is_ready():

@@ -33,7 +33,7 @@ class TestTemplateActor(unittest.TestCase):
     def test_user_is_set(self):
         template_actor = TemplateActor.TemplateActor(_tools=self.template_tools_list)
         created_actor = template_actor.create_instance(level=None, entity_index=None)
-        self.assertEqual(created_actor._tools[0]._user, created_actor)
+        self.assertEqual(created_actor._tools[0].user, created_actor)
 
     def test_create_instance(self):
         max_moves = 2

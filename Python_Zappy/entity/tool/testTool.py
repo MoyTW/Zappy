@@ -57,6 +57,15 @@ class TestTool(unittest.TestCase):
         actor.use_moves(1)
         self.assertFalse(tool._user_has_moves())
 
+    def test_cooldown(self):
+        actor = Actor.Actor(_level=None)
+        tool = Tool.Tool(None, _user=actor, _cooldown=5)
+
+        tool.use_on_entity(None)
+        self.assertEqual(tool.turns_until_ready, 6)
+
+        tool.turn_passed()
+        self.assertEqual(tool.turns_until_ready, 5)
 
 suite = unittest.TestLoader().loadTestsFromTestCase(TestTool)
 unittest.TextTestRunner(verbosity=2).run(suite)

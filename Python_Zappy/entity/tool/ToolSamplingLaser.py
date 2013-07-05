@@ -44,7 +44,7 @@ class ToolSamplingLaser(Tool.Tool):
             elif rank == RANK.AVERAGE:
                 _target.apply_status_effect(EffectBlind.EffectBlind(self._blind_duration, _target))
             elif rank == RANK.POWERFUL or rank == RANK.TERRIFYING:
-                _target.apply_status_effect(EffectEnrage.EffectEnrage(self._enrage_duration, _target, self._user))
+                _target.apply_status_effect(EffectEnrage.EffectEnrage(self._enrage_duration, _target, self.user))
             else:
                 return False
             return True

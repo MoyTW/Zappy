@@ -107,7 +107,7 @@ class Actor(Entity.Entity, Destructible.Destructible):
         self._tools = _tool_list
 
     def add_tool(self, _tool):
-        _tool.set_user(self)
+        _tool.user = self
         self._level.remove_entity_from(_tool, *_tool.get_coords())
         self._tools.append(_tool)
 

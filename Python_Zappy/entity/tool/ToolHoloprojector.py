@@ -25,7 +25,7 @@ class ToolHoloprojector(Tool.Tool):
         super(ToolHoloprojector, self).__init__(_level, **kwargs)
 
     def _effects_of_use_on_location(self, _x, _y):
-        user_faction = self._user.faction
+        user_faction = self.user.faction
         holo = Actor.Actor(self._level, _entity_name=self._holo_name, _max_hp=self._hp, _faction=user_faction,
                            _base_threat=self._threat)
         holo.apply_status_effect(EffectDeath.EffectDeath(5, holo))

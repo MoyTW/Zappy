@@ -31,7 +31,7 @@ class TestAdversary(unittest.TestCase):
         self.assertTrue(self.adversary.take_action())
         self.assertEqual(self.adversary.get_coords(), (1, 1))
         self.level.remove_entity_from(self.adversary, *self.adversary.get_coords())
-        self.assertEqual(self.adversary.get_current_moves(), 1)
+        self.assertEqual(self.adversary.current_moves, 1)
 
     def test_second_executed_if_first_not(self):
         # Test that if first fails, goes to second.

@@ -16,12 +16,13 @@ class Actor(Entity.Entity, Destructible.Destructible):
         super(Actor, self).__init__(_entity_name=_entity_name, _image_name=_image_name, _max_hp=_max_hp,
                                     _level=_level, **kwargs)
 
+        self.rank = _rank
+        self.max_energy = _max_energy
+
         self._max_moves = _max_moves
         self._current_moves = _max_moves
-        self.max_energy = _max_energy
         self._current_energy = _max_energy
         self._energy_regen = _energy_regen
-        self.rank = _rank
         self._faction = _faction
         self._base_threat = _base_threat
 
@@ -43,38 +44,18 @@ class Actor(Entity.Entity, Destructible.Destructible):
         self._detected_entities = list()
 
     @property
-    def threat(self):
-        return self._base_threat
+    def max_moves(self):
+        return self._max_moves
 
-# Accessors
-    def get_senses(self):
-        return self._senses
+    @max_moves.setter
+    def max_moves(self, value):
+        self._max_moves = value
+        if self._current_moves > self._max_moves:
+            self._current_moves = self._max_moves
 
-    def get_faction(self):
-        return self._faction
-
-    def get_faction_name(self):
-        return self._faction.get_faction_name()
-
-    def use_energy(self, _amount):
-        self._current_energy -= _amount
-        if self._current_energy < 0:
-            warnings.warn("An Actor has overspent their energy! (Actor._current_energy < 0). This should not happen!")
-
-    def get_current_energy(self):
-        return self._current_energy
-
-    def get_status_effects(self):
-        return self._status_effects
-
-    def get_current_moves(self):
+    @property
+    def current_moves(self):
         return self._current_moves
-
-    def get_tools(self):
-        return self._tools
-
-    def is_player_controlled(self):
-        return self._faction == FACTIONS.PLAYER
 
     def has_moves(self):
         return self._current_moves > 0
@@ -84,6 +65,43 @@ class Actor(Entity.Entity, Destructible.Destructible):
 
     def replenish_moves(self):
         self._current_moves = self._max_moves
+
+    @property
+    def current_energy(self):
+        return self._current_energy
+
+    def use_energy(self, _amount):
+        self._current_energy -= _amount
+        if self._current_energy < 0:
+            warnings.warn("An Actor has overspent their energy! (Actor._current_energy < 0). This should not happen!")
+
+    @property
+    def energy_regen(self):
+        return self._energy_regen
+
+    @property
+    def faction(self):
+        return self._faction
+
+    def get_faction_name(self):
+        return self._faction.get_faction_name()
+
+    def is_player_controlled(self):
+        return self._faction == FACTIONS.PLAYER
+
+    @property
+    def threat(self):
+        return self._base_threat
+
+# Accessors
+    def get_senses(self):
+        return self._senses
+
+    def get_status_effects(self):
+        return self._status_effects
+
+    def get_tools(self):
+        return self._tools
 
     def init_tool_list(self, _tool_list):
         self._tools = _tool_list

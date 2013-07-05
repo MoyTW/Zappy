@@ -31,7 +31,7 @@ class Tool(Entity.Entity):
         return self._turns_until_ready == 0
 
     def user_has_energy(self):
-        return self._user.get_current_energy() >= self._energy_cost
+        return self._user.current_energy >= self._energy_cost
 
     def targets_actors(self):
         return self.TYPE_ACTOR in self._list_target_types
@@ -104,7 +104,7 @@ class Tool(Entity.Entity):
         return (_x, _y) in cells_in_range
 
     def _user_has_moves(self):
-        return self._user.get_current_moves() >= self._move_cost
+        return self._user.current_moves >= self._move_cost
 
     def _can_use_tool_on(self, _type, _t_x, _t_y):
         if not self.is_ready():

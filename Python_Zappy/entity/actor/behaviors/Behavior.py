@@ -34,7 +34,7 @@ class Behavior(object):
         return False
 
     def _general_can_execute(self, _target, _level, _adversary):
-        if _target is not None and _adversary.get_current_moves() >= self._move_cost:
+        if _target is not None and _adversary.current_moves >= self._move_cost:
             return True
         else:
             return False

@@ -24,15 +24,15 @@ class TestBehaviorMoveStupid(unittest.TestCase):
     def test_can_execute(self):
         player = self.level.player_actor
         self.assertTrue(self.behavior._can_execute(player, self.level, self.adversary))
-        self.adversary.use_moves(self.adversary.get_current_moves())
+        self.adversary.use_moves(self.adversary.current_moves)
         self.assertFalse(self.behavior._can_execute(player, self.level, self.adversary))
 
     def test_uses_movement_points(self):
         self.level.place_entity_at(self.adversary, 0, 0)
         self.adversary.turn_begin()
-        start_moves = self.adversary.get_current_moves()
+        start_moves = self.adversary.current_moves
         self.assertTrue(self.behavior.attempt_to_execute(self.level.player_actor, self.level, self.adversary))
-        self.assertLess(self.adversary.get_current_moves(), start_moves)
+        self.assertLess(self.adversary.current_moves, start_moves)
 
     def test_execute(self):
         data = self._gen_test_data()

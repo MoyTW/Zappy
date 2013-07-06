@@ -51,7 +51,7 @@ class Cell(object):
 
     def remove_entity(self, _entity):
         try:
-            print "Number of matching entities in Cell.contains matching", _entity.entity_name, self._contains.count(_entity)
+#            print "Number of matching entities in Cell.contains matching", _entity.entity_name, self._contains.count(_entity)
 
             matches = list()
             for entity in self._contains:

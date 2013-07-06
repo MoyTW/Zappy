@@ -41,4 +41,6 @@ class LevelInfo:
             return self._return_default_preview()
 
     def __eq__(self, other):
+        print "SELF SORTED DICT!", sorted(self.__dict__)
+        print "OTHER SORTED DICT!", sorted(other.__dict__)
         return sorted(self.__dict__) == sorted(other.__dict__)

@@ -45,8 +45,12 @@ class Entity(object):
                           RuntimeWarning)
             return loader.image(self.DEFAULT_IMAGE_PATH)
 
-    def __eq__(self, other):
-        try:
-            return sorted(self.__dict__) == sorted(other.__dict__)
-        except AttributeError:
-            return False
+    #def __eq__(self, other):
+    #    try:
+    #        return sorted(self.__dict__) == sorted(other.__dict__)
+    #    except AttributeError as e:
+    #        warnings.warn(e)
+    #        return False
+
+    def __repr__(self):
+        return "{0} at ({1}, {2})".format(self.entity_name, self._x, self._y)

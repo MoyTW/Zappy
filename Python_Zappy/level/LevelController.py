@@ -56,7 +56,9 @@ class LevelController(object):
         self._zappy.turn_end()
 
         # Adversaries' turns
-        for entity in self._level.get_all_entities():
+        entities = self._level.get_all_entities()
+        for entity in entities:
+            print "Entities for this turn:", entities
             if entity is not self._zappy:
                 try:
                     if entity.is_destroyed():
@@ -66,8 +68,8 @@ class LevelController(object):
                         entity.turn_begin()
                         try:
                             entity.take_action()
-                        except AttributeError:
-                            pass
+                        except AttributeError as e:
+                            warnings.warn(e)
                         entity.turn_end()
 
                         if entity.is_destroyed():

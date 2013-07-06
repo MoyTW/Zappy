@@ -46,7 +46,7 @@
         ]
     },
     {
-        "_entity": "adversaries/FastStupidSight.json",
+        "_entity": "adversaries/FastStupidSightTest.json",
         "_orders": [
             {
                 "_order": "place",

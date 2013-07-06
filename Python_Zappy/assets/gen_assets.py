@@ -66,6 +66,15 @@ stupid_sight_enemy = TemplateAdversary(_entity_name='StupidSight',
                                        _rank=RANK.WEAK)
 convert_and_write_to_file(stupid_sight_enemy, 'entities/adversaries/FastStupidSight.json')
 
+stupid_sight_enemy_test = TemplateAdversary(_entity_name='StupidSightTest',
+                                            _image_name='biting_snake.png',
+                                            _behaviors=[BehaviorMoveStupid.BehaviorMoveStupid(),
+                                                        BehaviorAttackMelee.BehaviorAttackMelee(_strength=1)],
+                                            _max_moves=2,
+                                            _senses=[SenseSight.SenseSight(9)],
+                                            _rank=RANK.WEAK)
+convert_and_write_to_file(stupid_sight_enemy_test, 'entities/adversaries/FastStupidSightTest.json')
+
 zap_gun_tool = TemplateTool('zap_gun', _entity_name='Floor Gun')
 convert_and_write_to_file(zap_gun_tool, 'entities/tools/ZapGunTool.json')
 

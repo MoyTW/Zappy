@@ -51,9 +51,22 @@ class Cell(object):
 
     def remove_entity(self, _entity):
         try:
+            print "Number of matching entities in Cell.contains matching", _entity.entity_name, self._contains.count(_entity)
+
+            matches = list()
+            for entity in self._contains:
+                if entity == _entity:
+                    matches.append(entity)
+
+            if len(matches) == 2:
+                print "THE FOLLOWING TWO APPARENTLY MATCH!"
+                print sorted(matches[0].__dict__)
+                print sorted(matches[1].__dict__)
+
             self._contains.remove(_entity)
             return True
         except ValueError:
+            print "COULD NOT REMOVE ENTITY"
             return False
 
     def contains_entity(self, _entity):

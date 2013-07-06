@@ -2,6 +2,7 @@ __author__ = 'Travis Moy'
 
 import level.levelExceptions
 import warnings
+import entity.actor.Adversary as Adversary
 
 
 class Level:
@@ -81,7 +82,8 @@ class Level:
 
     def get_all_entities_at(self, x, y):
         if self._check_coordinates(x, y):
-            return self._cells[x][y].get_all_entities()
+            entities = self._cells[x][y].get_all_entities()
+            return entities
         return None
 
     # Horrifying, really. A more efficient (but more work-intensive) way would be to maintain an internal list, and to
@@ -93,6 +95,9 @@ class Level:
         for x in range(self.level_width):
             for y in range(self.level_height):
                 entities.extend(self.get_all_entities_at(x, y))
+        for entity in entities:
+            if isinstance(entity, Adversary.Adversary):
+                print entity
         return entities
 
     def cell_is_passable(self, x, y):
@@ -133,8 +138,10 @@ class Level:
 
     def move_entity_from_to(self, entity, old_x, old_y, new_x, new_y):
         if not self.remove_entity_from(entity, old_x, old_y):
+            print "Could not remove", entity.entity_name, "from", old_x, old_y
             return False
         self.place_entity_at(entity, new_x, new_y)
+        print "Removed",  entity.entity_name, "from", old_x, old_y, "and placed at", new_x, new_y
         return True
 
     # Dumb search

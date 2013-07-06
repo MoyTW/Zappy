@@ -66,4 +66,7 @@ class Adversary(Actor.Actor):
             if behavior_executed:
                 any_behavior_executed = True
 
+        #print self, "is at end of action! Behavior executed?", any_behavior_executed
+        #print self._level.get_cell_at(*self.get_coords())._contains
+
         return any_behavior_executed

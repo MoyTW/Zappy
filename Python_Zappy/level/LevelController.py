@@ -57,8 +57,8 @@ class LevelController(object):
 
         # Adversaries' turns
         entities = self._level.get_all_entities()
+        print "Entities for this turn:", entities
         for entity in entities:
-            print "Entities for this turn:", entities
             if entity is not self._zappy:
                 try:
                     if entity.is_destroyed():

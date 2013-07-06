@@ -116,7 +116,6 @@ class Actor(Entity.Entity, Destructible.Destructible):
     #   Apply each status effect, in turn (this done because if you are, for example, deafened, but you somehow acquire
     # a new hearing sense within the turn, you will be made unable to use it, as is proper)
     def turn_begin(self):
-        print "Entity", self.entity_name, "at", self._x, self._y, "is taking its turn!"
         self._detect_entities()
         self._current_moves = self._max_moves
         self._current_energy += self._energy_regen

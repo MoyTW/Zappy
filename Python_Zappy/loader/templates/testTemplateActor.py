@@ -21,7 +21,7 @@ class TestTemplateActor(unittest.TestCase):
         self.template_tools_list = None
 
     def test_create_tool_list(self):
-        dummy_tool = Tool.Tool(_level=None, _list_target_types=None, _range=5, _energy_cost=2, _cooldown=0)
+        dummy_tool = Tool.Tool(0, _level=None, _list_target_types=None, _range=5, _energy_cost=2, _cooldown=0)
         template_actor = TemplateActor.TemplateActor(5, _tools=self.template_tools_list)
 
         tool_list = template_actor._create_tool_list(None, None)
@@ -35,7 +35,7 @@ class TestTemplateActor(unittest.TestCase):
 
     def test_user_is_set(self):
         template_actor = TemplateActor.TemplateActor(_tools=self.template_tools_list)
-        created_actor = template_actor.create_instance(level=None, entity_index=None)
+        created_actor = template_actor.create_instance(0, level=None, entity_index=None)
         self.assertEqual(created_actor._tools[0].user, created_actor)
 
     def test_create_instance(self):
@@ -48,10 +48,10 @@ class TestTemplateActor(unittest.TestCase):
         template_actor = TemplateActor.TemplateActor(_max_moves=max_moves, _tools=tools_list, _senses=sense_list,
                                                      _image_name=image_name)
 
-        actor = Actor.Actor(_level=level_parameter, _max_moves=max_moves, _senses=sense_list, _image_name=image_name)
+        actor = Actor.Actor(0, _level=level_parameter, _max_moves=max_moves, _senses=sense_list, _image_name=image_name)
         actor_tools = template_actor._create_tool_list(level_parameter, None, actor)
         actor.init_tool_list(actor_tools)
-        created_actor = template_actor.create_instance(level=level_parameter, entity_index=None)
+        created_actor = template_actor.create_instance(0, level=level_parameter, entity_index=None)
 
         if created_actor is None:
             self.assertTrue(False, "template_actor.create_instance is returning None!")

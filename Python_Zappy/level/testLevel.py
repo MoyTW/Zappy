@@ -32,10 +32,10 @@ class TestLevel(unittest.TestCase):
         self.assertNotEqual(self.empty_test_level, self.initialized_test_level)
 
         lvl_eq_0 = level.Level.Level(self.test_info, self.test_cells)
-        actor_0 = Actor.Actor(lvl_eq_0)
+        actor_0 = Actor.Actor(0, lvl_eq_0)
         lvl_eq_0.place_entity_at(actor_0, 0, 0)
         lvl_eq_1 = level.Level.Level(self.test_info, self.test_cells)
-        actor_1 = Actor.Actor(lvl_eq_1)
+        actor_1 = Actor.Actor(0, lvl_eq_1)
         lvl_eq_1.place_entity_at(actor_1, 0, 0)
 
         self.assertEqual(lvl_eq_0, lvl_eq_1)

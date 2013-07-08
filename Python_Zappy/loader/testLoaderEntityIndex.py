@@ -17,7 +17,7 @@ class TestLoaderEntityIndex(unittest.TestCase):
         self._custom_loader = pyglet.resource.Loader('@loader')
         self._index = loader.LoaderEntityIndex.LoaderEntityIndex()
         self._index._loader = self._custom_loader
-        self._default_entity = entity.Entity.Entity(None, self._default_level)
+        self._default_entity = entity.Entity.Entity(0, self._default_level)
 
         self.filename = 'test_entities/test_file.json'
         self.template = dummies.DummyTemplate.DummyTemplate(name="Test", integer=10)

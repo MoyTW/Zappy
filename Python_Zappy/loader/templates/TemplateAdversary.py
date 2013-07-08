@@ -24,8 +24,9 @@ class TemplateAdversary(Template.Template):
         self._faction = _faction
         self._base_threat = _base_threat
 
-    def create_instance(self, level, entity_index):
-        adversary = Adversary.Adversary(_level=level,
+    def create_instance(self, eid, level, entity_index):
+        adversary = Adversary.Adversary(_eid=eid,
+                                        _level=level,
                                         _entity_name=self._entity_name,
                                         _behaviors=self._behaviors,
                                         _max_moves=self._max_moves,

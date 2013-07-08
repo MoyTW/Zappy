@@ -16,7 +16,7 @@ class TestAdversary(unittest.TestCase):
         vertical = BehaviorMoveStupidVertical(_move_cost=1)
 
         self.level = loader.oldLoaderLevel.oldLoaderLevel('entity/actor/behaviors/behavior_test_levels').get_level(0)
-        self.adversary = Adversary.Adversary(_level=self.level, _senses=[SenseSeismic.SenseSeismic(5)],
+        self.adversary = Adversary.Adversary(_eid=0, _level=self.level, _senses=[SenseSeismic.SenseSeismic(5)],
                                              _behaviors=[horizontal, vertical])
 
     def tearDown(self):
@@ -57,8 +57,8 @@ class TestAdversary(unittest.TestCase):
 
     def test_select_target(self):
         self.adversary._faction = FACTIONS.TEST_0
-        self.high_threat = Adversary.Adversary(_level=self.level, _faction=FACTIONS.TEST_1, _base_threat=5)
-        self.no_threat = Adversary.Adversary(_level=self.level, _faction=FACTIONS.TEST_1, _base_threat=0)
+        self.high_threat = Adversary.Adversary(_eid=0, _level=self.level, _faction=FACTIONS.TEST_1, _base_threat=5)
+        self.no_threat = Adversary.Adversary(_eid=0, _level=self.level, _faction=FACTIONS.TEST_1, _base_threat=0)
 
         self.level.place_entity_at(self.adversary, 1, 3)
         self.level.place_entity_at(self.high_threat, 0, 4)

@@ -9,7 +9,7 @@ import entity.actor.effects.EffectBlind as EffectBlind
 class TestEffectBlind(unittest.TestCase):
 
     def setUp(self):
-        self.actor = Actor.Actor(None, _senses=[
+        self.actor = Actor.Actor(0, None, _senses=[
             SenseSight.SenseSight(4),
             SenseSight.SenseSight(1)
         ])

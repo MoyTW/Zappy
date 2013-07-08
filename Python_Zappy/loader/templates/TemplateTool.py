@@ -34,7 +34,7 @@ class TemplateTool(Template.Template):
         self._energy_cost = _energy_cost
         self._image_name = _image_name
 
-    def create_instance(self, level, entity_index, user=None):
+    def create_instance(self, eid, level, entity_index, user=None):
         _tool_class = None
         try:
             _tool_class = TOOL_NAMES_DICT[self._tool_class]
@@ -47,7 +47,8 @@ class TemplateTool(Template.Template):
         if _tool_class is None:
             warnings.warn("RETURNING NONE FROM TempalteTool.create_instance()")
             return None
-        return _tool_class(_level=level,
+        return _tool_class(_eid=eid,
+                           _level=level,
                            _user=user,
                            _entity_name=self._entity_name,
                            _range=self._range,

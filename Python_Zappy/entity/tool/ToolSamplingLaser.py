@@ -17,13 +17,13 @@ How to manage?
 
 
 class ToolSamplingLaser(Tool.Tool):
-    def __init__(self, _level, _damage=5, _blind_duration=14, _enrage_duration=7, **kwargs):
+    def __init__(self, _eid, _level, _damage=5, _blind_duration=14, _enrage_duration=7, **kwargs):
         self._damage = _damage
         self._blind_duration = _blind_duration
         self._enrage_duration = _enrage_duration
         kwargs['_list_target_types'] = [self.TYPE_ENTITY]
         kwargs['_requires_LOS'] = True
-        super(ToolSamplingLaser, self).__init__(_level, **kwargs)
+        super(ToolSamplingLaser, self).__init__(_eid=_eid, _level=_level, **kwargs)
 
     def _effects_of_use_on_entity(self, _target):
         done = self._use_on_actor(_target)

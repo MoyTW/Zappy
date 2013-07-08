@@ -7,8 +7,8 @@ import entity.environmentals.Environmental as Environmental
 class EnvCollapsible(Environmental.Environmental):
     PIT_IMAGE_PATH = 'images/cells/pit.png'
 
-    def __init__(self, _level, _entity_name='Collapsible', _image_name=None, _max_hp=5, **kwargs):
-        super(EnvCollapsible, self).__init__(_level=_level, _entity_name=_entity_name, _image_name=_image_name,
+    def __init__(self, _eid, _level, _entity_name='Collapsible', _image_name=None, _max_hp=5, **kwargs):
+        super(EnvCollapsible, self).__init__(_eid=_eid, _level=_level, _entity_name=_entity_name, _image_name=_image_name,
                                              _max_hp=_max_hp, **kwargs)
 
     def trigger(self):

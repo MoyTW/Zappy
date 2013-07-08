@@ -6,12 +6,12 @@ import entity.environmentals.Environmental as Environmental
 # The unstable floor will collapse when destroyed, killing everything above it and leaving an impassable tile.
 class EnvDoor(Environmental.Environmental):
 
-    def __init__(self, _level, _entity_name='Default Door', _max_hp=100,
+    def __init__(self, _eid, _level, _entity_name='Default Door', _max_hp=100,
                  _open_image_location=None,
                  _closed_image_location=None,
                  _is_open=False,
                  **kwargs):
-        super(EnvDoor, self).__init__(_level=_level, _entity_name=_entity_name, _max_hp=_max_hp, **kwargs)
+        super(EnvDoor, self).__init__(_eid=_eid, _level=_level, _entity_name=_entity_name, _max_hp=_max_hp, **kwargs)
         self._is_open = _is_open
         self._open_image_location = _open_image_location
         self._closed_image_location = _closed_image_location

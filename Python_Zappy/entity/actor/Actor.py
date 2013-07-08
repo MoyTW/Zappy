@@ -10,10 +10,10 @@ import entity.Destructible as Destructible
 class Actor(Entity.Entity, Destructible.Destructible):
     PRIORITY = 3
 
-    def __init__(self, _level, _entity_name='Default Actor Name', _max_hp=1, _max_moves=1, _max_energy=100,
+    def __init__(self, _eid, _level, _entity_name='Default Actor Name', _max_hp=1, _max_moves=1, _max_energy=100,
                  _energy_regen=10, _tools=None, _senses=None, _image_name=None, _rank=RANK.AVERAGE,
                  _faction=FACTIONS.DEFAULT, _base_threat=1, **kwargs):
-        super(Actor, self).__init__(_entity_name=_entity_name, _image_name=_image_name, _max_hp=_max_hp,
+        super(Actor, self).__init__(_eid=_eid, _entity_name=_entity_name, _image_name=_image_name, _max_hp=_max_hp,
                                     _level=_level, **kwargs)
 
         self.rank = _rank

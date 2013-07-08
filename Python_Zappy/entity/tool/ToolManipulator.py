@@ -16,11 +16,11 @@ enemy is 'stored' in the manipulator object instead of added to the level's dead
 
 
 class ToolManipulator(Tool.Tool):
-    def __init__(self, _level, _capture_strength=1, **kwargs):
+    def __init__(self, _eid, _level, _capture_strength=1, **kwargs):
         kwargs['_list_target_types'] = [self.TYPE_ENTITY]
         kwargs['_requires_LOS'] = True
         self._capture_strength = _capture_strength
-        super(ToolManipulator, self).__init__(_level, **kwargs)
+        super(ToolManipulator, self).__init__(_eid=_eid, _level=_level, **kwargs)
 
         self._captured_actors = list()
 

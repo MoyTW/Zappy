@@ -33,7 +33,7 @@ class TemplateEnvironmental(Template.Template):
         if _max_hp is not None:
             self._kwargs['_max_hp'] = _max_hp
 
-    def create_instance(self, level, entity_index, user=None):
+    def create_instance(self, eid, level, entity_index, user=None):
         _env_class = None
         try:
             _env_class = ENV_NAMES_DICT[self._env_class]
@@ -46,5 +46,6 @@ class TemplateEnvironmental(Template.Template):
         if _env_class is None:
             warnings.warn("RETURNING NONE FROM TempalteTool.create_instance()")
             return None
-        return _env_class(_level=level,
+        return _env_class(_eid=eid,
+                          _level=level,
                           **self._kwargs)

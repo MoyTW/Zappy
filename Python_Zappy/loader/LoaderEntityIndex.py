@@ -11,6 +11,7 @@ class LoaderEntityIndex(object):
     def __init__(self):
         self._loader = pyglet.resource.Loader('@assets.entities')
         self._template_dict = dict()
+        self._current_eid = 0
 
     def get_list_of_loaded_templates(self):
         return self._template_dict.keys()
@@ -26,10 +27,13 @@ class LoaderEntityIndex(object):
             self._load_template_by_name(name)
 
         if self._template_dict[name] is None:
-            ret_ent = entity.Entity.Entity(_level=level, _entity_name='No Entity In Index With Name {0}'.format(name),
+            ret_ent = entity.Entity.Entity(_eid=self._current_eid, _level=level,
+                                           _entity_name='No Entity In Index With Name {0}'.format(name),
                                            _image_name=None)
         else:
-            ret_ent = self._template_dict[name].create_instance(level=level, entity_index=self)
+            ret_ent = self._template_dict[name].create_instance(self._current_eid, level=level, entity_index=self)
+        self._current_eid += 1
+
         return ret_ent
 
     # Attempt to load name using loader; if cannot find or error in conversion, defaults to None

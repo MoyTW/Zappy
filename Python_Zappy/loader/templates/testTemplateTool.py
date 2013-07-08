@@ -15,15 +15,15 @@ class TestTemplateTool(unittest.TestCase):
 
     def test_create_instance(self):
         template = TemplateTool.TemplateTool('tool', _range=5, _cooldown=0, _energy_cost=2, _image_name=None)
-        result = Tool.Tool('lvl', _list_target_types=list(), _range=5, _energy_cost=2, _cooldown=0, _image_name=None)
-        instance = template.create_instance(level='lvl', entity_index=None)
+        result = Tool.Tool(0, 'lvl', _list_target_types=list(), _range=5, _energy_cost=2, _cooldown=0, _image_name=None)
+        instance = template.create_instance(0, level='lvl', entity_index=None)
         del result.entity_image
         del instance.entity_image
         self.assertEqual(result.__dict__, instance.__dict__)
 
     def test_create_instance_not_in_dict(self):
         template = TemplateTool.TemplateTool('zoo', _range=0, _cooldown=0, _energy_cost=2, _image_name=None)
-        instance = template.create_instance(level='lvl', entity_index=None)
+        instance = template.create_instance(0, level='lvl', entity_index=None)
         self.assertEqual(None, instance)
 
 suite = unittest.TestLoader().loadTestsFromTestCase(TestTemplateTool)

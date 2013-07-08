@@ -7,7 +7,7 @@ class DummyTemplate(object):
         self.name = name
         self.integer = integer
 
-    def create_instance(self, level, entity_index):
+    def create_instance(self, eid, level, entity_index):
         return self.__repr__()
 
     def __repr__(self):

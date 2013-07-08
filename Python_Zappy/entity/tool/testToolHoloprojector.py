@@ -11,13 +11,16 @@ class TestToolHoloprojector(unittest.TestCase):
         loader = LoaderLevel.oldLoaderLevel('entity/actor/behaviors/behavior_test_levels')
         self.level = loader.get_level(0)
         self.zappy = self.level.player_actor
-        self.tool = ToolHoloprojector.ToolHoloprojector(_level=self.level)
+        self.tool = ToolHoloprojector.ToolHoloprojector(0, _level=self.level)
         self.zappy.add_tool(self.tool)
 
     def tearDown(self):
         self.level = None
         self.zappy = None
         self.tool = None
+
+    def test_FAILS_created_entity_has_no_id(self):
+        self.assertFalse(True, "See title of test!")
 
     def test_creates_entity(self):
         self.tool.use_on_location(1, 3)

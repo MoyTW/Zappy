@@ -44,8 +44,8 @@ class TestTemplateEnvironmental(unittest.TestCase):
     def test_create_instance(self):
         template = TemplateEnvironmental.TemplateEnvironmental('environmental', _entity_name='test', _image_name='timg',
                                                                _max_hp=3)
-        comp_env = Environmental.Environmental('lvl', _entity_name='test', _image_name='timg', _max_hp=3)
-        instance = template.create_instance('lvl', None)
+        comp_env = Environmental.Environmental(0, 'lvl', _entity_name='test', _image_name='timg', _max_hp=3)
+        instance = template.create_instance(0, 'lvl', None)
         del comp_env.entity_image
         del instance.entity_image
         self.assertEqual(comp_env.__dict__, instance.__dict__)
@@ -55,13 +55,13 @@ class TestTemplateEnvironmental(unittest.TestCase):
                                                                _open_image_location='cells/floor.png',
                                                                _closed_image_location='cells/wall.png',
                                                                _is_open=True)
-        comp_env = EnvDoor.EnvDoor(None, _entity_name='door', _open_image_location='cells/floor.png',
+        comp_env = EnvDoor.EnvDoor(0, None, _entity_name='door', _open_image_location='cells/floor.png',
                                    _closed_image_location='cells/wall.png', _is_open=True)
         json = JSONCONVERTER.simple_to_json(template)
         print "JSON BEFORE LOADING", json
         template = JSONCONVERTER.simple_to_custom_object(json)
         print "TEMPLATE", template.__dict__
-        instance = template.create_instance(None, None)
+        instance = template.create_instance(0, None, None)
         self.assertEqual(comp_env.entity_name, instance.entity_name)
         self.assertEqual(comp_env._open_image_location, instance._open_image_location)
         self.assertEqual(comp_env._closed_image_location, instance._closed_image_location)
@@ -69,8 +69,8 @@ class TestTemplateEnvironmental(unittest.TestCase):
 
     def test_vars_not_input_are_default(self):
         template = TemplateEnvironmental.TemplateEnvironmental('environmental')
-        comp_env = Environmental.Environmental(None)
-        instance = template.create_instance(None, None)
+        comp_env = Environmental.Environmental(0, None)
+        instance = template.create_instance(0, None, None)
         del comp_env.entity_image
         del instance.entity_image
         self.assertEqual(comp_env.__dict__, instance.__dict__)

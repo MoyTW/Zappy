@@ -3,6 +3,7 @@ __author__ = 'Travis Moy'
 import unittest
 import level
 import pyglet
+import entity.actor.Actor as Actor
 
 
 class TestLevel(unittest.TestCase):
@@ -26,6 +27,18 @@ class TestLevel(unittest.TestCase):
         self.test_cells = None
         self.empty_test_level = None
         self.initialized_test_level = None
+
+    def test_eq(self):
+        self.assertNotEqual(self.empty_test_level, self.initialized_test_level)
+
+        lvl_eq_0 = level.Level.Level(self.test_info, self.test_cells)
+        actor_0 = Actor.Actor(lvl_eq_0)
+        lvl_eq_0.place_entity_at(actor_0, 0, 0)
+        lvl_eq_1 = level.Level.Level(self.test_info, self.test_cells)
+        actor_1 = Actor.Actor(lvl_eq_1)
+        lvl_eq_1.place_entity_at(actor_1, 0, 0)
+
+        self.assertEqual(lvl_eq_0, lvl_eq_1)
 
     def test_cells_are_none(self):
         self.assertEquals(self.empty_test_level.cells_are_none(), True)

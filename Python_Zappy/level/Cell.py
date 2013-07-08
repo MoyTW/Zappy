@@ -75,7 +75,14 @@ class Cell(object):
         return not self.__eq__(other)
 
     def __eq__(self, other):
-        return sorted(self.__dict__) == sorted(other.__dict__)
+        try:
+            self_dict = self.__dict__.copy()
+            other_dict = other.__dict__.copy()
+            self_contains = self_dict.pop('_contains')
+            other_contains = other_dict.pop('_contains')
+            return sorted(self_contains) == sorted(other_contains) and self_dict == other_dict
+        except AttributeError:
+            return False
 
     def __repr__(self):
         return "(P: {0} I: {1} C: {2})".format(self.is_passable, self._image_location, self._contains)

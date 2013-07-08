@@ -9,11 +9,8 @@ class DummyTool(object):
         self._cooldown = _cooldown
         self._level = _level
 
-    '''
-    def use_on(self, cell):
-        self.use_on_called_with = cell
-        return True
-    '''
+    def __ne__(self, other):
+        return not self.__eq__(other)
 
     def __eq__(self, other):
         try:

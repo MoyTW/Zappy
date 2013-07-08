@@ -40,5 +40,8 @@ class LevelInfo:
             warnings.warn(warnstr, RuntimeWarning)
             return self._return_default_preview()
 
+    def __ne__(self, other):
+        return not self.__eq__(other)
+
     def __eq__(self, other):
         return sorted(self.__dict__) == sorted(other.__dict__)

@@ -151,6 +151,9 @@ class Level:
                 return True
         return False
 
+    def __ne__(self, other):
+        return not self.__eq__(other)
+
     def __eq__(self, other):
         return sorted(self.__dict__) == sorted(other.__dict__)
 

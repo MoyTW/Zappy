@@ -17,7 +17,7 @@ class UIScreenLevelEnd(UIScreen.UIScreen):
         label_text = 'Neither Victory, Nor Defeat. WTF?'
         if self._control.level_won:
             label_text = 'Victory!'
-        elif self._control.is_level_failed():
+        elif self._control.level_failed:
             label_text = 'Defeat!'
 
         message = pyglet.text.Label(label_text,

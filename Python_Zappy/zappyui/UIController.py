@@ -2,6 +2,7 @@ __author__ = 'Travis Moy'
 
 import Keybinds
 import pyglet
+import warnings
 
 
 class UIController(object):
@@ -62,8 +63,8 @@ class UIController(object):
                 if destruct_screen is not None:
                     self._handle_new_screen(destruct_screen)
                 self._screen_head.activate()
-            except AttributeError:
-                print "Catching for test."
+            except AttributeError as e:
+                warnings.warn(e)
 
     # Gamepad support?
     def _setup_callbacks(self):

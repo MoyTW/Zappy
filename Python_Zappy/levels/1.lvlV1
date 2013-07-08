@@ -2,22 +2,46 @@
 {
     "__class__": "LevelInfo",
     "__module__": "level.LevelInfo",
-    "_height": 1,
+    "_height": 20,
     "_previews_folder": "levels",
-    "_name": "TestLevel1",
+    "_name": "Always a bigger fish...",
     "_number": 1,
-    "_width": 1
+    "_width": 20
 }
 
 #- Cell definitions
 {
     "#": "wall.json",
     ".": "floor.json",
-    "D": "drone.json"
+    "Z": "drone.json",
+    "0": "pit.json",
+    "u": "unstable_floor.json",
+    "D": "reinforced_door.json",
+    "r": "melee_robot.json",
+    "M": "terrifying_monster.json"
 }
 
 #- Map layout
-D
+# # # # # # # # # # # # # # # # # # # #
+# . . . . . . # . . . . . . . . . . . #
+# . . . Z . . u . . . M . . . . . . . #
+# . . . . . . # . . . . . . . . . . . #
+# . . . . . . # . # # # # # # # # # # #
+# . . . . . . . u . . . . . . . . . . #
+# . . . . . . # # # r . . . . . . . . #
+# . . . . . . # . r r . . . . . . . . #
+# . . . . . . # . r . r . . . . . . . #
+# . . . . . . # . . r . r . . . . . . #
+# # # # # # # # . . . . . . . . . . . #
+# . . . . . . . . . . . . . . . . . . #
+# . . . . . . # . . . . . . . . . . . #
+# . . . . . . # . . . . . . . . . . . #
+# . . . . . . # . . . . . . . . . . . #
+# . . . . . . # . . . . . . . . . . . #
+# . . . . . . # . . . . . . . . . . . #
+# . . . . . . # . . . . . . . . . . . #
+# . . . . . . # . . . . . . . . . . . #
+# # # # # # # # # # # # # # # # # # # #
 
 #- Entities to be placed on the map
 []

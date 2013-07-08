@@ -1,0 +1,44 @@
+{
+    "__class__": "TemplateAdversary", 
+    "__module__": "loader.templates.TemplateAdversary", 
+    "_base_threat": 1, 
+    "_behaviors": [
+        {
+            "__class__": "BehaviorAttackMelee", 
+            "__module__": "entity.actor.behaviors.BehaviorAttackMelee", 
+            "_move_cost": 1, 
+            "_strength": 1
+        }, 
+        {
+            "__class__": "BehaviorMoveStupid", 
+            "__module__": "entity.actor.behaviors.BehaviorMoveStupid", 
+            "_move_cost": 1
+        }
+    ], 
+    "_entity_name": "Robot Basher", 
+    "_faction": {
+        "__class__": "Faction", 
+        "__module__": "entity.actor.Faction", 
+        "_name": "Robots", 
+        "_names_friendly_to": [
+            "Engineers"
+        ], 
+        "_names_hostile_to": [
+            "Player", 
+            "Robots"
+        ], 
+        "_names_neutral_to": []
+    }, 
+    "_image_name": "boxydrone.png", 
+    "_max_hp": 5, 
+    "_max_moves": 1, 
+    "_rank": 1, 
+    "_senses": [
+        {
+            "__class__": "SenseSight", 
+            "__module__": "entity.actor.senses.SenseSight", 
+            "_range": 9
+        }
+    ], 
+    "_tools": null
+}

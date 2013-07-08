@@ -20,6 +20,27 @@ def convert_and_write_to_file(object, filename):
 
 #####=====----- Entities -----=====#####
 
+terrifying_cave_monster = TemplateAdversary(_entity_name='Cave Monster',
+                                            _image_name='tortise.png',
+                                            _faction=FACTIONS.CAVE_MONSTERS,
+                                            _max_moves=1,
+                                            _max_hp=100,
+                                            _behaviors=[BehaviorAttackMelee.BehaviorAttackMelee(_strength=5),
+                                                        BehaviorMoveStupid.BehaviorMoveStupid()],
+                                            _senses=[SenseSight.SenseSight(9)],
+                                            _rank=RANK.TERRIFYING)
+convert_and_write_to_file(terrifying_cave_monster, 'entities/adversaries/TerrifyingCaveMonster.json')
+
+melee_robot = TemplateAdversary(_entity_name='Robot Basher',
+                                _image_name='boxydrone.png',
+                                _faction=FACTIONS.ROBOTS,
+                                _max_hp=5,
+                                _behaviors=[BehaviorAttackMelee.BehaviorAttackMelee(),
+                                            BehaviorMoveStupid.BehaviorMoveStupid()],
+                                _senses=[SenseSight.SenseSight(9)],
+                                _rank=RANK.AVERAGE)
+convert_and_write_to_file(melee_robot, 'entities/adversaries/MeleeRobot.json')
+
 zappy_basic_template = TemplateActor(_senses=[SenseSight.SenseSight(9)],
                                      _tools=[TemplateTool('manipulator',
                                                           _image_name='tools/waldo.png',
@@ -84,6 +105,14 @@ weak_door_env = TemplateEnvironmental(_env_class='door', _entity_name='Weak Door
 convert_and_write_to_file(weak_door_env, 'entities/environmentals/WeakDoor.json')
 
 #####=====----- Cells -----=====#####
+
+melee_robot = TemplateCell(_image_location='images/cells/floor.png', _passable=True, _transparent=True,
+                           _entity_files=['adversaries/MeleeRobot.json'])
+convert_and_write_to_file(melee_robot, 'cells/melee_robot.json')
+
+terrifying_monster = TemplateCell(_image_location='images/cells/floor.png', _passable=True, _transparent=True,
+                                  _entity_files=['adversaries/TerrifyingCaveMonster.json'])
+convert_and_write_to_file(terrifying_monster, 'cells/terrifying_monster.json')
 
 floor = TemplateCell(_image_location='images/cells/floor.png', _passable=True, _transparent=True)
 convert_and_write_to_file(floor, 'cells/floor.json')

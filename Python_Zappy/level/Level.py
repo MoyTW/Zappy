@@ -155,8 +155,15 @@ class Level:
         return not self.__eq__(other)
 
     def __eq__(self, other):
-        #return sorted(self.__dict__) == sorted(other.__dict__)
-        return False
+        try:
+            for x in range(self.level_width):
+                for y in range(self.level_height):
+                    if not self._cells[x][y] == other._cells[x][y]:
+                        return False
+
+            return self._info == other._info and self._player_actor == other._player_actor
+        except (TypeError, IndexError, AttributeError):
+            return False
 
     def __repr__(self):
         return "({0}, {1}".format(self._info, self._cells)

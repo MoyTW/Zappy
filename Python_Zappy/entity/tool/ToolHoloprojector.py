@@ -3,6 +3,7 @@ __author__ = 'Travis Moy'
 import Tool
 import entity.actor.Actor as Actor
 import entity.actor.effects.EffectDeath as EffectDeath
+import warnings
 
 
 # How does the holoprojector work?
@@ -17,6 +18,7 @@ import entity.actor.effects.EffectDeath as EffectDeath
 class ToolHoloprojector(Tool.Tool):
 
     def __init__(self, _eid, _level, _holo_name='Hologram', _hp=999, _threat=9, **kwargs):
+        warnings.warn("ToolHoloprojector's created Actors always have ID=-1!")
         self._holo_name = _holo_name
         self._hp = _hp
         self._threat = _threat
@@ -26,7 +28,7 @@ class ToolHoloprojector(Tool.Tool):
 
     def _effects_of_use_on_location(self, _x, _y):
         user_faction = self.user.faction
-        holo = Actor.Actor(0, self._level, _entity_name=self._holo_name, _max_hp=self._hp, _faction=user_faction,
+        holo = Actor.Actor(-1, self._level, _entity_name=self._holo_name, _max_hp=self._hp, _faction=user_faction,
                            _base_threat=self._threat)
         holo.apply_status_effect(EffectDeath.EffectDeath(5, holo))
         self._level.place_entity_at(holo, _x, _y)

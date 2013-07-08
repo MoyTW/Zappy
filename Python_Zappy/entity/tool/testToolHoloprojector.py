@@ -19,7 +19,7 @@ class TestToolHoloprojector(unittest.TestCase):
         self.zappy = None
         self.tool = None
 
-    def test_FAILS_created_entity_has_no_id(self):
+    def test_FAILS_created_entity_has_hardcoded_eid_of_negative_one(self):
         self.assertFalse(True, "See title of test!")
 
     def test_creates_entity(self):

@@ -46,9 +46,9 @@ class TestTemplateEnvironmental(unittest.TestCase):
                                                                _max_hp=3)
         comp_env = Environmental.Environmental('lvl', _entity_name='test', _image_name='timg', _max_hp=3)
         instance = template.create_instance('lvl', None)
-        print comp_env.__dict__
-        print instance.__dict__
-        self.assertEqual(comp_env, instance)
+        del comp_env.entity_image
+        del instance.entity_image
+        self.assertEqual(comp_env.__dict__, instance.__dict__)
 
     def test_extra_args(self):
         template = TemplateEnvironmental.TemplateEnvironmental('door', _entity_name='door',
@@ -71,7 +71,9 @@ class TestTemplateEnvironmental(unittest.TestCase):
         template = TemplateEnvironmental.TemplateEnvironmental('environmental')
         comp_env = Environmental.Environmental(None)
         instance = template.create_instance(None, None)
-        self.assertEqual(comp_env, instance)
+        del comp_env.entity_image
+        del instance.entity_image
+        self.assertEqual(comp_env.__dict__, instance.__dict__)
 
 suite = unittest.TestLoader().loadTestsFromTestCase(TestTemplateEnvironmental)
 unittest.TextTestRunner(verbosity=2).run(suite)

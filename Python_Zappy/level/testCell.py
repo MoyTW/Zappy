@@ -27,6 +27,15 @@ class TestCell(unittest.TestCase):
     def tearDown(self):
         self.default_cell = None
 
+    def test_eq(self):
+        cell_eq_0 = level.Cell.Cell(self.default_image_path)
+        cell_eq_1 = level.Cell.Cell(self.default_image_path)
+        self.assertEqual(cell_eq_0, cell_eq_1, "Cell.__eq__() is not returning True when it should!")
+
+        cell_ne_0 = level.Cell.Cell(self.floor_image_path)
+        cell_ne_1 = level.Cell.Cell(self.default_image_path)
+        self.assertNotEqual(cell_ne_0, cell_ne_1, "Cell.__eq__() or Cell.__ne__() is not returning False!")
+
     def test_load_image(self):
         self.assertEquals(self.default_image, self.default_cell._image)
 

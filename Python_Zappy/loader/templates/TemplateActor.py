@@ -34,6 +34,6 @@ class TemplateActor(Template.Template):
                             _rank=self._rank,
                             _faction=self._faction,
                             _base_threat=self._base_threat)
-        tools = self._create_tool_list(level, entity_index, actor)
+        tools = entity_index.create_tool_list(self._tools, actor, level)
         actor.init_tool_list(tools)
         return actor

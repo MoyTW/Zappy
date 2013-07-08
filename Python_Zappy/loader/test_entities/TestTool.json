@@ -1,0 +1,10 @@
+{
+    "__class__": "TemplateTool", 
+    "__module__": "loader.templates.TemplateTool", 
+    "_cooldown": 9,
+    "_energy_cost": 9,
+    "_entity_name": "Test",
+    "_image_name": null, 
+    "_range": 1,
+    "_tool_class": "tool"
+}

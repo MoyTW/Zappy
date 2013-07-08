@@ -13,6 +13,9 @@ class LoaderEntityIndex(object):
         self._template_dict = dict()
         self._current_eid = 0
 
+    def reset_entity_ids(self):
+        self._current_eid = 0
+
     def get_list_of_loaded_templates(self):
         return self._template_dict.keys()
 
@@ -35,6 +38,26 @@ class LoaderEntityIndex(object):
         self._current_eid += 1
 
         return ret_ent
+
+    # Takes a list of TemplateTools or strings.
+    def create_tool_list(self, tools, user, level):
+        if tools is None:
+            return []
+
+        tool_list = list()
+
+        for t in tools:
+            # First, try to use it as a template.
+            try:
+                instance = t.create_instance(eid=self._current_eid, level=level, entity_index=self, user=user)
+            except AttributeError:
+                # If that fails, try to load it by name.
+                instance = self.create_entity_by_name(name=t, level=level)
+            # Append the result to the list
+            tool_list.append(instance)
+            self._current_eid += 1
+
+        return tool_list
 
     # Attempt to load name using loader; if cannot find or error in conversion, defaults to None
     def _load_template_by_name(self, name):

@@ -7,6 +7,7 @@ class Template(object):
     def create_instance(self, eid, level, entity_index):
         warnings.warn('Template.create_instance has been called! This should not happen!')
 
+    '''
     def _create_tool_list(self, level, entity_index, user=None):
         warnings.warn("CREATE_TOOL_LIST_CREATES_TOOLS_WITHOUT_USING_ENTITY_INDEX!")
         tool_list = list()
@@ -19,3 +20,4 @@ class Template(object):
             return tool_list
         except AttributeError:
             return None
+    '''

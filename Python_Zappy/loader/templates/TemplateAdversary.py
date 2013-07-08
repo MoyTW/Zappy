@@ -36,6 +36,6 @@ class TemplateAdversary(Template.Template):
                                         _rank=self._rank,
                                         _faction=self._faction,
                                         _base_threat=self._base_threat)
-        tools = self._create_tool_list(level, entity_index, adversary)
+        tools = entity_index.create_tool_list(self._tools, adversary, level)
         adversary.init_tool_list(tools)
         return adversary

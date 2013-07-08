@@ -1,5 +1,6 @@
 __author__ = 'Travis Moy'
 
+import entity.tool.Tool as Tool
 import unittest
 import os
 import pyglet
@@ -8,6 +9,7 @@ import loader.LoaderEntityIndex
 import dummies.DummyTemplate
 from z_json import JSONCONVERTER
 import entity.Entity
+import loader.templates.TemplateTool as TemplateTool
 
 
 class TestLoaderEntityIndex(unittest.TestCase):
@@ -24,9 +26,9 @@ class TestLoaderEntityIndex(unittest.TestCase):
         json_string = JSONCONVERTER.simple_to_json(self.template)
 
         this_path = os.path.dirname(__file__) + '/' + self.filename
-        file = open(this_path, 'w')
-        file.write(json_string)
-        file.close()
+        f = open(this_path, 'w')
+        f.write(json_string)
+        f.close()
 
     def tearDown(self):
         self._default_level = None
@@ -35,6 +37,33 @@ class TestLoaderEntityIndex(unittest.TestCase):
         self._default_entity = None
         self.filename = None
         self.template = None
+
+    def test_create_tool_list_template(self):
+        tool_template = TemplateTool.TemplateTool('tool', _entity_name='test', _cooldown=5, _energy_cost=13)
+        dummy_tool = Tool.Tool(0, self._default_level, _entity_name='test', _cooldown=5, _energy_cost=13)
+
+        tool_list = self._index.create_tool_list([tool_template], None, self._default_level)
+        if tool_list is None:
+            self.assertTrue(False, "TemplateActor.create_tool_list() returned None!")
+
+        self.assertEqual(len(tool_list), 1)
+        del dummy_tool.entity_image
+        comp_tool = tool_list[0]
+        del comp_tool.entity_image
+        self.assertEqual(dummy_tool.__dict__, comp_tool.__dict__)
+
+    def test_create_tool_list_name(self):
+        dummy_tool = Tool.Tool(0, self._default_level, _entity_name="Test", _cooldown=9, _energy_cost=9)
+
+        tool_list = self._index.create_tool_list(['test_entities/TestTool.json'], None, self._default_level)
+        if tool_list is None:
+            self.assertTrue(False, "TemplateActor.create_tool_list() returned None!")
+
+        self.assertEqual(len(tool_list), 1)
+        del dummy_tool.entity_image
+        comp_tool = tool_list[0]
+        del comp_tool.entity_image
+        self.assertEqual(dummy_tool.__dict__, comp_tool.__dict__)
 
     def test_load_entity_by_name(self):
         try:

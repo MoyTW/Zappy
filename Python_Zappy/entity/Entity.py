@@ -47,5 +47,15 @@ class Entity(object):
                           RuntimeWarning)
             return loader.image(self.DEFAULT_IMAGE_PATH)
 
+    def __ne__(self, other):
+        return not self.__eq__(other)
+
+    def __eq__(self, other):
+        try:
+            return self.eid == other.eid and self._image_name == other._image_name and \
+                self.entity_name == other.entity_name
+        except AttributeError:
+            return False
+
     def __repr__(self):
-        return "{0} at ({1}, {2})".format(self.entity_name, self._x, self._y)
+        return "id={0}, {1} at ({2}, {3})".format(self.eid, self.entity_name, self._x, self._y)

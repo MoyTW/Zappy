@@ -40,8 +40,11 @@ class TestTemplateActor(unittest.TestCase):
                                                      _image_name=image_name)
 
         actor = Actor.Actor(0, _level=level_parameter, _max_moves=max_moves, _senses=sense_list, _image_name=image_name)
+
         actor_tools = index.create_tool_list(tools_list, actor, level_parameter)
         actor.init_tool_list(actor_tools)
+        index.reset_entity_ids()
+
         created_actor = template_actor.create_instance(0, level=level_parameter, entity_index=index)
 
         if created_actor is None:

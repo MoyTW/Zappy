@@ -25,6 +25,8 @@ class UIScreenLevel(UIScreen.UIScreen):
 
         if order == ORDERS.UP or order == ORDERS.DOWN or order == ORDERS.LEFT or order == ORDERS.RIGHT:
             return_screen = self._move(order)
+        elif order == ORDERS.CANCEL:
+            return_screen = self._end_turn()
         elif order == ORDERS.CONFIRM:
             return_screen = self._open_select_tool()
         elif order == ORDERS.ITEMS:
@@ -59,6 +61,11 @@ class UIScreenLevel(UIScreen.UIScreen):
     def _move(self, order):
         self._control.zappy_attempt_move(ORDERS.to_direction(order))
         self._camera.center_on(*self._control.get_zappy_x_y())
+        return self
+
+    # If CANCEL
+    def _end_turn(self):
+        self._control.turn_has_ended()
         return self
 
     # If CONFIRM

@@ -19,4 +19,4 @@ class BehaviorAttackMelee(Behavior.Behavior):
 
     def _are_adjacent(self, zappy, adversary):
         atz_x, atz_y = (zappy.get_coords()[i] - adversary.get_coords()[i] for i in range(2))
-        return math.sqrt(atz_x * atz_x + atz_y * atz_y) == 1.0
+        return math.sqrt(atz_x * atz_x + atz_y * atz_y) <= 1.0

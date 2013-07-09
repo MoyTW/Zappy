@@ -12,6 +12,7 @@ class Camera(object):
     DEFAULT_CURSOR_IMAGE = 'images/camera_cursor.png'
     FOW_IMAGE = 'images/defaults/default_fow.png'
     LOADER = pyglet.resource.Loader(['@assets'])
+    DO_FOW = False
 
     def __init__(self, level=None, lower_left=(0, 0), upper_right=(640, 480), center_tile=(0, 0),
                  cursor_image_file=DEFAULT_CURSOR_IMAGE):
@@ -74,7 +75,8 @@ class Camera(object):
         if self._draw_cursor:
             self._cursor.draw()
 
-        self._fow_batch.draw()
+        if self.DO_FOW:
+            self._fow_batch.draw()
 
     def center_on(self, x, y):
         if self._level is None:
@@ -90,13 +92,14 @@ class Camera(object):
         player_actor = self._level.player_actor
         # Ugly as hell, we're poking all over where we shouldn't be!
         # If there's no entity to match, it will disregard the FOW.
-        try:
-            visible_cells = Z_ALGS.calc_visible_cells_from(*player_actor.get_coords(),
-                                                           radius=player_actor._senses[0]._range,
-                                                           func_transparent=self._level.cell_is_transparent)
-            self._explored_cells.update(visible_cells)
-        except AttributeError:
-            visible_cells = None
+        if self.DO_FOW:
+            try:
+                visible_cells = Z_ALGS.calc_visible_cells_from(*player_actor.get_coords(),
+                                                               radius=player_actor._senses[0]._range,
+                                                               func_transparent=self._level.cell_is_transparent)
+                self._explored_cells.update(visible_cells)
+            except AttributeError:
+                visible_cells = None
 
         for row in range(0, self._num_rows):
             for col in range(0, self._num_cols):
@@ -104,13 +107,14 @@ class Camera(object):
                 cell_col_index = lower_left_index[1] + col
 
                 in_fow = False
-                # Determine the FOW state
-                if visible_cells is not None and (cell_row_index, cell_col_index) not in visible_cells and \
-                        self._level.get_cell_at(cell_row_index, cell_col_index) is not None:
-                    in_fow = True
+                if self.DO_FOW:
+                    # Determine the FOW state
+                    if visible_cells is not None and (cell_row_index, cell_col_index) not in visible_cells and \
+                            self._level.get_cell_at(cell_row_index, cell_col_index) is not None:
+                        in_fow = True
 
                 # Check to see if it's in _explored_cells
-                if (cell_row_index, cell_col_index) in self._explored_cells:
+                if (not self.DO_FOW) or (cell_row_index, cell_col_index) in self._explored_cells:
                     display_images = self._level.get_display_images_at(cell_row_index, cell_col_index, in_fow)
                     self._process_display_images_and_add_sprites(display_images, row, col)
 
@@ -179,12 +183,12 @@ class Camera(object):
                                   self._sprite_across) - 32 + (self._num_cols % 2) * 32)
 
     # Checks local, assets for target file: if no, tries to load default. If no default, throws.
-    def _load_cursor(self, file):
+    def _load_cursor(self, f):
         try:
-            self._cursor_image = pyglet.resource.image(file)
+            self._cursor_image = pyglet.resource.image(f)
         except pyglet.resource.ResourceNotFoundException:
             try:
-                self._cursor_image = self.LOADER.image(file)
+                self._cursor_image = self.LOADER.image(f)
             except pyglet.resource.ResourceNotFoundException:
                 warnings.warn("Error loading specified Cursor image, attempting to load default Cursor image.")
                 self._cursor_image = self.LOADER.image(self.DEFAULT_CURSOR_IMAGE)

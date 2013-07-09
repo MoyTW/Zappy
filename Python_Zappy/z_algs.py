@@ -13,8 +13,7 @@ class CellAngles(object):
         return "(near={0} center={1} far={2})".format(self.near, self.center, self.far)
 
 
-class ZappyAlgs(object):
-
+class LOS_RPAS(object):
     # Changing the radius-fudge changes how smooth the edges of the vision bubble are.
     #
     # RADIUS_FUDGE should always be a value between 0 and 1.
@@ -47,22 +46,6 @@ class ZappyAlgs(object):
     #
     # Setting this to False will make the algorithm more restrictive.
     VISIBLE_ON_EQUAL = True
-
-    def calc_coords_in_range(self, _range, x_center, y_center):
-        coords = set()
-        for i in range(_range + 1):
-            self._get_coords_in_outer_shell(i, x_center, y_center, coords)
-        return coords
-
-    # Internal functions to calc_coords_in_range
-    def _get_coords_in_outer_shell(self, _range, x_center, y_center, set_coords):
-        for i in range(_range + 1):
-            x_alg = i
-            y_alg = _range - i
-            set_coords.add((x_center + x_alg, y_center + y_alg))
-            set_coords.add((x_center + x_alg, y_center - y_alg))
-            set_coords.add((x_center - x_alg, y_center + y_alg))
-            set_coords.add((x_center - x_alg, y_center - y_alg))
 
     # func_transparent is a function with the sig: boolean func(x, y)
     def calc_visible_cells_from(self, x_center, y_center, radius, func_transparent):
@@ -204,5 +187,39 @@ class ZappyAlgs(object):
             return True
 
         return False
+
+
+class PATH_A_STAR(object):
+    pass
+
+
+class ZappyAlgs(object):
+    rpas = LOS_RPAS()
+
+    # Takes a function with the sig: boolean f(x, y) as func_transparent.
+    # Returns a set of (x, y) tuples, indicating the coordinates of all visible cells from the (x_center, y_center).
+    def calc_visible_cells_from(self, x_center, y_center, radius, func_transparent):
+        return self.rpas.calc_visible_cells_from(x_center, y_center, radius, func_transparent)
+
+    # LOS is mutal - that is, if the target has LOS to the origin, the origin has LOS to the target.
+    # However, the origin always has LOS to itself. Therefore, it does matter which order the coordinates are given.
+    def check_los(self, target_x, target_y, origin_x, origin_y, radius, func_transparent):
+        return self.rpas.check_los(target_x, target_y, origin_x, origin_y, radius, func_transparent)
+
+    def calc_coords_in_range(self, _range, x_center, y_center):
+        coords = set()
+        for i in range(_range + 1):
+            self._get_coords_in_outer_shell(i, x_center, y_center, coords)
+        return coords
+
+    # Internal functions to calc_coords_in_range
+    def _get_coords_in_outer_shell(self, _range, x_center, y_center, set_coords):
+        for i in range(_range + 1):
+            x_alg = i
+            y_alg = _range - i
+            set_coords.add((x_center + x_alg, y_center + y_alg))
+            set_coords.add((x_center + x_alg, y_center - y_alg))
+            set_coords.add((x_center - x_alg, y_center + y_alg))
+            set_coords.add((x_center - x_alg, y_center - y_alg))
 
 Z_ALGS = ZappyAlgs()

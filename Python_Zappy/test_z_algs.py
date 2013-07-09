@@ -21,6 +21,7 @@ class TestZAlgs(unittest.TestCase):
 
     def setUp(self):
         self.algs = z_algs.ZappyAlgs()
+        self.rpas = self.algs.rpas
 
     def tearDown(self):
         self.algs = None
@@ -36,13 +37,13 @@ class TestZAlgs(unittest.TestCase):
 
     def test_add_obstruction(self):
         obstructions = [z_algs.CellAngles(0, .125, .25), z_algs.CellAngles(.6, .65, .7)]
-        obstructions = self.algs._add_obstruction(obstructions, z_algs.CellAngles(.9, .925, .95))
+        obstructions = self.rpas._add_obstruction(obstructions, z_algs.CellAngles(.9, .925, .95))
         self.assertEqual(len(obstructions), 3)
-        obstructions = self.algs._add_obstruction(obstructions, z_algs.CellAngles(.65, .8, .95))
+        obstructions = self.rpas._add_obstruction(obstructions, z_algs.CellAngles(.65, .8, .95))
         self.assertEqual(len(obstructions), 2)
 
         obstructions = [z_algs.CellAngles(0, .125, .25), z_algs.CellAngles(.6, .65, .7), z_algs.CellAngles(.3, .35, .4)]
-        obstructions = self.algs._add_obstruction(obstructions, z_algs.CellAngles(0, .5, 1.0))
+        obstructions = self.rpas._add_obstruction(obstructions, z_algs.CellAngles(0, .5, 1.0))
         self.assertEqual(len(obstructions), 1)
         self.assertEqual(obstructions[0].near, 0)
         self.assertEqual(obstructions[0].far, 1)
@@ -51,9 +52,9 @@ class TestZAlgs(unittest.TestCase):
         obstructions = [z_algs.CellAngles(0.0, .125, .25), z_algs.CellAngles(.75, .875, 1)]
         angle = 1.0 / 6.0
         cell_passes = z_algs.CellAngles(angle, angle + angle * .5, angle + angle)
-        self.assertTrue(self.algs._cell_is_visible(cell_passes, obstructions))
+        self.assertTrue(self.rpas._cell_is_visible(cell_passes, obstructions))
         cell_fails = z_algs.CellAngles(angle * 5, angle * 5 + angle * .5, angle * 5 + angle)
-        self.assertFalse(self.algs._cell_is_visible(cell_fails, obstructions))
+        self.assertFalse(self.rpas._cell_is_visible(cell_fails, obstructions))
 
 suite = unittest.TestLoader().loadTestsFromTestCase(TestZAlgs)
 unittest.TextTestRunner(verbosity=2).run(suite)

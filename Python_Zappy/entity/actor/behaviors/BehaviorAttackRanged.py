@@ -11,13 +11,13 @@ class BehaviorAttackRanged(Behavior.Behavior):
         self._strength = _strength
         self._range = _range
 
-    def _special_can_execute(self, _target, _level, _adversary):
+    def _special_can_execute(self, _target, _level, _user):
         zap_x, zap_y = _target.get_coords()
-        adv_x, adv_y = _adversary.get_coords()
+        adv_x, adv_y = _user.get_coords()
         return Z_ALGS.check_los(zap_x, zap_y, adv_x, adv_y, self._range + 1, _level.cell_is_transparent)
 
-    def _execute_effects(self, _target, _level, _adversary):
+    def _execute_effects(self, _target, _level, _user):
         _target.deal_damage(1)
-        print _adversary.entity_name, "used a ranged attack on", _target.entity_name, "for", self._strength,\
+        print _user.entity_name, "used a ranged attack on", _target.entity_name, "for", self._strength,\
             "damage! Target's hp:", _target.current_hp
         return True

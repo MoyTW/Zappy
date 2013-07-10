@@ -10,24 +10,24 @@ import math
 class BehaviorMoveStupid(Behavior.Behavior):
 
     # Tries to move horizontally; else tries to move vertically; else fails.
-    def _execute_effects(self, _target, _level, _adversary):
+    def _execute_effects(self, _target, _level, _user):
         zappy = _target
         moved = False
 
-        if zappy in _adversary._detected_entities:
-            atz_x, atz_y = (zappy.get_coords()[i] - _adversary.get_coords()[i] for i in range(2))
+        if zappy in _user._detected_entities:
+            atz_x, atz_y = (zappy.get_coords()[i] - _user.get_coords()[i] for i in range(2))
             if math.sqrt(atz_x * atz_x + atz_y * atz_y) > 1:  # This prevents the adversary from moving ONTO Zappy.
                 # Check for horizontal
                 if atz_x < 0:
-                    moved = self._try_to_move(DIR.W, _level, _adversary)
+                    moved = self._try_to_move(DIR.W, _level, _user)
                 elif atz_x > 0:
-                    moved = self._try_to_move(DIR.E, _level, _adversary)
+                    moved = self._try_to_move(DIR.E, _level, _user)
 
                 # Check for vertical
                 if not moved and atz_y < 0:  # We want to move down
-                    moved = self._try_to_move(DIR.S, _level, _adversary)
+                    moved = self._try_to_move(DIR.S, _level, _user)
                 elif not moved and atz_y > 0:  # We want to move up
-                    moved = self._try_to_move(DIR.N, _level, _adversary)
+                    moved = self._try_to_move(DIR.N, _level, _user)
 
         return moved
 

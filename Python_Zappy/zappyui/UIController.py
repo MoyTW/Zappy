@@ -68,6 +68,8 @@ class UIController(object):
 
     # Gamepad support?
     def _setup_callbacks(self):
+        fps_display = pyglet.clock.ClockDisplay()
+
         @self._window.event
         def on_key_press(symbol, modifiers):
             self._handle_keys(symbol, modifiers)
@@ -76,3 +78,4 @@ class UIController(object):
         def on_draw():
             self._window.clear()
             self._draw()
+            fps_display.draw()

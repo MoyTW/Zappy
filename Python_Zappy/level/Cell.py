@@ -39,7 +39,7 @@ class Cell(object):
                     else:
                         display_dict[priority] = [image]
                 except AttributeError as e:
-                    print e.message
+                    warnings.warn(e)
         return display_dict
 
     # Don't store the result of this function! It is for looking, not touching!

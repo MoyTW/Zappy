@@ -48,8 +48,8 @@ class UIController(object):
         try:
             self._screen_history[-1].deactivate()
             self._screen_head.activate()
-        except AttributeError:
-            print "Catching for test."
+        except AttributeError as e:
+            warnings.warn(e.message + "Catching for test.")
 
     def _close_head_screen(self):
         if len(self._screen_history) == 0:

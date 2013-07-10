@@ -3,6 +3,7 @@ __author__ = 'Travis Moy'
 import Tool
 from z_defs import RANK
 import entity.actor.effects.EffectStun as EffectStun
+import warnings
 
 
 '''
@@ -34,7 +35,7 @@ class ToolZapGun(Tool.Tool):
                 stun_duration = 2
             _target.apply_status_effect(EffectStun.EffectStun(_duration=stun_duration, _target=_target))
         except AttributeError as e:
-            print e.message
+            warnings.warn(e)
 
 '''
 Status effects:

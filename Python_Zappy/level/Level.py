@@ -40,9 +40,7 @@ class Level:
 
     @player_actor.setter
     def player_actor(self, value):
-        print "player_actor.setter called!"
         if self._player_actor is None:
-            print "assigning!"
             self._player_actor = value
         else:
             warnings.warn("There are multiple candidates for the player actor on this map!")

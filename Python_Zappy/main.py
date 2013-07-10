@@ -8,6 +8,7 @@ from loader.LoaderLevelV1 import LoaderLevelV1
 
 width = 1920
 height = 640
+
 #height = 1080
 
 #width = 1280
@@ -18,7 +19,6 @@ height = 640
 
 window = pyglet.window.Window(width=width, height=height)
 
-#loader_level = oldLoaderLevel()
 loader_level = LoaderLevelV1()
 factory = FactoryScreens(window, loader_level)
 

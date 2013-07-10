@@ -28,18 +28,9 @@ class TestTemplateEnvironmental(unittest.TestCase):
 
     def test_kwargs(self):
         kwt = KwargsTest(test0=0, test1=1)
-        print "kwt.__dict__", kwt.__dict__
         json = JSONCONVERTER.simple_to_json(kwt)
-        print "JSON of kwt", json
         jkwt = JSONCONVERTER.simple_to_custom_object(json)
-        print "jkwt.__dict__", jkwt.__dict__
         self.assertEqual(kwt.__dict__, jkwt.__dict__)
-
-        kwt1 = KwargsTest(_additional_args={'_additional_args': {'a': 13, 'b': 5}}, _asdf='asdf')
-        print 'kwt1.__dict__', kwt1.__dict__
-
-        kwt1 = KwargsTest(_a={'_zurg': {'a': 13, 'b': 5}}, _asdf='asdf')
-        print 'kwt1.__dict__', kwt1.__dict__
 
     def test_create_instance(self):
         template = TemplateEnvironmental.TemplateEnvironmental('environmental', _entity_name='test', _image_name='timg',
@@ -58,9 +49,7 @@ class TestTemplateEnvironmental(unittest.TestCase):
         comp_env = EnvDoor.EnvDoor(0, None, _entity_name='door', _open_image_location='cells/floor.png',
                                    _closed_image_location='cells/wall.png', _is_open=True)
         json = JSONCONVERTER.simple_to_json(template)
-        print "JSON BEFORE LOADING", json
         template = JSONCONVERTER.simple_to_custom_object(json)
-        print "TEMPLATE", template.__dict__
         instance = template.create_instance(0, None, None)
         self.assertEqual(comp_env.entity_name, instance.entity_name)
         self.assertEqual(comp_env._open_image_location, instance._open_image_location)

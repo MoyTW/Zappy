@@ -20,7 +20,6 @@ class EffectBlind(Effect.Effect):
     # Iterate through senses, checking for SenseSight objects. Rip all that you find into _sight_holding.
     def _apply_effects(self):
         senses = self._target.get_senses()
-        print len(senses)
         for sense in senses[:]:  # I'm really only using this because I never use slice notation. It's a copy, FYI.
             if isinstance(sense, SenseSight.SenseSight):
                 self._sight_holding.append(sense)

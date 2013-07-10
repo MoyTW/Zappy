@@ -143,7 +143,6 @@ class LoaderLevelV1(object):
         for entity in entities:
             try:
                 if entity.is_player_controlled():
-                    print "Assigning", entity, "to player_actor of level", _level
                     _level.player_actor = entity
             except AttributeError:
                 pass

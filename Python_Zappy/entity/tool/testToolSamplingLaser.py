@@ -8,6 +8,7 @@ import entity.actor.Adversary as Adversary
 import entity.actor.effects.EffectBlind as EffectBlind
 import entity.actor.effects.EffectEnrage as EffectEnrage
 from z_defs import RANK
+import warnings
 
 
 class TestToolSamplingLaser(unittest.TestCase):
@@ -47,7 +48,7 @@ class TestToolSamplingLaser(unittest.TestCase):
             self.assertTrue(isinstance(effect, EffectBlind.EffectBlind))
             self.assertEqual(effect._duration, self.tool._blind_duration)
         except AttributeError as e:
-            print e.message
+            warnings.warn(e)
             self.assertTrue(False)
 
     def test_on_powerful_and_terrifying(self):
@@ -66,7 +67,7 @@ class TestToolSamplingLaser(unittest.TestCase):
             self.assertTrue(isinstance(terrifying_effect, EffectEnrage.EffectEnrage))
             self.assertEqual(terrifying_effect._duration, self.tool._enrage_duration)
         except AttributeError as e:
-            print e.message
+            warnings.warn(e)
             self.assertTrue(False)
 
 suite = unittest.TestLoader().loadTestsFromTestCase(TestToolSamplingLaser)

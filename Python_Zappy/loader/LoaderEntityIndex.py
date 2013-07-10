@@ -66,6 +66,5 @@ class LoaderEntityIndex(object):
             template = z_json.JSONCONVERTER.simple_to_custom_object(json_string=json)
             self._template_dict[name] = template
         except (pyglet.resource.ResourceNotFoundException, z_json.JsonConverterException) as e:
-            print e.message
-            warnings.warn(e.message)
+            warnings.warn(e)
             self._template_dict[name] = None

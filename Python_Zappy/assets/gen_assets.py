@@ -36,8 +36,8 @@ melee_robot = TemplateAdversary(_entity_name='Robot Basher',
                                 _faction=FACTIONS.ROBOTS,
                                 _max_hp=5,
                                 _behaviors=[BehaviorAttackMelee.BehaviorAttackMelee(),
-                                            BehaviorMoveStupid.BehaviorMoveStupid()],
-                                _senses=[SenseSight.SenseSight(9)],
+                                            BehaviorMoveAStar.BehaviorMoveAStar()],
+                                _senses=[SenseSeismic.SenseSeismic(99)],
                                 _rank=RANK.AVERAGE)
 convert_and_write_to_file(melee_robot, 'entities/adversaries/MeleeRobot.json')
 

@@ -10,8 +10,8 @@
             "_strength": 1
         }, 
         {
-            "__class__": "BehaviorMoveStupid", 
-            "__module__": "entity.actor.behaviors.BehaviorMoveStupid", 
+            "__class__": "BehaviorMoveAStar", 
+            "__module__": "entity.actor.behaviors.BehaviorMoveAStar", 
             "_move_cost": 1
         }
     ], 
@@ -35,9 +35,9 @@
     "_rank": 1, 
     "_senses": [
         {
-            "__class__": "SenseSight", 
-            "__module__": "entity.actor.senses.SenseSight", 
-            "_range": 9
+            "__class__": "SenseSeismic", 
+            "__module__": "entity.actor.senses.SenseSeismic", 
+            "_range": 99
         }
     ], 
     "_tools": null

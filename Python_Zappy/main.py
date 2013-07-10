@@ -7,7 +7,8 @@ from loader.oldLoaderLevel import oldLoaderLevel
 from loader.LoaderLevelV1 import LoaderLevelV1
 
 width = 1920
-height = 1080
+height = 640
+#height = 1080
 
 #width = 1280
 #height = 1024

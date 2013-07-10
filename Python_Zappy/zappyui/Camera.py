@@ -12,7 +12,7 @@ class Camera(object):
     DEFAULT_CURSOR_IMAGE = 'images/camera_cursor.png'
     FOW_IMAGE = 'images/defaults/default_fow.png'
     LOADER = pyglet.resource.Loader(['@assets'])
-    DO_FOW = True
+    DO_FOW = False
 
     def __init__(self, level=None, lower_left=(0, 0), upper_right=(640, 480), center_tile=(0, 0),
                  cursor_image_file=DEFAULT_CURSOR_IMAGE):

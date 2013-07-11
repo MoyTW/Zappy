@@ -80,26 +80,15 @@ class TestLevel(unittest.TestCase):
     def test_get_level_info(self):
         self.assertEquals(self.test_info, self.empty_test_level.get_level_info())
 
-    def test_get_cell_at(self):
-        test_strs = [["{0},{1}".format(w, h) for h in range(self.height)] for w in range(self.width)]
-        self.empty_test_level.set_cells(test_strs)
-        self.assertEquals("1,2", self.empty_test_level.get_cell_at(1, 2))
-        self.assertEquals("0,1", self.empty_test_level.get_cell_at(0, 1))
-        self.assertEquals("4,2", self.empty_test_level.get_cell_at(4, 2))
-        self.assertEquals(None, self.empty_test_level.get_cell_at(4, 3))
-        self.assertEquals(None, self.empty_test_level.get_cell_at(-3, 12))
-        self.assertEquals(None, self.empty_test_level.get_cell_at(-1, -1))
-        self.assertEquals(None, self.empty_test_level.get_cell_at(7, 10))
-
     def test_get_display_images_at(self):
         self.assertEquals(len(self.initialized_test_level.get_display_images_at(1, 2)), 1)
         self.assertEquals(self.initialized_test_level.get_display_images_at(-5, 12), None)
 
     def test_get_passable(self):
         self.initialized_test_level._cells[2][2].is_passable = False
-        self.assertEquals(self.initialized_test_level.get_cell_at(2, 2).is_passable, False)
+        self.assertEquals(self.initialized_test_level._cells[2][2].is_passable, False)
         self.initialized_test_level._cells[3][1].is_passable = False
-        self.assertEquals(self.initialized_test_level.get_cell_at(3, 1).is_passable, False)
+        self.assertEquals(self.initialized_test_level._cells[3][1].is_passable, False)
 
     def test_place_entity_at(self):
         teststr = "Test String!"

@@ -4,7 +4,7 @@ import level.levelExceptions
 import warnings
 
 
-class Level:
+class Level(object):
     # cells is a rectangular grid of Cell objects.
     def __init__(self, info, cells=None, player_actor=None):
         self._info = info
@@ -95,15 +95,13 @@ class Level:
         return entities
 
     def cell_is_passable(self, x, y):
-        cell = self.get_cell_at(x, y)
-        if cell is not None:
-            return cell.is_passable
+        if self._check_coordinates(x, y):
+            return self._cells[x][y].is_passable
         return False
 
     def cell_is_transparent(self, x, y):
-        cell = self.get_cell_at(x, y)
-        if cell is not None:
-            return cell.is_transparent
+        if self._check_coordinates(x, y):
+            return self._cells[x][y].is_transparent
         return False
 
     def get_display_images_at(self, x, y, _in_fow=False):
@@ -140,8 +138,7 @@ class Level:
     def find_coordinates_of_entity(self, entity):
         for x in range(self.level_width):
             for y in range(self.level_height):
-                cell = self.get_cell_at(x, y)
-                if cell.contains_entity(entity):
+                if self._cells[x][y].contains_entity(entity):
                     return [x, y]
         return None
 

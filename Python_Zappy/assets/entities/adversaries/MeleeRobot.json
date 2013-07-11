@@ -37,7 +37,7 @@
         {
             "__class__": "SenseSeismic", 
             "__module__": "entity.actor.senses.SenseSeismic", 
-            "_range": 99
+            "_range": 10
         }
     ], 
     "_tools": null

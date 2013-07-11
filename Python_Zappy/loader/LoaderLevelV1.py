@@ -1,12 +1,14 @@
 __author__ = 'Travis Moy'
 
-import level.LevelController as LevelController
 import warnings
+import os
+
+import pyglet
+
+import level.control.LevelController as LevelController
 import level.Level as Level
 from z_json import JSONCONVERTER
 import loader.LoaderEntityIndex as LoaderEntityIndex
-import os
-import pyglet
 
 
 class LoaderLevelV1(object):

@@ -7,7 +7,7 @@ import pyglet
 
 import level.Level
 import level.Cell
-import level.control.LevelController
+import level.LevelController
 import LoaderEntityIndex
 import oldLoaderCellDefinition
 
@@ -50,7 +50,7 @@ class oldLoaderLevel(object):
     def get_level_controller(self, level_number):
         temp_level = self.get_level(level_number)
         if temp_level is not None:
-            return level.control.LevelController.LevelController(temp_level)
+            return level.LevelController.LevelController(temp_level)
         else:
             warnings.warn("LoaderLevel.get_level_controller is returning None!")
             return None

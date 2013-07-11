@@ -43,7 +43,6 @@ class LoaderLevelV1(object):
     def regen_level(self, level_number):
         try:
             self._load_level(level_number)
-            self._entity_index.reset_entity_ids()
         except AttributeError:
             warnings.warn('{0} is not a valid level number!'.format(level_number))
 
@@ -85,8 +84,6 @@ class LoaderLevelV1(object):
 
     # This loads the rest of the level (the cells, entities)
     def _load_level(self, _level_number):
-        self._entity_index.reset_entity_ids()
-
         target_level = self._levels.get(_level_number)
 
         f = open(os.path.join(self._levels_path, (str(_level_number) + ".lvlV1")), 'r')

@@ -43,7 +43,6 @@ class TestTemplateActor(unittest.TestCase):
 
         actor_tools = index.create_tool_list(tools_list, actor, level_parameter)
         actor.init_tool_list(actor_tools)
-        index.reset_entity_ids()
 
         created_actor = template_actor.create_instance(0, level=level_parameter, entity_index=index)
 

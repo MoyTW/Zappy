@@ -40,7 +40,7 @@ class TestLoaderEntityIndex(unittest.TestCase):
 
     def test_create_tool_list_template(self):
         tool_template = TemplateTool.TemplateTool('tool', _entity_name='test', _cooldown=5, _energy_cost=13)
-        dummy_tool = Tool.Tool(0, self._default_level, _entity_name='test', _cooldown=5, _energy_cost=13)
+        dummy_tool = Tool.Tool(-1, self._default_level, _entity_name='test', _cooldown=5, _energy_cost=13)
 
         tool_list = self._index.create_tool_list([tool_template], None, self._default_level)
         if tool_list is None:
@@ -53,7 +53,7 @@ class TestLoaderEntityIndex(unittest.TestCase):
         self.assertEqual(dummy_tool.__dict__, comp_tool.__dict__)
 
     def test_create_tool_list_name(self):
-        dummy_tool = Tool.Tool(0, self._default_level, _entity_name="Test", _cooldown=9, _energy_cost=9)
+        dummy_tool = Tool.Tool(-1, self._default_level, _entity_name="Test", _cooldown=9, _energy_cost=9)
 
         tool_list = self._index.create_tool_list(['test_entities/TestTool.json'], None, self._default_level)
         if tool_list is None:

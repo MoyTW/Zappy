@@ -10,6 +10,7 @@ class Level:
         self._info = info
         self._cells = cells
         self._player_actor = player_actor
+        self.max_eid = 0
 
     def get_level_info(self):
         return self._info

@@ -11,10 +11,6 @@ class LoaderEntityIndex(object):
     def __init__(self):
         self._loader = pyglet.resource.Loader('@assets.entities')
         self._template_dict = dict()
-        self._current_eid = 0
-
-    def reset_entity_ids(self):
-        self._current_eid = 0
 
     def get_list_of_loaded_templates(self):
         return self._template_dict.keys()
@@ -26,16 +22,17 @@ class LoaderEntityIndex(object):
     # entity_dict is filled with Template objects
     # Call Template.create_instance(level, self)
     def create_entity_by_name(self, name, level):
+        eid = self._get_and_increment_eid(level)
+
         if name not in self._template_dict:
             self._load_template_by_name(name)
 
         if self._template_dict[name] is None:
-            ret_ent = entity.Entity.Entity(_eid=self._current_eid, _level=level,
+            ret_ent = entity.Entity.Entity(_eid=eid, _level=level,
                                            _entity_name='No Entity In Index With Name {0}'.format(name),
                                            _image_name=None)
         else:
-            ret_ent = self._template_dict[name].create_instance(self._current_eid, level=level, entity_index=self)
-        self._current_eid += 1
+            ret_ent = self._template_dict[name].create_instance(eid=eid, level=level, entity_index=self)
 
         return ret_ent
 
@@ -49,15 +46,24 @@ class LoaderEntityIndex(object):
         for t in tools:
             # First, try to use it as a template.
             try:
-                instance = t.create_instance(eid=self._current_eid, level=level, entity_index=self, user=user)
+                instance = t.create_instance(eid=self._get_and_increment_eid(level), level=level, entity_index=self, user=user)
             except AttributeError:
                 # If that fails, try to load it by name.
                 instance = self.create_entity_by_name(name=t, level=level)
             # Append the result to the list
             tool_list.append(instance)
-            self._current_eid += 1
 
         return tool_list
+
+    def _get_and_increment_eid(self, level):
+        try:
+            eid = level.max_eid
+            level.max_eid += 1
+        except AttributeError:
+            warnstr = str(level) + 'parameter to create_entity_name has no max_eid attribute! Defaulting to -1.'
+            warnings.warn(warnstr)
+            eid = -1
+        return eid
 
     # Attempt to load name using loader; if cannot find or error in conversion, defaults to None
     def _load_template_by_name(self, name):

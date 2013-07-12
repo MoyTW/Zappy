@@ -51,6 +51,10 @@ class Entity(object):
         return not self.__eq__(other)
 
     def __eq__(self, other):
+        """
+        :type other: Entity
+        :rtype: bool
+        """
         try:
             return self.eid == other.eid and self._image_name == other._image_name and \
                 self.entity_name == other.entity_name

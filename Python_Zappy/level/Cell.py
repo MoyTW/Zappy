@@ -75,6 +75,10 @@ class Cell(object):
         return not self.__eq__(other)
 
     def __eq__(self, other):
+        """
+        :type other: Cell
+        :rtype: bool
+        """
         try:
             self_dict = self.__dict__.copy()
             other_dict = other.__dict__.copy()

@@ -39,6 +39,10 @@ class TemplateCell(Template.Template):
         return not self.__eq__(other)
 
     def __eq__(self, other):
+        """
+        :type other: TemplateCell
+        :rtype: bool
+        """
         try:
             return self._image_location == other._image_location and self._passable == other._passable and \
                 self._transparent == other._transparent and sorted(self._entity_files) == sorted(other._entity_files)

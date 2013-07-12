@@ -140,6 +140,10 @@ class NodeEntry(object):
     #
     # This is another hacky thing to do which should be avoided.
     def __eq__(self, other):
+        """
+        :type other: NodeEntry
+        :rtype: bool
+        """
         try:
             return self.coordinates == other.coordinates
         except AttributeError:

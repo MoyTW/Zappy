@@ -62,6 +62,10 @@ class Faction(object):
         return not self.__eq__(other)
 
     def __eq__(self, other):
+        """
+        :type other: Faction
+        :rtype: bool
+        """
         try:
             return self._name == other._name and sorted(self._names_friendly_to) == sorted(other._names_friendly_to) \
                 and sorted(self._names_hostile_to) == sorted(other._names_hostile_to) and \

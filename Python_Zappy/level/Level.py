@@ -151,6 +151,10 @@ class Level(object):
         return not self.__eq__(other)
 
     def __eq__(self, other):
+        """
+        :type other: Level
+        :rtype: bool
+        """
         try:
             for x in range(self.level_width):
                 for y in range(self.level_height):

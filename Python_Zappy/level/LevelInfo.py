@@ -44,4 +44,11 @@ class LevelInfo:
         return not self.__eq__(other)
 
     def __eq__(self, other):
-        return sorted(self.__dict__) == sorted(other.__dict__)
+        """
+        :type other: LevelInfo
+        :rtype: bool
+        """
+        try:
+            return sorted(self.__dict__) == sorted(other.__dict__)
+        except AttributeError:
+            return False

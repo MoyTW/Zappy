@@ -1,8 +1,7 @@
-from level import Record
-
 __author__ = 'Travis Moy'
 
 import warnings
+import level.Record as Record
 
 
 class RecordEntry(object):

@@ -2,6 +2,7 @@ __author__ = 'Travis Moy'
 
 import level.levelExceptions
 import warnings
+import level.Record as Record
 
 
 class Level(object):
@@ -11,6 +12,7 @@ class Level(object):
         self._cells = cells
         self._player_actor = player_actor
         self.max_eid = 0
+        self.record = Record.Record()
 
     def get_level_info(self):
         return self._info
@@ -45,6 +47,9 @@ class Level(object):
             self._player_actor = value
         else:
             warnings.warn("There are multiple candidates for the player actor on this map!")
+
+    def add_entry(self, entry):
+        self.record.add_entry(entry)
 
     def cells_are_none(self):
         if self._cells is None:

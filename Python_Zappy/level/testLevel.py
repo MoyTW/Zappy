@@ -81,8 +81,8 @@ class TestLevel(unittest.TestCase):
         self.assertEquals(self.test_info, self.empty_test_level.get_level_info())
 
     def test_get_display_images_at(self):
-        self.assertEquals(len(self.initialized_test_level.get_display_images_at(1, 2)), 1)
-        self.assertEquals(self.initialized_test_level.get_display_images_at(-5, 12), None)
+        self.assertEquals(len(self.initialized_test_level.view.get_display_images_at(1, 2)), 1)
+        self.assertEquals(self.initialized_test_level.view.get_display_images_at(-5, 12), None)
 
     def test_get_passable(self):
         self.initialized_test_level._cells[2][2].is_passable = False
@@ -108,10 +108,10 @@ class TestLevel(unittest.TestCase):
         self.initialized_test_level.place_entity_at(teststr, 3, 2)
 
         try:
-            coords = self.initialized_test_level.find_coordinates_of_entity(teststr)
+            coords = self.initialized_test_level.view.find_coordinates_of_entity(teststr)
             self.assertEquals(coords[0], 3)
             self.assertEquals(coords[1], 2)
-            self.assertEquals(None, self.initialized_test_level.find_coordinates_of_entity("Blue!"))
+            self.assertEquals(None, self.initialized_test_level.view.find_coordinates_of_entity("Blue!"))
         except TypeError:
             self.assertFalse(True, "Level.find_coordinates_of_entity() not returning an iterable with 2 values.")
 

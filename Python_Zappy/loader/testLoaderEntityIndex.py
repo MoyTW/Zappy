@@ -10,16 +10,17 @@ import dummies.DummyTemplate
 from z_json import JSONCONVERTER
 import entity.Entity
 import loader.templates.TemplateTool as TemplateTool
+import level.Level as Level
 
 
 class TestLoaderEntityIndex(unittest.TestCase):
 
     def setUp(self):
-        self._default_level = None
+        self._default_level = Level.Level(None)
         self._custom_loader = pyglet.resource.Loader('@loader')
         self._index = loader.LoaderEntityIndex.LoaderEntityIndex()
         self._index._loader = self._custom_loader
-        self._default_entity = entity.Entity.Entity(0, self._default_level)
+        self._default_entity = entity.Entity.Entity(0, self._default_level.view)
 
         self.filename = 'test_entities/test_file.json'
         self.template = dummies.DummyTemplate.DummyTemplate(name="Test", integer=10)
@@ -39,8 +40,9 @@ class TestLoaderEntityIndex(unittest.TestCase):
         self.template = None
 
     def test_eid(self):
-        self.assertEqual(self._index.create_entity_by_name("No Such Entity", self._default_level).eid, 0)
-        self.assertEqual(self._index.create_entity_by_name("No Such Entity", self._default_level).eid, 1)
+        self._index.lvl = self._default_level
+        self.assertEqual(self._index.create_entity_by_name("No Such Entity", self._default_level.view).eid, 0)
+        self.assertEqual(self._index.create_entity_by_name("No Such Entity", self._default_level.view).eid, 1)
 
     def test_create_tool_list_template(self):
         tool_template = TemplateTool.TemplateTool('tool', _entity_name='test', _cooldown=5, _energy_cost=13)
@@ -92,7 +94,7 @@ class TestLoaderEntityIndex(unittest.TestCase):
     # Creates a default entity
     def test_create_entity_by_name_cannot_find(self):
         try:
-            created_entity = self._index.create_entity_by_name('no_such_file.json', None)
+            created_entity = self._index.create_entity_by_name('no_such_file.json', self._default_level.view)
             self.assertEqual(created_entity._image_name, self._default_entity._image_name)
             self.assertEqual(created_entity._level, self._default_entity._level)
         except AttributeError:

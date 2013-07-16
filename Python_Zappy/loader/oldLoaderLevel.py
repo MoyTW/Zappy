@@ -96,6 +96,7 @@ class oldLoaderLevel(object):
 
     def _load_level(self, level_number):
         level = self._levels.get(level_number)
+        self._entity_index.lvl = level
 
         filepath = os.path.join(self._levels_path, (str(level_number) + ".lvl"))
         file = open(filepath, 'r')

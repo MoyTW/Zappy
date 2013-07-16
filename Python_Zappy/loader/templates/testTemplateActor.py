@@ -42,12 +42,14 @@ class TestTemplateActor(unittest.TestCase):
         template_actor = TemplateActor.TemplateActor(_max_moves=max_moves, _tools=tools_list, _senses=sense_list,
                                                      _image_name=image_name)
 
-        actor = Actor.Actor(0, _level=level_parameter, _max_moves=max_moves, _senses=sense_list, _image_name=image_name)
-
+        level_parameter.max_eid = 0
+        actor = Actor.Actor(0, _level=level_parameter.view, _max_moves=max_moves, _senses=sense_list,
+                            _image_name=image_name)
         actor_tools = index.create_tool_list(tools_list, actor, level_parameter.view)
         actor.init_tool_list(actor_tools)
 
-        created_actor = template_actor.create_instance(0, level=level_parameter, entity_index=index)
+        level_parameter.max_eid = 0
+        created_actor = template_actor.create_instance(0, level=level_parameter.view, entity_index=index)
 
         if created_actor is None:
             self.assertTrue(False, "template_actor.create_instance is returning None!")

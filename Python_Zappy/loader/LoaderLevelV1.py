@@ -130,6 +130,7 @@ class LoaderLevelV1(object):
     # Creates, places, and calls setup functions of the entities in question
     def _load_entity_list(self, _json, _level):
         entity_list = JSONCONVERTER.load_simple(_json)
+        self._entity_index.lvl = _level
 
         for entry in entity_list:
             entity = self._entity_index.create_entity_by_name(entry['_entity'], _level.view)

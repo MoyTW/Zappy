@@ -11,6 +11,7 @@ class LoaderEntityIndex(object):
     def __init__(self):
         self._loader = pyglet.resource.Loader('@assets.entities')
         self._template_dict = dict()
+        self.lvl = None
 
     def get_list_of_loaded_templates(self):
         return self._template_dict.keys()
@@ -26,7 +27,7 @@ class LoaderEntityIndex(object):
         :type name: str
         :type lvl_view: level.LevelView.LevelView
         """
-        eid = self._get_and_increment_eid(lvl_view)
+        eid = self._increment_eid()
 
         if name not in self._template_dict:
             self._load_template_by_name(name)
@@ -55,7 +56,7 @@ class LoaderEntityIndex(object):
         for t in tools:
             # First, try to use it as a template.
             try:
-                instance = t.create_instance(eid=self._get_and_increment_eid(lvl_view), level=lvl_view,
+                instance = t.create_instance(eid=self._increment_eid(), level=lvl_view,
                                              entity_index=self, user=user)
             except AttributeError:
                 # If that fails, try to load it by name.
@@ -65,14 +66,13 @@ class LoaderEntityIndex(object):
 
         return tool_list
 
-    def _get_and_increment_eid(self, level):
-        try:
-            eid = level.max_eid
-            level.max_eid += 1
-        except AttributeError:
-            warnstr = str(level) + 'parameter to create_entity_name has no max_eid attribute! Defaulting to -1.'
-            warnings.warn(warnstr)
+    def _increment_eid(self):
+        if self.lvl is None:
+            warnings.warn("LoaderEntityIndex.lvl is None! Somewhere, the programmer has failed to set .lvl!")
             eid = -1
+        else:
+            eid = self.lvl.max_eid
+            self.lvl.max_eid += 1
         return eid
 
     # Attempt to load name using loader; if cannot find or error in conversion, defaults to None

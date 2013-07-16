@@ -119,6 +119,12 @@ class Level(object):
         :rtype: bool
         """
         try:
+            if self._info == other._info and self._cells is None and other._cells is None:
+                return True
+        except AttributeError:
+            return False
+
+        try:
             for x in range(self.level_width):
                 for y in range(self.level_height):
                     if not self._cells[x][y] == other._cells[x][y]:
@@ -129,4 +135,4 @@ class Level(object):
             return False
 
     def __repr__(self):
-        return "({0}, {1}".format(self._info, self._cells)
+        return "({0}, {1})".format(self._info, self._cells)

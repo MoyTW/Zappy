@@ -159,7 +159,7 @@ class oldLoaderLevel(object):
                                               _transparent=passable)
         if cell_def.entity_strings is not None:
             for entity_string in cell_def.entity_strings:
-                entity = self._entity_index.create_entity_by_name(entity_string, _level)
+                entity = self._entity_index.create_entity_by_name(entity_string, _level.view)
                 try:
                     if entity.is_player_controlled():
                         _level.player_actor = entity

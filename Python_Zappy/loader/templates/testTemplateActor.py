@@ -6,6 +6,7 @@ import loader.templates.TemplateTool as TemplateTool
 import loader.templates.TemplateActor as TemplateActor
 import entity.actor.Actor as Actor
 import entity.actor.senses as senses
+import level.Level as Level
 
 
 class TestTemplateActor(unittest.TestCase):
@@ -22,7 +23,8 @@ class TestTemplateActor(unittest.TestCase):
 
     def test_user_is_set(self):
         template_actor = TemplateActor.TemplateActor(_tools=self.template_tools_list)
-        created_actor = template_actor.create_instance(0, level=None, entity_index=EntityIndex.LoaderEntityIndex())
+        created_actor = template_actor.create_instance(0, level=Level.Level(None),
+                                                       entity_index=EntityIndex.LoaderEntityIndex())
         try:
             self.assertEqual(created_actor._tools[0].user, created_actor)
         except IndexError:
@@ -33,7 +35,8 @@ class TestTemplateActor(unittest.TestCase):
         tools_list = self.template_tools_list
         sense_list = [senses.SenseSeismic.SenseSeismic(3)]
         image_name = 'image'
-        level_parameter = None
+        level_parameter = Level.Level(None)
+        print level_parameter
         index = EntityIndex.LoaderEntityIndex()
 
         template_actor = TemplateActor.TemplateActor(_max_moves=max_moves, _tools=tools_list, _senses=sense_list,
@@ -41,7 +44,7 @@ class TestTemplateActor(unittest.TestCase):
 
         actor = Actor.Actor(0, _level=level_parameter, _max_moves=max_moves, _senses=sense_list, _image_name=image_name)
 
-        actor_tools = index.create_tool_list(tools_list, actor, level_parameter)
+        actor_tools = index.create_tool_list(tools_list, actor, level_parameter.view)
         actor.init_tool_list(actor_tools)
 
         created_actor = template_actor.create_instance(0, level=level_parameter, entity_index=index)

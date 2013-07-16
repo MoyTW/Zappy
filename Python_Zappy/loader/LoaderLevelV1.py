@@ -132,13 +132,13 @@ class LoaderLevelV1(object):
         entity_list = JSONCONVERTER.load_simple(_json)
 
         for entry in entity_list:
-            entity = self._entity_index.create_entity_by_name(entry['_entity'], _level)
+            entity = self._entity_index.create_entity_by_name(entry['_entity'], _level.view)
             if '_orders' in entry:
                 for order in entry['_orders']:
                     self._execute_entity_order(order, entity, _level)
 
     def _find_and_assign_player_actor(self, _level):
-        entities = _level.get_all_entities()
+        entities = _level.view.get_all_entities()
         for entity in entities:
             try:
                 if entity.is_player_controlled():

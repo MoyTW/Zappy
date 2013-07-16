@@ -38,6 +38,10 @@ class TestLoaderEntityIndex(unittest.TestCase):
         self.filename = None
         self.template = None
 
+    def test_eid(self):
+        self.assertEqual(self._index.create_entity_by_name("No Such Entity", self._default_level).eid, 0)
+        self.assertEqual(self._index.create_entity_by_name("No Such Entity", self._default_level).eid, 1)
+
     def test_create_tool_list_template(self):
         tool_template = TemplateTool.TemplateTool('tool', _entity_name='test', _cooldown=5, _energy_cost=13)
         dummy_tool = Tool.Tool(-1, self._default_level, _entity_name='test', _cooldown=5, _energy_cost=13)

@@ -13,7 +13,13 @@ class CompoundCmd(object):
 
     # Executes the fragments in order.
     def execute(self, lvl):
-        pass
+        for fragment in self.fragments:
+            fragment.execute(lvl)
 
     def get_description(self, wordiness):
-        pass
+        ret_desc = self.description
+        for fragment in self.fragments:
+            desc = fragment.get_description(wordiness)
+            if desc is not None:
+                ret_desc += "\n\t{0}".format(desc)
+        return ret_desc

@@ -2,7 +2,7 @@ __author__ = 'Travis Moy'
 
 import level.levelExceptions
 import warnings
-import level.Record as Record
+import level.CommandLog as CommandLog
 import level.LevelView as LevelView
 
 
@@ -13,7 +13,7 @@ class Level(object):
         self._cells = cells
         self._player_actor = player_actor
         self.max_eid = 0
-        self.record = Record.Record()
+        self.command_log = CommandLog.CommandLog()
         self.view = LevelView.LevelView(self)
 
     def get_level_info(self):
@@ -51,7 +51,7 @@ class Level(object):
             warnings.warn("There are multiple candidates for the player actor on this map!")
 
     def add_entry(self, entry):
-        self.record.add_entry(entry)
+        self.command_log.add_command(entry)
 
     def cells_are_none(self):
         if self._cells is None:

@@ -1,16 +1,14 @@
 __author__ = 'Travis Moy'
 
-PRINT_BRIEF, PRINT_NORMAL, PRINT_VERBOSE, PRINT_DEBUG = range(0, 4)
 
-
-class Record(object):
+class CommandLog(object):
     def __init__(self):
         self._entries = list()
 
-    def add_entry(self, entry):
+    def add_command(self, entry):
         self._entries.append(entry)
 
-    def get_entries(self, wordiness, num=10):
+    def get_commands(self, wordiness, num=10):
         if num <= 0:
             target_entries = self._entries
         else:

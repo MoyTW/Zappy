@@ -17,7 +17,7 @@ class TestCamera(unittest.TestCase):
         temp_loader = loader.oldLoaderLevel.oldLoaderLevel('zappyui/test_assets')
         temp_loader._entity_index = dummies.DummyLoaderEntityIndex.DummyLoaderEntityIndex()
         self.default_level = temp_loader.get_level(0)
-        self.default_camera = zappyui.Camera.Camera(self.default_level,
+        self.default_camera = zappyui.Camera.Camera(self.default_level.view,
                                                     cursor_image_file='test_assets/camera_cursor.png')
 
     def tearDown(self):

@@ -4,6 +4,10 @@ __author__ = 'Travis Moy'
 class DummyController(object):
     def __init__(self, level):
         self.level = level
+        if level is not None:
+            self.level_view = level.view
+        else:
+            self.level_view = None
 
     def get_level(self):
         return self.level

@@ -22,7 +22,7 @@ class TestUIScreenLevel(unittest.TestCase):
         self.width = 640
         self.height = 480
 
-        camera = zappyui.Camera.Camera(self.dummy_control.get_level(), lower_left=(0, 0),
+        camera = zappyui.Camera.Camera(self.dummy_control.get_level().view, lower_left=(0, 0),
                                        upper_right = (self.width - z_defs.SIDEBAR_WIDTH, self.height))
 
         self.default_screen = UIScreenLevel.UIScreenLevel(camera, self.dummy_control, DummyInfo(0, 0),

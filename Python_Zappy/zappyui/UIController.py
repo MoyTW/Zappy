@@ -64,7 +64,7 @@ class UIController(object):
                     self._handle_new_screen(destruct_screen)
                 self._screen_head.activate()
             except AttributeError as e:
-                warnings.warn(e)
+                warnings.warn(e.message)
 
     # Gamepad support?
     def _setup_callbacks(self):

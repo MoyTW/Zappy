@@ -35,7 +35,7 @@ class ToolZapGun(Tool.Tool):
                 stun_duration = 2
             _target.apply_status_effect(EffectStun.EffectStun(_duration=stun_duration, _target=_target))
         except AttributeError as e:
-            warnings.warn(e)
+            warnings.warn(e.message)
 
 '''
 Status effects:

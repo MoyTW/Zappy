@@ -48,7 +48,7 @@ class TestToolSamplingLaser(unittest.TestCase):
             self.assertTrue(isinstance(effect, EffectBlind.EffectBlind))
             self.assertEqual(effect._duration, self.tool._blind_duration)
         except AttributeError as e:
-            warnings.warn(e)
+            warnings.warn(e.message)
             self.assertTrue(False)
 
     def test_on_powerful_and_terrifying(self):
@@ -67,7 +67,7 @@ class TestToolSamplingLaser(unittest.TestCase):
             self.assertTrue(isinstance(terrifying_effect, EffectEnrage.EffectEnrage))
             self.assertEqual(terrifying_effect._duration, self.tool._enrage_duration)
         except AttributeError as e:
-            warnings.warn(e)
+            warnings.warn(e.message)
             self.assertTrue(False)
 
 suite = unittest.TestLoader().loadTestsFromTestCase(TestToolSamplingLaser)

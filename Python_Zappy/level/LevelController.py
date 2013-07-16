@@ -71,7 +71,7 @@ class LevelController(object):
                         try:
                             entity.take_action()
                         except AttributeError as e:
-                            warnings.warn(e)
+                            warnings.warn(e.message)
                         entity.turn_end()
 
                         if entity.is_destroyed():

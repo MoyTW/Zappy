@@ -8,7 +8,8 @@ class CompoundCmd(object):
 
     # CompoundCmd takes an arbitrary number of CommandFragment objects.
     def __init__(self, description, *args):
-        pass
+        self.description = description
+        self.fragments = args
 
     # Executes the fragments in order.
     def execute(self, lvl):

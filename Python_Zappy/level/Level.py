@@ -3,6 +3,7 @@ __author__ = 'Travis Moy'
 import level.levelExceptions
 import warnings
 import level.Record as Record
+import level.LevelView as LevelView
 
 
 class Level(object):
@@ -13,6 +14,7 @@ class Level(object):
         self._player_actor = player_actor
         self.max_eid = 0
         self.record = Record.Record()
+        self.view = LevelView.LevelView(self)
 
     def get_level_info(self):
         return self._info
@@ -78,45 +80,9 @@ class Level(object):
         self._cells = None
         self.set_cells(cells)
 
-    def get_cell_at(self, x, y):
-        if self._check_coordinates(x, y):
-            return self._cells[x][y]
-        return None
-
-    def get_all_entities_at(self, x, y):
-        if self._check_coordinates(x, y):
-            return self._cells[x][y].get_all_entities()
-        return None
-
-    # Horrifying, really. A more efficient (but more work-intensive) way would be to maintain an internal list, and to
-    # update it each time an entity is placed or removed.
-    #
-    # However, until it becomes a problem performance-wise, just leave it at this.
-    def get_all_entities(self):
-        entities = list()
-        for x in range(self.level_width):
-            for y in range(self.level_height):
-                entities.extend(self.get_all_entities_at(x, y))
-        return entities
-
-    def cell_is_passable(self, x, y):
-        if self._check_coordinates(x, y):
-            return self._cells[x][y].is_passable
-        return False
-
-    def cell_is_transparent(self, x, y):
-        if self._check_coordinates(x, y):
-            return self._cells[x][y].is_transparent
-        return False
-
-    def get_display_images_at(self, x, y, _in_fow=False):
-        if self._check_coordinates(x, y):
-            return self._cells[x][y].get_display_images(_in_fow)
-        return None
-
     # If the entity has the function "set_coords" defined, this will attempt to call it.
     def place_entity_at(self, entity, x, y):
-        if self._check_coordinates(x, y):
+        if self.are_valid_coords(x, y):
             self._cells[x][y].add_entity(entity)
         try:
             entity.set_coords(x, y)
@@ -124,7 +90,7 @@ class Level(object):
             pass
 
     def remove_entity_from(self, entity, x, y):
-        if self._check_coordinates(x, y):
+        if self.are_valid_coords(x, y):
             if self._cells[x][y].remove_entity(entity):
                 try:
                     entity.set_coords(-1, -1)
@@ -139,15 +105,7 @@ class Level(object):
         self.place_entity_at(entity, new_x, new_y)
         return True
 
-    # Dumb search
-    def find_coordinates_of_entity(self, entity):
-        for x in range(self.level_width):
-            for y in range(self.level_height):
-                if self._cells[x][y].contains_entity(entity):
-                    return [x, y]
-        return None
-
-    def _check_coordinates(self, x, y):
+    def are_valid_coords(self, x, y):
         if 0 <= x < self.level_width and 0 <= y < self.level_height:
                 return True
         return False

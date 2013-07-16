@@ -22,6 +22,10 @@ class LevelController(object):
         return self._level
 
     @property
+    def level_view(self):
+        return self._level.view
+
+    @property
     def zappy(self):
         return self._zappy
 

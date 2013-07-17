@@ -1,5 +1,7 @@
 __author__ = 'Travis Moy'
 
+from level.commands.command_fragments import EntityUseMoves
+
 
 class Behavior(object):
 
@@ -42,7 +44,7 @@ class Behavior(object):
         :rtype: bool
         """
         if self._execute_effects(_target_eid, _level_view, _user_eid):
-            self._on_execute_pay_costs(_user_eid)
+            self._on_execute_pay_costs(_user_eid, _level_view)
             return True
         else:
             return False
@@ -79,6 +81,9 @@ class Behavior(object):
         else:
             return False
 
-    def _on_execute_pay_costs(self, _user_eid):
-        """:type _user_eid: int"""
-        _user_eid.use_moves(self._move_cost)
+    def _on_execute_pay_costs(self, _user_eid, _level_view):
+        """
+        :type _user_eid: int
+        :type _level_view: level.LevelView.LevelView
+        """
+        _level_view.add_command(EntityUseMoves(_user_eid, _level_view, self._move_cost))

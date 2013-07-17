@@ -6,20 +6,17 @@ from z_algs import Z_ALGS
 
 class SenseSight(Sense.Sense):
 
-    def __init__(self, _range):
-        super(SenseSight, self).__init__(_range=_range)
-
-    def detect_entities(self, x_pos, y_pos, level):
+    def _detect_entities(self, x_pos, y_pos, level_view):
         """
         :type x_pos: int
         :type y_pos: int
-        :type level: level.LevelView.LevelView
+        :type level_view: level.LevelView.LevelView
         """
         detected = list()
-        coords = Z_ALGS.calc_visible_cells_from(x_pos, y_pos, self._range, level.cell_is_transparent)
+        coords = Z_ALGS.calc_visible_cells_from(x_pos, y_pos, self._range, level_view.cell_is_transparent)
 
         for coord in coords:
-            entities = level.get_eids_at(coord[0], coord[1])
+            entities = level_view.get_eids_at(coord[0], coord[1])
             if entities is not None:
                 for entity in entities:
                     detected.append(entity)

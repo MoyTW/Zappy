@@ -14,6 +14,13 @@ class LevelView(object):
     def player_actor(self):
         return self.lvl.player_actor
 
+    def get_actor_current_moves(self, eid):
+        entities = self._get_all_entities()
+        for e in entities:
+            if e.eid == eid:
+                return e.current_moves
+        return None
+
     def get_entity_name(self, eid):
         warnings.warn("OH GOD THIS CODE IN LEVELVIEW.GET_ENTITY_NAME OH GOD NO")
         entities = self._get_all_entities()

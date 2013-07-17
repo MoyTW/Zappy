@@ -50,8 +50,11 @@ class Level(object):
         else:
             warnings.warn("There are multiple candidates for the player actor on this map!")
 
-    def add_entry(self, entry):
-        self.command_log.add_command(entry)
+    def add_command(self, cmd):
+        """
+        :type cmd: level.commands.CompoundCmd.CompoundCmd
+        """
+        self.command_log.add_command(cmd)
 
     def cells_are_none(self):
         if self._cells is None:

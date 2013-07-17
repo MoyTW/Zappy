@@ -14,6 +14,12 @@ class LevelView(object):
     def player_actor(self):
         return self.lvl.player_actor
 
+    def add_command(self, cmd):
+        """
+        :type cmd: level.commands.CompoundCmd.CompoundCmd
+        """
+        self.lvl.add_command(cmd)
+
     def get_display_images_at(self, x, y, _in_fow=False):
         if self.lvl.are_valid_coords(x, y):
             return self.lvl._cells[x][y].get_display_images(_in_fow)

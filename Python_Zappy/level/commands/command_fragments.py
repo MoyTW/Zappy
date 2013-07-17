@@ -8,6 +8,9 @@ class CommandFragment(object):
     wordiness = cmd.PRINT_DEBUG
 
     def __init__(self, description):
+        """
+        :type description: str
+        """
         self.description = description
 
     def execute(self, lvl):

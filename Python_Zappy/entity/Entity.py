@@ -2,6 +2,8 @@ __author__ = 'Travis Moy'
 
 import pyglet
 import warnings
+from level.commands.CompoundCmd import CompoundCmd
+from level.commands.command_fragments import LevelRemoveEntity
 
 
 class Entity(object):
@@ -11,6 +13,12 @@ class Entity(object):
     PRIORITY = 0
 
     def __init__(self, _eid, _level, _image_name=None, _entity_name='Default Entity Name', **kwargs):
+        """
+        :type _eid: int
+        :type _level: level.LevelView.LevelView
+        :type _image_name: str
+        :type _entity_name: str
+        """
         super(Entity, self).__init__(**kwargs)
         self.eid = _eid
         self.entity_name = _entity_name
@@ -24,7 +32,8 @@ class Entity(object):
         self.entity_image = self._load_return_image(self._image_name)
 
     def destroy(self):
-        self._level.remove_entity_from(self, self._x, self._y)
+        self._level.add_command(CompoundCmd("{0} has been destroyed!".format(self.entity_name),
+                                            LevelRemoveEntity(self.eid)))
 
     def get_coords(self):
         return self._x, self._y

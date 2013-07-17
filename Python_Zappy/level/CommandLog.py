@@ -25,3 +25,9 @@ class CommandLog(object):
         else:
             target_entries = self._entries[max(len(self._entries) - num, 0):len(self._entries)]
         return [f.get_description(wordiness) for f in target_entries if f.get_description(wordiness) is not None]
+
+    def __getitem__(self, item):
+        return self._entries[item]
+
+    def __len__(self):
+        return len(self._entries)

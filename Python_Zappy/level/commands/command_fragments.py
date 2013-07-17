@@ -1,7 +1,7 @@
 __author__ = 'Travis Moy'
 
 import warnings
-import level.commands.CompoundCmd as cmd
+import CompoundCmd as cmd
 
 
 class CommandFragment(object):
@@ -26,6 +26,17 @@ class CommandFragment(object):
         """
         if self.wordiness <= wordiness:
             return self.description
+
+
+class LevelRemoveEntity(CommandFragment):
+    wordiness = cmd.PRINT_NORMAL
+
+    def __init__(self, eid):
+        warnings.warn("LevelRemoveEntity.execute() is not yet implemented!")
+        super(LevelRemoveEntity, self).__init__("{0} has been removed from the level!".format(eid))
+
+    def execute(self, lvl):
+        pass
 
 
 # An example of a fragment

@@ -12,7 +12,7 @@ class TestToolHoloprojector(unittest.TestCase):
         self.level = loader.get_level(0)
         self.zappy = self.level.player_actor
         self.tool = ToolHoloprojector.ToolHoloprojector(0, _level=self.level)
-        self.zappy.add_tool(self.tool)
+        self.zappy._tools.append(self.tool)
 
     def tearDown(self):
         self.level = None

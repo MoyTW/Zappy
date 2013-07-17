@@ -17,7 +17,7 @@ class TestToolManipulator(unittest.TestCase):
 
         self.zappy = self.level.player_actor
         self.tool = ToolManipulator.ToolManipulator(0, self.level)
-        self.zappy.add_tool(self.tool)
+        self.zappy._tools.append(self.tool)
 
     def tearDown(self):
         self.level = None

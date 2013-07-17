@@ -13,6 +13,13 @@ class Actor(Entity.Entity, Destructible.Destructible):
     def __init__(self, _eid, _level, _entity_name='Default Actor Name', _max_hp=1, _max_moves=1, _max_energy=100,
                  _energy_regen=10, _tools=None, _senses=None, _image_name=None, _rank=RANK.AVERAGE,
                  _faction=FACTIONS.DEFAULT, _base_threat=1, **kwargs):
+        """
+        :type eid: int
+        :type _level: level.LevelView.LevelView
+        :type _tools: list
+        :type _senses: list
+        :type _image_name: str
+        """
         super(Actor, self).__init__(_eid=_eid, _entity_name=_entity_name, _image_name=_image_name, _max_hp=_max_hp,
                                     _level=_level, **kwargs)
 
@@ -106,15 +113,12 @@ class Actor(Entity.Entity, Destructible.Destructible):
     def init_tool_list(self, _tool_list):
         self._tools = _tool_list
 
-    def add_tool(self, _tool):
-        _tool.user = self
-        self._level.remove_entity_from(_tool, *_tool.get_coords())
-        self._tools.append(_tool)
-
     # At the begnning of the turn:
     #   Replenish the movement points
     #   Apply each status effect, in turn (this done because if you are, for example, deafened, but you somehow acquire
-    # a new hearing sense within the turn, you will be made unable to use it, as is proper)
+    #   a new hearing sense within the turn, you will be made unable to use it, as is proper)
+    #
+    #   That seems a bit of an edge case, though...oh, well.
     def turn_begin(self):
         self._detect_entities()
         self._current_moves = self._max_moves

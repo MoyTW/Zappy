@@ -1,6 +1,6 @@
 __author__ = 'Travis Moy'
 
-#import level.Level as Level
+import warnings
 
 
 class LevelView(object):
@@ -65,22 +65,24 @@ class LevelView(object):
     # update it each time an entity is placed or removed.
     #
     # However, until it becomes a problem performance-wise, just leave it at this.
-    def get_all_entities(self):
+    def get_all_eids(self):
         """
         :rtype: list
         """
+        warnings.warn("LevelView.get_all_eids() still returns entities proper!")
         entities = list()
         for x in range(self.lvl.level_width):
             for y in range(self.lvl.level_height):
-                entities.extend(self.get_all_entities_at(x, y))
+                entities.extend(self.get_eids_at(x, y))
         return entities
 
-    def get_all_entities_at(self, x, y):
+    def get_eids_at(self, x, y):
         """
         :type x: int
         :type y: int
         :rtype: list
         """
+        warnings.warn("LevelView.get_eids_at() still returns entities proper!")
         if self.lvl.are_valid_coords(x, y):
             return self.lvl._cells[x][y].get_all_entities()
         return None

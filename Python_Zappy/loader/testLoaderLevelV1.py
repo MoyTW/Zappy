@@ -138,9 +138,9 @@ class TestLoaderLevelV1(unittest.TestCase):
         target_level.replace_cells([[Cell.Cell() for _ in range(0, 6)] for _ in range(0, 5)])
         self.loader_level._load_entity_list(json, target_level)
 
-        self.assertEqual(len(target_level.view.get_all_entities()), 2)
-        self.assertEqual(len(target_level.view.get_all_entities_at(2, 3)), 1)
-        self.assertEqual(len(target_level.view.get_all_entities_at(3, 3)), 1)
+        self.assertEqual(len(target_level.view.get_all_eids()), 2)
+        self.assertEqual(len(target_level.view.get_eids_at(2, 3)), 1)
+        self.assertEqual(len(target_level.view.get_eids_at(3, 3)), 1)
 
     # This is only the most cursory of tests - the components are tested already.
     # It's just here to make sure nothing blows up when you combine them.

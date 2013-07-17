@@ -142,7 +142,7 @@ class LoaderLevelV1(object):
         """
         :type _level: level.Level.Level
         """
-        entities = _level.view.get_all_entities()
+        entities = _level.view.get_all_eids()
         for entity in entities:
             try:
                 if entity.is_player_controlled():

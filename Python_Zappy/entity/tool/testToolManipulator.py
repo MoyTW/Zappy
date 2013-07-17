@@ -35,7 +35,7 @@ class TestToolManipulator(unittest.TestCase):
 
         self.tool.use_on_entity(weak)
 
-        self.assertEqual(len(self.level.get_all_entities()), 2)
+        self.assertEqual(len(self.level.get_all_eids()), 2)
         self.assertEqual(len(self.tool._captured_actors), 1)
 
     def test_can_use(self):

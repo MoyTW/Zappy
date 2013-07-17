@@ -9,6 +9,11 @@ class Cell(object):
     LOADER = pyglet.resource.Loader(['@assets'])
 
     def __init__(self, _image_location=DEFAULT_IMAGE_PATH, _passable=True, _transparent=True):
+        """
+        :type _image_location: str
+        :type _passable: bool
+        :type _transparent: bool
+        """
         self.is_passable = _passable
         self.is_transparent = _transparent
         self._contains = []
@@ -26,6 +31,10 @@ class Cell(object):
 
     # Returns a map. Key is priority, contents are lists of images.
     def get_display_images(self, _in_fow=False):
+        """
+        :type _in_fow: bool
+        :rtype: dict
+        """
         warnings.warn("Checking hasattr(entity, 'max_moves') to see if it's an Actor or not!")
         display_dict = dict()
         display_dict[-1] = [self._image]
@@ -44,12 +53,18 @@ class Cell(object):
 
     # Don't store the result of this function! It is for looking, not touching!
     def get_all_entities(self):
+        """:rtype: list"""
         return self._contains
 
     def add_entity(self, _entity):
+        """:type _entity: entity.Entity.Entity"""
         self._contains.append(_entity)
 
     def remove_entity(self, _entity):
+        """
+        :type _entity: entity.Entity.Entity
+        :rtype: bool
+        """
         try:
             self._contains.remove(_entity)
             return True
@@ -57,11 +72,16 @@ class Cell(object):
             return False
 
     def contains_entity(self, _entity):
+        """
+        :type _entity: entity.Entity.Entity
+        :rtype: bool
+        """
         return _entity in self._contains
 
     # Searches for file in local, then in assets, then tries to load default.
     # If for some reason the default is absent, throws an exception.
     def _load_image(self, _filename):
+        """:type _filename: str"""
         try:
             self._image = pyglet.resource.image(_filename)
         except pyglet.resource.ResourceNotFoundException:

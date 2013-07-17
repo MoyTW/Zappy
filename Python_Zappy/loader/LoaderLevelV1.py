@@ -139,6 +139,9 @@ class LoaderLevelV1(object):
                     self._execute_entity_order(order, entity, _level)
 
     def _find_and_assign_player_actor(self, _level):
+        """
+        :type _level: level.Level.Level
+        """
         entities = _level.view.get_all_entities()
         for entity in entities:
             try:

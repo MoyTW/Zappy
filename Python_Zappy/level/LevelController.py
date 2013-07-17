@@ -6,6 +6,9 @@ import entity.actor.Adversary as Adversary
 
 class LevelController(object):
     def __init__(self, _level):
+        """
+        :type _level: level.Level.Level
+        """
         self._level = _level
         self._zappy = self._level.player_actor
         self.level_won = False

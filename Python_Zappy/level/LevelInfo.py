@@ -11,6 +11,13 @@ class LevelInfo:
     DEFAULT_LOADER = pyglet.resource.Loader('@assets')
 
     def __init__(self, _name, _number, _width, _height, _previews_folder):
+        """
+        :type _name: str
+        :type _number: int
+        :type _width: int
+        :type _height: int
+        :type _previews_folder: str
+        """
         self.info_version = .1
         self.info_name = _name
         self.info_number = _number

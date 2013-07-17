@@ -9,6 +9,11 @@ import level.LevelView as LevelView
 class Level(object):
     # cells is a rectangular grid of Cell objects.
     def __init__(self, info, cells=None, player_actor=None):
+        """
+        :type info: level.LevelInfo.LevelInfo
+        :type cells: list
+        :type player_actor: entity.actor.Actor.Actor
+        """
         self._info = info
         self._cells = cells
         self._player_actor = player_actor
@@ -45,24 +50,25 @@ class Level(object):
 
     @player_actor.setter
     def player_actor(self, value):
+        """:type value: entity.actor.Actor.Actor"""
         if self._player_actor is None:
             self._player_actor = value
         else:
             warnings.warn("There are multiple candidates for the player actor on this map!")
 
     def add_command(self, cmd):
-        """
-        :type cmd: level.commands.CompoundCmd.CompoundCmd
-        """
+        """:type cmd: level.commands.CompoundCmd.CompoundCmd"""
         self.command_log.add_command(cmd)
 
     def cells_are_none(self):
+        """:rtype: bool"""
         if self._cells is None:
             return True
         return False
 
     # Should throw some manner of exception if cells is not None
     def set_cells(self, cells):
+        """:type cells: list"""
         if self._cells is None:
             if len(cells) != self.level_width:
                 raise level.levelExceptions.LevelWidthNotMatchedByCells("len(cells)={0} != self._width={1}"
@@ -79,12 +85,18 @@ class Level(object):
 
     # Also replaces the player_actor
     def replace_cells(self, cells):
+        """:type cells: list"""
         self._player_actor = None
         self._cells = None
         self.set_cells(cells)
 
     # If the entity has the function "set_coords" defined, this will attempt to call it.
     def place_entity_at(self, entity, x, y):
+        """
+        :type entity: entity.Entity.Entity
+        :type x: int
+        :type y: int
+        """
         if self.are_valid_coords(x, y):
             self._cells[x][y].add_entity(entity)
         try:
@@ -93,6 +105,12 @@ class Level(object):
             pass
 
     def remove_entity_from(self, entity, x, y):
+        """
+        :type entity: entity.Entity.Entity
+        :type x: int
+        :type y: int
+        :rtype: bool
+        """
         if self.are_valid_coords(x, y):
             if self._cells[x][y].remove_entity(entity):
                 try:
@@ -103,12 +121,25 @@ class Level(object):
         return False
 
     def move_entity_from_to(self, entity, old_x, old_y, new_x, new_y):
+        """
+        :type entity: entity.Entity.Entity
+        :type old_x: int
+        :type old_y: int
+        :type new_x: int
+        :type new_y: int
+        :rtype: bool
+        """
         if not self.remove_entity_from(entity, old_x, old_y):
             return False
         self.place_entity_at(entity, new_x, new_y)
         return True
 
     def are_valid_coords(self, x, y):
+        """
+        :type x: int
+        :type y: int
+        :rtype: bool
+        """
         if 0 <= x < self.level_width and 0 <= y < self.level_height:
                 return True
         return False

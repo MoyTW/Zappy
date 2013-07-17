@@ -20,6 +20,7 @@ class Level(object):
         self.max_eid = 0
         self.command_log = CommandLog.CommandLog()
         self.view = LevelView.LevelView(self)
+        """:type: LevelView.LevelView"""
 
     def get_level_info(self):
         return self._info
@@ -57,7 +58,7 @@ class Level(object):
             warnings.warn("There are multiple candidates for the player actor on this map!")
 
     def add_command(self, cmd):
-        """:type cmd: level.commands.CompoundCmd.CompoundCmd"""
+        """:type cmd: level.commands.Command.Command"""
         self.command_log.add_command(cmd)
 
     def cells_are_none(self):

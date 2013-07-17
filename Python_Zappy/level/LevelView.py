@@ -14,9 +14,17 @@ class LevelView(object):
     def player_actor(self):
         return self.lvl.player_actor
 
+    def get_entity_name(self, eid):
+        warnings.warn("OH GOD THIS CODE IN LEVELVIEW.GET_ENTITY_NAME OH GOD NO")
+        entities = self._get_all_entities()
+        for e in entities:
+            if e.eid == eid:
+                return e.entity_name
+        return None
+
     def add_command(self, cmd):
         """
-        :type cmd: level.commands.CompoundCmd.CompoundCmd
+        :type cmd: level.commands.Command.Command
         """
         self.lvl.add_command(cmd)
 
@@ -69,7 +77,6 @@ class LevelView(object):
         """
         :rtype: list
         """
-        warnings.warn("LevelView.get_all_eids() still returns entities proper!")
         entities = list()
         for x in range(self.lvl.level_width):
             for y in range(self.lvl.level_height):
@@ -82,7 +89,6 @@ class LevelView(object):
         :type y: int
         :rtype: list
         """
-        warnings.warn("LevelView.get_eids_at() still returns entities proper!")
         if self.lvl.are_valid_coords(x, y):
             return [e.eid for e in self.lvl._cells[x][y].get_all_entities()]
         return None
@@ -98,3 +104,13 @@ class LevelView(object):
                 if self.lvl._cells[x][y].contains_entity(entity):
                     return x, y
         return None
+
+    def _get_all_entities(self):
+        """
+        :rtype: list
+        """
+        entities = list()
+        for x in range(self.lvl.level_width):
+            for y in range(self.lvl.level_height):
+                entities.extend(self.lvl._cells[x][y].get_all_entities())
+        return entities

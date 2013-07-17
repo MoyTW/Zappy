@@ -11,6 +11,7 @@ class LevelController(object):
         """
         self._level = _level
         self._zappy = self._level.player_actor
+        """:type: entity.actor.Actor.Actor"""
         self.level_won = False
         self.level_failed = False
 

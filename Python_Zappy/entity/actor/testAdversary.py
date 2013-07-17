@@ -16,7 +16,7 @@ class TestAdversary(unittest.TestCase):
         vertical = BehaviorMoveStupidVertical(_move_cost=1)
 
         self.level = loader.oldLoaderLevel.oldLoaderLevel('entity/actor/behaviors/behavior_test_levels').get_level(0)
-        self.adversary = Adversary.Adversary(_eid=0, _level=self.level, _senses=[SenseSeismic.SenseSeismic(5)],
+        self.adversary = Adversary.Adversary(_eid=0, _level=self.level.view, _senses=[SenseSeismic.SenseSeismic(5)],
                                              _behaviors=[horizontal, vertical])
 
     def tearDown(self):

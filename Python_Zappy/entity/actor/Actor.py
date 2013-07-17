@@ -119,7 +119,10 @@ class Actor(Entity.Entity, Destructible.Destructible):
     #   a new hearing sense within the turn, you will be made unable to use it, as is proper)
     #
     #   That seems a bit of an edge case, though...oh, well.
+    #
+    #   Note that these are NOT Commands!
     def turn_begin(self):
+        warnings.warn("Actor.turn_begin does not use Commands")
         self._detect_entities()
         self._current_moves = self._max_moves
         self._current_energy += self._energy_regen
@@ -132,6 +135,7 @@ class Actor(Entity.Entity, Destructible.Destructible):
     #   Lower all CD timers (Tools and Status Effects)
     #   Check for expired status effects; umapply and remove expired
     def turn_end(self):
+        warnings.warn("Actor.turn_begin does not use Commands")
         for tool in self._tools:
             tool.turn_passed()
         for status_effect in self._status_effects:
@@ -150,6 +154,7 @@ class Actor(Entity.Entity, Destructible.Destructible):
     def remove_status_effect(self, _effect):
         self._status_effects.remove(_effect)
 
+    '''
     def attempt_move(self, _direction):
         if self._current_moves <= 0:
             return False
@@ -162,6 +167,7 @@ class Actor(Entity.Entity, Destructible.Destructible):
                 return True
 
         return False
+    '''
 
     def _detect_entities(self):
         if self._level is not None:

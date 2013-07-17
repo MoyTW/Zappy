@@ -10,6 +10,13 @@ class Adversary(Actor.Actor):
     def __init__(self, _eid, _level, _entity_name='Default Adversary Name', _max_hp=1, _max_moves=1, _tools=None,
                  _senses=None, _image_name=None, _behaviors=None, _rank=RANK.AVERAGE, _faction=FACTIONS.ADVERSARY,
                  _base_threat=1, **kwargs):
+        """
+        :type _eid: int
+        :type _level: level.LevelView.LevelView
+        :type _entity_name: str
+        :type _max_hp: int
+        :type _max_moves: int
+        """
         super(Adversary, self).__init__(_eid=_eid, _level=_level, _max_hp=_max_hp, _max_moves=_max_moves, _tools=_tools,
                                         _senses=_senses, _image_name=_image_name, _rank=_rank,
                                         _entity_name=_entity_name, _faction=_faction, _base_threat=_base_threat,
@@ -21,6 +28,8 @@ class Adversary(Actor.Actor):
             self._behaviors = _behaviors
 
     def select_target(self):
+        """:rtype: int"""
+        warnings.warn("Implementation unchanged")
         hostiles = list()
         for entity in self._detected_entities:
             try:

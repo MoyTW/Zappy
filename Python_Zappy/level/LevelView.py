@@ -84,7 +84,7 @@ class LevelView(object):
         """
         warnings.warn("LevelView.get_eids_at() still returns entities proper!")
         if self.lvl.are_valid_coords(x, y):
-            return self.lvl._cells[x][y].get_all_entities()
+            return [e.eid for e in self.lvl._cells[x][y].get_all_entities()]
         return None
 
         # Dumb search

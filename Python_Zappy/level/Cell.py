@@ -2,7 +2,6 @@ __author__ = 'Travis Moy'
 
 import pyglet
 import warnings
-import entity.actor.Actor as Actor
 
 
 class Cell(object):
@@ -27,10 +26,11 @@ class Cell(object):
 
     # Returns a map. Key is priority, contents are lists of images.
     def get_display_images(self, _in_fow=False):
+        warnings.warn("Checking hasattr(entity, 'max_moves') to see if it's an Actor or not!")
         display_dict = dict()
         display_dict[-1] = [self._image]
         for entity in self._contains:
-            if not (_in_fow and isinstance(entity, Actor.Actor)):
+            if not (_in_fow and hasattr(entity, 'max_moves')):
                 try:
                     priority = entity.PRIORITY
                     image = entity.entity_image

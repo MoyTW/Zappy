@@ -10,11 +10,11 @@ class BehaviorAttackMelee(Behavior.Behavior):
         super(BehaviorAttackMelee, self).__init__(_move_cost)
         self._strength = _strength
 
-    def _special_can_execute(self, _target, _level, _user):
-        return self._are_adjacent(_target, _user)
+    def _special_can_execute(self, _target_eid, _level_view, _user_eid):
+        return self._are_adjacent(_target_eid, _user_eid)
 
-    def _execute_effects(self, _target, _level, _user):
-        _target.deal_damage(self._strength)
+    def _execute_effects(self, _target_eid, _level_view, _user_eid):
+        _target_eid.deal_damage(self._strength)
         return True
 
     def _are_adjacent(self, zappy, adversary):

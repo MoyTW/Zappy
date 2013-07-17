@@ -12,36 +12,73 @@ class Behavior(object):
 
     # If _can_execute(), _execute()
     # Returns True on successful execution, False otherwise
-    def attempt_to_execute(self, _target, _level, _user):
-        if self._can_execute(_target, _level, _user):
-            return self._execute(_target, _level, _user)
+    def attempt_to_execute(self, _target_eid, _level_view, _user_eid):
+        """
+        :type _target_eid: int
+        :type _level_view: level.LevelView.LevelView
+        :type _user_eid: int
+        :rtype: bool
+        """
+        if self._can_execute(_target_eid, _level_view, _user_eid):
+            return self._execute(_target_eid, _level_view, _user_eid)
         else:
             return False
 
-    def _can_execute(self, _target, _level, _user):
-        return self._general_can_execute(_target, _level, _user) and \
-               self._special_can_execute(_target, _level, _user)
+    def _can_execute(self, _target_eid, _level_view, _user_eid):
+        """
+        :type _target_eid: int
+        :type _level_view: level.LevelView.LevelView
+        :type _user_eid: int
+        :rtype: bool
+        """
+        return self._general_can_execute(_target_eid, _level_view, _user_eid) and \
+            self._special_can_execute(_target_eid, _level_view, _user_eid)
 
-    def _execute(self, _target, _level, _user):
-        if self._execute_effects(_target, _level, _user):
-            self._on_execute_pay_costs(_user)
+    def _execute(self, _target_eid, _level_view, _user_eid):
+        """
+        :type _target_eid: int
+        :type _level_view: level.LevelView.LevelView
+        :type _user_eid: int
+        :rtype: bool
+        """
+        if self._execute_effects(_target_eid, _level_view, _user_eid):
+            self._on_execute_pay_costs(_user_eid)
             return True
         else:
             return False
 
     # This should be overridden in child classes to add special constraints
-    def _special_can_execute(self, _target, _level, _user):
+    def _special_can_execute(self, _target_eid, _level_view, _user_eid):
+        """
+        :type _target_eid: int
+        :type _level_view: level.LevelView.LevelView
+        :type _user_eid: int
+        :rtype: bool
+        """
         return True
 
     # This should be overridden in child classes to add the actual effects
-    def _execute_effects(self, _target, _level, _user):
+    def _execute_effects(self, _target_eid, _level_view, _user_eid):
+        """
+        :type _target_eid: int
+        :type _level_view: level.LevelView.LevelView
+        :type _user_eid: int
+        :rtype: bool
+        """
         return False
 
-    def _general_can_execute(self, _target, _level, _user):
-        if _target is not None and _user.current_moves >= self._move_cost:
+    def _general_can_execute(self, _target_eid, _level_view, _user_eid):
+        """
+        :type _target_eid: int
+        :type _level_view: level.LevelView.LevelView
+        :type _user_eid: int
+        :rtype: bool
+        """
+        if _target_eid is not None and _user_eid.current_moves >= self._move_cost:
             return True
         else:
             return False
 
-    def _on_execute_pay_costs(self, _user):
-        _user.use_moves(self._move_cost)
+    def _on_execute_pay_costs(self, _user_eid):
+        """:type _user_eid: int"""
+        _user_eid.use_moves(self._move_cost)

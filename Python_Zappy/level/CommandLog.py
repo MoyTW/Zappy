@@ -11,7 +11,7 @@ class CommandLog(object):
         return self._latest_unexecuted
 
     def add_command(self, cmd):
-        """:type cmd: level.commands.CompoundCmd.CompoundCmd"""
+        """:type cmd: level.commands.Command.Command"""
         self._entries.append(cmd)
 
     def execute_commands(self, n=-1):

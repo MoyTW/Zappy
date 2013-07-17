@@ -2,6 +2,7 @@ __author__ = 'Travis Moy'
 
 import unittest
 import level.commands.CompoundCmd as cmd
+import level.commands.Command as c
 
 
 class DummyFragment(object):
@@ -22,12 +23,12 @@ class TestCompoundCmd(unittest.TestCase):
     def setUp(self):
 
         self.cmd_twenty = cmd.CompoundCmd("Adds 10 and Multiplies by 2",
-                                          DummyFragment("Adds 10", cmd.PRINT_DEBUG, lambda x: x.add(10)),
-                                          DummyFragment("Multiplies by 2", cmd.PRINT_DEBUG, lambda x: x.mult(2)))
+                                          DummyFragment("Adds 10", c.PRINT_DEBUG, lambda x: x.add(10)),
+                                          DummyFragment("Multiplies by 2", c.PRINT_DEBUG, lambda x: x.mult(2)))
 
         self.cmd_ten = cmd.CompoundCmd("Multiplies by 2, adds 10",
-                                       DummyFragment("Multiplies by 2", cmd.PRINT_DEBUG, lambda x: x.mult(2)),
-                                       DummyFragment("Adds 10", cmd.PRINT_DEBUG, lambda x: x.add(10)))
+                                       DummyFragment("Multiplies by 2", c.PRINT_DEBUG, lambda x: x.mult(2)),
+                                       DummyFragment("Adds 10", c.PRINT_DEBUG, lambda x: x.add(10)))
 
     def tearDown(self):
         self.cmd_twenty = None
@@ -59,8 +60,8 @@ class TestCompoundCmd(unittest.TestCase):
         self.assertEqual(should_end_up_as_ten.v, 10)
 
     def test_get_description(self):
-        self.assertEqual(self.cmd_ten.get_description(cmd.PRINT_BRIEF), "Multiplies by 2, adds 10")
-        self.assertEqual(self.cmd_ten.get_description(cmd.PRINT_DEBUG),
+        self.assertEqual(self.cmd_ten.get_description(c.PRINT_BRIEF), "Multiplies by 2, adds 10")
+        self.assertEqual(self.cmd_ten.get_description(c.PRINT_DEBUG),
                          "Multiplies by 2, adds 10\n\tMultiplies by 2\n\tAdds 10")
 
 suite = unittest.TestLoader().loadTestsFromTestCase(TestCompoundCmd)

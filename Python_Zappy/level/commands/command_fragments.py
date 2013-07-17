@@ -1,49 +1,55 @@
 __author__ = 'Travis Moy'
 
 import warnings
-import CompoundCmd as cmd
+import Command as cmd
 
 
-class CommandFragment(object):
-    wordiness = cmd.PRINT_DEBUG
+class EntityUseMoves(cmd.Command):
+    wordiness = cmd.PRINT_VERBOSE
 
-    def __init__(self, description):
+    def __init__(self, eid, lvl_view, cost):
         """
-        :type description: str
+        :type eid: int
+        :type lvl_view: level.LevelView.LevelView
+        :type cost: int
         """
-        self.description = description
+        warnings.warn("EntityUseMoves.execute() is not yet implemented!")
+        desc = "{0} has spent {1} moves!".format(lvl_view.get_entity_name(eid), cost)
+        super(EntityUseMoves, self).__init__(desc)
+
+        self.cost = cost
+        self.eid = eid
 
     def execute(self, lvl):
-        """
-        :type lvl: level.Level.Level
-        """
         pass
 
-    def get_description(self, wordiness):
-        """
-        :type wordiness: int
-        :rtype: str
-        """
-        if self.wordiness <= wordiness:
-            return self.description
 
-
-class LevelRemoveEntity(CommandFragment):
+class LevelRemoveEntity(cmd.Command):
     wordiness = cmd.PRINT_NORMAL
 
-    def __init__(self, eid):
+    def __init__(self, eid, lvl_view):
+        """
+        :type eid: int
+        :type lvl_view: level.LevelView.LevelView
+        """
         warnings.warn("LevelRemoveEntity.execute() is not yet implemented!")
-        super(LevelRemoveEntity, self).__init__("{0} has been removed from the level!".format(eid))
+        desc = "{0} has been removed from the level!".format(lvl_view.get_entity_name(eid))
+        super(LevelRemoveEntity, self).__init__(desc)
 
     def execute(self, lvl):
         pass
 
 
 # An example of a fragment
-class CellSetPassable(CommandFragment):
+class CellSetPassable(cmd.Command):
     wordiness = cmd.PRINT_NORMAL
 
     def __init__(self, is_passable, x, y):
+        """
+        :type is_passable: bool
+        :type x: int
+        :type y: int
+        """
         warnings.warn("CellSetPassable.execute() is not yet implemented!")
         if is_passable:
             description = "({0}, {1}) is now passable!".format(x, y)

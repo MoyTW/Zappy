@@ -1,14 +1,14 @@
 __author__ = 'Travis Moy'
 
-PRINT_BRIEF, PRINT_NORMAL, PRINT_VERBOSE, PRINT_DEBUG = range(0, 4)
+import Command as cmd
 
 
-class CompoundCmd(object):
-    wordiness = PRINT_BRIEF
+class CompoundCmd(cmd.Command):
+    wordiness = cmd.PRINT_BRIEF
 
-    # CompoundCmd takes an arbitrary number of CommandFragment objects.
+    # CompoundCmd takes an arbitrary number of Command objects.
     def __init__(self, description, *args):
-        self.description = description
+        super(CompoundCmd, self).__init__(description)
         self.fragments = args
 
     # Executes the fragments in order.

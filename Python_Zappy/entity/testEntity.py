@@ -4,12 +4,20 @@ import unittest
 import entity.Entity as Entity
 import level.Level as Level
 from level.commands.command_fragments import LevelRemoveEntity
+import level.LevelInfo as LevelInfo
+
+
+class CellDummy(object):
+    def get_all_entities(self):
+        return []
 
 
 class TestEntity(unittest.TestCase):
 
     def setUp(self):
-        self.default_level = Level.Level(None)
+        info = LevelInfo.LevelInfo("Test", 0, 1, 1, "asdf")
+        self.default_level = Level.Level(info)
+        self.default_level.set_cells([[CellDummy()]])
         self.default_entity = Entity.Entity(0, self.default_level.view)
 
     def tearDown(self):

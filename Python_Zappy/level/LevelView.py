@@ -15,19 +15,19 @@ class LevelView(object):
         return self.lvl.player_actor
 
     def get_actor_current_moves(self, eid):
-        entities = self._get_all_entities()
-        for e in entities:
-            if e.eid == eid:
-                return e.current_moves
-        return None
+        entity = self._get_entity_by_id(eid)
+        """:type: entity.actor.Actor.Actor"""
+        try:
+            return entity.current_moves
+        except AttributeError:
+            return None
 
     def get_entity_name(self, eid):
-        warnings.warn("OH GOD THIS CODE IN LEVELVIEW.GET_ENTITY_NAME OH GOD NO")
-        entities = self._get_all_entities()
-        for e in entities:
-            if e.eid == eid:
-                return e.entity_name
-        return None
+        entity = self._get_entity_by_id(eid)
+        if entity is not None:
+            return entity.entity_name
+        else:
+            return None
 
     def add_command(self, cmd):
         """
@@ -110,6 +110,17 @@ class LevelView(object):
             for y in range(self.lvl.level_height):
                 if self.lvl._cells[x][y].contains_entity(entity):
                     return x, y
+        return None
+
+    def _get_entity_by_id(self, eid):
+        """
+        :type eid: int
+        :rtype: entity.Entity.Entity
+        """
+        entities = self._get_all_entities()
+        for e in entities:
+            if e.eid == eid:
+                return e
         return None
 
     def _get_all_entities(self):

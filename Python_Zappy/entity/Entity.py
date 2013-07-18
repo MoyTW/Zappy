@@ -33,7 +33,7 @@ class Entity(object):
 
     def destroy(self):
         self._level.add_command(CompoundCmd("{0} has been destroyed!".format(self.entity_name),
-                                            LevelRemoveEntity(self.eid)))
+                                            LevelRemoveEntity(self.eid, self._level)))
 
     def get_coords(self):
         return self._x, self._y

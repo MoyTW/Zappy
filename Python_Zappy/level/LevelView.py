@@ -14,6 +14,13 @@ class LevelView(object):
     def player_actor(self):
         return self.lvl.player_actor
 
+    def get_entity_coords(self, eid):
+        entity = self._get_entity_by_id(eid)
+        if entity is not None:
+            return entity.get_coords()
+        else:
+            return None
+
     def get_actor_current_moves(self, eid):
         entity = self._get_entity_by_id(eid)
         """:type: entity.actor.Actor.Actor"""

@@ -4,6 +4,23 @@ import warnings
 import Command as cmd
 
 
+class EntityDealDamage(cmd.Command):
+    wordiness = cmd.PRINT_NORMAL
+
+    def __init__(self, eid, lvl_view, damage):
+        """
+        :type eid: int
+        :type lvl_view: level.LevelView.LevelView
+        :type damage: int
+        """
+        warnings.warn("EntityDealDamage.execute() is not yet implemented!")
+        desc = "{0} has taken {1} damage!".format(lvl_view.get_entity_name(eid), damage)
+        super(EntityDealDamage, self).__init__(desc)
+
+        self.eid = eid
+        self.damage = damage
+
+
 class EntityUseMoves(cmd.Command):
     wordiness = cmd.PRINT_VERBOSE
 
@@ -17,8 +34,8 @@ class EntityUseMoves(cmd.Command):
         desc = "{0} has spent {1} moves!".format(lvl_view.get_entity_name(eid), cost)
         super(EntityUseMoves, self).__init__(desc)
 
-        self.cost = cost
         self.eid = eid
+        self.cost = cost
 
     def execute(self, lvl):
         pass

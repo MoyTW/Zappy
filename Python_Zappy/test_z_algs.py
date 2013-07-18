@@ -50,6 +50,11 @@ class TestZAlgs(unittest.TestCase):
         self.assertEqual(obstructions[0].near, 0)
         self.assertEqual(obstructions[0].far, 1)
 
+    def test_check_in_range(self):
+        self.assertTrue(self.algs.check_in_range(1, 1, 1, 2, 1))
+        self.assertTrue(self.algs.check_in_range(1, 1, 1, 2, 2))
+        self.assertFalse(self.algs.check_in_range(1, 1, 2, 3, 2))
+
     def test_cell_is_obstructed(self):
         obstructions = [algs_rpas.CellAngles(0.0, .125, .25), algs_rpas.CellAngles(.75, .875, 1)]
         angle = 1.0 / 6.0

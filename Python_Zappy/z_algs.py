@@ -41,6 +41,13 @@ class ZappyAlgs(object):
     def check_los(self, target_x, target_y, origin_x, origin_y, radius, func_transparent):
         return self.rpas.check_los(target_x, target_y, origin_x, origin_y, radius, func_transparent)
 
+    def check_in_range(self, t_x, t_y, o_x, o_y, rng):
+        coords = self.calc_coords_in_range(rng, o_x, o_y)
+        if (t_x, t_y) in coords:
+            return True
+        else:
+            return False
+
     def calc_coords_in_range(self, _range, x_center, y_center):
         coords = set()
         for i in range(_range + 1):

@@ -66,7 +66,7 @@ class Behavior(object):
         :type _user: entity.actor.Adversary.Adversary
         :rtype: bool
         """
-        return False
+        return True
 
     def _general_can_execute(self, _target_eid, _level_view, _user):
         """

@@ -13,7 +13,7 @@ class TestBehaviorAttackMelee(unittest.TestCase):
     def setUp(self):
         self.loader_level = loader.oldLoaderLevel.oldLoaderLevel('entity/actor/behaviors/behavior_test_levels')
         self.level = self.loader_level.get_level(0)
-        self.adversary = Adversary.Adversary(0, self.level.view, _senses=[SenseSeismic.SenseSeismic(5)])
+        self.adversary = Adversary.Adversary(99, self.level.view, _senses=[SenseSeismic.SenseSeismic(5)])
         self.behavior = BehaviorAttackMelee.BehaviorAttackMelee()
 
     def tearDown(self):

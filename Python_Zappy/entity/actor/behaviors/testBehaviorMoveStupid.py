@@ -12,7 +12,7 @@ class TestBehaviorMoveStupid(unittest.TestCase):
     def setUp(self):
         self.loader_level = loader.oldLoaderLevel.oldLoaderLevel('entity/actor/behaviors/behavior_test_levels')
         self.level = self.loader_level.get_level(0)
-        self.adversary = Adversary.Adversary(0, self.level.view, _senses=[SenseSeismic.SenseSeismic(5)])
+        self.adversary = Adversary.Adversary(99, self.level.view, _senses=[SenseSeismic.SenseSeismic(5)])
         self.behavior = BehaviorMoveStupid.BehaviorMoveStupid(_move_cost=1)
 
     def tearDown(self):
@@ -44,9 +44,14 @@ class TestBehaviorMoveStupid(unittest.TestCase):
     def run_test_data(self, x, y):
         self.level.place_entity_at(self.adversary, x, y)
         self.adversary.turn_begin()
-        self.behavior._execute(self.level.player_actor.eid, self.level.view, self.adversary)
-        new_x, new_y = self.adversary.get_coords()
-        self.level.remove_entity_from(self.adversary, new_x, new_y)
+        if not self.behavior._execute(self.level.player_actor.eid, self.level.view, self.adversary):
+            print "Failed to move."
+            return 0, 0
+
+        cmpd_move_cmd = self.level.command_log[-2]
+        new_x, new_y = cmpd_move_cmd[0].target
+        print "(", x, y, ") -> (", new_x, new_y, ")"
+        self.level.remove_entity_from(self.adversary, x, y)
 
         delta_x = new_x - x
         delta_y = new_y - y

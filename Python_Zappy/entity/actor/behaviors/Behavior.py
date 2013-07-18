@@ -75,7 +75,7 @@ class Behavior(object):
         :type _user: entity.actor.Adversary.Adversary
         :rtype: bool
         """
-        if _target_eid is not None and _level_view.get_actor_current_moves(_user) >= self.move_cost:
+        if _target_eid is not None and _user.current_moves >= self.move_cost:
             return True
         else:
             return False

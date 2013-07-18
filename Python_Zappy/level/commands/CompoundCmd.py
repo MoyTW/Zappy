@@ -23,3 +23,7 @@ class CompoundCmd(cmd.Command):
             if desc is not None:
                 ret_desc += "\n\t{0}".format(desc)
         return ret_desc
+
+    def __getitem__(self, item):
+        """:rtype: level.commands.Command"""
+        return self.fragments[item]

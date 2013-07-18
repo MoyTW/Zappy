@@ -19,7 +19,13 @@ class BehaviorAttackRanged(Behavior.Behavior):
         self.range = _range
 
     def _special_can_execute(self, _target_eid, _level_view, _user):
-        zap_x, zap_y = _target_eid.get_coords()
+        """
+        :type _target_eid: int
+        :type _level_view: level.LevelView.LevelView
+        :type _user: entity.actor.Adversary.Adversary
+        :rtype: bool
+        """
+        zap_x, zap_y = _level_view.get_entity_coords(_target_eid)
         adv_x, adv_y = _user.get_coords()
         in_los = Z_ALGS.check_los(zap_x, zap_y, adv_x, adv_y, self.range + 1, _level_view.cell_is_transparent)
         in_rng = Z_ALGS.check_in_range(zap_x, zap_y, adv_x, adv_y, self.range)

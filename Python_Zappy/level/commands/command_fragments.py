@@ -37,8 +37,23 @@ class EntityUseMoves(cmd.Command):
         self.eid = eid
         self.cost = cost
 
-    def execute(self, lvl):
-        pass
+
+class LevelPlaceAndAssignEntityID(cmd.Command):
+    wordiness = cmd.PRINT_NORMAL
+
+    def __init__(self, new_entity, x, y):
+        """
+        :type new_entity: entity.Entity.Entity
+        :type x: int
+        :type y: int
+        """
+        warnings.warn("LevelPlaceAndAssignEntityID.execute() is not yet implemented!")
+        desc = "A new {0} has appeared at ({1}, {2})!".format(new_entity.entity_name, x, y)
+        super(LevelPlaceAndAssignEntityID, self).__init__(desc)
+
+        self.new_entity = new_entity
+        self.x = x
+        self.y = y
 
 
 class LevelMoveEntity(cmd.Command):
@@ -61,6 +76,7 @@ class LevelMoveEntity(cmd.Command):
         self.origin = (o_x, o_y)
         self.target = (t_x, t_y)
 
+
 class LevelRemoveEntity(cmd.Command):
     wordiness = cmd.PRINT_NORMAL
 
@@ -72,9 +88,6 @@ class LevelRemoveEntity(cmd.Command):
         warnings.warn("LevelRemoveEntity.execute() is not yet implemented!")
         desc = "{0} has been removed from the level!".format(lvl_view.get_entity_name(eid))
         super(LevelRemoveEntity, self).__init__(desc)
-
-    def execute(self, lvl):
-        pass
 
 
 # An example of a fragment
@@ -97,6 +110,3 @@ class CellSetPassable(cmd.Command):
         self.is_passable = is_passable
         self.x = x
         self.y = y
-
-    def execute(self, lvl):
-        pass

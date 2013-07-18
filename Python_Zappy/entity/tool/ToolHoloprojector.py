@@ -18,6 +18,13 @@ import warnings
 class ToolHoloprojector(Tool.Tool):
 
     def __init__(self, _eid, _level, _holo_name='Hologram', _hp=999, _threat=9, **kwargs):
+        """
+        :type _eid: int
+        :type _level: level.LevelView.LevelView
+        :type _holo_name: str
+        :type _hp: int
+        :type _threat: int
+        """
         warnings.warn("ToolHoloprojector's created Actors always have ID=-1!")
         self._holo_name = _holo_name
         self._hp = _hp
@@ -27,6 +34,11 @@ class ToolHoloprojector(Tool.Tool):
         super(ToolHoloprojector, self).__init__(_eid=_eid, _level=_level, **kwargs)
 
     def _effects_of_use_on_location(self, _x, _y):
+        """
+        :type _x: int
+        :type _y: int
+        :rtype: bool
+        """
         user_faction = self.user.faction
         holo = Actor.Actor(-1, self._level, _entity_name=self._holo_name, _max_hp=self._hp, _faction=user_faction,
                            _base_threat=self._threat)

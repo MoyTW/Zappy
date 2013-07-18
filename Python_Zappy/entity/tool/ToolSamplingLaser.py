@@ -17,7 +17,13 @@ How to manage?
 
 
 class ToolSamplingLaser(Tool.Tool):
+
     def __init__(self, _eid, _level, _damage=5, _blind_duration=14, _enrage_duration=7, **kwargs):
+        """
+        :type _eid: int
+        :type _level: level.LevelView.LevelView
+        :type _damage: int
+        """
         self._damage = _damage
         self._blind_duration = _blind_duration
         self._enrage_duration = _enrage_duration
@@ -26,6 +32,10 @@ class ToolSamplingLaser(Tool.Tool):
         super(ToolSamplingLaser, self).__init__(_eid=_eid, _level=_level, **kwargs)
 
     def _effects_of_use_on_entity(self, _target):
+        """
+        :type _target: int
+        :rtype: bool
+        """
         done = self._use_on_actor(_target)
         if not done:
             done = self._use_on_env(_target)
@@ -37,6 +47,10 @@ class ToolSamplingLaser(Tool.Tool):
     # If RANK == AVERAGE, blind
     # If RANK == POWERFUL or RANK == TERRIFYING, enrage
     def _use_on_actor(self, _target):
+        """
+        :type _target: int
+        :rtype: bool
+        """
         try:
             rank = _target.rank
             if rank == RANK.WEAK:
@@ -55,6 +69,10 @@ class ToolSamplingLaser(Tool.Tool):
     #
     # Deals damage to the targeted envrionmental
     def _use_on_env(self, _target):
+        """
+        :type _target: int
+        :rtype: bool
+        """
         try:
             _target.deal_damage(self._damage)
             return True

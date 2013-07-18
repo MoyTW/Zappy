@@ -16,7 +16,13 @@ enemy is 'stored' in the manipulator object instead of added to the level's dead
 
 
 class ToolManipulator(Tool.Tool):
+
     def __init__(self, _eid, _level, _capture_strength=1, **kwargs):
+        """
+        :type _eid: int
+        :type _level: level.LevelView.LevelView
+        :type _capture_strength: int
+        """
         kwargs['_list_target_types'] = [self.TYPE_ENTITY]
         kwargs['_requires_LOS'] = True
         self._capture_strength = _capture_strength
@@ -25,6 +31,10 @@ class ToolManipulator(Tool.Tool):
         self._captured_actors = list()
 
     def _special_can_use_on_entity(self, _target):
+        """
+        :type _target: int
+        :rtype: int
+        """
         try:
             if isinstance(_target, Environmental.Environmental):
                 return True
@@ -39,11 +49,19 @@ class ToolManipulator(Tool.Tool):
             return False
 
     def _effects_of_use_on_entity(self, _target):
+        """
+        :type _target: int
+        :rtype: bool
+        """
         try:
             _target.trigger()
         except AttributeError:
             self._capture(_target)
 
     def _capture(self, _target):
+        """
+        :type _target: int
+        :rtype: bool
+        """
         self._captured_actors.append(_target)
         self._level.remove_entity_from(_target, *_target.get_coords())

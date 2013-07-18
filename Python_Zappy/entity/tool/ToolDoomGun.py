@@ -10,4 +10,8 @@ class ToolDoomGun(Tool.Tool):
         super(ToolDoomGun, self).__init__(_eid=_eid, _level=_level, **kwargs)
 
     def _effects_of_use_on_entity(self, _target):
+        """
+        :type _target: int
+        :rtype: bool
+        """
         _target.deal_damage(999)

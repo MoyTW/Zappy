@@ -21,13 +21,13 @@ class ToolZapGun(Tool.Tool):
         kwargs['_requires_LOS'] = True
         super(ToolZapGun, self).__init__(_eid=_eid, _level=_level, **kwargs)
 
-    def _effects_of_use_on_entity(self, _target):
+    def _effects_of_use_on_entity(self, _target_eid):
         """
-        :type _target: int
+        :type _target_eid: int
         :rtype: bool
         """
         try:
-            rank = _target.rank
+            rank = _target_eid.rank
             stun_duration = 0
             if rank == RANK.WEAK:
                 stun_duration = 15
@@ -37,7 +37,7 @@ class ToolZapGun(Tool.Tool):
                 stun_duration = 4
             elif rank == RANK.TERRIFYING:
                 stun_duration = 2
-            _target.apply_status_effect(EffectStun.EffectStun(_duration=stun_duration, _target=_target))
+            _target_eid.apply_status_effect(EffectStun.EffectStun(_duration=stun_duration, _target=_target_eid))
         except AttributeError as e:
             warnings.warn(e.message)
 

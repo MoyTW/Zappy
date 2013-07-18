@@ -87,14 +87,14 @@ class Tool(Entity.Entity):
         return self._can_use_tool_on(self.TYPE_LOCATION, _x, _y) and \
             self._special_can_use_on_location(_x, _y)
 
-    def can_use_on_entity(self, _target):
+    def can_use_on_entity(self, _target_eid):
         """
-        :type _target: int
+        :type _target_eid: int
         :rtype: bool
         """
-        _target_x, _target_y = _target.get_coords()
+        _target_x, _target_y = self._level.get_entity_coords(_target_eid)
         return self._can_use_tool_on(self.TYPE_ENTITY, _target_x, _target_y) and \
-            self._special_can_use_on_entity(_target)
+            self._special_can_use_on_entity(_target_eid)
 
     def use_on_location(self, _x, _y):
         """
@@ -105,13 +105,13 @@ class Tool(Entity.Entity):
         self._on_use_tool_apply_costs()
         return self._effects_of_use_on_location(_x, _y)
 
-    def use_on_entity(self, _target):
+    def use_on_entity(self, _target_eid):
         """
-        :type _target: int
+        :type _target_eid: int
         :rtype: bool
         """
         self._on_use_tool_apply_costs()
-        return self._effects_of_use_on_entity(_target)
+        return self._effects_of_use_on_entity(_target_eid)
 
     # This function may be overridden to add additional, tool-specific constraints to the Tool.can_use_on_location
     # function.
@@ -125,9 +125,9 @@ class Tool(Entity.Entity):
 
     # This function may be overridden to add additional, tool-specific constraints to the Tool.can_use_on_entity
     # function.
-    def _special_can_use_on_entity(self, _target):
+    def _special_can_use_on_entity(self, _target_eid):
         """
-        :type _target: int
+        :type _target_eid: int
         :rtype: bool
         """
         return True
@@ -142,9 +142,9 @@ class Tool(Entity.Entity):
         return False
 
     # This function should be overridden to do whatever it is the tool should do.
-    def _effects_of_use_on_entity(self, _target):
+    def _effects_of_use_on_entity(self, _target_eid):
         """
-        :type _target: int
+        :type _target_eid: int
         :rtype: bool
         """
         return False

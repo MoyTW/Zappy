@@ -1,6 +1,8 @@
 __author__ = 'Travis Moy'
 
 import Tool
+import level.commands.CompoundCmd as cmpd
+from level.commands.command_fragments import EntityDealDamage
 
 
 class ToolDoomGun(Tool.Tool):
@@ -9,9 +11,12 @@ class ToolDoomGun(Tool.Tool):
         kwargs['_requires_LOS'] = True
         super(ToolDoomGun, self).__init__(_eid=_eid, _level=_level, **kwargs)
 
-    def _effects_of_use_on_entity(self, _target):
+    def _effects_of_use_on_entity(self, _target_eid):
         """
-        :type _target: int
+        :type _target_eid: int
         :rtype: bool
         """
-        _target.deal_damage(999)
+        cmd_desc = "{0} is blasted for 9999 damage by the DOOM GUN!".format(self._level.get_entity_name(_target_eid))
+        command = cmpd.CompoundCmd(cmd_desc, EntityDealDamage(_target_eid, self._level, 9999))
+        self._level.add_command(command)
+        return True

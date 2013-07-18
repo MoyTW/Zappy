@@ -31,14 +31,14 @@ class ToolSamplingLaser(Tool.Tool):
         kwargs['_requires_LOS'] = True
         super(ToolSamplingLaser, self).__init__(_eid=_eid, _level=_level, **kwargs)
 
-    def _effects_of_use_on_entity(self, _target):
+    def _effects_of_use_on_entity(self, _target_eid):
         """
-        :type _target: int
+        :type _target_eid: int
         :rtype: bool
         """
-        done = self._use_on_actor(_target)
+        done = self._use_on_actor(_target_eid)
         if not done:
-            done = self._use_on_env(_target)
+            done = self._use_on_env(_target_eid)
         return done
 
     # Returns True on completion, False on failure

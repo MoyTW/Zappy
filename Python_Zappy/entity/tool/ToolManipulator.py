@@ -30,17 +30,17 @@ class ToolManipulator(Tool.Tool):
 
         self._captured_actors = list()
 
-    def _special_can_use_on_entity(self, _target):
+    def _special_can_use_on_entity(self, _target_eid):
         """
-        :type _target: int
+        :type _target_eid: int
         :rtype: int
         """
         try:
-            if isinstance(_target, Environmental.Environmental):
+            if isinstance(_target_eid, Environmental.Environmental):
                 return True
-            elif _target.is_stunned and (_target.rank == RANK.WEAK or
-                                          (_target.rank == RANK.AVERAGE and
-                                              _target.current_hp <= self._capture_strength)):
+            elif _target_eid.is_stunned and (_target_eid.rank == RANK.WEAK or
+                                          (_target_eid.rank == RANK.AVERAGE and
+                                              _target_eid.current_hp <= self._capture_strength)):
                 print "Your manipulator is rated to capture this creature!"
                 return True
             else:
@@ -48,15 +48,15 @@ class ToolManipulator(Tool.Tool):
         except AttributeError:
             return False
 
-    def _effects_of_use_on_entity(self, _target):
+    def _effects_of_use_on_entity(self, _target_eid):
         """
-        :type _target: int
+        :type _target_eid: int
         :rtype: bool
         """
         try:
-            _target.trigger()
+            _target_eid.trigger()
         except AttributeError:
-            self._capture(_target)
+            self._capture(_target_eid)
 
     def _capture(self, _target):
         """

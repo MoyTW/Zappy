@@ -154,27 +154,12 @@ class Actor(Entity.Entity, Destructible.Destructible):
     def remove_status_effect(self, _effect):
         self._status_effects.remove(_effect)
 
-    '''
-    def attempt_move(self, _direction):
-        if self._current_moves <= 0:
-            return False
-
-        target_x, target_y = DIR.get_coords_in_direction_from(_direction, self._x, self._y)
-
-        if self._level.cell_is_passable(target_x, target_y):
-            if self._level.move_entity_from_to(self, self._x, self._y, target_x, target_y):
-                self._current_moves -= 1
-                return True
-
-        return False
-    '''
-
     def _detect_entities(self):
         if self._level is not None:
             self._detected_entities = list()
             for sense in self._senses:
                 self._detected_entities.extend(sense.detect_entities(self._x, self._y, self._level))
-            if self in self._detected_entities:
-                self._detected_entities.remove(self)
+            if self.eid in self._detected_entities:
+                self._detected_entities.remove(self.eid)
         else:
             warnings.warn("Actor._level for actor {0} is None!".format(self.entity_name))

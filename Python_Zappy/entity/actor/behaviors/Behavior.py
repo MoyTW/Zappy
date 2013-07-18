@@ -6,11 +6,10 @@ from level.commands.command_fragments import EntityUseMoves
 class Behavior(object):
 
     def __init__(self, _move_cost=1):
-        self._move_cost = _move_cost
-
-    @property
-    def move_cost(self):
-        return self._move_cost
+        """
+        :type _move_cost: int
+        """
+        self.move_cost = _move_cost
 
     # If _can_execute(), _execute()
     # Returns True on successful execution, False otherwise
@@ -76,7 +75,7 @@ class Behavior(object):
         :type _user: entity.actor.Adversary.Adversary
         :rtype: bool
         """
-        if _target_eid is not None and _level_view.get_actor_current_moves(_user) >= self._move_cost:
+        if _target_eid is not None and _level_view.get_actor_current_moves(_user) >= self.move_cost:
             return True
         else:
             return False
@@ -86,4 +85,4 @@ class Behavior(object):
         :type _user: entity.actor.Adversary.Adversary
         :type _level_view: level.LevelView.LevelView
         """
-        _level_view.add_command(EntityUseMoves(_user.eid, _level_view, self._move_cost))
+        _level_view.add_command(EntityUseMoves(_user.eid, _level_view, self.move_cost))

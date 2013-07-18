@@ -13,7 +13,7 @@ class BehaviorAttackMelee(Behavior.Behavior):
         :type _strength: int
         """
         super(BehaviorAttackMelee, self).__init__(_move_cost)
-        self._strength = _strength
+        self.strength = _strength
 
     def _special_can_execute(self, _target_eid, _level_view, _user):
         """
@@ -34,8 +34,8 @@ class BehaviorAttackMelee(Behavior.Behavior):
         :rtype: bool
         """
         cmd_desc = "{0} melees {1} for {2} damage!".format(_user.entity_name, _level_view.get_entity_name(_target_eid),
-                                                           self._strength)
-        command = cmpd.CompoundCmd(cmd_desc, EntityDealDamage(_target_eid, _level_view, self._strength))
+                                                           self.strength)
+        command = cmpd.CompoundCmd(cmd_desc, EntityDealDamage(_target_eid, _level_view, self.strength))
         _level_view.add_command(command)
         return True
 

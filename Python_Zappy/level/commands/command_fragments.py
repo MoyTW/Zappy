@@ -41,6 +41,26 @@ class EntityUseMoves(cmd.Command):
         pass
 
 
+class LevelMoveEntity(cmd.Command):
+    wordiness = cmd.PRINT_NORMAL
+
+    def __init__(self, eid, lvl_view, o_x, o_y, t_x, t_y):
+        """
+        :type eid: int
+        :type lvl_view: level.LevelView.LevelView
+        :type o_x: int
+        :type o_y: int
+        :type t_x: int
+        :type t_y: int
+        """
+        warnings.warn("LevelMoveEntity.execute() is not yet implemented!")
+        desc = "{0} has moved from ({1}, {2}) to ({3}, {4})!".format(lvl_view.get_entity_name(eid), o_x, o_y, t_x, t_y)
+        super(LevelMoveEntity, self).__init__(desc)
+
+        self.eid = eid
+        self.origin = (o_x, o_y)
+        self.target = (t_x, t_y)
+
 class LevelRemoveEntity(cmd.Command):
     wordiness = cmd.PRINT_NORMAL
 

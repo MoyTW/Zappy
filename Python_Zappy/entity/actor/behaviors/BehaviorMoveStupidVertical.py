@@ -7,17 +7,17 @@ import math
 
 class BehaviorMoveStupidVertical(Behavior.Behavior):
 
-    def _execute_effects(self, _target_eid, _level_view, _user_eid):
+    def _execute_effects(self, _target_eid, _level_view, _user):
         zappy = _target_eid
         moved = False
-        if zappy in _user_eid._detected_entities:
-            atz_x, atz_y = (zappy.get_coords()[i] - _user_eid.get_coords()[i] for i in range(2))
+        if zappy in _user._detected_entities:
+            atz_x, atz_y = (zappy.get_coords()[i] - _user.get_coords()[i] for i in range(2))
             if math.sqrt(atz_x * atz_x + atz_y * atz_y) > 1:  # This prevents the adversary from moving ONTO Zappy.
                 # Check for vertical
                 if atz_y < 0:
-                    moved = self._try_to_move(DIR.S, _level_view, _user_eid)
+                    moved = self._try_to_move(DIR.S, _level_view, _user)
                 elif atz_y > 0:
-                    moved = self._try_to_move(DIR.N, _level_view, _user_eid)
+                    moved = self._try_to_move(DIR.N, _level_view, _user)
 
         return moved
 

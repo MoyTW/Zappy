@@ -20,7 +20,7 @@ class TestTool(unittest.TestCase):
         level = loader.get_level(0)
 
         actor = Actor.Actor(0, level)
-        tool = Tool.Tool(0, level, _user=actor, _requires_LOS=True)
+        tool = Tool.Tool(0, level.view, _user=actor, _requires_LOS=True)
         level.place_entity_at(actor, 1, 0)
 
         self.assertTrue(tool._satisfies_LOS(_x=1, _y=0))

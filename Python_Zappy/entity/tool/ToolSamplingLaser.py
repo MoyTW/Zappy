@@ -72,7 +72,7 @@ class ToolSamplingLaser(Tool.Tool):
                 command = cmpd.CompoundCmd(cmd_desc,
                                            ActorApplyStatusEffect(eid=_target,
                                                                   lvl_view=self._level,
-                                                                  effect=EffectBlind,
+                                                                  effect=EffectBlind.EffectBlind,
                                                                   duration=self._blind_duration))
             elif rank == RANK.POWERFUL or rank == RANK.TERRIFYING:
                 #_target.apply_status_effect(EffectEnrage.EffectEnrage(self._enrage_duration, _target, self.user))
@@ -81,7 +81,7 @@ class ToolSamplingLaser(Tool.Tool):
                 command = cmpd.CompoundCmd(cmd_desc,
                                            ActorApplyStatusEffect(eid=_target,
                                                                   lvl_view=self._level,
-                                                                  effect=EffectEnrage,
+                                                                  effect=EffectEnrage.EffectEnrage,
                                                                   duration=self._blind_duration,
                                                                   _enrager=self.user.eid))
             else:  # This is Just In Case, I guess? I'm not sure why I put it there. Probably just to be safe...?

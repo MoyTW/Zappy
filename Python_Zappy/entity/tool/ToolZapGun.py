@@ -5,6 +5,9 @@ from z_defs import RANK
 import entity.actor.effects.EffectStun as EffectStun
 import warnings
 
+import level.commands.CompoundCmd as cmd
+from level.commands.command_fragments import ActorApplyStatusEffect
+
 
 '''
 Lets you stun enemies; weak for less than average, powerful, terrifying (15?8?4?2?)
@@ -27,7 +30,7 @@ class ToolZapGun(Tool.Tool):
         :rtype: bool
         """
         try:
-            rank = _target_eid.rank
+            rank = self._level.act_rank(_target_eid)
             stun_duration = 0
             if rank == RANK.WEAK:
                 stun_duration = 15
@@ -37,9 +40,19 @@ class ToolZapGun(Tool.Tool):
                 stun_duration = 4
             elif rank == RANK.TERRIFYING:
                 stun_duration = 2
-            _target_eid.apply_status_effect(EffectStun.EffectStun(_duration=stun_duration, _target=_target_eid))
+
+            cmd_desc = "{0} shocks the {1}, stunning it for {2}" \
+                       "turns!".format(self.entity_name, self._level.ent_name(_target_eid), stun_duration)
+            command = cmd.CompoundCmd(cmd_desc, ActorApplyStatusEffect(eid=_target_eid,
+                                                                       lvl_view=self._level,
+                                                                       effect=EffectStun.EffectStun,
+                                                                       duration=stun_duration))
+            self._level.add_command(command)
+
+            return True
         except AttributeError as e:
             warnings.warn(e.message)
+            return False
 
 '''
 Status effects:

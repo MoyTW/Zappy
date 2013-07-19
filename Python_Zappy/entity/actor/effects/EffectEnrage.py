@@ -10,6 +10,12 @@ class EffectEnrage(Effect.Effect):
                          'enraged it. Note: Zappy cannot be enraged!'
 
     def __init__(self, _duration, _target, _enrager, _application_behavior=Effect.Effect.STACKS):
+        """
+        :type _duration: int
+        :type _target: int
+        :type _enrager: int
+        :type _application_behavior: int
+        """
         super(EffectEnrage, self).__init__(_duration=_duration, _target=_target,
                                            _application_behavior=_application_behavior)
         self._enrager = _enrager

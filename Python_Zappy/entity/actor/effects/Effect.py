@@ -12,6 +12,11 @@ class Effect(object):
     # Note: We're probably not going to use the _application_behavior var for the forseeable future, but this is a
     # reminder, I suppose. Current behavior with the list is STACKS.
     def __init__(self, _duration, _target, _application_behavior=STACKS):
+        """
+        :type _duration: int
+        :type _target: int
+        :type _application_behavior: int
+        """
         self._duration = _duration
         self._target = _target
         self._application_behavior = _application_behavior

@@ -12,6 +12,11 @@ class EffectBlind(Effect.Effect):
     EFFECT_DESCRIPTION = 'While this status effect is active, the target cannot see and must rely on other senses!'
 
     def __init__(self, _duration, _target, _application_behavior=Effect.Effect.STACKS):
+        """
+        :type _duration: int
+        :type _target: int
+        :type _application_behavior: int
+        """
         super(EffectBlind, self).__init__(_duration=_duration, _target=_target,
                                           _application_behavior=_application_behavior)
 

@@ -7,11 +7,11 @@ import Command as cmd
 class ActorApplyStatusEffect(cmd.Command):
     wordiness = cmd.PRINT_NORMAL
 
-    def __init__(self, eid, lvl_view, effect):
+    def __init__(self, eid, lvl_view, effect, duration, **kwargs):
         """
         :type eid: int
         :type lvl_view: level.LevelView.LevelView
-        :type effect: entity.actor.effects.Effect.Effect
+        :type effect: entity.actor.effects.Effect
         """
         warnings.warn("ActorApplyStatusEffect.execute() is not yet implemented!")
         desc = "{0} has been afflicted with {1}!".format(lvl_view.ent_name(eid), effect.EFFECT_NAME)
@@ -19,6 +19,8 @@ class ActorApplyStatusEffect(cmd.Command):
 
         self.eid = eid
         self.effect = effect
+        self.duration = duration
+        self.kwargs = kwargs
 
 
 class EnvironmentalTrigger(cmd.Command):

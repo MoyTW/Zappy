@@ -4,6 +4,11 @@ import Tool
 import entity.actor.effects.EffectEnrage as EffectEnrage
 import entity.actor.effects.EffectBlind as EffectBlind
 from z_defs import RANK
+import warnings
+
+import level.commands.CompoundCmd as cmpd
+from level.commands.command_fragments import EntityDealDamage
+from level.commands.command_fragments import ActorApplyStatusEffect
 
 
 '''
@@ -52,17 +57,40 @@ class ToolSamplingLaser(Tool.Tool):
         :rtype: bool
         """
         try:
-            rank = _target.rank
+            rank = self._level.act_rank(_target)
             if rank == RANK.WEAK:
-                _target.deal_damage(_target.current_hp)
+                #_target.deal_damage(_target.current_hp)
+                cmd_desc = "{0} blasts the {1}, dealing lethal damage to the weak " \
+                           "foe!".format(self.entity_name, self._level.ent_name(_target))
+                command = cmpd.CompoundCmd(cmd_desc,
+                                           EntityDealDamage(_target, self._level,
+                                                            self._level.des_curr_hp(_target)))
             elif rank == RANK.AVERAGE:
-                _target.apply_status_effect(EffectBlind.EffectBlind(self._blind_duration, _target))
+                #_target.apply_status_effect(EffectBlind.EffectBlind(self._blind_duration, _target))
+                cmd_desc = "{0} blasts the {1}, in the eyes, blinding it for {1} " \
+                           "rounds!".format(self.entity_name, self._level.ent_name(_target), self._blind_duration)
+                command = cmpd.CompoundCmd(cmd_desc,
+                                           ActorApplyStatusEffect(eid=_target,
+                                                                  lvl_view=self._level,
+                                                                  effect=EffectBlind,
+                                                                  duration=self._blind_duration))
             elif rank == RANK.POWERFUL or rank == RANK.TERRIFYING:
-                _target.apply_status_effect(EffectEnrage.EffectEnrage(self._enrage_duration, _target, self.user))
-            else:
+                #_target.apply_status_effect(EffectEnrage.EffectEnrage(self._enrage_duration, _target, self.user))
+                cmd_desc = "{0} blasts the {1}, but it does nothing but make it" \
+                           "angry!".format(self.entity_name, self._level.ent_name(_target), self._blind_duration)
+                command = cmpd.CompoundCmd(cmd_desc,
+                                           ActorApplyStatusEffect(eid=_target,
+                                                                  lvl_view=self._level,
+                                                                  effect=EffectEnrage,
+                                                                  duration=self._blind_duration,
+                                                                  _enrager=self.user.eid))
+            else:  # This is Just In Case, I guess? I'm not sure why I put it there. Probably just to be safe...?
                 return False
+
+            self._level.add_command(command)
             return True
-        except AttributeError:
+        except AttributeError as e:
+            warnings.warn(e)
             return False
 
     # Returns True on completion, False on failure
@@ -74,7 +102,11 @@ class ToolSamplingLaser(Tool.Tool):
         :rtype: bool
         """
         try:
-            _target.deal_damage(self._damage)
+            cmd_desc = "{0} blasts the {1}, for {2} damage!".format(self.entity_name, self._level.ent_name(_target),
+                                                                    self._damage)
+            command = cmpd.CompoundCmd(cmd_desc, EntityDealDamage(_target, self._level, self._damage))
+            self._level.add_command(command)
             return True
-        except AttributeError:
+        except AttributeError as e:
+            warnings.warn(e)
             return False

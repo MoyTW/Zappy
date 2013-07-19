@@ -65,10 +65,6 @@ class ToolManipulator(Tool.Tool):
             self._level.add_command(command)
         else:
             self._capture(_target_eid)
-        #try:
-        #    _target_eid.trigger()
-        #except AttributeError:
-        #    self._capture(_target_eid)
 
     def _capture(self, _target_eid):
         """

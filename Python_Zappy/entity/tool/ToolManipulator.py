@@ -4,6 +4,10 @@ import entity.tool.Tool as Tool
 import entity.environmentals.Environmental as Environmental
 from z_defs import RANK
 
+import level.commands.CompoundCmd as cmpd
+from level.commands.command_fragments import EnvironmentalTrigger
+from level.commands.command_fragments import LevelRemoveEntity
+
 '''
     The primary purpose of the manipulator is to trigger environmentals.
     The manipulator may also be used to capture stunned enemies.
@@ -38,9 +42,10 @@ class ToolManipulator(Tool.Tool):
         try:
             if isinstance(_target_eid, Environmental.Environmental):
                 return True
-            elif _target_eid.is_stunned and (_target_eid.rank == RANK.WEAK or
-                                          (_target_eid.rank == RANK.AVERAGE and
-                                              _target_eid.current_hp <= self._capture_strength)):
+            elif self._level.actor_is_stunned(_target_eid) and \
+                    (self._level.actor_rank(_target_eid) == RANK.WEAK or
+                        (self._level.actor_rank(_target_eid) == RANK.AVERAGE and
+                            self._level.destructible_curr_hp(_target_eid) <= self._capture_strength)):
                 print "Your manipulator is rated to capture this creature!"
                 return True
             else:
@@ -53,15 +58,24 @@ class ToolManipulator(Tool.Tool):
         :type _target_eid: int
         :rtype: bool
         """
-        try:
-            _target_eid.trigger()
-        except AttributeError:
+        if self._level.can_trigger(_target_eid):
+            cmd_desc = "{0}'s manipulator has triggered {1}!".format(self.user.entity_name,
+                                                                     self._level.entity_name(_target_eid))
+            command = cmpd.CompoundCmd(cmd_desc, EnvironmentalTrigger(_target_eid, self._level))
+            self._level.add_command(command)
+        else:
             self._capture(_target_eid)
+        #try:
+        #    _target_eid.trigger()
+        #except AttributeError:
+        #    self._capture(_target_eid)
 
-    def _capture(self, _target):
+    def _capture(self, _target_eid):
         """
-        :type _target: int
+        :type _target_eid: int
         :rtype: bool
         """
-        self._captured_actors.append(_target)
-        self._level.remove_entity_from(_target, *_target.get_coords())
+        self._captured_actors.append(_target_eid)
+        cmd_desc = "{0}'s has captured {1}!".format(self.user.entity_name, self._level.entity_name(_target_eid))
+        command = cmpd.CompoundCmd(cmd_desc, LevelRemoveEntity(_target_eid, self._level))
+        self._level.add_command(command)

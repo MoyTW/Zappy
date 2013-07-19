@@ -14,6 +14,7 @@ class Tool(Entity.Entity):
         """
         :type _eid: int
         :type _level: level.LevelView.LevelView
+        :type _user: entity.actor.Actor.Actor
         :type _entity_name: str
         :type _list_target_types: list
         :type _range: int
@@ -92,7 +93,7 @@ class Tool(Entity.Entity):
         :type _target_eid: int
         :rtype: bool
         """
-        _target_x, _target_y = self._level.get_entity_coords(_target_eid)
+        _target_x, _target_y = self._level.entity_coords(_target_eid)
         return self._can_use_tool_on(self.TYPE_ENTITY, _target_x, _target_y) and \
             self._special_can_use_on_entity(_target_eid)
 

@@ -33,7 +33,7 @@ class BehaviorMoveStupidHorizontal(Behavior.Behavior):
         adv_x, adv_y = adversary.get_coords()
         coords_to_next = DIR.get_coords_in_direction_from(direction, adv_x, adv_y)
         if level.cell_is_passable(*coords_to_next):
-            cmd_desc = "{0} has moved without foresight to ({1}, {2})".format(level.get_entity_coords(adversary.eid),
+            cmd_desc = "{0} has moved without foresight to ({1}, {2})".format(level.entity_coords(adversary.eid),
                                                                               *coords_to_next)
             command = cmpd.CompoundCmd(cmd_desc, LevelMoveEntity(adversary.eid, level, adv_x, adv_y, *coords_to_next))
             level.add_command(command)

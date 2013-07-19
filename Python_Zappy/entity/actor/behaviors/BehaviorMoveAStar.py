@@ -16,13 +16,13 @@ class BehaviorMoveAStar(Behavior.Behavior):
         :rtype: bool
         """
         path = Z_ALGS.a_star_from_to(origin=_user.get_coords(),
-                                     destination=_level_view.get_entity_coords(_target_eid),
+                                     destination=_level_view.entity_coords(_target_eid),
                                      level=_level_view)
         if len(path) > 0:
             adv_x, adv_y = _user.get_coords()
             tar_x, tar_y = path[0]
 
-            cmd_desc = "Using A*, {0} has moved to ({1}, {2})!".format(_level_view.get_entity_name(_target_eid),
+            cmd_desc = "Using A*, {0} has moved to ({1}, {2})!".format(_level_view.entity_name(_target_eid),
                                                                        tar_x, tar_y)
             command = cmpd.CompoundCmd(cmd_desc, LevelMoveEntity(_target_eid, _level_view, adv_x, adv_y, tar_x, tar_y))
             _level_view.add_command(command)

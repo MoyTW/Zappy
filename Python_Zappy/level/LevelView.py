@@ -14,14 +14,46 @@ class LevelView(object):
     def player_actor(self):
         return self.lvl.player_actor
 
-    def get_entity_coords(self, eid):
+    def can_trigger(self, eid):
+        entity = self._get_entity_by_id(eid)
+        """:type: entity.environmentals.Environmental.Environmental"""
+        try:
+            return callable(entity.trigger)
+        except AttributeError:
+            return False
+
+    def destructible_curr_hp(self, eid):
+        entity = self._get_entity_by_id(eid)
+        """:type: entity.Destructible.Destructible"""
+        if entity is not None:
+            return entity.current_hp
+        else:
+            return None
+
+    def actor_rank(self, eid):
+        entity = self._get_entity_by_id(eid)
+        """:type: entity.actor.Actor.Actor"""
+        if entity is not None:
+            return entity.rank
+        else:
+            return None
+
+    def actor_is_stunned(self, eid):
+        entity = self._get_entity_by_id(eid)
+        """:type: entity.actor.Actor.Actor"""
+        if entity is not None:
+            return entity.is_stunned
+        else:
+            return None
+
+    def entity_coords(self, eid):
         entity = self._get_entity_by_id(eid)
         if entity is not None:
             return entity.get_coords()
         else:
             return None
 
-    def get_actor_current_moves(self, eid):
+    def actor_current_moves(self, eid):
         entity = self._get_entity_by_id(eid)
         """:type: entity.actor.Actor.Actor"""
         try:
@@ -29,7 +61,7 @@ class LevelView(object):
         except AttributeError:
             return None
 
-    def get_entity_name(self, eid):
+    def entity_name(self, eid):
         entity = self._get_entity_by_id(eid)
         if entity is not None:
             return entity.entity_name

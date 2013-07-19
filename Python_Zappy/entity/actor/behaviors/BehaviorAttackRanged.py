@@ -25,7 +25,7 @@ class BehaviorAttackRanged(Behavior.Behavior):
         :type _user: entity.actor.Adversary.Adversary
         :rtype: bool
         """
-        zap_x, zap_y = _level_view.get_entity_coords(_target_eid)
+        zap_x, zap_y = _level_view.entity_coords(_target_eid)
         adv_x, adv_y = _user.get_coords()
         in_los = Z_ALGS.check_los(zap_x, zap_y, adv_x, adv_y, self.range + 1, _level_view.cell_is_transparent)
         in_rng = Z_ALGS.check_in_range(zap_x, zap_y, adv_x, adv_y, self.range)
@@ -39,7 +39,7 @@ class BehaviorAttackRanged(Behavior.Behavior):
         :rtype: bool
         """
         cmd_desc = "{0} used a ranged attack on {1} for {2} damage!".format(_user.entity_name,
-                                                                            _level_view.get_entity_name(_target_eid),
+                                                                            _level_view.entity_name(_target_eid),
                                                                             self.strength)
         command = cmpd.CompoundCmd(cmd_desc, EntityDealDamage(_target_eid, _level_view, self.strength))
         _level_view.add_command(command)

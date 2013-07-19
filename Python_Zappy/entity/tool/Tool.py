@@ -93,7 +93,7 @@ class Tool(Entity.Entity):
         :type _target_eid: int
         :rtype: bool
         """
-        _target_x, _target_y = self._level.entity_coords(_target_eid)
+        _target_x, _target_y = self._level.ent_coords(_target_eid)
         return self._can_use_tool_on(self.TYPE_ENTITY, _target_x, _target_y) and \
             self._special_can_use_on_entity(_target_eid)
 

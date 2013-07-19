@@ -16,7 +16,7 @@ class ToolDoomGun(Tool.Tool):
         :type _target_eid: int
         :rtype: bool
         """
-        cmd_desc = "{0} is blasted for 9999 damage by the DOOM GUN!".format(self._level.entity_name(_target_eid))
+        cmd_desc = "{0} is blasted for 9999 damage by the DOOM GUN!".format(self._level.ent_name(_target_eid))
         command = cmpd.CompoundCmd(cmd_desc, EntityDealDamage(_target_eid, self._level, 9999))
         self._level.add_command(command)
         return True

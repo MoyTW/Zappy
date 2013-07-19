@@ -42,10 +42,10 @@ class ToolManipulator(Tool.Tool):
         try:
             if isinstance(_target_eid, Environmental.Environmental):
                 return True
-            elif self._level.actor_is_stunned(_target_eid) and \
-                    (self._level.actor_rank(_target_eid) == RANK.WEAK or
-                        (self._level.actor_rank(_target_eid) == RANK.AVERAGE and
-                            self._level.destructible_curr_hp(_target_eid) <= self._capture_strength)):
+            elif self._level.act_is_stunned(_target_eid) and \
+                    (self._level.act_rank(_target_eid) == RANK.WEAK or
+                        (self._level.act_rank(_target_eid) == RANK.AVERAGE and
+                            self._level.des_curr_hp(_target_eid) <= self._capture_strength)):
                 print "Your manipulator is rated to capture this creature!"
                 return True
             else:
@@ -60,7 +60,7 @@ class ToolManipulator(Tool.Tool):
         """
         if self._level.can_trigger(_target_eid):
             cmd_desc = "{0}'s manipulator has triggered {1}!".format(self.user.entity_name,
-                                                                     self._level.entity_name(_target_eid))
+                                                                     self._level.ent_name(_target_eid))
             command = cmpd.CompoundCmd(cmd_desc, EnvironmentalTrigger(_target_eid, self._level))
             self._level.add_command(command)
         else:
@@ -76,6 +76,6 @@ class ToolManipulator(Tool.Tool):
         :rtype: bool
         """
         self._captured_actors.append(_target_eid)
-        cmd_desc = "{0}'s has captured {1}!".format(self.user.entity_name, self._level.entity_name(_target_eid))
+        cmd_desc = "{0}'s has captured {1}!".format(self.user.entity_name, self._level.ent_name(_target_eid))
         command = cmpd.CompoundCmd(cmd_desc, LevelRemoveEntity(_target_eid, self._level))
         self._level.add_command(command)

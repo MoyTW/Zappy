@@ -51,7 +51,7 @@ class TestTemplateEnvironmental(unittest.TestCase):
         json = JSONCONVERTER.simple_to_json(template)
         template = JSONCONVERTER.simple_to_custom_object(json)
         instance = template.create_instance(0, None, None)
-        self.assertEqual(comp_env.entity_name, instance.entity_name)
+        self.assertEqual(comp_env.entity_name, instance.ent_name)
         self.assertEqual(comp_env._open_image_location, instance._open_image_location)
         self.assertEqual(comp_env._closed_image_location, instance._closed_image_location)
         self.assertEqual(comp_env._is_open, instance._is_open)

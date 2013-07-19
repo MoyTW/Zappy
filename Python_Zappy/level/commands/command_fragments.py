@@ -4,6 +4,23 @@ import warnings
 import Command as cmd
 
 
+class ActorApplyStatusEffect(cmd.Command):
+    wordiness = cmd.PRINT_NORMAL
+
+    def __init__(self, eid, lvl_view, effect):
+        """
+        :type eid: int
+        :type lvl_view: level.LevelView.LevelView
+        :type effect: entity.actor.effects.Effect.Effect
+        """
+        warnings.warn("ActorApplyStatusEffect.execute() is not yet implemented!")
+        desc = "{0} has been afflicted with {1}!".format(lvl_view.ent_name(eid), effect.EFFECT_NAME)
+        super(ActorApplyStatusEffect, self).__init__(desc)
+
+        self.eid = eid
+        self.effect = effect
+
+
 class EnvironmentalTrigger(cmd.Command):
     wordiness = cmd.PRINT_NORMAL
 
@@ -13,10 +30,11 @@ class EnvironmentalTrigger(cmd.Command):
         :type lvl_view: level.LevelView.LevelView
         """
         warnings.warn("EnvironmentalTrigger.execute() is not yet implemented!")
-        desc = "{0} has been triggered!".format(lvl_view.entity_names(eid))
+        desc = "{0} has been triggered!".format(lvl_view.ent_name(eid))
         super(EnvironmentalTrigger, self).__init__(desc)
 
         self.eid = eid
+
 
 class EntityDealDamage(cmd.Command):
     wordiness = cmd.PRINT_NORMAL
@@ -28,7 +46,7 @@ class EntityDealDamage(cmd.Command):
         :type damage: int
         """
         warnings.warn("EntityDealDamage.execute() is not yet implemented!")
-        desc = "{0} has taken {1} damage!".format(lvl_view.entity_name(eid), damage)
+        desc = "{0} has taken {1} damage!".format(lvl_view.ent_name(eid), damage)
         super(EntityDealDamage, self).__init__(desc)
 
         self.eid = eid
@@ -45,7 +63,7 @@ class EntityUseMoves(cmd.Command):
         :type cost: int
         """
         warnings.warn("EntityUseMoves.execute() is not yet implemented!")
-        desc = "{0} has spent {1} moves!".format(lvl_view.entity_name(eid), cost)
+        desc = "{0} has spent {1} moves!".format(lvl_view.ent_name(eid), cost)
         super(EntityUseMoves, self).__init__(desc)
 
         self.eid = eid
@@ -83,7 +101,7 @@ class LevelMoveEntity(cmd.Command):
         :type t_y: int
         """
         warnings.warn("LevelMoveEntity.execute() is not yet implemented!")
-        desc = "{0} has moved from ({1}, {2}) to ({3}, {4})!".format(lvl_view.entity_name(eid), o_x, o_y, t_x, t_y)
+        desc = "{0} has moved from ({1}, {2}) to ({3}, {4})!".format(lvl_view.ent_name(eid), o_x, o_y, t_x, t_y)
         super(LevelMoveEntity, self).__init__(desc)
 
         self.eid = eid
@@ -100,7 +118,7 @@ class LevelRemoveEntity(cmd.Command):
         :type lvl_view: level.LevelView.LevelView
         """
         warnings.warn("LevelRemoveEntity.execute() is not yet implemented!")
-        desc = "{0} has been removed from the level!".format(lvl_view.entity_name(eid))
+        desc = "{0} has been removed from the level!".format(lvl_view.ent_name(eid))
         super(LevelRemoveEntity, self).__init__(desc)
 
 

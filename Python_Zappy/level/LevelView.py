@@ -22,7 +22,7 @@ class LevelView(object):
         except AttributeError:
             return False
 
-    def destructible_curr_hp(self, eid):
+    def des_curr_hp(self, eid):
         entity = self._get_entity_by_id(eid)
         """:type: entity.Destructible.Destructible"""
         if entity is not None:
@@ -30,7 +30,7 @@ class LevelView(object):
         else:
             return None
 
-    def actor_rank(self, eid):
+    def act_rank(self, eid):
         entity = self._get_entity_by_id(eid)
         """:type: entity.actor.Actor.Actor"""
         if entity is not None:
@@ -38,7 +38,7 @@ class LevelView(object):
         else:
             return None
 
-    def actor_is_stunned(self, eid):
+    def act_is_stunned(self, eid):
         entity = self._get_entity_by_id(eid)
         """:type: entity.actor.Actor.Actor"""
         if entity is not None:
@@ -46,14 +46,7 @@ class LevelView(object):
         else:
             return None
 
-    def entity_coords(self, eid):
-        entity = self._get_entity_by_id(eid)
-        if entity is not None:
-            return entity.get_coords()
-        else:
-            return None
-
-    def actor_current_moves(self, eid):
+    def act_current_moves(self, eid):
         entity = self._get_entity_by_id(eid)
         """:type: entity.actor.Actor.Actor"""
         try:
@@ -61,7 +54,14 @@ class LevelView(object):
         except AttributeError:
             return None
 
-    def entity_name(self, eid):
+    def ent_coords(self, eid):
+        entity = self._get_entity_by_id(eid)
+        if entity is not None:
+            return entity.get_coords()
+        else:
+            return None
+
+    def ent_name(self, eid):
         entity = self._get_entity_by_id(eid)
         if entity is not None:
             return entity.entity_name

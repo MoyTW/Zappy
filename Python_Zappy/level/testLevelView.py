@@ -29,10 +29,10 @@ class TestLevelView(unittest.TestCase):
         self.assertEqual(sorted(self.one_square.view.get_all_eids()), sorted([1, 0, 2]))
 
     def test_get_entity_name(self):
-        self.assertEqual(self.view.entity_name(0), "One")
-        self.assertEqual(self.view.entity_name(1), "Two")
-        self.assertEqual(self.view.entity_name(2), "Three")
-        self.assertEqual(self.view.entity_name(3), None)
+        self.assertEqual(self.view.ent_name(0), "One")
+        self.assertEqual(self.view.ent_name(1), "Two")
+        self.assertEqual(self.view.ent_name(2), "Three")
+        self.assertEqual(self.view.ent_name(3), None)
 
 suite = unittest.TestLoader().loadTestsFromTestCase(TestLevelView)
 unittest.TextTestRunner(verbosity=2).run(suite)

@@ -60,6 +60,7 @@ class Level(object):
     def add_command(self, cmd):
         """:type cmd: level.commands.Command.Command"""
         self.command_log.add_command(cmd)
+        cmd.execute(self)
 
     def cells_are_none(self):
         """:rtype: bool"""

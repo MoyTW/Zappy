@@ -14,7 +14,7 @@ class Effect(object):
     def __init__(self, _duration, _target, _application_behavior=STACKS):
         """
         :type _duration: int
-        :type _target: int
+        :type _target: entity.actor.Actor.Actor
         :type _application_behavior: int
         """
         self._duration = _duration
@@ -41,7 +41,7 @@ class Effect(object):
     def apply(self):
         try:
             self._apply_effects()
-            print self._target.ent_name, "has been afflicted with", self.EFFECT_NAME, "- ", self._duration, \
+            print self._target.entity_name, "has been afflicted with", self.EFFECT_NAME, "- ", self._duration, \
                 "rounds remaining."
         except AttributeError as e:
             warnings.warn(e.message)

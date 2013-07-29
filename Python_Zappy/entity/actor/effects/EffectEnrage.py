@@ -12,7 +12,7 @@ class EffectEnrage(Effect.Effect):
     def __init__(self, _duration, _target, _enrager, _application_behavior=Effect.Effect.STACKS):
         """
         :type _duration: int
-        :type _target: int
+        :type _target: entity.actor.Actor.Actor
         :type _enrager: int
         :type _application_behavior: int
         """

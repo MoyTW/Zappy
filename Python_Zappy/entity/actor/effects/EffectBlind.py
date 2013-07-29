@@ -14,7 +14,7 @@ class EffectBlind(Effect.Effect):
     def __init__(self, _duration, _target, _application_behavior=Effect.Effect.STACKS):
         """
         :type _duration: int
-        :type _target: int
+        :type _target: entity.actor.Actor.Actor
         :type _application_behavior: int
         """
         super(EffectBlind, self).__init__(_duration=_duration, _target=_target,

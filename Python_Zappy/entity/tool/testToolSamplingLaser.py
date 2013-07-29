@@ -17,7 +17,7 @@ class TestToolSamplingLaser(unittest.TestCase):
         loader = LoaderLevel.oldLoaderLevel('entity/actor/behaviors/behavior_test_levels')
         self.level = loader.get_level(0)
         self.zappy = self.level.player_actor
-        self.tool = ToolSamplingLaser.ToolSamplingLaser(0, _level=self.level)
+        self.tool = ToolSamplingLaser.ToolSamplingLaser(0, _level=self.level, _user=self.zappy)
         self.zappy._tools.append(self.tool)
 
     def tearDown(self):

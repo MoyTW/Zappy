@@ -14,10 +14,10 @@ class TestEffectEnrage(unittest.TestCase):
         self.level = loader.get_level(0)
         self.control = loader.get_level_controller(0)
 
-        self.enragee = Adversary.Adversary(0, self.level, _senses=[SenseSeismic.SenseSeismic(9)])
+        self.enragee = Adversary.Adversary(0, self.level.view, _senses=[SenseSeismic.SenseSeismic(9)])
         self.level.place_entity_at(self.enragee, 1, 3)
 
-        self.enrager = Adversary.Adversary(0, self.level, _senses=[SenseSeismic.SenseSeismic(9)])
+        self.enrager = Adversary.Adversary(0, self.level.view, _senses=[SenseSeismic.SenseSeismic(9)])
         self.level.place_entity_at(self.enrager, 3, 3)
 
     def tearDown(self):

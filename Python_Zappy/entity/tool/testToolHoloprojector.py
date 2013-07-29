@@ -5,6 +5,15 @@ import loader.oldLoaderLevel as LoaderLevel
 import entity.tool.ToolHoloprojector as ToolHoloprojector
 
 
+class DummyActor(object):
+    faction = None
+
+    def use_moves(self, energy_cost):
+        pass
+
+    def use_energy(self, energy_cost):
+        pass
+
 class TestToolHoloprojector(unittest.TestCase):
 
     def setUp(self):
@@ -12,7 +21,8 @@ class TestToolHoloprojector(unittest.TestCase):
         self.level = loader.get_level(0)
         """:type: level.Level.Level"""
         self.zappy = self.level.player_actor
-        self.tool = ToolHoloprojector.ToolHoloprojector(0, _level=self.level)
+        da = DummyActor()
+        self.tool = ToolHoloprojector.ToolHoloprojector(0, _level=self.level.view, _user=da)
         self.zappy._tools.append(self.tool)
 
     def tearDown(self):
@@ -25,7 +35,7 @@ class TestToolHoloprojector(unittest.TestCase):
 
     def test_creates_entity(self):
         self.tool.use_on_location(1, 3)
-        self.assertEqual(len(self.level.get_all_eids()), 2)
+        self.assertEqual(len(self.level.view.get_all_eids()), 2)
 
     def test_entity_expires(self):
         self.tool.use_on_location(1, 3)

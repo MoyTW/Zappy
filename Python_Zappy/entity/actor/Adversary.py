@@ -31,13 +31,10 @@ class Adversary(Actor.Actor):
         """:rtype: int"""
         warnings.warn("Implementation unchanged")
         hostiles = list()
-        for entity in self._detected_entities:
-            try:
-                if self._faction.is_hostile_to(entity.get_faction_name()):
-                    hostiles.append(entity)
-            except AttributeError:
-                pass
-        hostiles.sort(cmp=lambda x, y: cmp(x.threat, y.threat), reverse=True)
+        for eid in self._detected_entities:
+            if self._faction.is_hostile_to(self._level.act_faction_name(eid)):
+                hostiles.append(eid)
+        hostiles.sort(cmp=lambda x, y: cmp(self._level.act_threat(x), self._level.act_threat(y)), reverse=True)
 
         if len(hostiles) > 0:
             return hostiles[0]

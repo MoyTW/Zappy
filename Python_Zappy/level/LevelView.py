@@ -40,6 +40,22 @@ class LevelView(object):
         else:
             return None
 
+    def act_faction_name(self, eid):
+        entity = self._get_entity_by_id(eid)
+        """:type: entity.actor.Actor.Actor"""
+        if entity is not None:
+            return entity.get_faction_name()
+        else:
+            return ""
+
+    def act_threat(self, eid):
+        entity = self._get_entity_by_id(eid)
+        """:type: entity.actor.Actor.Actor"""
+        if entity is not None:
+            return entity.threat
+        else:
+            return -1
+
     def act_rank(self, eid):
         entity = self._get_entity_by_id(eid)
         """:type: entity.actor.Actor.Actor"""
@@ -170,6 +186,7 @@ class LevelView(object):
         for e in entities:
             if e.eid == eid:
                 return e
+        warnings.warn("Could not find entity with eid=".format(eid))
         return None
 
     def _get_all_entities(self):

@@ -92,6 +92,18 @@ class Level(object):
         self._cells = None
         self.set_cells(cells)
 
+    def get_all_entities(self):
+        """
+        :rtype: list
+        """
+        entities = list()
+        for x in range(self.level_width):
+            for y in range(self.level_height):
+                cell = self._cells[x][y]
+                """:type: level.Cell.Cell"""
+                entities.extend(cell.get_all_entities())
+        return entities
+
     # If the entity has the function "set_coords" defined, this will attempt to call it.
     def place_entity_at(self, entity, x, y):
         """

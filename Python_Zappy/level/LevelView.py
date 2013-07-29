@@ -176,8 +176,4 @@ class LevelView(object):
         """
         :rtype: list
         """
-        entities = list()
-        for x in range(self.lvl.level_width):
-            for y in range(self.lvl.level_height):
-                entities.extend(self.lvl._cells[x][y].get_all_entities())
-        return entities
+        return self.lvl.get_all_entities()

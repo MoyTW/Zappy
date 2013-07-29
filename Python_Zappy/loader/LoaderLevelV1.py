@@ -142,13 +142,10 @@ class LoaderLevelV1(object):
         """
         :type _level: level.Level.Level
         """
-        entities = _level.view.get_all_eids()
+        entities = _level.get_all_entities()
         for entity in entities:
-            try:
-                if entity.is_player_controlled():
-                    _level.player_actor = entity
-            except AttributeError:
-                pass
+            if callable(entity.is_player_controlled) and entity.is_player_controlled():
+                _level.player_actor = entity
 
     def _execute_entity_order(self, _order, _entity, _level):
         if _order['_order'] == 'place':

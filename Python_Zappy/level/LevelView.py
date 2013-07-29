@@ -10,9 +10,11 @@ class LevelView(object):
         """
         self.lvl = lvl
 
-    @property
-    def player_actor(self):
-        return self.lvl.player_actor
+    def player_coords(self):
+        return self.lvl.player_actor.get_coords()
+
+    def player_sight_range(self):
+        return self.lvl.player_actor._senses[0].range
 
     def can_trigger(self, eid):
         entity = self._get_entity_by_id(eid)
@@ -27,6 +29,14 @@ class LevelView(object):
         """:type: entity.Destructible.Destructible"""
         if entity is not None:
             return entity.current_hp
+        else:
+            return None
+
+    def act_faction(self, eid):
+        entity = self._get_entity_by_id(eid)
+        """:type: entity.actor.Actor.Actor"""
+        if entity is not None:
+            return entity.faction
         else:
             return None
 

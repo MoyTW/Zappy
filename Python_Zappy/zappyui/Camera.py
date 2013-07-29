@@ -16,6 +16,9 @@ class Camera(object):
 
     def __init__(self, level=None, lower_left=(0, 0), upper_right=(640, 480), center_tile=(0, 0),
                  cursor_image_file=DEFAULT_CURSOR_IMAGE):
+        """
+        :type level: level.LevelView.LevelView
+        """
         self._level = level
         self._center_tile = center_tile
 
@@ -55,6 +58,7 @@ class Camera(object):
         self._draw_cursor = False
 
     def set_level(self, _level, center_tile=(0, 0)):
+        """:type _level: level.LevelView.LevelView"""
         self._level = _level
         self._center_tile = center_tile
         self.center_on(center_tile[0], center_tile[1])
@@ -79,8 +83,8 @@ class Camera(object):
             self._fow_batch.draw()
 
     def center_on(self, x, y):
-        if self._level is None:
-            return False
+        #if self._level is None:
+        #    return False
 
         self._center_tile = [x, y]
         lower_left_index = (int(x - math.floor(self._num_rows / 2)),
@@ -89,13 +93,12 @@ class Camera(object):
         self._sprite_across = self.IMAGE_ACROSS * self._magnification
 
         self._sprites = list()
-        player_actor = self._level.player_actor
         # Ugly as hell, we're poking all over where we shouldn't be!
         # If there's no entity to match, it will disregard the FOW.
         if self.DO_FOW:
             try:
-                visible_cells = Z_ALGS.calc_visible_cells_from(*player_actor.get_coords(),
-                                                               radius=player_actor._senses[0]._range,
+                visible_cells = Z_ALGS.calc_visible_cells_from(*self._level.player_coords(),
+                                                               radius=self._level.player_sight_range(),
                                                                func_transparent=self._level.cell_is_transparent)
                 self._explored_cells.update(visible_cells)
             except AttributeError:

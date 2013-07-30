@@ -2,7 +2,10 @@ __author__ = 'Travis Moy'
 
 import warnings
 import entity.actor.Adversary as Adversary
+from z_defs import DIR
 
+import level.commands.CompoundCmd as cmpd
+from level.commands.command_fragments import *
 
 class LevelController(object):
     def __init__(self, _level):
@@ -40,7 +43,11 @@ class LevelController(object):
         return self._zappy._x, self._zappy._y
 
     def zappy_attempt_move(self, _direction):
-        self._zappy.attempt_move(_direction)
+        destination = DIR.get_coords_in_direction_from(_direction, *self.zappy.get_coords())
+        lvl_move = LevelMoveEntity(self.zappy.eid, self.level_view, *(self.get_zappy_x_y() + destination))
+        use_moves = EntityUseMoves(self.zappy.eid, self._level.view, 1)
+        command = cmpd.CompoundCmd("Zappy moves", lvl_move, use_moves)
+        self.level.add_command(command)
         if not self._zappy.has_moves():
             self.turn_has_ended()
 

@@ -24,7 +24,23 @@ class TestToolManipulator(unittest.TestCase):
         self.zappy = None
         self.tool = None
 
-    def test_use(self):
+    def test_use_on_environmental(self):
+        env = Environmental.Environmental(98, self.level.view)
+        self.level.place_entity_at(env, 2, 2)
+
+        def flag_triggered(self):
+            self.triggered = True
+
+        env.trigger = flag_triggered
+
+        self.tool.use_on_entity(env.eid)
+
+        try:
+            self.assertTrue(env.triggered)
+        except AttributeError:
+            self.assertFalse(True, "The Environmental was not triggered.")
+
+    def test_capture(self):
         self.assertEqual(len(self.tool._captured_actors), 0)
 
         weak = Adversary.Adversary(98, self.level, _rank=RANK.WEAK)
@@ -33,7 +49,11 @@ class TestToolManipulator(unittest.TestCase):
         weak1 = Adversary.Adversary(97, self.level, _rank=RANK.WEAK)
         self.level.place_entity_at(weak1, 2, 3)
 
-        self.tool.use_on_entity(weak)
+        print "Before attempted capture:", self.level.view.get_all_eids()
+
+        self.tool.use_on_entity(weak.eid)
+
+        print "After attempted capture:", self.level.view.get_all_eids()
 
         self.assertEqual(len(self.level.view.get_all_eids()), 2)
         self.assertEqual(len(self.tool._captured_actors), 1)

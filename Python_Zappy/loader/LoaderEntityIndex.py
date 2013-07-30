@@ -68,8 +68,8 @@ class LoaderEntityIndex(object):
 
     def _increment_eid(self):
         if self.lvl is None:
-            warnings.warn("LoaderEntityIndex.lvl is None! Somewhere, the programmer has failed to set .lvl!")
             eid = -1
+            warnings.warn("LoaderEntityIndex.lvl is None! Cannot increment eid!")
         else:
             eid = self.lvl.max_eid
             self.lvl.max_eid += 1

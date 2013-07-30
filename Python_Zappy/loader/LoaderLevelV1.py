@@ -93,6 +93,8 @@ class LoaderLevelV1(object):
         ent_list = self._read_until_blank(f)
         f.close()
 
+        self._entity_index.lvl = target_level
+
         templates = self._load_return_cell_templates(cell_defs)
         self._load_level_cells(templates, map_layout, target_level)
         self._load_entity_list(ent_list, target_level)

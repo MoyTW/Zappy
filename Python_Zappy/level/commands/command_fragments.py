@@ -4,6 +4,8 @@ import warnings
 import Command as cmd
 
 
+##########==========----------IMEPLEMENTED----------==========##########
+
 class LevelPlaceAndAssignEntityID(cmd.Command):
     wordiness = cmd.PRINT_NORMAL
 
@@ -20,6 +22,14 @@ class LevelPlaceAndAssignEntityID(cmd.Command):
         self.new_entity = new_entity
         self.x = x
         self.y = y
+
+    def execute(self, lvl):
+        """:type lvl: level.Level.Level"""
+        if lvl.place_entity_at(self.new_entity, self.x, self.y):
+            self.new_entity.eid = lvl.max_eid
+            lvl.max_eid += 1
+        else:
+            warnings.warn("Cannot place entity {0} at ({1}, {2})!".format(self.new_entity, self.x, self.y))
 
 
 class EnvironmentalTrigger(cmd.Command):
@@ -45,8 +55,6 @@ class EnvironmentalTrigger(cmd.Command):
         except AttributeError:
             warnings.warn("Entity {0} is not an Environmental! Cannot execute EnvironmentalTrigger!".format(env))
 
-
-##########==========----------IMEPLEMENTED----------==========##########
 
 class ActorApplyStatusEffect(cmd.Command):
     wordiness = cmd.PRINT_NORMAL

@@ -40,7 +40,8 @@ class TestToolHoloprojector(unittest.TestCase):
         if len(self.level.view.get_eids_at(1, 3)) == 0:
             self.assertFalse("The tool is not generating any entities, cannot proceed with test.")
 
-        hologram = self.level.view.get_eids_at(1, 3)[0]
+        hologram_eid = self.level.view.get_eids_at(1, 3)[0]
+        hologram = self.level.get_entity_by_id(hologram_eid)
         for _ in range(0, 10):
             hologram.turn_begin()
             hologram.turn_end()

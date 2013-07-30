@@ -134,10 +134,14 @@ class Level(object):
         """
         if self.are_valid_coords(x, y):
             self._cells[x][y].add_entity(entity)
-        try:
-            entity.set_coords(x, y)
-        except AttributeError:
-            pass
+            try:
+                entity.set_coords(x, y)
+            except AttributeError as e:  # Lazy of me, but it's here so you don't need Entity dummies to test.
+                warnings.warn("Cannot set the coordinates of entity {0}! Something's Terribly Wrong!".format(entity))
+                warnings.warn(e)
+            return True
+        warnings.warn("Coordinates ({0}, {1}) are not valid coordinates! Cannot place {2}!".format(x, y, entity))
+        return False
 
     def remove_entity(self, eid):
         """

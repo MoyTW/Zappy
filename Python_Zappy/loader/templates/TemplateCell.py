@@ -26,12 +26,18 @@ class TemplateCell(Template.Template):
     # Cell directly into the level! That may potentially be confusing down the line (or if somebody else happens to
     # look at this - ha! not likely...) - is it worth it to disambiguate, or is a long note enough?
     def create_instance(self, level, entity_index, _x, _y):
+        """
+        :type level: level.Level.Level
+        :type entity_index: loader.LoaderEntityIndex.LoaderEntityIndex
+        :type _x: int
+        :type _y: int
+        """
         cell = Cell.Cell(_image_location=self._image_location,
                          _passable=self._passable,
                          _transparent=self._transparent)
         level._cells[_x][_y] = cell
         for entity_file in self._entity_files:
-            entity = entity_index.create_entity_by_name(entity_file, level)
+            entity = entity_index.create_entity_by_name(entity_file, level.view)
             level.place_entity_at(entity, _x, _y)
         return cell
 

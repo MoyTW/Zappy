@@ -182,12 +182,7 @@ class LevelView(object):
         :type eid: int
         :rtype: entity.Entity.Entity
         """
-        entities = self._get_all_entities()
-        for e in entities:
-            if e.eid == eid:
-                return e
-        warnings.warn("Could not find entity with eid=".format(eid))
-        return None
+        return self.lvl.get_entity_by_id(eid)
 
     def _get_all_entities(self):
         """

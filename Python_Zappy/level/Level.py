@@ -57,6 +57,15 @@ class Level(object):
         else:
             warnings.warn("There are multiple candidates for the player actor on this map!")
 
+    def set_passable(self, x, y, passable):
+        """
+        :type x: int
+        :type y: int
+        :type passable: bool
+        """
+        if self.are_valid_coords(x, y):
+            self._cells[x][y].is_passable = passable
+
     def add_command(self, cmd):
         """:type cmd: level.commands.Command.Command"""
         self.command_log.add_command(cmd)
@@ -104,6 +113,18 @@ class Level(object):
                 entities.extend(cell.get_all_entities())
         return entities
 
+    def get_entity_by_id(self, eid):
+        """
+        :type eid: int
+        :rtype: entity.Entity.Entity
+        """
+        entities = self.get_all_entities()
+        for e in entities:
+            if e.eid == eid:
+                return e
+        warnings.warn("Could not find entity with eid={0}".format(eid))
+        return None
+
     # If the entity has the function "set_coords" defined, this will attempt to call it.
     def place_entity_at(self, entity, x, y):
         """
@@ -117,6 +138,16 @@ class Level(object):
             entity.set_coords(x, y)
         except AttributeError:
             pass
+
+    def remove_entity(self, eid):
+        """
+        :type eid: int
+        """
+        entity = self.get_entity_by_id(eid)
+        if entity is not None:
+            return self.remove_entity_from(entity, *entity.get_coords())
+        else:
+            warnings.warn("Could not remove entity{0}!".format(entity))
 
     def remove_entity_from(self, entity, x, y):
         """

@@ -4,6 +4,24 @@ import warnings
 import Command as cmd
 
 
+class LevelPlaceAndAssignEntityID(cmd.Command):
+    wordiness = cmd.PRINT_NORMAL
+
+    def __init__(self, new_entity, x, y):
+        """
+        :type new_entity: entity.Entity.Entity
+        :type x: int
+        :type y: int
+        """
+        warnings.warn("LevelPlaceAndAssignEntityID.execute() is not yet implemented!")
+        desc = "A new {0} has appeared at ({1}, {2})!".format(new_entity.entity_name, x, y)
+        super(LevelPlaceAndAssignEntityID, self).__init__(desc)
+
+        self.new_entity = new_entity
+        self.x = x
+        self.y = y
+
+
 class ActorApplyStatusEffect(cmd.Command):
     wordiness = cmd.PRINT_NORMAL
 
@@ -64,51 +82,50 @@ class EntityUseMoves(cmd.Command):
         :type lvl_view: level.LevelView.LevelView
         :type cost: int
         """
-        warnings.warn("EntityUseMoves.execute() is not yet implemented!")
         desc = "{0} has spent {1} moves!".format(lvl_view.ent_name(eid), cost)
         super(EntityUseMoves, self).__init__(desc)
 
         self.eid = eid
         self.cost = cost
 
-
-class LevelPlaceAndAssignEntityID(cmd.Command):
-    wordiness = cmd.PRINT_NORMAL
-
-    def __init__(self, new_entity, x, y):
+    def execute(self, lvl):
         """
-        :type new_entity: entity.Entity.Entity
-        :type x: int
-        :type y: int
+        :type lvl: level.Level.Level
         """
-        warnings.warn("LevelPlaceAndAssignEntityID.execute() is not yet implemented!")
-        desc = "A new {0} has appeared at ({1}, {2})!".format(new_entity.entity_name, x, y)
-        super(LevelPlaceAndAssignEntityID, self).__init__(desc)
-
-        self.new_entity = new_entity
-        self.x = x
-        self.y = y
+        actor = lvl.get_entity_by_id(self.eid)
+        """:type: entity.actor.Actor.Actor"""
+        try:
+            actor.use_moves(self.cost)
+        except AttributeError:
+            warnings.warn("Entity {0} is an Entity, not an Actor! Cannot execute EntityUseMoves!".format(actor))
 
 
 class LevelMoveEntity(cmd.Command):
     wordiness = cmd.PRINT_NORMAL
 
-    def __init__(self, eid, lvl_view, o_x, o_y, t_x, t_y):
+    def __init__(self, eid, lvl_view, origin_x, origin_y, target_x, target_y):
         """
         :type eid: int
         :type lvl_view: level.LevelView.LevelView
-        :type o_x: int
-        :type o_y: int
-        :type t_x: int
-        :type t_y: int
+        :type origin_x: int
+        :type origin_y: int
+        :type target_x: int
+        :type target_y: int
         """
-        warnings.warn("LevelMoveEntity.execute() is not yet implemented!")
-        desc = "{0} has moved from ({1}, {2}) to ({3}, {4})!".format(lvl_view.ent_name(eid), o_x, o_y, t_x, t_y)
+        desc = "{0} has moved from ({1}, {2}) to ({3}, {4})!".format(lvl_view.ent_name(eid), origin_x, origin_y,
+                                                                     target_x, target_y)
         super(LevelMoveEntity, self).__init__(desc)
 
         self.eid = eid
-        self.origin = (o_x, o_y)
-        self.target = (t_x, t_y)
+        self.origin = (origin_x, origin_y)
+        self.target = (target_x, target_y)
+        self.ori_to_tar = self.origin + self.target
+
+    def execute(self, lvl):
+        """
+        :type lvl: level.Level.Level
+        """
+        lvl.move_entity_from_to(lvl.get_entity_by_id(self.eid), *self.ori_to_tar)
 
 
 class LevelRemoveEntity(cmd.Command):
@@ -119,9 +136,16 @@ class LevelRemoveEntity(cmd.Command):
         :type eid: int
         :type lvl_view: level.LevelView.LevelView
         """
-        warnings.warn("LevelRemoveEntity.execute() is not yet implemented!")
         desc = "{0} has been removed from the level!".format(lvl_view.ent_name(eid))
         super(LevelRemoveEntity, self).__init__(desc)
+
+        self.eid = eid
+
+    def execute(self, lvl):
+        """
+        :type lvl: level.Level.Level
+        """
+        lvl.remove_entity(self.eid)
 
 
 # An example of a fragment
@@ -134,7 +158,6 @@ class CellSetPassable(cmd.Command):
         :type x: int
         :type y: int
         """
-        warnings.warn("CellSetPassable.execute() is not yet implemented!")
         if is_passable:
             description = "({0}, {1}) is now passable!".format(x, y)
         else:
@@ -144,3 +167,9 @@ class CellSetPassable(cmd.Command):
         self.is_passable = is_passable
         self.x = x
         self.y = y
+
+    def execute(self, lvl):
+        """
+        :type lvl: level.Level.Level
+        """
+        lvl.set_passable(self.x, self.y, self.is_passable)

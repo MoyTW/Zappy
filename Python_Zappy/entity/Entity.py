@@ -31,6 +31,9 @@ class Entity(object):
 
         self.entity_image = self._load_return_image(self._image_name)
 
+    def is_player_controlled(self):
+        return False
+
     def destroy(self):
         self._level.add_command(CompoundCmd("{0} has been destroyed!".format(self.entity_name),
                                             LevelRemoveEntity(self.eid, self._level)))

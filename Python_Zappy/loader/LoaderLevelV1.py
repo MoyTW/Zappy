@@ -36,14 +36,16 @@ class LoaderLevelV1(object):
         try:  # Okay what's this try/except block for? Oh! If it's None - and therefore not a valid level.
             if self._levels.get(level_number).cells_are_none():
                 self._load_level(level_number)
-        except AttributeError:
+        except AttributeError as e:
+            print e.message
             warnings.warn('{0} is not a valid level number!'.format(level_number))
         return self._levels.get(level_number)
 
     def regen_level(self, level_number):
         try:
             self._load_level(level_number)
-        except AttributeError:
+        except AttributeError as e:
+            print e.message
             warnings.warn('{0} is not a valid level number!'.format(level_number))
 
     def get_level_controller(self, level_number):
@@ -146,8 +148,10 @@ class LoaderLevelV1(object):
         """
         entities = _level.get_all_entities()
         for entity in entities:
-            if callable(entity.is_player_controlled) and entity.is_player_controlled():
+            if entity.is_player_controlled():
                 _level.player_actor = entity
+        if _level.player_actor is None:
+            warnings.warn("Level.player_actor is None; could not find the player actor!")
 
     def _execute_entity_order(self, _order, _entity, _level):
         if _order['_order'] == 'place':

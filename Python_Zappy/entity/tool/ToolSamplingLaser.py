@@ -70,7 +70,7 @@ class ToolSamplingLaser(Tool.Tool):
                 cmd_desc = "{0} blasts the {1}, in the eyes, blinding it for {1} " \
                            "rounds!".format(self.entity_name, self._level.ent_name(_target), self._blind_duration)
                 command = cmpd.CompoundCmd(cmd_desc,
-                                           ActorApplyStatusEffect(eid=_target,
+                                           ActorApplyStatusEffect(target_eid=_target,
                                                                   lvl_view=self._level,
                                                                   effect=EffectBlind.EffectBlind,
                                                                   duration=self._blind_duration))
@@ -79,10 +79,10 @@ class ToolSamplingLaser(Tool.Tool):
                 cmd_desc = "{0} blasts the {1}, but it does nothing but make it" \
                            "angry!".format(self.entity_name, self._level.ent_name(_target), self._blind_duration)
                 command = cmpd.CompoundCmd(cmd_desc,
-                                           ActorApplyStatusEffect(eid=_target,
+                                           ActorApplyStatusEffect(target_eid=_target,
                                                                   lvl_view=self._level,
                                                                   effect=EffectEnrage.EffectEnrage,
-                                                                  duration=self._blind_duration,
+                                                                  duration=self._enrage_duration,
                                                                   _enrager=self.user.eid))
             else:  # This is Just In Case, I guess? I'm not sure why I put it there. Probably just to be safe...?
                 return False
@@ -90,6 +90,7 @@ class ToolSamplingLaser(Tool.Tool):
             self._level.add_command(command)
             return True
         except AttributeError as e:
+            print e.message
             warnings.warn(e)
             return False
 
@@ -101,12 +102,11 @@ class ToolSamplingLaser(Tool.Tool):
         :type _target: int
         :rtype: bool
         """
-        try:
+        if self._level.is_destructible(_target):
             cmd_desc = "{0} blasts the {1}, for {2} damage!".format(self.entity_name, self._level.ent_name(_target),
                                                                     self._damage)
             command = cmpd.CompoundCmd(cmd_desc, EntityDealDamage(_target, self._level, self._damage))
             self._level.add_command(command)
             return True
-        except AttributeError as e:
-            warnings.warn(e)
+        else:
             return False

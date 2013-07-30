@@ -16,7 +16,14 @@ class LevelView(object):
     def player_sight_range(self):
         return self.lvl.player_actor._senses[0].range
 
-    def can_trigger(self, eid):
+    def is_destructible(self, eid):
+        entity = self._get_entity_by_id(eid)
+        try:
+            return callable(entity.deal_damage)
+        except AttributeError:
+            return False
+
+    def is_triggerable(self, eid):
         entity = self._get_entity_by_id(eid)
         """:type: entity.environmentals.Environmental.Environmental"""
         try:

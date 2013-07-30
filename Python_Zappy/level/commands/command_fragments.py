@@ -22,23 +22,7 @@ class LevelPlaceAndAssignEntityID(cmd.Command):
         self.y = y
 
 
-class ActorApplyStatusEffect(cmd.Command):
-    wordiness = cmd.PRINT_NORMAL
 
-    def __init__(self, eid, lvl_view, effect, duration, **kwargs):
-        """
-        :type eid: int
-        :type lvl_view: level.LevelView.LevelView
-        :type effect: entity.actor.effects.Effect
-        """
-        warnings.warn("ActorApplyStatusEffect.execute() is not yet implemented!")
-        desc = "{0} has been afflicted with {1}!".format(lvl_view.ent_name(eid), effect.EFFECT_NAME)
-        super(ActorApplyStatusEffect, self).__init__(desc)
-
-        self.eid = eid
-        self.effect = effect
-        self.duration = duration
-        self.kwargs = kwargs
 
 
 class EnvironmentalTrigger(cmd.Command):
@@ -56,6 +40,40 @@ class EnvironmentalTrigger(cmd.Command):
         self.eid = eid
 
 
+##########==========----------IMEPLEMENTED----------==========##########
+
+class ActorApplyStatusEffect(cmd.Command):
+    wordiness = cmd.PRINT_NORMAL
+
+    def __init__(self, target_eid, lvl_view, effect, duration, *args, **kwargs):
+        """
+        :type target_eid: int
+        :type lvl_view: level.LevelView.LevelView
+        :type effect: entity.actor.effects.Effect
+        """
+        warnings.warn("ActorApplyStatusEffect.execute() is not yet implemented!")
+        desc = "{0} has been afflicted with {1}!".format(lvl_view.ent_name(target_eid), effect.EFFECT_NAME)
+        super(ActorApplyStatusEffect, self).__init__(desc)
+
+        self.target_eid = target_eid
+        self.effect = effect
+        self.duration = duration
+        self.args = args
+        self.kwargs = kwargs
+
+    def execute(self, lvl):
+        """
+        :type lvl: level.Level.Level
+        """
+        actor = lvl.get_entity_by_id(self.target_eid)
+        """:type: entity.actor.Actor.Actor"""
+        print self.effect
+        effect = self.effect(_duration=self.duration, _target=lvl.get_entity_by_id(self.target_eid),
+                             *self.args, **self.kwargs)
+        print effect
+        actor.apply_status_effect(effect)
+
+
 class EntityDealDamage(cmd.Command):
     wordiness = cmd.PRINT_NORMAL
 
@@ -71,6 +89,17 @@ class EntityDealDamage(cmd.Command):
 
         self.eid = eid
         self.damage = damage
+
+    def execute(self, lvl):
+        """
+        :type lvl: level.Level.Level
+        """
+        destructible = lvl.get_entity_by_id(self.eid)
+        """:type: entity.Destructible.Destructible"""
+        try:
+            destructible.deal_damage(self.damage)
+        except AttributeError:
+            warnings.warn("Entity {0} is not Destructible! Cannot execute EntityDealDamage!".format(destructible))
 
 
 class EntityUseMoves(cmd.Command):

@@ -43,7 +43,7 @@ class ToolZapGun(Tool.Tool):
 
             cmd_desc = "{0} shocks the {1}, stunning it for {2}" \
                        "turns!".format(self.entity_name, self._level.ent_name(_target_eid), stun_duration)
-            command = cmd.CompoundCmd(cmd_desc, ActorApplyStatusEffect(eid=_target_eid,
+            command = cmd.CompoundCmd(cmd_desc, ActorApplyStatusEffect(target_eid=_target_eid,
                                                                        lvl_view=self._level,
                                                                        effect=EffectStun.EffectStun,
                                                                        duration=stun_duration))

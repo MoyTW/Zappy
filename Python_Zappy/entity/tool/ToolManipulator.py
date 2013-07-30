@@ -58,7 +58,7 @@ class ToolManipulator(Tool.Tool):
         :type _target_eid: int
         :rtype: bool
         """
-        if self._level.can_trigger(_target_eid):
+        if self._level.is_triggerable(_target_eid):
             cmd_desc = "{0}'s manipulator has triggered {1}!".format(self.user.entity_name,
                                                                      self._level.ent_name(_target_eid))
             command = cmpd.CompoundCmd(cmd_desc, EnvironmentalTrigger(_target_eid, self._level))

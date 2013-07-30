@@ -27,7 +27,6 @@ class ToolHoloprojector(Tool.Tool):
         :type _hp: int
         :type _threat: int
         """
-        warnings.warn("ToolHoloprojector's created Actors always have ID=-1!")
         self._holo_name = _holo_name
         self._hp = _hp
         self._threat = _threat

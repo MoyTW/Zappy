@@ -22,9 +22,6 @@ class LevelPlaceAndAssignEntityID(cmd.Command):
         self.y = y
 
 
-
-
-
 class EnvironmentalTrigger(cmd.Command):
     wordiness = cmd.PRINT_NORMAL
 
@@ -38,6 +35,15 @@ class EnvironmentalTrigger(cmd.Command):
         super(EnvironmentalTrigger, self).__init__(desc)
 
         self.eid = eid
+
+    def execute(self, lvl):
+        """:type lvl: level.Level.Level"""
+        env = lvl.get_entity_by_id(self.eid)
+        """:type: entity.environmentals.Environmental.Environmental"""
+        try:
+            env.trigger()
+        except AttributeError:
+            warnings.warn("Entity {0} is not an Environmental! Cannot execute EnvironmentalTrigger!".format(env))
 
 
 ##########==========----------IMEPLEMENTED----------==========##########
@@ -62,16 +68,15 @@ class ActorApplyStatusEffect(cmd.Command):
         self.kwargs = kwargs
 
     def execute(self, lvl):
-        """
-        :type lvl: level.Level.Level
-        """
+        """:type lvl: level.Level.Level"""
         actor = lvl.get_entity_by_id(self.target_eid)
         """:type: entity.actor.Actor.Actor"""
-        print self.effect
         effect = self.effect(_duration=self.duration, _target=lvl.get_entity_by_id(self.target_eid),
                              *self.args, **self.kwargs)
-        print effect
-        actor.apply_status_effect(effect)
+        try:
+            actor.apply_status_effect(effect)
+        except AttributeError:
+            warnings.warn("Entity {0} is not an Actor! Cannot execute ActorApplyStatusEffect!".format(actor))
 
 
 class EntityDealDamage(cmd.Command):
@@ -91,9 +96,7 @@ class EntityDealDamage(cmd.Command):
         self.damage = damage
 
     def execute(self, lvl):
-        """
-        :type lvl: level.Level.Level
-        """
+        """:type lvl: level.Level.Level"""
         destructible = lvl.get_entity_by_id(self.eid)
         """:type: entity.Destructible.Destructible"""
         try:
@@ -118,9 +121,7 @@ class EntityUseMoves(cmd.Command):
         self.cost = cost
 
     def execute(self, lvl):
-        """
-        :type lvl: level.Level.Level
-        """
+        """:type lvl: level.Level.Level"""
         actor = lvl.get_entity_by_id(self.eid)
         """:type: entity.actor.Actor.Actor"""
         try:
@@ -151,9 +152,7 @@ class LevelMoveEntity(cmd.Command):
         self.ori_to_tar = self.origin + self.target
 
     def execute(self, lvl):
-        """
-        :type lvl: level.Level.Level
-        """
+        """:type lvl: level.Level.Level"""
         lvl.move_entity_from_to(lvl.get_entity_by_id(self.eid), *self.ori_to_tar)
 
 
@@ -171,10 +170,10 @@ class LevelRemoveEntity(cmd.Command):
         self.eid = eid
 
     def execute(self, lvl):
-        """
-        :type lvl: level.Level.Level
-        """
-        lvl.remove_entity(self.eid)
+        """:type lvl: level.Level.Level"""
+        print "Attempting to remove", self.eid
+        removed = lvl.remove_entity(self.eid)
+        print "Removed:", removed
 
 
 # An example of a fragment
@@ -198,7 +197,5 @@ class CellSetPassable(cmd.Command):
         self.y = y
 
     def execute(self, lvl):
-        """
-        :type lvl: level.Level.Level
-        """
+        """:type lvl: level.Level.Level"""
         lvl.set_passable(self.x, self.y, self.is_passable)

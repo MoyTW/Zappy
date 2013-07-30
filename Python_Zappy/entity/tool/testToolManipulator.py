@@ -23,20 +23,20 @@ class TestToolManipulator(unittest.TestCase):
         self.level = None
         self.zappy = None
         self.tool = None
+        self.triggered = None
+
+    def flag_triggered(self):
+        self.triggered = True
 
     def test_use_on_environmental(self):
         env = Environmental.Environmental(98, self.level.view)
         self.level.place_entity_at(env, 2, 2)
-
-        def flag_triggered(self):
-            self.triggered = True
-
-        env.trigger = flag_triggered
+        env.trigger = self.flag_triggered
 
         self.tool.use_on_entity(env.eid)
 
         try:
-            self.assertTrue(env.triggered)
+            self.assertTrue(self.triggered)
         except AttributeError:
             self.assertFalse(True, "The Environmental was not triggered.")
 

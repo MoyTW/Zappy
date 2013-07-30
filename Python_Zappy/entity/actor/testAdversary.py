@@ -65,7 +65,7 @@ class TestAdversary(unittest.TestCase):
         self.level.place_entity_at(self.no_threat, 0, 3)
 
         self.adversary.turn_begin()
-        self.assertEqual(self.high_threat, self.adversary.select_target())
+        self.assertEqual(self.high_threat.eid, self.adversary.select_target())
 
 suite = unittest.TestLoader().loadTestsFromTestCase(TestAdversary)
 unittest.TextTestRunner(verbosity=2).run(suite)

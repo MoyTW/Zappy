@@ -71,6 +71,16 @@ class Cell(object):
         except ValueError:
             return False
 
+    def contains_eid(self, eid):
+        """
+        :type eid: int
+        :rtype: bool
+        """
+        for e in self._contains:
+            if e.eid == eid:
+                return True
+        return False
+
     def contains_entity(self, _entity):
         """
         :type _entity: entity.Entity.Entity

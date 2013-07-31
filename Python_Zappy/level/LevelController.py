@@ -25,17 +25,21 @@ class LevelController(object):
     def level_completed(self):
         return self.level_won or self.level_failed
 
-    #@property
-    #def level(self):
-    #    return self._level
-
     @property
     def level_view(self):
         return self._level.view
 
     @property
-    def zappy(self):
-        return self._zappy
+    def level_width(self):
+        return self._level.level_width
+
+    @property
+    def level_height(self):
+        return self._level.level_height
+
+    @property
+    def zappy_eid(self):
+        return self._zappy.eid
 
     def get_eids_at(self, _x, _y):
         return self.level_view.get_eids_at(_x, _y)
@@ -44,10 +48,10 @@ class LevelController(object):
         return self._zappy._x, self._zappy._y
 
     def zappy_attempt_move(self, _direction):
-        destination = DIR.get_coords_in_direction_from(_direction, *self.zappy.get_coords())
+        destination = DIR.get_coords_in_direction_from(_direction, *self._zappy.get_coords())
         if self.level_view.cell_is_passable(*destination):
-            lvl_move = LevelMoveEntity(self.zappy.eid, self.level_view, *(self.get_zappy_x_y() + destination))
-            use_moves = EntityUseMoves(self.zappy.eid, self._level.view, 1)
+            lvl_move = LevelMoveEntity(self._zappy.eid, self.level_view, *(self.get_zappy_x_y() + destination))
+            use_moves = EntityUseMoves(self._zappy.eid, self._level.view, 1)
             command = cmpd.CompoundCmd("Zappy moves", lvl_move, use_moves)
             self._level.add_command(command)
         if not self._zappy.has_moves():

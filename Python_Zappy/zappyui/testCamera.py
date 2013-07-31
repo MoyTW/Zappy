@@ -72,9 +72,9 @@ class TestCamera(unittest.TestCase):
 
     # center_on_entity() recalculates which sprites need to be drawn
     def test_center_on_entity(self):
-        self.default_camera.center_on_entity('TestStringEntity')
+        self.default_camera.center_on_eid('TestStringEntity')
         self.assertTrue(self.default_camera._center_tile[0] == 2, self.default_camera._center_tile[1] == 1)
-        self.default_camera.center_on_entity('ShouldNotMoveTheCamera')
+        self.default_camera.center_on_eid('ShouldNotMoveTheCamera')
         self.assertTrue(self.default_camera._center_tile[0] == 2, self.default_camera._center_tile[1] == 1)
 
     # recalculates which sprites need to be drawn

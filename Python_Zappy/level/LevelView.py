@@ -173,15 +173,17 @@ class LevelView(object):
         return None
 
         # Dumb search
-    def find_coordinates_of_entity(self, entity):
+    def coordinates_of_eid(self, eid):
         """
-        :type entity: entity.Entity.Entity
+        :type eid: int
         :rtype: tuple
         """
         for x in range(self.lvl.level_width):
             for y in range(self.lvl.level_height):
-                if self.lvl._cells[x][y].contains_entity(entity):
+                if self.get_cell_at(x, y).contains_eid(eid):
                     return x, y
+                #if self.lvl._cells[x][y].contains_eid(entity):
+                #    return x, y
         return None
 
     def _get_entity_by_id(self, eid):

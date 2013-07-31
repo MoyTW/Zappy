@@ -153,11 +153,11 @@ class Camera(object):
             )
             self._sprites.append(sprite)
 
-    def center_on_entity(self, entity):
+    def center_on_eid(self, eid):
         if self._level is None:
             return False
 
-        loc = self._level.find_coordinates_of_entity(entity)
+        loc = self._level.coordinates_of_eid(eid)
         if loc is not None:
             self.center_on(loc[0], loc[1])
 

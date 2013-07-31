@@ -108,10 +108,10 @@ class TestLevel(unittest.TestCase):
         self.initialized_test_level.place_entity_at(teststr, 3, 2)
 
         try:
-            coords = self.initialized_test_level.view.find_coordinates_of_entity(teststr)
+            coords = self.initialized_test_level.view.coordinates_of_eid(teststr)
             self.assertEquals(coords[0], 3)
             self.assertEquals(coords[1], 2)
-            self.assertEquals(None, self.initialized_test_level.view.find_coordinates_of_entity("Blue!"))
+            self.assertEquals(None, self.initialized_test_level.view.coordinates_of_eid("Blue!"))
         except TypeError:
             self.assertFalse(True, "Level.find_coordinates_of_entity() not returning an iterable with 2 values.")
 

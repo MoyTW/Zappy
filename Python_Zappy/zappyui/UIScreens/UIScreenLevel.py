@@ -13,12 +13,11 @@ class UIScreenLevel(UIScreen.UIScreen):
         self._factory = factory_screens
         self._camera = camera
 
-        self._init_camera(level_controller)
+        self._init_camera()
 
-    def _init_camera(self, level_controller):
-        level = level_controller.level
-        self._camera.center_on((level.level_width / 2), (level.level_height / 2))
-        self._camera.center_on_entity(self._control.zappy)
+    def _init_camera(self):
+        self._camera.center_on((self._control.level_width / 2), (self._control.level_height / 2))
+        self._camera.center_on_eid(self._control.zappy_eid)
 
     def handle_order(self, order):
         return_screen = self

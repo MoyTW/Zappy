@@ -7,6 +7,7 @@ from z_defs import DIR
 import level.commands.CompoundCmd as cmpd
 from level.commands.command_fragments import *
 
+
 class LevelController(object):
     def __init__(self, _level):
         """
@@ -24,9 +25,9 @@ class LevelController(object):
     def level_completed(self):
         return self.level_won or self.level_failed
 
-    @property
-    def level(self):
-        return self._level
+    #@property
+    #def level(self):
+    #    return self._level
 
     @property
     def level_view(self):
@@ -36,8 +37,8 @@ class LevelController(object):
     def zappy(self):
         return self._zappy
 
-    def get_entities_at(self, _x, _y):
-        return self._level.get_all_entities_at(_x, _y)
+    def get_eids_at(self, _x, _y):
+        return self.level_view.get_eids_at(_x, _y)
 
     def get_zappy_x_y(self):
         return self._zappy._x, self._zappy._y
@@ -48,7 +49,7 @@ class LevelController(object):
             lvl_move = LevelMoveEntity(self.zappy.eid, self.level_view, *(self.get_zappy_x_y() + destination))
             use_moves = EntityUseMoves(self.zappy.eid, self._level.view, 1)
             command = cmpd.CompoundCmd("Zappy moves", lvl_move, use_moves)
-            self.level.add_command(command)
+            self._level.add_command(command)
         if not self._zappy.has_moves():
             self.turn_has_ended()
 
@@ -66,7 +67,7 @@ class LevelController(object):
         pass
 
     def zappy_get_tools(self):
-        return self._zappy.get_tools()
+        return [tool.eid for tool in self._zappy.get_tools()]
 
     def turn_has_ended(self):
         self._zappy.turn_end()

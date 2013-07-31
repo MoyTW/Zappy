@@ -104,11 +104,16 @@ class TestLevel(unittest.TestCase):
         self.assertEquals(len(self.initialized_test_level._cells[3][2]._contains), 0)
 
     def test_find_coordinates_of_entity(self):
-        teststr = "Test String!"
-        self.initialized_test_level.place_entity_at(teststr, 3, 2)
+
+        class DummyEnt(object):
+            def __init__(self, eid):
+                self.eid = eid
+
+        target = DummyEnt(99)
+        self.initialized_test_level.place_entity_at(target, 3, 2)
 
         try:
-            coords = self.initialized_test_level.view.coordinates_of_eid(teststr)
+            coords = self.initialized_test_level.view.coordinates_of_eid(target.eid)
             self.assertEquals(coords[0], 3)
             self.assertEquals(coords[1], 2)
             self.assertEquals(None, self.initialized_test_level.view.coordinates_of_eid("Blue!"))

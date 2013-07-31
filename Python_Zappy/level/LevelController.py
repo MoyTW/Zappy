@@ -44,10 +44,11 @@ class LevelController(object):
 
     def zappy_attempt_move(self, _direction):
         destination = DIR.get_coords_in_direction_from(_direction, *self.zappy.get_coords())
-        lvl_move = LevelMoveEntity(self.zappy.eid, self.level_view, *(self.get_zappy_x_y() + destination))
-        use_moves = EntityUseMoves(self.zappy.eid, self._level.view, 1)
-        command = cmpd.CompoundCmd("Zappy moves", lvl_move, use_moves)
-        self.level.add_command(command)
+        if self.level_view.cell_is_passable(*destination):
+            lvl_move = LevelMoveEntity(self.zappy.eid, self.level_view, *(self.get_zappy_x_y() + destination))
+            use_moves = EntityUseMoves(self.zappy.eid, self._level.view, 1)
+            command = cmpd.CompoundCmd("Zappy moves", lvl_move, use_moves)
+            self.level.add_command(command)
         if not self._zappy.has_moves():
             self.turn_has_ended()
 

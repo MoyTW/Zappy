@@ -24,7 +24,8 @@ class Actor(Entity.Entity, Destructible.Destructible):
         super(Actor, self).__init__(_eid=_eid, _entity_name=_entity_name, _image_name=_image_name, _max_hp=_max_hp,
                                     _level=_level, **kwargs)
 
-        assert(isinstance(_level, LevelView.LevelView))
+        if not isinstance(_level, LevelView.LevelView):
+            warnings.warn("_level in {0} is not a LevelView!")
 
         self.rank = _rank
         self.max_energy = _max_energy

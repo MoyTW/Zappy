@@ -52,24 +52,6 @@ class TestCamera(unittest.TestCase):
             self.assertTrue(comp_tuple[0] < sprite.x < comp_tuple[1])
             self.assertTrue(comp_tuple[2] < sprite.y < comp_tuple[3])
 
-    '''
-    No longer valid test; Camera excludes drawing tiles not visible by player. Tiles off the map are marked opaque.
-    def test_center_on_runs_off_upper_right(self):
-        cam = self.default_camera
-        cam.resize_view((0, 0), (100, 100))
-        cam.center_on(4, 5)
-        self.assertEqual(len(cam._sprites), 4)
-    '''
-
-    '''
-    No longer valid test; Camera excludes drawing tiles not visible by player. Tiles off the map are marked opaque.
-    def test_center_on_runs_off_lower_left(self):
-        cam = self.default_camera
-        cam.resize_view((0, 0), (100, 100))
-        cam.center_on(0, 0)
-        self.assertEqual(len(cam._sprites), 4)
-    '''
-
     # center_on_entity() recalculates which sprites need to be drawn
     def test_center_on_entity(self):
         self.default_camera.center_on_eid('TestStringEntity')

@@ -13,8 +13,16 @@ class DummyController(object):
         return self.level
 
     @property
-    def zappy(self):
-        return "zappy"
+    def zappy_eid(self):
+        return 0
+
+    @property
+    def level_width(self):
+        return self.level.level_width
+
+    @property
+    def level_height(self):
+        return self.level.level_height
 
     def get_zappy_x_y(self):
         return (0, 0)

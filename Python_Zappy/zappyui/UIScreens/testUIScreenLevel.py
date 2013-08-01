@@ -7,11 +7,17 @@ import dummies.DummyFactory as DummyFactory
 import dummies.DummyController as DummyController
 import zappyui.UIScreens.UIScreenLevel as UIScreenLevel
 import loader
-import z_defs
-import zappyui.Camera
 
 
 DummyInfo = collections.namedtuple('DummyInfo', 'width height')
+
+
+class DummyCamera(object):
+    def center_on(self, x, y):
+        pass
+
+    def center_on_eid(self, eid):
+        pass
 
 
 class TestUIScreenLevel(unittest.TestCase):
@@ -22,8 +28,9 @@ class TestUIScreenLevel(unittest.TestCase):
         self.width = 640
         self.height = 480
 
-        camera = zappyui.Camera.Camera(self.dummy_control.get_level().view, lower_left=(0, 0),
-                                       upper_right = (self.width - z_defs.SIDEBAR_WIDTH, self.height))
+        #camera = zappyui.Camera.Camera(self.dummy_control.get_level().view, lower_left=(0, 0),
+        #                               upper_right = (self.width - z_defs.SIDEBAR_WIDTH, self.height))
+        camera = DummyCamera()
 
         self.default_screen = UIScreenLevel.UIScreenLevel(camera, self.dummy_control, DummyInfo(0, 0),
                                                           DummyFactory.DummyFactory())

@@ -50,10 +50,10 @@ class LevelView(object):
     def act_faction_name(self, eid):
         entity = self._get_entity_by_id(eid)
         """:type: entity.actor.Actor.Actor"""
-        if entity is not None:
+        if hasattr(entity, 'get_faction_name') and callable(entity.get_faction_name):
             return entity.get_faction_name()
         else:
-            return ""
+            return ''
 
     def act_threat(self, eid):
         entity = self._get_entity_by_id(eid)

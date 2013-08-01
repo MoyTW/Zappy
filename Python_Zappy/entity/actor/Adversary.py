@@ -31,7 +31,7 @@ class Adversary(Actor.Actor):
         """:rtype: int"""
         hostiles = list()
         for eid in self._detected_entities:
-            print "eid", eid, "faction", self._level.act_faction_name(eid)
+#            print "eid", eid, "faction", self._level.act_faction_name(eid)
             if self._faction.is_hostile_to(self._level.act_faction_name(eid)):
                 hostiles.append(eid)
         hostiles.sort(cmp=lambda x, y: cmp(self._level.act_threat(x), self._level.act_threat(y)), reverse=True)

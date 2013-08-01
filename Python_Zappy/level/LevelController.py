@@ -79,23 +79,18 @@ class LevelController(object):
         # Adversaries' turns
         for entity in self._level.get_all_entities():
             if entity is not self._zappy:
-                try:
+                if entity.is_destroyed():
+                    self._destroyed_entities.append(entity)
+                    entity.destroy()
+                elif hasattr(entity, 'turn_begin') and callable(entity.turn_begin) and \
+                        hasattr(entity, 'turn_end') and callable(entity.turn_end):
+                    entity.turn_begin()
+                    entity.take_action()
+                    entity.turn_end()
+
                     if entity.is_destroyed():
                         self._destroyed_entities.append(entity)
                         entity.destroy()
-                    else:
-                        entity.turn_begin()
-                        try:
-                            entity.take_action()
-                        except AttributeError as e:
-                            warnings.warn(e.message)
-                        entity.turn_end()
-
-                        if entity.is_destroyed():
-                            self._destroyed_entities.append(entity)
-                            entity.destroy()
-                except AttributeError:
-                    pass
 
         warnings.warn("The code for winning simply checks if there are any adversaries left. Is placeholder.")
         no_adversaries = True

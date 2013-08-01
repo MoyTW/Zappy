@@ -29,12 +29,15 @@ class Adversary(Actor.Actor):
 
     def select_target(self):
         """:rtype: int"""
-        warnings.warn("Implementation unchanged")
         hostiles = list()
         for eid in self._detected_entities:
+            print "eid", eid, "faction", self._level.act_faction_name(eid)
             if self._faction.is_hostile_to(self._level.act_faction_name(eid)):
                 hostiles.append(eid)
         hostiles.sort(cmp=lambda x, y: cmp(self._level.act_threat(x), self._level.act_threat(y)), reverse=True)
+
+        print "Detected entities:", self._detected_entities
+        print "Hostiles:", hostiles
 
         if len(hostiles) > 0:
             return hostiles[0]
@@ -63,6 +66,8 @@ class Adversary(Actor.Actor):
             current_behavior = 0
             behavior_executed = False
             target = self.select_target()
+
+            print "Target is:", target
 
             while not behavior_executed and current_behavior < len(self._behaviors):
                 behavior_executed = self._behaviors[current_behavior].attempt_to_execute(target,

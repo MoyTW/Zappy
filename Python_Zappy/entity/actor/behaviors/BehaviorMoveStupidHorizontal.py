@@ -11,10 +11,11 @@ from level.commands.command_fragments import LevelMoveEntity
 class BehaviorMoveStupidHorizontal(Behavior.Behavior):
 
     def _execute_effects(self, _target_eid, _level_view, _user):
+        """:type _level_view: level.LevelView.LevelView"""
         zappy = _target_eid
         moved = False
         if zappy in _user._detected_entities:
-            atz_x, atz_y = (zappy.get_coords()[i] - _user.get_coords()[i] for i in range(2))
+            atz_x, atz_y = (_level_view.ent_coords(_target_eid)[i] - _user.get_coords()[i] for i in range(2))
             if math.sqrt(atz_x * atz_x + atz_y * atz_y) > 1:  # This prevents the adversary from moving ONTO Zappy.
                 # Check for horizontal
                 if atz_x < 0:

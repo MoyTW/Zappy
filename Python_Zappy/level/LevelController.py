@@ -41,6 +41,9 @@ class LevelController(object):
     def zappy_eid(self):
         return self._zappy.eid
 
+    def get_image_of_eid(self, eid):
+        return self._level.get_entity_by_id(eid).entity_image
+
     def get_eids_at(self, _x, _y):
         return self.level_view.get_eids_at(_x, _y)
 

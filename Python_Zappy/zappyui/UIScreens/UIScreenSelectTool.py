@@ -15,6 +15,13 @@ class UIScreenSelectTool(UIScreen.UIScreen):
     _tools_batch = pyglet.graphics.Batch()
 
     def __init__(self, _camera, level_controller, viewport_info, factory_screens, selection=0):
+        """
+        :type _camera: zappyui.Camera.Camera
+        :type level_controller: level.LevelController.LevelController
+        :type viewport_info: zappyui.FactoryScreens.ViewportInfo
+        :type factory_screens: zappyui.FactoryScreens.FactoryScreens
+        :type selection: int
+        """
         self._camera = _camera
         self._control = level_controller
         self._viewport = viewport_info
@@ -97,8 +104,10 @@ class UIScreenSelectTool(UIScreen.UIScreen):
             tool_y = self._leftmost_point[1]
             border_x = tool_x - self.GAP_SIZE / 2
             border_y = tool_y - self.GAP_SIZE / 2
-            self._sprites.append(pyglet.sprite.Sprite(tool.entity_image, x=tool_x, y=tool_y, batch=self._tools_batch))
 
+            print self._control.level_view.get_all_eids()
+            self._sprites.append(pyglet.sprite.Sprite(self._control.get_image_of_eid(tool), x=tool_x, y=tool_y,
+                                                      batch=self._tools_batch))
             self._sprites.append(pyglet.sprite.Sprite(self._single_border_image, x=border_x, y=border_y,
                                                       batch=self._border_batch))
             '''

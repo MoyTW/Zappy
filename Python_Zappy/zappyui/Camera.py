@@ -157,7 +157,7 @@ class Camera(object):
         if self._level is None:
             return False
 
-        loc = self._level.coordinates_of_eid(eid)
+        loc = self._level.ent_coords(eid)
         if loc is not None:
             self.center_on(loc[0], loc[1])
 

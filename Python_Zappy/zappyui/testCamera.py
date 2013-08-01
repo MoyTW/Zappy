@@ -56,12 +56,17 @@ class TestCamera(unittest.TestCase):
     def test_center_on_entity(self):
 
         class DummyEntity(object):
-            def __init__(self, eid):
+            def __init__(self, eid, x, y):
                 self.eid = eid
+                self.x = x
+                self.y = y
+
+            def get_coords(self):
+                return self.x, self.y
 
         self.default_level.remove_entity_from('TestStringEntity', 2, 1)
 
-        two_one = DummyEntity(0)
+        two_one = DummyEntity(0, 2, 1)
         self.default_level.place_entity_at(two_one, 2, 1)
         self.default_camera.center_on_eid(0)
         self.assertTrue(self.default_camera._center_tile[0] == 2, self.default_camera._center_tile[1] == 1)

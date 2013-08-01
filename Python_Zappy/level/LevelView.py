@@ -172,20 +172,6 @@ class LevelView(object):
             return [e.eid for e in self.lvl._cells[x][y].get_all_entities()]
         return None
 
-        # Dumb search
-    def coordinates_of_eid(self, eid):
-        """
-        :type eid: int
-        :rtype: tuple
-        """
-        for x in range(self.lvl.level_width):
-            for y in range(self.lvl.level_height):
-                if self.get_cell_at(x, y).contains_eid(eid):
-                    return x, y
-                #if self.lvl._cells[x][y].contains_eid(entity):
-                #    return x, y
-        return None
-
     def _get_entity_by_id(self, eid):
         """
         :type eid: int

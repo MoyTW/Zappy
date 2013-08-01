@@ -106,17 +106,22 @@ class TestLevel(unittest.TestCase):
     def test_find_coordinates_of_entity(self):
 
         class DummyEnt(object):
-            def __init__(self, eid):
+            def __init__(self, eid, x, y):
                 self.eid = eid
+                self.x = x
+                self.y = y
 
-        target = DummyEnt(99)
+            def get_coords(self):
+                return self.x, self.y
+
+        target = DummyEnt(99, 3, 2)
         self.initialized_test_level.place_entity_at(target, 3, 2)
 
         try:
-            coords = self.initialized_test_level.view.coordinates_of_eid(target.eid)
+            coords = self.initialized_test_level.view.ent_coords(target.eid)
             self.assertEquals(coords[0], 3)
             self.assertEquals(coords[1], 2)
-            self.assertEquals(None, self.initialized_test_level.view.coordinates_of_eid("Blue!"))
+            self.assertEquals(None, self.initialized_test_level.view.ent_coords("Blue!"))
         except TypeError:
             self.assertFalse(True, "Level.find_coordinates_of_entity() not returning an iterable with 2 values.")
 
